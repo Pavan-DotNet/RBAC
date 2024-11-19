@@ -1,0 +1,29 @@
+
+@model IEnumerable<MOCDIntegrations.Models.User>
+
+@{
+    ViewBag.Title = "User Management";
+}
+
+<h2>User Management</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit Roles", "Edit", new { id=item.UserId })
+        </td>
+    </tr>
+}
+
+</table>

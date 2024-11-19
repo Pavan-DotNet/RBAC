@@ -1,54 +1,53 @@
-﻿<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOCD Integrations | @ViewBag.Title</title>
+    <title>@ViewBag.Title - MOCD Integrations</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @*<link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet" />*@
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
 </head>
-<body dir="rtl">
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav navbar-right">
-                @if (Request.IsAuthenticated)
-                {
-                    <li><p class="nav navbar-text navbar-right">مرحبا, @User.Identity.Name</p></li>
-                    <li>@Html.ActionLink("تسجيل الخروج", "Logout", "Account", null, new { @class = "nav-link" })</li>
-                }
-                else
-                {
-                    <li>@Html.ActionLink("تسجيل الدخول", "Login", "Account", null, new { @class = "nav-link" })</li>
-                }
-            </ul>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("MOCD Integrations", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Role Management", "Manage", "RoleManagement")</li>
+                    }
+                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                    {
+                        <li>@Html.ActionLink("User Management", "Index", "UserManagement")</li>
+                    }
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
-
-        @Html.ActionLink("الرئيسية", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
-        <a href="#">
-            <img src="~/Images/logo.png" style="height:60px;width:300px" />
-        </a>
-
-    </nav>
+    </div>
     <div class="container body-content">
         @RenderBody()
-    </div>
-    <div>
-        <footer style="display:table;text-align: center;margin-left: auto;margin-right: auto;">
-            <p>
-                <b>
-                    &copy; @DateTime.Now.Year -  وزارة تنمية المجتمع
-                </b>
-            </p>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - MOCD Integrations</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/maskedtextbox.js"></script>
 </body>
 </html>
+

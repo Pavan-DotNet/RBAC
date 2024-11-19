@@ -1,0 +1,45 @@
+
+@model List<string>
+@{
+    ViewBag.Title = "Manage Roles and Permissions";
+}
+
+<h2>Manage Roles and Permissions</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Existing Roles</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Role Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var role in Model)
+                {
+                    <tr>
+                        <td>@role</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = role }, new { @class = "btn btn-primary btn-sm" })
+                            @Html.ActionLink("Delete", "Delete", new { id = role }, new { @class = "btn btn-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <h3>Create New Role</h3>
+        @using (Html.BeginForm("Create", "RoleManagement", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label for="roleName">Role Name</label>
+                <input type="text" class="form-control" id="roleName" name="roleName" required>
+            </div>
+            <button type="submit" class="btn btn-success">Create Role</button>
+        }
+    </div>
+</div>

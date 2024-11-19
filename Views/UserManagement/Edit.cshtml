@@ -1,0 +1,46 @@
+
+@model MOCDIntegrations.Models.UserRolesViewModel
+
+@{
+    ViewBag.Title = "Edit User Roles";
+}
+
+<h2>Edit Roles for @Model.Username</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.UserId)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @foreach (var role in Model.AllRoles)
+                {
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="selectedRoles" value="@role" @(Model.UserRoles.Contains(role) ? "checked" : "") />
+                            @role
+                        </label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

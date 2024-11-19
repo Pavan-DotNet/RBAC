@@ -1,7 +1,10 @@
 
+
 using System.Web.Mvc;
 using System.Web.Security;
 using MOCDIntegrations.Auth;
+using System.Security.Claims;
+using System.Web;
 
 namespace MOCDIntegrations.Controllers
 {
@@ -24,9 +27,23 @@ namespace MOCDIntegrations.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password, string returnUrl)
         {
-            if (_authProvider.ValidateUser(username, password))
+            var (isValid, roles) = _authProvider.ValidateUser(username, password);
+            if (isValid)
             {
-                FormsAuthentication.SetAuthCookie(username, false);
+                var identity = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.Name, username),
+                }, "ApplicationCookie");
+
+                foreach (var role in roles)
+                {
+                    identity.AddClaim(new Claim(ClaimTypes.Role, role));
+                }
+
+                var ctx = Request.GetOwinContext();
+                var authManager = ctx.Authentication;
+                authManager.SignIn(identity);
+
                 if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                 {
                     return Redirect(returnUrl);
@@ -45,8 +62,11 @@ namespace MOCDIntegrations.Controllers
 
         public ActionResult Logout()
         {
-            FormsAuthentication.SignOut();
+            var ctx = Request.GetOwinContext();
+            var authManager = ctx.Authentication;
+            authManager.SignOut("ApplicationCookie");
             return RedirectToAction("Login");
         }
     }
 }
+
