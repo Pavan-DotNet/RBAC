@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace MOCDIntegrations
 {
@@ -19,10 +20,24 @@ namespace MOCDIntegrations
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
 
-            // Disable Windows Authentication
-            HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
-            HttpContext.Current.SetAuthenticationType(string.Empty);
+        protected void Application_AuthenticateRequest(Object sender, EventArgs e)
+        {
+            if (HttpContext.Current.User != null)
+            {
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    if (HttpContext.Current.User.Identity is FormsIdentity)
+                    {
+                        FormsIdentity id = (FormsIdentity)HttpContext.Current.User.Identity;
+                        FormsAuthenticationTicket ticket = id.Ticket;
+                        string userData = ticket.UserData;
+                        string[] roles = userData.Split(',');
+                        HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(id, roles);
+                    }
+                }
+            }
         }
     }
 }
