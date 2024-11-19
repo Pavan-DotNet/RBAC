@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="121c0383-78a8-4eef-95b8-bc2128584da3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://iapi.mocd.gov.ae/Outbound/GSB/ADDOF/Soap/MilitaryPension/V1?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="5e6b734e2f9c68db4bdfe810bfe6d96e.xsd" MetadataType="Schema" ID="b304cc9b-7208-4343-b90c-1cd9f0f67767" SourceId="1" SourceUrl="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f1f14&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a9a9" />
+    <MetadataFile FileName="getMilitaryPensionDetails_ADDOF.wsdl" MetadataType="Wsdl" ID="faad3038-beb6-40da-9100-6408a0b4bd86" SourceId="1" SourceUrl="https://iapi.mocd.gov.ae/Outbound/GSB/ADDOF/Soap/MilitaryPension/V1?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

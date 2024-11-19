@@ -1,0 +1,353 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "هيئة تنمية المجتمع - دبي";
+}
+<br />
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>هيئة تنمية المجتمع - المنافع الاجتماعية</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+        <table id="ServiceTypeId" class="table table-bordered table-active">
+            <tr>
+                <td colspan="3"><h6><small><b> بطاقة هوية</b></small></h6></td>
+                <td>
+                    <select id="querytype" class="dropdown dropdown-header form-control">
+                        <option value="-1">-- اختر --</option>
+                        <option value="1">المستفيد بطاقة هوية</option>
+                        <option value="2"> أُسرَة بطاقة هوية</option>
+                        <option value="3"> البيانات الشهرية</option>
+
+                    </select>
+                </td>
+                <td><input id="txtBenfEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+                <td><input id="txtHouseHoldEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+                <td >
+                    <select  id="Year" class="dropdown dropdown-header form-control">
+                        <option  value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                        <option value="2014">2014</option>
+                        <option value="2013">2013</option>
+                        <option value="2012">2012</option>
+                        <option value="2011">2011</option>
+                        <option value="2010">2010</option>
+                        <option value="2009">2009</option>
+                        <option value="2008">2008</option>
+                        <option value="2007">2007</option>
+                        <option value="2006">2006</option>
+                        <option value="2005">2005</option>
+                        <option value="2004">2004</option>
+                        <option value="2003">2003</option>
+                        <option value="2002">2002</option>
+                        <option value="2001">2001</option>
+                        <option value="2000">2000</option>
+
+                    </select>
+                </td>
+                <td>
+                    <select  id="Month" class="dropdown dropdown-header form-control">
+                        <option value="JAN">January</option>
+                        <option value="FEB">February</option>
+                        <option value="MAR">March</option>
+                        <option value="APR">April</option>
+                        <option value="MAY">May</option>
+                        <option value="JUN">June</option>
+                        <option value="JUL">July</option>
+                        <option value="AUG">August</option>
+                        <option value="OCT">October</option>
+                        <option value="NOV">November</option>
+                        <option value="DEC">December</option>
+                    
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3"><h6><small><b> نشيط</b></small></h6></td>
+                <td>
+                    <select id="IsActive" class="dropdown dropdown-header form-control">
+                        <option value="1">True</option>
+                        <option value="2">False</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+
+        <div id="divTables">
+        </div>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <!-- Bootstrap -->
+    <!-- Bootstrap DatePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!-- Bootstrap DatePicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+            $('#SubmitTable').hide();
+            $('#txtBenfEmiratesId').hide();
+            $('#txtHouseHoldEmiratesId').hide();
+            $('#Year').hide();
+            $('#Month').hide();
+        });
+        $("#querytype").change(function () {
+
+            document.getElementById('response').innerText = '';
+            document.getElementById('response').style.color = 'white';
+            $('#txtEmiratesId').val('');
+
+            var val = $("#querytype option:selected").val();
+
+            if (val == '-1') {
+                $('.DataTable').hide();
+                $('#txtBenfEmiratesId').hide();
+                $('#txtHouseHoldEmiratesId').hide();
+
+                $('#SubmitTable').hide();
+            }
+            else if (val == '1') {
+
+                $('.DataTable').hide();
+                $('#txtBenfEmiratesId').show();
+                $('#txtHouseHoldEmiratesId').hide();
+                $('#SubmitTable').show();
+            }
+            else if (val == '2') {
+                $('.DataTable').hide();
+                $('#txtBenfEmiratesId').hide();
+                $('#txtHouseHoldEmiratesId').show();
+                $('#SubmitTable').show();
+            }
+
+            else if (val == '3') {
+                $('.DataTable').hide();
+                $('#txtBenfEmiratesId').hide();
+                $('#txtHouseHoldEmiratesId').hide();
+                $('#Year').show();
+                $('#Month').show();
+
+                $('#SubmitTable').show();
+            }
+
+
+        });
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+            var url = '@Url.Action("Search", "CDANew")';
+
+            $(".tbody").empty();
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+            var html1 = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtBenfEmiratesId").val().length == 0 && ($("#querytype option:selected").val() == "1")){
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtBenfEmiratesId").focus();
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            if ($("#txtHouseHoldEmiratesId").val().length == 0 &&  $("#querytype option:selected").val() == "2" ) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtHouseHoldEmiratesId").focus();
+                $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+            var year = $("#Year option:selected").val();
+            var month = $("#Month option:selected").val();
+            var MonthBatch = month + "-" + year;
+            var input = { "BenficiaryEID": $('#txtBenfEmiratesId').val(), "HoushouldEID": $('#HouseHoldEmiratesId').val(), "IsActive": $("#IsActive option:selected").val(), "MonthBatch": MonthBatch };
+
+            var UsrAgent = { "UserAgent": $.browser };
+
+           
+
+            $.get(url, { stype: $("#querytype option:selected").val(), postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent)  }, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+
+                if (obj.flag == "1") {
+
+                    html = BindHTML(obj.objresp.Value);
+
+                    if (obj.objresp.Value.houseHoldMembers != null) {
+                        html += '<h1>houseHoldMembers</h1>';
+
+                        for (var i = 0; i < obj.objresp.Value.houseHoldMembers.length; i++) {
+                            html += BindHTML1(obj.objresp.Value.houseHoldMembers[i])
+                        }
+
+                    }
+                    $(".tbody").append(html);
+                    $('.DataTable').show();
+                }
+                 else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+        function BindHTML(item) {
+
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td>BenefitAmount</td>';
+            html += '<td>' + StringHasValue(item.BenefitAmount) + '</td>';
+            html += '<td>DateOfBirth</td>';
+            html += '<td>' + StringHasValue(item.DateOfBirth) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td>DewaAcc</td>';
+            html += '<td>' + StringHasValue(item.DewaAcc) + '</td>';
+            html += '<td>EID</td>';
+            html += '<td>' + StringHasValue(item.EID) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td>FullNameAr</td>';
+            html += '<td>' + StringHasValue(item.FullNameAr) + '</td>';
+            html += '<td>FullNameEn</td>';
+            html += '<td>' + StringHasValue(item.FullNameEn) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td>Gender</td>';
+            html += '<td>' + StringHasValue(item.Gender) + '</td>';
+            html += '<td>IsActive</td>';
+            html += '<td>' + StringHasValue(item.IsActive) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td>Nationality</td>';
+            html += '<td>' + StringHasValue(item.Nationality) + '</td>';
+            html += '<td>Relation</td>';
+            html += '<td>' + StringHasValue(item.Relation) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td>رقم مكاني</td>';
+            html += '<td>' + StringHasValue(item.makaniNumber) + '</td>';
+            html += '<td>StoppedCaseDate</td>';
+            html += '<td>' + StringHasValue(item.StoppedCaseDate) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td>age</td>';
+            html += '<td>' + StringHasValue(item.age) + '</td>';
+            html += '</tr>';
+
+
+            html += '</tbody>  </table>';
+            return html
+        }
+        function BindHTML1(item) {
+
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td>DOBcase</td>';
+            html += '<td>' + StringHasValue(item.DOBcase) + '</td>';
+            html += '<td>FullName</td>';
+            html += '<td>' + StringHasValue(item.FullName) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td>Gender</td>';
+            html += '<td>' + StringHasValue(item.Gender) + '</td>';
+            html += '<td>IDNcase</td>';
+            html += '<td>' + StringHasValue(item.IDNcase) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td>Nationality</td>';
+            html += '<td>' + StringHasValue(item.Nationality) + '</td>';
+            html += '</tr>';
+
+            html += '</tbody>  </table>';
+            return html
+        }
+
+
+       $("#btnsubmit").on("click", getData);
+        $('#create_pdf').on('click', function () {
+            getPDF("CDA.pdf");
+        });
+
+        var StringHasValue = function (strValue) {
+            if ($.trim(strValue) != "" && $.trim(strValue) != null && $.trim(strValue) != undefined)
+                return strValue;
+            else
+                return "-";
+        };
+
+    </script>
+}
+

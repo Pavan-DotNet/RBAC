@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.informatica.com/dis/ws/" name="SHJ_DHR_getEmployeeDetailsbyEID" targetNamespace="http://www.informatica.com/dis/ws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.informatica.com/dis/ws/">
+      <xsd:element name="GetEmployeeDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="EmiratesId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetEmployeeDetailsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="EmployeeDetails">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="EmiratesId" type="xsd:string" />
+                  <xsd:element name="EmployeeNumber" type="xsd:string" />
+                  <xsd:element name="EmployeeNameEn" type="xsd:string" />
+                  <xsd:element name="EmployeeNameAr" type="xsd:string" />
+                  <xsd:element name="EmployerName" type="xsd:string" />
+                  <xsd:element name="JobTitle" type="xsd:string" />
+                  <xsd:element name="JoiningDate" type="xsd:string" />
+                  <xsd:element name="EndingDate" type="xsd:string" />
+                  <xsd:element name="MonthlySalary" type="xsd:string" />
+                  <xsd:element name="LivingExpenses" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Error">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="InputParameter" type="xsd:string" />
+                  <xsd:element name="ErrorCode" type="xsd:string" />
+                  <xsd:element name="ErrorDescription" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetEmployeeDetails">
+    <wsdl:part name="GetEmployeeDetails" element="tns:GetEmployeeDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeDetailsResponse">
+    <wsdl:part name="GetEmployeeDetailsResponse" element="tns:GetEmployeeDetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SHJ_DHR_getEmployeeDetailsbyEIDPortType">
+    <wsdl:operation name="GetEmployeeDetails">
+      <wsdl:input name="GetEmployeeDetails_Input" message="tns:GetEmployeeDetails" />
+      <wsdl:output name="GetEmployeeDetails_Output" message="tns:GetEmployeeDetailsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SHJ_DHR_getEmployeeDetailsbyEIDBinding" type="tns:SHJ_DHR_getEmployeeDetailsbyEIDPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEmployeeDetails">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="GetEmployeeDetails_Input">
+        <soap:body use="literal" parts="GetEmployeeDetails" />
+      </wsdl:input>
+      <wsdl:output name="GetEmployeeDetails_Output">
+        <soap:body use="literal" parts="GetEmployeeDetailsResponse" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SHJ_DHR_getEmployeeDetailsbyEID">
+    <wsdl:port name="SHJ_DHR_getEmployeeDetailsbyEID" binding="tns:SHJ_DHR_getEmployeeDetailsbyEIDBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/FCSA/Soap/GetEmployeeDetailsbyEID/V1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

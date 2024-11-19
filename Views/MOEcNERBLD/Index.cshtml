@@ -1,0 +1,601 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "وزارة الاقتصاد - رخصة تجارية";
+}
+
+<br />
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active">
+        <h4>
+            <small>
+                <b>
+                    وزارة الاقتصاد - رخصة تجارية
+                </b>
+            </small>
+        </h4>
+    </div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+        <table class="table table-bordered table-active">
+            <tr>
+                <td class="col-md-3"><h6><small><b> نوع المستند</b></small></h6></td>
+                <td align="center">
+                    <select id="documentype" class="dropdown dropdown-header form-control">
+                        <option value="-1">-- اختر --</option>
+                        <option value="pna">اسم الشخص عربي</option>
+                        <option value="pne">اسم الشخص بالانجليزية</option>
+                        <option value="uid">الهوية الموحدة</option>
+                        <option value="pass">جواز سفر</option>
+                        <option value="eid">بطاقة هوية</option>
+                    </select>
+                </td>
+
+            </tr>
+        </table>
+        <table id="NationalId" class="table table-bordered table-active">
+            <tr>
+                <td class="col-md-3"><h6><small><b> بطاقة هوية </b></small></h6></td>
+                <td align="center">
+                    <input id="txtEmiratesId"
+                           maxlength="15"
+                           oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                           type="number"
+                           class="form-control" style="width:100%" />
+                </td>
+
+            </tr>
+        </table>
+        <table id="Passport" class="table table-bordered table-active">
+            <tr>
+                <td class="col-md-3"><h6><small><b> جواز سفر </b></small></h6></td>
+                <td align="center"> <input id="txtPassportNo" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="tblPersonArName" class="table table-bordered table-active">
+            <tr>
+                <td class="col-md-3">
+                    <h6>
+                        <small>
+                            <b>
+                                اسم الشخص عربي
+                            </b>
+                        </small>
+                    </h6></tdclass="col-md-3">
+                <td align="center"> <input id="txtPersonArName" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="tblPersonEnName" class="table table-bordered table-active">
+            <tr>
+                <td class="col-md-3">
+                    <h6>
+                        <small>
+                            <b>
+                                اسم الشخص بالانجليزية
+                            </b>
+                        </small>
+                    </h6></tdclass="col-md-3">
+                <td align="center"> <input id="txtPersonEnName" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="tblUnifiedId" class="table table-bordered table-active">
+            <tr>
+                <td class="col-md-3">
+                    <h6>
+                        <small>
+                            <b>
+                                الهوية الموحدة
+                            </b>
+                        </small>
+                    </h6>
+                </td>
+                <td align="center">
+                    <input id="txtUnifiedId"
+                           maxlength="10"
+                           oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                           type="number"
+                           class="form-control" style="width:100%" />
+                </td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+
+                </td>
+
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div class="flex-row divtblOwnerDetials" style="display:none;">
+            <div class="card-header"><h4>تفاصيل المالك</h4></div>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <table id="tblOwnerDetials" style="width:100%" class="table table-hover table-bordered  table-responsive-lg table-center mb-0 table-responsive-md table-responsive-sm dataTable no-footer col-lg-12 col-xl-12 col-md-12">
+                        <thead>
+                            <tr>
+                                <th title="CBLSSubmissionID">معرف التقديم</th>
+                                <th title="OwnerCBLSId">رمز المالك</th>
+                                <th title="OwnerFullNameAR">اسم المالك بالعربي</th>
+                                <th title="OwnerFullNameEN">اسم المالك بالانجليزي</th>
+                                <th title="UnifiedId">الرقم الموحد</th>
+                                <th title="EmiratesId">رقم الهوية </th>
+                                <th title="PassportNo">رقم الجواز</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody text-center" id="tbody">
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="response" class="bg-danger"></div>
+    </div>
+    <br />
+    <div id="divTables">
+    </div>
+    <table class="DataTable1 table table-bordered  table-hover text-center table-active">
+        <tbody class="tbody1 text-center" id="tbody"></tbody>
+    </table>
+
+</div>
+
+@section Scripts {
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/css/responsive.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/datetime/1.4.0/css/dataTables.dateTime.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.theme.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.structure.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Content/js/datatables.min.js"></script>
+    <script src="~/Content/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.4.0/js/dataTables.dateTime.min.js"></script>
+
+    <script>
+
+
+
+       $(document).ready(function () {
+
+           $('.DataTable').hide();
+           $('.DataTable1').hide();
+
+           $('#Passport').hide();
+           $('#NationalId').hide();
+           $('#tblPersonArName').hide();
+           $('#tblPersonEnName').hide();
+           $('#tblUnifiedId').hide();
+           $('#SubmitTable').hide();
+
+        });
+
+        $("#documentype").change(function () {
+
+            $('#txtEmiratesId').val('');
+            $('#txtPassportNo').val('');
+
+
+            var val = $("#documentype option:selected").val();
+
+            if (val == '-1') {
+                $('#Passport').hide();
+                $('#NationalId').hide();
+                $('#tblPersonArName').hide();
+                $('#tblPersonEnName').hide();
+                $('#tblUnifiedId').hide();
+                $(".tbody1").empty();
+                $(".tbody2").empty();
+                $(".tbody3").empty();
+                $(".tbody4").empty();
+                 $('.DataTable').hide();
+                 $('#SubmitTable').hide();
+            }
+            else if (val === 'pna') {
+                $('#Passport').hide();
+                $('#NationalId').hide();
+                $('#tblPersonArName').show();
+                $('#tblPersonEnName').hide();
+                $('#tblUnifiedId').hide();
+                $(".tbody1").empty();
+                $(".tbody2").empty();
+                $(".tbody3").empty();
+                $(".tbody4").empty();
+                $('.DataTable').hide();
+                $('#SubmitTable').show();
+            }
+            else if (val === 'pne') {
+                $('#Passport').hide();
+                $('#NationalId').hide();
+                $('#tblPersonArName').hide();
+                $('#tblPersonEnName').show();
+                $('#tblUnifiedId').hide();
+                $(".tbody1").empty();
+                $(".tbody2").empty();
+                $(".tbody3").empty();
+                $(".tbody4").empty();
+                $('.DataTable').hide();
+                $('#SubmitTable').show();
+            }
+            else if (val == 'uid') {
+                $('#Passport').hide();
+                $('#NationalId').hide();
+                $('#tblPersonArName').hide();
+                $('#tblPersonEnName').hide();
+                $('#tblUnifiedId').show();
+                $(".tbody1").empty();
+                $(".tbody2").empty();
+                $(".tbody3").empty();
+                $(".tbody4").empty();
+                $('.DataTable').hide();
+                $('#SubmitTable').show();
+            }
+            else if (val == 'pass') {
+                $('#Passport').show();
+                $('#NationalId').hide();
+                $('#tblPersonArName').hide();
+                $('#tblPersonEnName').hide();
+                $('#tblUnifiedId').hide();
+                $(".tbody1").empty();
+                $(".tbody2").empty();
+                $(".tbody3").empty();
+                $(".tbody4").empty();
+                $('.DataTable').hide();
+                $('#SubmitTable').show();
+            }
+            else if (val == 'eid')
+                {
+                $('#Passport').hide();
+                $('#NationalId').show();
+                $('#tblPersonArName').hide();
+                $('#tblPersonEnName').hide();
+                $('#tblUnifiedId').hide();
+                 $(".tbody1").empty();
+                $(".tbody2").empty();
+                $(".tbody3").empty();
+                $(".tbody4").empty();
+                 $('.DataTable').hide();
+                $('#SubmitTable').show();
+            }
+
+
+
+        });
+
+        function getData() {
+            var html = '';
+            $(".tbody1").empty();
+            $("#DataTable1").empty();
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "MOEcNERBLD")';
+            var search_type = $("#documentype option:selected").val();
+         //   $(".tbody").empty();
+            //$("#tblOwnerDetials").destroy();
+            //$("#tblOwnerLicenseDetials").destroy();
+
+            $('.divtblOwnerDetials').hide();
+            /*$('.divtblOwnerLicenseDetials').hide();*/
+            $('.DataTable1').hide();
+
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if (search_type === 'eid' && $("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid EmiratesId');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else if (search_type === 'pass' && $("#txtPassportNo").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid passport number');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtPassportNo").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+            }
+            else if (search_type === 'uid' && $("#txtUnifiedId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid Unified Id');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtUnifiedId").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+            }
+            else if (search_type === 'pna' && $("#txtPersonArName").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid Person name arabic');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtPersonArName").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+            }
+            else if (search_type === 'pne' && $("#txtPersonEnName").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid Person name english');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtPersonEnName").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+            //{ "EmiratesID": $('#txtEmiratesId').val(), "Passport": $('#txtPassportNo').val() }
+            var input = '';
+            input = search_type === 'eid' ?  $('#txtEmiratesId').val() : search_type === 'pass' ?  $('#txtPassportNo').val()
+                    : search_type === 'uid' ?  $('#txtUnifiedId').val() : search_type === 'pna' ?  $('#txtPersonArName').val()
+                    : search_type === 'pne' ? $('#txtPersonEnName').val():'';
+            input = input.trim();
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { Type: search_type, Data: input, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+                if (obj.flag == "1") {
+                    LoadTables(obj.root);
+                    $('.divtblOwnerDetials').show();
+
+                    console.log(obj.root.BLList)
+                    for (var i = 0; i < obj.root.BLList.length; i++) {
+                        html = BindHTML(obj.root.BLList[i]);
+                        $("#divTables").append(html);
+                        $('.DataTable1').show();
+                    }
+                 
+                    
+                    $('.divtblOwnerLicenseDetials').show();
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+        $("#btnsubmit").on("click", getData);
+
+        $('#create_pdf').on('click', function () {
+            getPDF("ADJD.pdf");
+       });
+
+        function BindHTML(item) {
+            var html = '';
+
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رمز الرخصة" + '</b></small></h6></td>';
+            html += '<td>' + item.BLCBLSId + '</td>';
+            html += '<td><h6><small><b>' + "رمز اسم الرخصة" + '</b></small></h6></td>';
+            html += '<td>' + item.EDLicenseID + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "اسم الرخصة بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.LicenseNameAr + '</td>';
+            html += '<td><h6><small><b>' + "اسم الرخصة بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.LicenseNameEn + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تاريخ انتهاء الرخصة" + '</b></small></h6></td>';
+            html += '<td>' + item.LicenseExiryDate + '</td>';
+            html += '<td><h6><small><b>' + "تاريخ آخر تعديل للترخيص " + '</b></small></h6></td>';
+            html += '<td>' + item.LicenseLastModifyDate + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الاصدار" + '</b></small></h6></td>';
+            html += '<td>' + item.IssuanceEDID + '</td>';
+            html += '<td><h6><small><b>' + "بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.IssuanceEDAR + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.IssuanceEDAR + '</td>';
+            html += '<td><h6><small><b>' + "رمز نوع الرخصة" + '</b></small></h6></td>';
+            html += '<td>' + item.LicenseTypeID + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "نوع الرخصة بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.LicenseTypeAR + '</td>';
+            html += '<td><h6><small><b>' + "نوع الرخصة بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.LicenseTypeEN + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "معرف نوع  المالك" + '</b></small></h6></td>';
+            html += '<td>' + item.OwnerRelationshipTypeID + '</td>';
+            html += '<td><h6><small><b>' + "نوع المالك بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.OwnerRelationshipTypeEn + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "نوع المالك بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.OwnerRelationshipTypeAr + '</td>';
+            html += '<td><h6><small><b>' + "نسبة حصة المالك" + '</b></small></h6></td>';
+            html += '<td>' + item.OwnerSharePercentage + '</td>';
+            html += '</tr>';
+
+         
+
+
+            html += '</tbody>  </table>';
+            return html
+        }
+
+        function LoadTables(DataSet) {
+            var list = [
+                {
+                    CBLSSubmissionID : DataSet.CBLSSubmissionID,
+                    OwnerCBLSId      : DataSet.OwnerCBLSId,
+                    OwnerFullNameAR  : DataSet.OwnerFullNameAR,
+                    OwnerFullNameEN  : DataSet.OwnerFullNameEN,
+                    UnifiedId        : DataSet.UnifiedId,
+                    EmiratesId       : DataSet.EmiratesId,
+                    PassportNo       : DataSet.PassportNo
+                }
+            ]
+
+            LoadMOEcOwnerDetail(list);
+        //    LoadOwnerLicenseDetial(DataSet.BLList);
+        }
+        function LoadMOEcOwnerDetail(OwnerDetails) {
+            var table = $("#tblOwnerDetials").DataTable({
+                "processing": false,
+                "serverSide": false,
+                "autoWidth": true,
+                "filter": false,
+                "bDestroy": true,
+                "paging": false, // Set visibility of paging on / off
+                "searching": false, // Set visibilty of searching on / off
+                "ordering": true, // Set sorting option on / off
+                "pageLength": '10', // Set the paging length
+                "bInfo": false, // Set visibility of the "Show Records" text on / off
+                "bLengthChange": false, // Set visibility of "Select no of records" dropdown on / off
+                "aaSorting": [], // Default sorting on bind option
+                "scrollY": true, // Set header to be fixed with value for height of table
+                "scrollX": true,
+                "scrollCollapse": true, // Show scroll with fixed header for complete row length on /off
+                "language": {
+                    "info": "Showing _START_ to _END_ of _TOTAL_ records",
+                    "infoEmpty": "Showing 0 to 0 of 0 records",
+                    "infoFiltered": "(filtered from _MAX_ total records)"
+                },
+                "data": OwnerDetails,
+                "columns": [
+                    { "data": "CBLSSubmissionID" },
+                    { "data": "OwnerCBLSId" },
+                    { "data": "OwnerFullNameAR" },
+                    { "data": "OwnerFullNameEN" },
+                    { "data": "UnifiedId" },
+                    { "data": "EmiratesId" },
+                    { "data": "PassportNo" }
+
+                ]
+            });
+            setTimeout(function () {
+                $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
+            }, 100);
+        }
+        function LoadOwnerLicenseDetial(LicenseDetails) {
+            var table = $("#tblOwnerLicenseDetials").DataTable({
+                "processing": false,
+                "serverSide": false,
+                "autoWidth": true,
+                "filter": false,
+                "bDestroy": true,
+                "paging": false, // Set visibility of paging on / off
+                "searching": false, // Set visibilty of searching on / off
+                "ordering": true, // Set sorting option on / off
+                "pageLength": '10', // Set the paging length
+                "bInfo": false, // Set visibility of the "Show Records" text on / off
+                "bLengthChange": false, // Set visibility of "Select no of records" dropdown on / off
+                "aaSorting": [], // Default sorting on bind option
+                "scrollY": true, // Set header to be fixed with value for height of table
+                "scrollX": true,
+                "scrollCollapse": true, // Show scroll with fixed header for complete row length on /off
+                "language": {
+                    "info": "Showing _START_ to _END_ of _TOTAL_ records",
+                    "infoEmpty": "Showing 0 to 0 of 0 records",
+                    "infoFiltered": "(filtered from _MAX_ total records)"
+                },
+                "data": LicenseDetails,
+                "columns": [
+                    { "data": "BLCBLSId" },
+                    { "data": "EDLicenseID" },
+                    { "data": "LicenseNameEn" },
+                    { "data": "LicenseNameAr" },
+                    { "data": "LicenseExiryDateString" },
+                    { "data": "LicenseLastModifyDateString" },
+                    { "data": "IssuanceEDID" },
+                    { "data": "IssuanceEDAR" },
+                    { "data": "IssuanceEDEN" },
+                    { "data": "LicenseTypeID" },
+                    { "data": "LicenseTypeAR" },
+                    { "data": "LicenseTypeEN" },
+                    { "data": "OwnerRelationshipTypeID" },
+                    { "data": "OwnerRelationshipTypeEn" },
+                    { "data": "OwnerRelationshipTypeAr" },
+                    { "data": "OwnerSharePercentage" },
+                ]
+            });
+
+        }
+    </script>
+}
+
+

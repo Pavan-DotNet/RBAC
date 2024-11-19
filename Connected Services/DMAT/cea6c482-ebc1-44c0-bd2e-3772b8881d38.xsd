@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:cd="urn:ae:gov:abudhabi:core:CommonDataTypes:1" xmlns="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="cea6c482-ebc1-44c0-bd2e-3772b8881d38?xsd=CommonDataTypes_ProxyV42" namespace="urn:ae:gov:abudhabi:core:CommonDataTypes:1" />
+  <xs:annotation>
+    <xs:appinfo>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+        <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1">
+          <dcterms:title xml:lang="ar">بيانات عقد توثيق</dcterms:title>
+          <dcterms:title xml:lang="en">G2GTawtheeq</dcterms:title>
+          <dcterms:identifier>urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1</dcterms:identifier>
+          <dcterms:description xml:lang="ar">بيانات عقد توثيق</dcterms:description>
+          <dcterms:description xml:lang="en">Tawtheeq Information</dcterms:description>
+          <mireg:version>1</mireg:version>
+          <mireg:status>release</mireg:status>
+          <mireg:project>Digital Service Baseline and G2G Initiatives</mireg:project>
+          <mireg:category xml:lang="ar">التبادل المشترك</mireg:category>
+          <mireg:category xml:lang="en">G2G</mireg:category>
+          <dcterms:jurisdiction>AE-AZ</dcterms:jurisdiction>
+          <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi Systems and Information Centre (ADSIC)</adsic:OrganisationName>
+            <adsic:URL xml:lang="en">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:creator>
+          <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            <adsic:URL xml:lang="ar">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:creator>
+          <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi e-Government</adsic:OrganisationName>
+          </mireg:owner>
+          <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">حكومة أبوظبي الالكترونية</adsic:OrganisationName>
+          </mireg:owner>
+          <dcterms:contributor rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:PersonalName xml:lang="en">Department of Municipal Affairs and Transportation</adsic:PersonalName>
+          </dcterms:contributor>
+          <dcterms:contributor rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:PersonalName xml:lang="ar">دائرة الشؤون البلدية والنقل</adsic:PersonalName>
+          </dcterms:contributor>
+          <dcterms:publisher rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi Systems and Information Centre (ADSIC)</adsic:OrganisationName>
+            <adsic:URL xml:lang="en">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:publisher>
+          <dcterms:publisher rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            <adsic:URL xml:lang="ar">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:publisher>
+          <dcterms:created />
+          <dcterms:medium>text/xml</dcterms:medium>
+          <dcterms:requires>../../Core/Modules/CommonDataTypes.xsd</dcterms:requires>
+          <adsic:providesDefinitionOf>ADWEABillPaidByType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>CodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>CompanyEducationalInstituteNameType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ContactPersonNameType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ContractDetailsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ContractExpiryDateType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ContractNoType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ContractRegistrationDateType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ContractStartDateType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EmiratesIDNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>FaxType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>FloorNoType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>IDNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>IssuePlaceType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>LeasedAreaM2Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>LessorDetailsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>LessorIDType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>LessorNameArabicType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>LessorNameEnglishType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>LookupType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>MobileNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>NoOfOccupantsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>NumberOfBedRoomsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>NumberofInstallmentsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>OccupantNameArabicType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>OccupantNameEnglishType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>OccupantsDetailsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>OtherRoomsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>OwnersDetailsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>POBoxType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PhoneNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlotNoType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlotOwnerNameType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PremisesNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PropertyDetailsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PropertyNameType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PropertyRegistrationNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>RentAndPaymentsDetailsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>RentalValueType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>SecurityDepositType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>TawtheeqAllDetailsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>TawtheeqListType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>TenancycontractDurationType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>TenantDetailsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>TenantIDType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>TenantNameArabicType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>TenantNameEnglishType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>TradeLicenseNoType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>UnitDetailsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>UnitNameType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>UnitRegistrationNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleDetailsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>eMailAddressType</adsic:providesDefinitionOf>
+          <dcterms:conformsTo>http://www.w3.org/2001/XMLSchema</dcterms:conformsTo>
+        </rdf:Description>
+      </rdf:RDF>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:simpleType name="ADWEABillPaidByType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#ADWEABillPaidByType">
+            <dcterms:title xml:lang="ar">فاتورة الماء والكهرباء</dcterms:title>
+            <dcterms:title xml:lang="en">ADWEA Bill Paid By</dcterms:title>
+            <dcterms:description xml:lang="ar">هذة الخانة تحتوي عدد الطرف الذي سوف يدفع فواتير استهلاك الماء والكهرباء</dcterms:description>
+            <dcterms:description xml:lang="en">Contains the party who will pay the water and electricity and water bill</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="300" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ArabicDescriptionType">
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CodeType">
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CompanyEducationalInstituteNameType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#CompanyEducationalInstituteNameType">
+            <dcterms:title xml:lang="ar">جهة العمل او مكان الدراسة</dcterms:title>
+            <dcterms:title xml:lang="en">Company Name / Educational Institute</dcterms:title>
+            <dcterms:description xml:lang="ar">جهة العمل او مكان الدراسة</dcterms:description>
+            <dcterms:description xml:lang="en">work place Or study institute</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="0" />
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ContactPersonNameType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#ContactPersonNameType">
+            <dcterms:title xml:lang="ar">المعنى بالاتصال</dcterms:title>
+            <dcterms:title xml:lang="en">Contact Person</dcterms:title>
+            <dcterms:description xml:lang="ar">هذة الخانة تحتوي اسم الشخص المعني بالإتصال عن ال��ؤجر</dcterms:description>
+            <dcterms:description xml:lang="en">Contact person name of the Lessor</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="0" />
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ContractExpiryDateType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#ContractExpiryDateType">
+            <dcterms:title xml:lang="ar">تاريخ نهاية العقد</dcterms:title>
+            <dcterms:title xml:lang="en">Contract Expiry Date</dcterms:title>
+            <dcterms:description xml:lang="ar">هذة الخانة تحتوي تاريخ انتهاء فاعلية عقد الإيجار</dcterms:description>
+            <dcterms:description xml:lang="en">End date of the tenancy contract</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ContractNoType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#ContractNoType">
+            <dcterms:title xml:lang="ar">رقم عقد الايجار</dcterms:title>
+            <dcterms:title xml:lang="en">Contract No</dcterms:title>
+            <dcterms:description xml:lang="ar">رقم عقد الإيجار المستخدم لتعريف العقد في التعاملات والطلبات اللاحقة</dcterms:description>
+            <dcterms:description xml:lang="en">Tawtheeq tenancy contract number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="25" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ContractRegistrationDateType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#ContractRegistrationDateType">
+            <dcterms:title xml:lang="ar">التاريخ</dcterms:title>
+            <dcterms:title xml:lang="en">Contract Registration Date</dcterms:title>
+            <dcterms:description xml:lang="ar">تاريخ إصدار العقد</dcterms:description>
+            <dcterms:description xml:lang="en">Tenancy contract registration date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ContractStartDateType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#ContractStartDateType">
+            <dcterms:title xml:lang="ar">تاريخ بداية العقد</dcterms:title>
+            <dcterms:title xml:lang="en">Contract Start Date</dcterms:title>
+            <dcterms:description xml:lang="ar">هذة الخانة تحتوي تاريخ بداية عقد الإيجار</dcterms:description>
+            <dcterms:description xml:lang="en">Start date of the tenancy contract</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EmiratesIDNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#EmiratesIDNumberType">
+            <dcterms:title xml:lang="ar">رقم الهوية الامارتية</dcterms:title>
+            <dcterms:title xml:lang="en">Emirates ID Number</dcterms:title>
+            <dcterms:description xml:lang="ar">تعتبر الهوية الإماراتية إجبارية لجميع مواطني ومقيمي دولة الامارات العربية
+                                               حيث يتم إبرازها عند التقدم لجميع المعاملات الحكومية</dcterms:description>
+            <dcterms:description xml:lang="en">Emirates ID is necessary for all UAE residents as part of their residency
+                                               requirement. Emirates ID serves as an identification purpose in all the
+                                               Government departments.</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="15" />
+      <xs:maxLength value="15" />
+      <xs:pattern value="[0-9]{15}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EnglishDescriptionType">
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FaxType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#FaxType">
+            <dcterms:title xml:lang="ar">الفاكس</dcterms:title>
+            <dcterms:title xml:lang="en">Fax</dcterms:title>
+            <dcterms:description xml:lang="ar">رقم الفاكس للمؤجر</dcterms:description>
+            <dcterms:description xml:lang="en">Lessor's Fax number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="0" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FloorNoType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#FloorNoType">
+            <dcterms:title xml:lang="ar">رقم الطابق</dcterms:title>
+            <dcterms:title xml:lang="en">Floor No</dcterms:title>
+            <dcterms:description xml:lang="ar">رقم الطابق</dcterms:description>
+            <dcterms:description xml:lang="en">This field contains Floor number in which unit belongs to</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="IDNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#IDNumberType">
+            <dcterms:title xml:lang="ar">رقم وثيق إثبات الشخصية للقاطن</dcterms:title>
+            <dcterms:title xml:lang="en">Occupant Identification Document No.</dcterms:title>
+            <dcterms:description xml:lang="ar">رقم وثيقة إثبات الشخصية للقاطن</dcterms:description>
+            <dcterms:description xml:lang="en">Occupant Identification Document No.</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="IssuePlaceType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#IssuePlaceType">
+            <dcterms:title xml:lang="ar">مكان اصدار الرخصة التجارية</dcterms:title>
+            <dcterms:title xml:lang="en">Issue Place</dcterms:title>
+            <dcterms:description xml:lang="ar">مكان اصدار الرخصة التجارية</dcterms:description>
+            <dcterms:description xml:lang="en">Field contains place where trade license is issued</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LeasedAreaM2Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#LeasedAreaM2Type">
+            <dcterms:title xml:lang="ar">المساحة المؤجرة</dcterms:title>
+            <dcterms:title xml:lang="en">Leased Area M2</dcterms:title>
+            <dcterms:description xml:lang="ar">مساحةالوحدة المؤجرة</dcterms:description>
+            <dcterms:description xml:lang="en">This field contains the area that is leased as part of the tenancy
+                                               contract</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="0" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LessorIDType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#LessorIDType">
+            <dcterms:title xml:lang="ar">رمز المؤجر</dcterms:title>
+            <dcterms:title xml:lang="en">Lessor ID</dcterms:title>
+            <dcterms:description xml:lang="ar">رمز اسم المؤجر</dcterms:description>
+            <dcterms:description xml:lang="en">Tenancy Contracts Lessor ID</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LessorNameArabicType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#LessorNameArabicType">
+            <dcterms:title xml:lang="ar">اسم المؤجر بالعربي</dcterms:title>
+            <dcterms:title xml:lang="en">Lessor Name In Arabic</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم المؤجر</dcterms:description>
+            <dcterms:description xml:lang="en">Tenancy Contracts Lessor Name in Arabic</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LessorNameEnglishType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#LessorNameEnglishType">
+            <dcterms:title xml:lang="ar">اسم المؤجر بالانجليزي</dcterms:title>
+            <dcterms:title xml:lang="en">Lessor Name in English</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم المؤجر</dcterms:description>
+            <dcterms:description xml:lang="en">Tenancy Contracts Lessor Name in English</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MobileNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#MobileNumberType">
+            <dcterms:title xml:lang="ar">رقم الهاتف المتحرك</dcterms:title>
+            <dcterms:title xml:lang="en">Mobile</dcterms:title>
+            <dcterms:description xml:lang="ar">رقم الهاتف المتحرك للمؤجر</dcterms:description>
+            <dcterms:description xml:lang="en">Field contains mobile number of the Lessor</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="0" />
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NoOfOccupantsType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#NoOfOccupantsType">
+            <dcterms:title xml:lang="ar">عدد القاطنين</dcterms:title>
+            <dcterms:title xml:lang="en">No. Of Occupants</dcterms:title>
+            <dcterms:description xml:lang="ar">عدد القاطنين فى الوحدة</dcterms:description>
+            <dcterms:description xml:lang="en">This field contains number of occupants in the particular unit.</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumberOfBedRoomsType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#NumberOfBedRoomsType">
+            <dcterms:title xml:lang="ar">عدد الغرف</dcterms:title>
+            <dcterms:title xml:lang="en">Number of bed rooms</dcterms:title>
+            <dcterms:description xml:lang="ar">عدد الغرف فى الوحدة</dcterms:description>
+            <dcterms:description xml:lang="en">Number of bedrooms in the unit</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumberofInstallmentsType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#NumberofInstallmentsType">
+            <dcterms:title xml:lang="ar">عدد الدفعات</dcterms:title>
+            <dcterms:title xml:lang="en">Number of Installments</dcterms:title>
+            <dcterms:description xml:lang="ar">هذة الخانة تحتوي عدد الدفعات لسداد القيمة الكلية للعقد</dcterms:description>
+            <dcterms:description xml:lang="en">Number of installments of total rental value to be paid for the tenancy
+                                               contract</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OccupantNameArabicType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#OccupantNameArabicType">
+            <dcterms:title xml:lang="ar">اسم القاطن بالعربي</dcterms:title>
+            <dcterms:title xml:lang="en">Occupant Name in Arabic</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم القاطن لعقد الإيجار بالعربي</dcterms:description>
+            <dcterms:description xml:lang="en">Tenancy Contracts Occupant Name in Arabic</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OccupantNameEnglishType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#OccupantNameEnglishType">
+            <dcterms:title xml:lang="ar">اسم القاطن بالانجليزي</dcterms:title>
+            <dcterms:title xml:lang="en">Occupant Name in English</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم المستأجر لعقد الإيجار بالانجليزي</dcterms:description>
+            <dcterms:description xml:lang="en">Tenancy Contracts Occupant Name in English</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OtherRoomsType">
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="POBoxType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#POBoxType">
+            <dcterms:title xml:lang="ar">صندوق البريد</dcterms:title>
+            <dcterms:title xml:lang="en">POBox</dcterms:title>
+            <dcterms:description xml:lang="ar">صندوق البريد للمستأجر</dcterms:description>
+            <dcterms:description xml:lang="en">PO Box number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="0" />
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PhoneNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#PhoneNumberType">
+            <dcterms:title xml:lang="ar">رقم الهاتف</dcterms:title>
+            <dcterms:title xml:lang="en">Phone No.</dcterms:title>
+            <dcterms:description xml:lang="ar">رقم هاتف المستأجر</dcterms:description>
+            <dcterms:description xml:lang="en">Field contains Tenant's phone number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="0" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#PlateNumberType">
+            <dcterms:title xml:lang="ar">رقم اللوحة</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Number</dcterms:title>
+            <dcterms:description xml:lang="ar">هذه الخانة تحتوي على رقم لوحة المركبة .</dcterms:description>
+            <dcterms:description xml:lang="en">Field contains Vehicle's Plate number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="0" />
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlotNoType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#PlotNoType">
+            <dcterms:title xml:lang="ar">رقم القطعة</dcterms:title>
+            <dcterms:title xml:lang="en">Plot No</dcterms:title>
+            <dcterms:description xml:lang="ar">هذه الخانة تحتوي على رقم الأرض كما هو في البيانات المكانية</dcterms:description>
+            <dcterms:description xml:lang="en">it contains the plot number as in GIS</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlotOwnerNameType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#PlotOwnerNameType">
+            <dcterms:title xml:lang="ar">اسم المالك</dcterms:title>
+            <dcterms:title xml:lang="en">Plot Owner Name</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم مالك الارض (يتم قرأته من نظام ادارة الاراضي)</dcterms:description>
+            <dcterms:description xml:lang="en">Property Owner name ( We read this name from Land management system)</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="4000" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PremisesNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#PremisesNumberType">
+            <dcterms:title xml:lang="ar">رمز العقار</dcterms:title>
+            <dcterms:title xml:lang="en">Premises Number</dcterms:title>
+            <dcterms:description xml:lang="ar">الرقم المعرف للعقار من شركة التوزيع للماء والكهرباء</dcterms:description>
+            <dcterms:description xml:lang="en">Contains AADC/ADDC premises number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PropertyNameType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#PropertyNameType">
+            <dcterms:title xml:lang="ar">اسم العقار</dcterms:title>
+            <dcterms:title xml:lang="en">Property Name</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم العقار</dcterms:description>
+            <dcterms:description xml:lang="en">Field contains name of the property</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="0" />
+      <xs:maxLength value="200" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PropertyRegistrationNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#PropertyRegistrationNumberType">
+            <dcterms:title xml:lang="ar">رقم العقار</dcterms:title>
+            <dcterms:title xml:lang="en">Property Id</dcterms:title>
+            <dcterms:description xml:lang="ar">هذة الخانة تحتوي على رقم تعريفى للعقار</dcterms:description>
+            <dcterms:description xml:lang="en">Property registration number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="RentalValueType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#RentalValueType">
+            <dcterms:title xml:lang="ar">قيمة الإيجار</dcterms:title>
+            <dcterms:title xml:lang="en">Rental Value</dcterms:title>
+            <dcterms:description xml:lang="ar">هذة الخانة تحتوي القيمة الكلية لعقد الإيجار</dcterms:description>
+            <dcterms:description xml:lang="en">Total rental value of the tenancy contract</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="23" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SecurityDepositType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#SecurityDepositType">
+            <dcterms:title xml:lang="ar">قيمة التأمين</dcterms:title>
+            <dcterms:title xml:lang="en">Security Deposit</dcterms:title>
+            <dcterms:description xml:lang="ar">هذة الخانة تحتوي قيمة التامين المالى على العقد</dcterms:description>
+            <dcterms:description xml:lang="en">Security deposit paid for the tenancy contract</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="0" />
+      <xs:maxLength value="23" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TenancycontractDurationType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#TenancycontractDurationType">
+            <dcterms:title xml:lang="ar">مدة العقد</dcterms:title>
+            <dcterms:title xml:lang="en">Tenancy contract Duration</dcterms:title>
+            <dcterms:description xml:lang="ar">مدة فاعلية العقد من تاريخ البداية حتى تاريخ نهاية العقد</dcterms:description>
+            <dcterms:description xml:lang="en">Duration of tenancy contract in (Days, Months, Years)</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType" />
+  </xs:simpleType>
+  <xs:simpleType name="TenantIDType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#TenantIDType">
+            <dcterms:title xml:lang="ar">رمز المستأجر</dcterms:title>
+            <dcterms:title xml:lang="en">Tenant ID</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم المستأجر لعقد الإيجار</dcterms:description>
+            <dcterms:description xml:lang="en">Tenancy Contracts Tenant ID</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TenantNameArabicType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#TenantNameArabicType">
+            <dcterms:title xml:lang="ar">اسم المستأجر بالعربي</dcterms:title>
+            <dcterms:title xml:lang="en">Tenant Name in Arabic</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم المستأجر لعقد الإيجار بالعربي</dcterms:description>
+            <dcterms:description xml:lang="en">Tenancy Contracts Tenant Name in Arabic</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TenantNameEnglishType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#TenantNameEnglishType">
+            <dcterms:title xml:lang="ar">اسم المستأجر بالانجليزي</dcterms:title>
+            <dcterms:title xml:lang="en">Tenant Name in English</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم المستأجر لعقد الإيجار بالانجليزي</dcterms:description>
+            <dcterms:description xml:lang="en">Tenancy Contracts Tenant Name in English</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TradeLicenseNoType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#TradeLicenseNoType">
+            <dcterms:title xml:lang="ar">رقم الرخصة التجارية</dcterms:title>
+            <dcterms:title xml:lang="en">Trade License No.</dcterms:title>
+            <dcterms:description xml:lang="ar">هذه الخانة تحتوي على رقم الرخصة التجارية للشركة الممنوح من قبل جهة الترخيص</dcterms:description>
+            <dcterms:description xml:lang="en">Company's License number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="200" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="UnitNameType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#UnitNameType">
+            <dcterms:title xml:lang="ar">اسم /رقم الوحدة</dcterms:title>
+            <dcterms:title xml:lang="en">Unit Name</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم الوحدة</dcterms:description>
+            <dcterms:description xml:lang="en">Field contains Unit's name</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="200" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="UnitRegistrationNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#UnitRegistrationNumberType">
+            <dcterms:title xml:lang="ar">رقم الوحدة</dcterms:title>
+            <dcterms:title xml:lang="en">Unit Registration number</dcterms:title>
+            <dcterms:description xml:lang="ar">هذة الخانة تحتوي على رقم تعريفى للوحدة</dcterms:description>
+            <dcterms:description xml:lang="en">Field contains Unit's registration number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="eMailAddressType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1/1#eMailAddressType">
+            <dcterms:title xml:lang="ar">البريد الإلكترونى</dcterms:title>
+            <dcterms:title xml:lang="en">E-Mail Address</dcterms:title>
+            <dcterms:description xml:lang="ar">البريد الإلكتروني للمستأجر</dcterms:description>
+            <dcterms:description xml:lang="en">Field contains Tenant's email address</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="0" />
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ContractDetailsType">
+    <xs:sequence>
+      <xs:element name="ContractNo" nillable="true" type="ContractNoType" />
+      <xs:element name="ContractRegistrationDate" nillable="true" type="ContractRegistrationDateType" />
+      <xs:element name="ContractUsage" nillable="true" type="LookupType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LessorDetailsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LessorEmiratesID" nillable="true" type="EmiratesIDNumberType" />
+      <xs:element name="LessorNameArabic" nillable="true" type="LessorNameArabicType" />
+      <xs:element name="LessorNameEnglish" nillable="true" type="LessorNameEnglishType" />
+      <xs:element minOccurs="0" name="ContactPersonName" nillable="true" type="ContactPersonNameType" />
+      <xs:element minOccurs="0" name="MobileNumber" nillable="true" type="MobileNumberType" />
+      <xs:element minOccurs="0" name="eMailAddress" nillable="true" type="eMailAddressType" />
+      <xs:element minOccurs="0" name="LessorCity" nillable="true" type="LookupType" />
+      <xs:element minOccurs="0" name="LessorNationality" type="LookupType" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="PhoneNumberType" />
+      <xs:element name="Fax" nillable="true" type="FaxType" />
+      <xs:element minOccurs="0" name="POBox" nillable="true" type="POBoxType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LookupType">
+    <xs:sequence>
+      <xs:element name="Code" nillable="true" type="CodeType" />
+      <xs:element name="ArabicDescription" nillable="true" type="ArabicDescriptionType" />
+      <xs:element name="EnglishDescription" nillable="true" type="EnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OccupantsDetailsType">
+    <xs:sequence>
+      <xs:element name="IDNumber" nillable="true" type="IDNumberType" />
+      <xs:element name="IDType" nillable="true" type="LookupType" />
+      <xs:element minOccurs="0" name="CompanyEducationalInstituteName" nillable="true" type="CompanyEducationalInstituteNameType" />
+      <xs:element name="OccupantNameArabic" nillable="true" type="OccupantNameArabicType" />
+      <xs:element name="OccupantNameEnglish" nillable="true" type="OccupantNameEnglishType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OwnersDetailsType">
+    <xs:sequence>
+      <xs:element name="PlotOwnerName" nillable="true" type="PlotOwnerNameType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PropertyDetailsType">
+    <xs:sequence>
+      <xs:element name="PropertyRegistrationNumber" nillable="true" type="PropertyRegistrationNumberType" />
+      <xs:element minOccurs="0" name="PropertyName" nillable="true" type="PropertyNameType" />
+      <xs:element name="PropertyType" nillable="true" type="LookupType" />
+      <xs:element name="Zone" nillable="true" type="LookupType" />
+      <xs:element name="Sector" nillable="true" type="LookupType" />
+      <xs:element name="PlotNo" nillable="true" type="PlotNoType" />
+      <xs:element name="StreetRoad" nillable="true" type="LookupType" />
+      <xs:element minOccurs="0" name="PremisesNumber" nillable="true" type="PremisesNumberType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UnitDetails" type="UnitDetailsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RentAndPaymentsDetailsType">
+    <xs:sequence>
+      <xs:element name="ContractStartDate" nillable="true" type="ContractStartDateType" />
+      <xs:element name="ContractExpiryDate" nillable="true" type="ContractExpiryDateType" />
+      <xs:element minOccurs="0" name="SecurityDeposit" nillable="true" type="SecurityDepositType" />
+      <xs:element name="RentalValue" nillable="true" type="RentalValueType" />
+      <xs:element name="TenancycontractDuration" nillable="true" type="TenancycontractDurationType" />
+      <xs:element name="NumberofInstallments" nillable="true" type="NumberofInstallmentsType" />
+      <xs:element minOccurs="0" name="ADWEABillPaidBy" nillable="true" type="ADWEABillPaidByType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TawtheeqAllDetailsType">
+    <xs:sequence>
+      <xs:element name="ContractDetails" nillable="true" type="ContractDetailsType" />
+      <xs:element maxOccurs="unbounded" name="OwnersDetails" nillable="true" type="OwnersDetailsType" />
+      <xs:element name="LessorDetails" nillable="true" type="LessorDetailsType" />
+      <xs:element name="TenantDetails" nillable="true" type="TenantDetailsType" />
+      <xs:element name="RentAndPaymentsDetails" nillable="true" type="RentAndPaymentsDetailsType" />
+      <xs:element maxOccurs="unbounded" name="PropertyDetails" nillable="true" type="PropertyDetailsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TawtheeqListType">
+    <xs:sequence>
+      <xs:element name="ContractNo" nillable="true" type="ContractNoType" />
+      <xs:element name="ContractStartDate" nillable="true" type="ContractStartDateType" />
+      <xs:element name="ContractExpiryDate" nillable="true" type="ContractExpiryDateType" />
+      <xs:element name="ContractStatus" nillable="true" type="LookupType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TenantDetailsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TenantEmiratesID" nillable="true" type="EmiratesIDNumberType" />
+      <xs:element name="TenantNameArabic" nillable="true" type="TenantNameArabicType" />
+      <xs:element name="TenantNameEnglish" nillable="true" type="TenantNameEnglishType" />
+      <xs:element minOccurs="0" name="eMailAddress" nillable="true" type="eMailAddressType" />
+      <xs:element minOccurs="0" name="MobileNumber" nillable="true" type="MobileNumberType" />
+      <xs:element minOccurs="0" name="TenantCity" nillable="true" type="LookupType" />
+      <xs:element minOccurs="0" name="TenantNationality" nillable="true" type="LookupType" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="PhoneNumberType" />
+      <xs:element name="POBox" nillable="true" type="POBoxType" />
+      <xs:element minOccurs="0" name="TradeLicenseNo" nillable="true" type="TradeLicenseNoType" />
+      <xs:element minOccurs="0" name="IssuePlace" nillable="true" type="IssuePlaceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnitDetailsType">
+    <xs:sequence>
+      <xs:element name="UnitRegistrationNumber" nillable="true" type="UnitRegistrationNumberType" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="UnitNameType" />
+      <xs:element name="UnitType" nillable="true" type="LookupType" />
+      <xs:element minOccurs="0" name="NumberOfBedRooms" nillable="true" type="NumberOfBedRoomsType" />
+      <xs:element minOccurs="0" name="OtherRooms" nillable="true" type="OtherRoomsType" />
+      <xs:element name="FloorNo" nillable="true" type="FloorNoType" />
+      <xs:element name="NoOfOccupants" nillable="true" type="NoOfOccupantsType" />
+      <xs:element minOccurs="0" name="LeasedAreaM2" nillable="true" type="LeasedAreaM2Type" />
+      <xs:element name="ActualUsage" nillable="true" type="LookupType" />
+      <xs:element name="PremisesNumber" nillable="true" type="PremisesNumberType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OccupantsDetails" type="OccupantsDetailsType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VehicleDetails" type="VehicleDetailsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VehicleDetailsType">
+    <xs:sequence>
+      <xs:element name="EmirateCode" nillable="true" type="LookupType" />
+      <xs:element name="PlateClassID" nillable="true" type="LookupType" />
+      <xs:element name="PlateType" nillable="true" type="LookupType" />
+      <xs:element name="PlateNumber" nillable="true" type="PlateNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestTrnHeaderType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntityCode" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResponseTrnHeaderType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TransactionId" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityCode" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResponseStatusType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="cd:StatusCodeType" />
+      <xs:element minOccurs="0" name="StatusDescriptionEnglish" nillable="true" type="cd:StatusDescriptionEnglishType" />
+      <xs:element minOccurs="0" name="StatusDescriptionArabic" nillable="true" type="cd:StatusDescriptionArabicType" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

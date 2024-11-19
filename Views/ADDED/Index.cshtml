@@ -1,0 +1,554 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "التنمية الاقتصادية  أبوظبي";
+}
+<style type="text/css">
+    th {
+       background-color:gray
+    }
+
+</style>
+<br />
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>التنمية الاقتصادية  أبوظبي</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+        <table id="NationalId" class="table table-bordered table-active">
+            <tr>
+                <td colspan="3"><h6><small><b> بطاقة هوية </b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+
+
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>رقم الرخصة التجارية</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الاسم التجاري بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الاسم التجاري بالانجليز</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رمز النموذج القانوني</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>النموذج القانوني للأعمال بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>النموذج القانوني للأعمال - بالانجليزي</b></small></h6></th>
+                </tr>
+
+            </thead>
+            <tbody class="tbody text-center" id="tbody"></tbody>
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>رمز حالة الرخصة التجارية</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>حالة الرخصة التجارية بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>حالة رخصة العمل انجليزي</b></small></h6></th>
+                </tr>
+            </thead>
+            <tbody class="tbody1 text-center" id="tbody1"></tbody>
+
+        </table>
+        <table class="DataTable1 table table-bordered  table-hover text-center table-active">
+            <thead class="">
+
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    أنشطة
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+
+                </tr>
+            </thead>
+        </table>
+        <table class="DataTable1 table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>رقم الرخصة التجارية</b></small></h6></th>
+
+                    <th class="text-center"> <h6><small><b>رمز النشاط</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>اسم النشاط بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>اسم النشاط بالانجليزي</b></small></h6></th>
+                </tr>
+            </thead>
+            <tbody class="tbody2 text-center" id="tbody2"></tbody>
+        </table>
+        <table class="DataTable2 table table-bordered  table-hover text-center table-active">
+            <thead class="">
+
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    شركاء
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+
+                </tr>
+            </thead>
+        </table>
+        <table class="DataTable2 table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>رقم الرخصة التجارية</b></small></h6></th>
+
+                    <th class="text-center"> <h6><small><b>اسم الشريك بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>اسم الشريك بالانجليزي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>نسبة حصة الشريك</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الجنس</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>كود علاقة الرخصة</b></small></h6></th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody3 text-center" id="tbody3"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>علاقة الرخصة التجارية بالعربي</b></small></h6></th>
+
+                    <th class="text-center"> <h6><small><b>علاقة رخصة العمل بالانجليزي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رمز الدولة</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>اسم الدولة بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>اسم الدولة انجليزي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رمز نوع الشريك</b></small></h6></th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody4 text-center" id="tbody4"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>نوع الشريك بالعربي</b></small></h6></th>
+
+                    <th class="text-center"> <h6><small><b>نوع الشريك بالانجليزي</b></small></h6></th>
+
+
+                </tr>
+            </thead>
+            <tbody class="tbody5 text-center" id="tbody5"></tbody>
+
+        </table>
+        <table class="DataTable3 table table-bordered  table-hover text-center table-active">
+            <thead class="">
+
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    يتقن
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+
+                </tr>
+            </thead>
+        </table>
+
+        <table class="DataTable3 table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>الاسم التجاري بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الاسم التجاري بالانجليز</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b> فرع الرخصة التجارية</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رمز نوع الفرع</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>نوع الفرع بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>نوع الفرع  انجليزي</b></small></h6></th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody6 text-center" id="tbody6"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>الشركة الأم</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>مدينة الرخصة التجارية  بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>مدينة رخصة تجارية بالانجليزي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>تاريخ  التأسيس</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>تاريخ اصدار الرخصة التجارية</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>تاريخ انتهاء الرخصة التجارية</b></small></h6></th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody7 text-center" id="tbody7"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>تاريخ الإلغاء</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>عنوان الرخصة التجارية بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>عنوان الرخصة التجارية بالانجليزي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رقم المبنى</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>اسم المبنى</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>إحداثيات الطول</b></small></h6></th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody8 text-center" id="tbody8"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>الاحداثيات العرض</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>معرف غرفة تجارة وصناعة أبوظبي الموحد</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>ملاحظات الترخيص بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رمز النموذج القانوني</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>النموذج القانوني للأعمال بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>النموذج القانوني للأعمال - بالانجليزي</b></small></h6></th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody9 text-center" id="tbody9"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>رمز نوع الترخيص</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>نوع الرخصة التجارية بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>نوع الرخصة التجارية بالانجليزي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رمز الدولة</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>اسم الدولة بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>اسم الدولة بالانجليزي</b></small></h6></th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody10 text-center" id="tbody10"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>رمز حالة الرخصة التجارية</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>حالة الرخصة التجارية بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>حالة رخصة العمل انجليزي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>كود التصنيف</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>التصنيف بالبالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>التصنيف بالانجليزي</b></small></h6></th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody11 text-center" id="tbody11"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>رمز مكان الاصدار </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>مكان الإصدار بالعربي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>مكان الاصدار بالانجليزي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رقم الهاتف</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الاسم</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رقم الهاتف</b></small></h6></th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody12 text-center" id="tbody12"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b> البريد الإلكتروني</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>هل تم تحديث المستفيد الحقيقي</b></small></h6></th>
+                </tr>
+            </thead>
+            <tbody class="tbody13 text-center" id="tbody13"></tbody>
+
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+
+</div>
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <!-- Bootstrap -->
+    <!-- Bootstrap DatePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!-- Bootstrap DatePicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+            $('.DataTable1').hide();
+            $('.DataTable2').hide();
+            $('.DataTable3').hide();
+
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search","ADDED")';
+
+            $(".tbody").empty();
+            $(".tbody1").empty();
+            $(".tbody2").empty();
+            $('.DataTable').hide();
+            $('.DataTable1').hide();
+            $('.DataTable2').hide();
+            $('.DataTable3').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+            var html1 = '';
+            var html2 = '';
+            var html3 = '';
+            var html4 = '';
+            var html5 = '';
+            var html6 = '';
+            var html7 = '';
+            var html8 = '';
+            var html9 = '';
+            var html10 = '';
+            var html11 = '';
+            var html12 = '';
+            var html13 = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var input = { "EmiratesId": $('#txtEmiratesId').val() };
+             var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent)  }, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+
+                if (obj.flag == "1") {
+
+                    $.each(obj.tradeLicenses.TradeLicenseModel, function (key, item) {
+
+                        html += '<tr>';
+                        html += '<td>' + StringHasValue(item.TradeLicenseNumber) + '</td>';
+                        html += '<td>' + StringHasValue(item.BusinessNameArb) + '</td>';
+                        html += '<td>' + StringHasValue(item.BusinessNameEng) + '</td>';
+                        html += '<td>' + StringHasValue(item.LegalForm.LegalFormCode) + '</td>';
+                        html += '<td>' + StringHasValue(item.LegalForm.BusinessLegalFormArb) + '</td>';
+                        html += '<td>' + StringHasValue(item.LegalForm.BusinessLegalFormEng) + '</td>';
+                        html += '</tr>';
+
+                        html1 += '<tr>';
+                        html1 += '<td>' + StringHasValue(item.BusinessLicenseStatus.BusinessLicenseStatusCode) + '</td>';
+                        html1 += '<td>' + StringHasValue(item.BusinessLicenseStatus.BusinessLicenseStatusArb) + '</td>';
+                        html1 += '<td>' + StringHasValue(item.BusinessLicenseStatus.BusinessLicenseStatusEng) + '</td>';
+
+                        html += '</tr>';
+
+
+
+                        //$.each(item.Activity, function (key, item2) {
+                        //    html2 += '<tr>';
+                        //    html2 += '<td>' + item.TradeLicenseNumber + '</td>';
+                        //    html2 += '<td>' + item2.ActivityNameArb + '</td>';
+                        //    html2 += '<td>' + item2.ActivityNameEng + '</td>';
+                        //    html2 += '</tr>';
+                        //});
+
+                    });
+                    if (obj.Activity != null) {
+                        $.each(obj.Activity, function (key, item1) {
+                            html2 += '<tr>';
+                            html2 += '<td>' + StringHasValue(item1.TradeLicenseNumber) + '</td>';
+
+                            html2 += '<td>' + StringHasValue(item1.ActivityCode) + '</td>';
+                            html2 += '<td>' + StringHasValue(item1.ActivityNameArb) + '</td>';
+                            html2 += '<td>' + StringHasValue(item1.ActivityNameEng) + '</td>';
+                            html2 += '</tr>';
+                        });
+                        $('.DataTable1').show();
+
+                    }
+                    if (obj.PartnerDto != null) {
+                        $.each(obj.PartnerDto, function (key, item2) {
+                            html3 += '<tr>';
+                            html3 += '<td>' + StringHasValue(item2.TradeLicenseNumber) + '</td>';
+
+                            html3 += '<td>' + StringHasValue(item2.PartnerNameArb) + '</td>';
+                            html3 += '<td>' + StringHasValue(item2.PartnerNameEng) + '</td>';
+                            html3 += '<td>' + StringHasValue(item2.PartnerSharePercentage) + '</td>';
+                            html3 += '<td>' + StringHasValue(item2.Gender) + '</td>';
+                            html3 += '<td>' + StringHasValue(item2.LicenseRelationshipCode) + '</td>';
+                            html3 += '</tr>';
+
+                            html4 += '<tr>';
+                            html4 += '<td>' + StringHasValue(item2.BusinessLicenseRelationshipArb) + '</td>';
+
+                            html4 += '<td>' + StringHasValue(item2.BusinessLicenseRelationshipEng) + '</td>';
+                            html4 += '<td>' + StringHasValue(item2.CountryCode) + '</td>';
+                            html4 += '<td>' + StringHasValue(item2.CountryNameArb) + '</td>';
+                            html4 += '<td>' + StringHasValue(item2.CountryNameEng) + '</td>';
+                            html4 += '<td>' + StringHasValue(item2.PartnerTypeCode) + '</td>';
+                            html4 += '</tr>';
+
+                            html5 += '<tr>';
+                            html5 += '<td>' + StringHasValue(item2.PartnerTypeArb) + '</td>';
+
+                            html5 += '<td>' + StringHasValue(item2.PartnerTypeEng) + '</td>';
+                            html5 += '</tr>';
+                        });
+                        $('.DataTable2').show();
+
+                    }
+                    if (obj?.MasterDto != null) {
+                        $.each(obj.MasterDto, function (key, item3) {
+                            html6 += '<tr>';
+                            html6 += '<td>' + StringHasValue(item3.BusinessNameArb) + '</td>';
+                            html6 += '<td>' + StringHasValue(item3.BusinessNameEng) + '</td>';
+                            html6 += '<td>' + StringHasValue(item3.BusinessLicenseBranchFlag) + '</td>';
+                            html6 += '<td>' + StringHasValue(item3.BranchTypeCode) + '</td>';
+                            html6 += '<td>' + StringHasValue(item3.BranchTypeArb) + '</td>';
+                            html6 += '<td>' + StringHasValue(item3.BranchTypeEng) + '</td>';
+                            html6 += '</tr>';
+
+                            html7 += '<tr>';
+                            html7 += '<td>' + StringHasValue(item3.MotherCompany) + '</td>';
+                            html7 += '<td>' + StringHasValue(item3.BusinesslicenseCityArb) + '</td>';
+                            html7 += '<td>' + StringHasValue(item3.BusinesslicenseCityEng) + '</td>';
+                            html7 += '<td>' + StringHasValue(item3.EstablishmentDate) + '</td>';
+                            html7 += '<td>' + StringHasValue(item3.BusinessLicenseIssueDate) + '</td>';
+                            html7 += '<td>' + StringHasValue(item3.BusinessLicenseExpiryDate) + '</td>';
+                            html7 += '</tr>';
+
+                            html8 += '<tr>';
+                            html8 += '<td>' + StringHasValue(item3.CancelDate) + '</td>';
+                            html8 += '<td>' + StringHasValue(item3.BusinessLicenseAddressArb) + '</td>';
+                            html8 += '<td>' + StringHasValue(item3.BusinessLicenseAddressEng) + '</td>';
+                            html8 += '<td>' + StringHasValue(item3.BuildingNumber) + '</td>';
+                            html8 += '<td>' + StringHasValue(item3.Building_Name) + '</td>';
+                            html8 += '<td>' + StringHasValue(item3.CoordinatesX) + '</td>';
+                            html8 += '</tr>';
+
+                            html9 += '<tr>';
+                            html9 += '<td>' + StringHasValue(item3.CoordinatesY) + '</td>';
+                            html9 += '<td>' + StringHasValue(item3.ADCCIUnifiedID) + '</td>';
+                            html9 += '<td>' + StringHasValue(item3.LicenseRemarksArabic) + '</td>';
+                            html9 += '<td>' + StringHasValue(item3.LegalFormCode) + '</td>';
+                            html9 += '<td>' + StringHasValue(item3.BusinessLegalFormArb) + '</td>';
+                            html9 += '<td>' + StringHasValue(item3.BusinessLegalFormEng) + '</td>';
+                            html9 += '</tr>';
+
+                            html10 += '<tr>';
+                            html10 += '<td>' + StringHasValue(item3.LicenseTypeCode) + '</td>';
+                            html10 += '<td>' + StringHasValue(item3.BusinessLicenseTypeArb) + '</td>';
+                            html10 += '<td>' + StringHasValue(item3.BusinessLicenseTypeEng) + '</td>';
+                            html10 += '<td>' + StringHasValue(item3.CountryCode) + '</td>';
+                            html10 += '<td>' + StringHasValue(item3.CountryNameArb) + '</td>';
+                            html10 += '<td>' + StringHasValue(item3.CountryNameEng) + '</td>';
+                            html10 += '</tr>';
+
+                            html11 += '<tr>';
+                            html11 += '<td>' + StringHasValue(item3.BusinessLicenseStatusCode) + '</td>';
+                            html11 += '<td>' + StringHasValue(item3.BusinessLicenseStatusArb) + '</td>';
+                            html11 += '<td>' + StringHasValue(item3.BusinessLicenseStatusEng) + '</td>';
+                            html11 += '<td>' + StringHasValue(item3.ClasificationCode) + '</td>';
+                            html11 += '<td>' + StringHasValue(item3.ClasificationArb) + '</td>';
+                            html11 += '<td>' + StringHasValue(item3.ClasificationEng) + '</td>';
+                            html11 += '</tr>';
+
+                            html12 += '<tr>';
+                            html12 += '<td>' + StringHasValue(item3.IssuePlaceCode) + '</td>';
+                            html12 += '<td>' + StringHasValue(item3.IssuePlaceArb) + '</td>';
+                            html12 += '<td>' + StringHasValue(item3.IssuePlaceEng) + '</td>';
+                            html12 += '<td>' + StringHasValue(item3.OfficialMobile) + '</td>';
+                            html12 += '<td>' + StringHasValue(item3.ProName) + '</td>';
+                            html12 += '<td>' + StringHasValue(item3.PROMobileNumber) + '</td>';
+
+                            html12 += '</tr>';
+
+                            html13 += '<tr>';
+                            html13 += '<td>' + StringHasValue(item3.OfficialEmail) + '</td>';
+                            html13 += '<td>' + StringHasValue(item3.HasUpdatedRealBeneficiary) + '</td>';
+                            html13 += '</tr>';
+                        });
+                        $('.DataTable3').show();
+
+                    }
+
+                  
+                   
+
+
+                    $(".tbody").append(html);
+                    $(".tbody1").append(html1);
+                    $(".tbody2").append(html2);
+                    $(".tbody3").append(html3);
+                    $(".tbody4").append(html4);
+                    $(".tbody5").append(html5);
+                    $(".tbody6").append(html6);
+                    $(".tbody7").append(html7);
+                    $(".tbody8").append(html8);
+                    $(".tbody9").append(html9);
+                    $(".tbody10").append(html10);
+                    $(".tbody11").append(html11);
+                    $(".tbody12").append(html12);
+                    $(".tbody13").append(html13);
+
+                    $('.DataTable').show();
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+        $("#btnsubmit").on("click", getData);
+
+          $('#create_pdf').on('click', function () {
+            getPDF("ADDED.pdf");
+       });
+        var StringHasValue = function (strValue) {
+            if ($.trim(strValue) != "" && $.trim(strValue) != null && $.trim(strValue) != undefined)
+                return strValue;
+            else
+                return "-";
+        };
+    </script>
+}

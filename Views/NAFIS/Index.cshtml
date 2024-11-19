@@ -1,0 +1,340 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "منصة نافس";
+}
+<br />
+<style type="text/css">
+    th {
+        background-color: gray
+    }
+</style>
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>تفاصيل الدعم المالي لنافس</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+        <table id="NationalId" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+                <td>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+
+                </td>
+
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+
+            <thead class="">
+                <tr>
+                    <th colspan="3">
+                        <h4>
+                            <small>
+                                <b>
+                                    تفاصيل الدعم المالي لنافس
+                                </b>
+                            </small>
+                        </h4>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الهوية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الاسم
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الدعم المالي مفعل
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ انشاء الحساب
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody text-center" id="tbody"></tbody>
+
+
+        </table>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th colspan="3">
+                        <h4>
+                            <small>
+                                <b>
+                                    الدعم المالي
+                                </b>
+                            </small>
+                        </h4>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    نوع الدعم المالي
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ أول صرف
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    المبلغ الاجمالي منذ إنشاء الحساب
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody text-center" id="tbody1"></tbody>
+
+        </table>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th colspan="5">
+                        <h4>
+                            <small>
+                                <b>
+                                    المبالغ المدفوعة
+                                </b>
+                            </small>
+                        </h4>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    نوع الدعم
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    قيمة الدعم
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ صرف آخر دفعة
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    حالة الصرف
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ اعتماد الدفعة من نافس
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody1 text-center" id="tbody2"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.theme.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.structure.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+
+    <script>
+
+
+
+        $(document).ready(function () {
+
+            $('.DataTable').hide();
+
+        });
+
+
+         function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search","NAFIS")';
+
+             $(".tbody").empty();
+             $(".tbody1").empty();
+             $(".tbody2").empty();
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+           var input={"EmiratesID":  $('#txtEmiratesId').val() };
+           var UsrAgent = { "UserAgent": $.browser };
+            $.get(url, { postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent)  }, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+                var html = '';
+                var html1 = '';
+                var html2 = '';
+
+                if (obj.flag == "1") {
+                    html += '<tr>';
+                    html += '<td>' + obj.objResponsee.Data.EmirateID + '</td>';
+                    html += '<td>' + obj.objResponsee.Data.Name + '</td>';
+                    html += '<td>' + obj.objResponsee.Data.HasActiveFinancialBenefits + '</td>';
+                    html += '<td>' + obj.objResponsee.Data.CreatedOn + '</td>';
+                    html += '</tr>';
+                    for (var i = 0; i < obj.objResponsee.Data.FinancialBenefits.length; i++) {
+
+                        html1 += '<tr>';
+                        html1 += '<td>' + obj.objResponsee.Data.FinancialBenefits[i].Name + '</td>';
+                        html1 += '<td>' + obj.objResponsee.Data.FinancialBenefits[i].FirstPaymentDate + '</td>';
+                        html1 += '<td>' + obj.objResponsee.Data.FinancialBenefits[i].TotalAmount + '</td>';
+                        html1 += '</tr>';
+                    }
+                    for (var i = 0; i < obj.objResponsee.Data.Payments.length; i++) {
+
+                        html2 += '<tr>';
+                        html2 += '<td>' + obj.objResponsee.Data.Payments[i].Benefit + '</td>';
+                        html2 += '<td>' + obj.objResponsee.Data.Payments[i].Amount + '</td>';
+                        html2 += '<td>' + obj.objResponsee.Data.Payments[i].ToBeProcessedAfter + '</td>';
+                        html2 += '<td>' + obj.objResponsee.Data.Payments[i].Status + '</td>';
+                        html2 += '<td>' + obj.objResponsee.Data.Payments[i].PaidOn + '</td>';
+                        html2 += '</tr>';
+
+                    }
+                    $("#tbody").append(html);
+                    $("#tbody1").append(html1);
+                    $("#tbody2").append(html2);
+                    $('.DataTable').show();
+                }
+                else {
+
+                     if(obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if (obj.flag == "3") {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+        $("#btnsubmit").on("click", getData);
+
+        $('#create_pdf').on('click', function () {
+            getPDF("NAFIS.pdf");
+       });
+
+    </script>
+}
+
+

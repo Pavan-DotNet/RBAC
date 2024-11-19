@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ff3bc41d-e8d9-44b2-a2c2-55cfa617e316" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://iapi.mocd.gov.ae/Outbound/FAHR/Soap/EmployeeDetails/V1?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="5e6b734e2f9c68db4bdfe810bfe6d96e.xsd" MetadataType="Schema" ID="b49f0527-7617-4789-be97-10003d7bdbed" SourceId="1" SourceUrl="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=2083429d1b966cedddd7a1700d882179&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a854" />
+    <MetadataFile FileName="5e6b734e2f9c68db4bdfe810bfe6d96e1.xsd" MetadataType="Schema" ID="9d5d17bf-efe1-493b-ab0e-1aa7af022579" SourceId="1" SourceUrl="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=2083429d1b966cedddd7a1700d882179&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a855" />
+    <MetadataFile FileName="XXFAHR_MOCD_WEBSERVICE_PKG.wsdl" MetadataType="Wsdl" ID="bfdf127d-5ded-46bc-8ac8-fa291e20237e" SourceId="1" SourceUrl="https://iapi.mocd.gov.ae/Outbound/FAHR/Soap/EmployeeDetails/V1?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

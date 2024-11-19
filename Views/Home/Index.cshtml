@@ -1,0 +1,1247 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    /** {
+        box-sizing: border-box;
+    }*/
+
+    body {
+        background-color: #f1f1f1;
+        padding: 0px;
+        font-family: Arial;
+    }
+
+    /* Center website */
+    .main {
+        margin: auto;
+    }
+
+    h1 {
+        font-size: 50px;
+        word-break: break-all;
+    }
+
+    .row {
+        margin: 10px -16px;
+    }
+
+        /* Add padding BETWEEN each column */
+        .row,
+        .row > .column {
+            padding: 8px;
+        }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+        float: right;
+        width: 33.33%;
+        display: none; /* Hide all elements by default */
+        cursor: pointer;
+    }
+
+
+    /* Clear floats after rows */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Content */
+    .content {
+        background-color: #fff;
+        padding: 10px;
+        cursor: pointer;
+        align-content: center;
+        text-align: center;
+    }
+
+
+    /* The "show" class is added to the filtered elements */
+    .show {
+        display: block;
+    }
+
+    /* Style the buttons */
+    .btn {
+        border: none;
+        outline: none;
+        padding: 12px 18px 12px 12px;
+        background-color: white;
+        cursor: pointer;
+        align-content: center;
+        text-align: center;
+        color: #666;
+        font-size: medium;
+    }
+
+        .btn:hover {
+            background-color: #ddd;
+            align-content: center;
+            text-align: center;
+            color: #666;
+            font-size: medium;
+        }
+
+        .btn.active {
+            background-color: #666;
+            color: white;
+            align-content: center;
+            text-align: center;
+            font-size: medium;
+        }
+
+    div.content {
+        position: relative;
+    }
+
+        div.content a {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            text-decoration: none; /* No underlines on the link */
+            z-index: 10; /* Places the link above everything else in the div */
+            background-color: #FFF; /* Fix to make div clickable in IE */
+            opacity: 0; /* Fix to make div clickable in IE */
+            filter: alpha(opacity=1); /* Fix to make div clickable in IE */
+        }
+
+    hr.rounded {
+        border-top: 8px solid #bbb;
+        border-radius: 5px;
+    }
+
+    p {
+        align-content: center;
+        text-align: center;
+        color: #666;
+        font-size: medium;
+    }
+
+    .crm {
+        background-image: url('../../Images/crmlogo.png');
+        background-repeat: no-repeat;
+        background-size: 18%;
+        background-position: bottom;
+    }
+</style>
+
+<br />
+<!-- MAIN (Center website) -->
+<div dir="rtl" class="main" oncontextmenu="return false">
+
+
+    <div id="myBtnContainer" style="align-content: center; text-align: center; float:right">
+        <button class="btn active" onclick="filterSelection('all')">
+            <b>
+                عرض الكل
+            </b>
+        </button>
+        <button class="btn" onclick="filterSelection('Pension')"><b>بيانات الراتب التقاعدي</b></button>
+        <button class="btn" onclick="filterSelection('Salary')"><b>بيانات الراتب الشهري</b></button>
+        <button class="btn" onclick="filterSelection('Death')"><b>الوفيات</b></button>
+        <button class="btn" onclick="filterSelection('Trade')"><b>معلومات الرخص التجارية</b></button>
+        <button class="btn" onclick="filterSelection('Ejari')"><b>الأراضي والأملاك</b></button>
+        <button class="btn" onclick="filterSelection('Ica')"><b> الهيئة الاتحادية للهوية والجنسية</b></button>
+        <button class="btn" onclick="filterSelection('Inmate')"><b>وضع السجين</b></button>
+        <button class="btn" onclick="filterSelection('Courts')"><b>الاستعلام في المحاكم</b></button>
+        <button class="btn" onclick="filterSelection('Other')"><b>الاستعلامات الأخرى</b></button>
+        <button class="btn" onclick="filterSelection('POD')"><b>أصحاب الهمم</b></button>
+        <!--<button class="btn" onclick="filterSelection('EI')"><b>تدخل مبكر</b></button>-->
+        <button class="btn crm" onclick="filterSelection('Grants')"><b>منح الزواج / الأعراس الجماعية</b></button>
+        <button class="btn crm" onclick="filterSelection('PFMembership')"><b>عضويات الأسر المنتجة</b></button>
+        @*<button class="btn crm" onclick="filterSelection('Public')"><b>استفسارات عامة</b></button>*@
+        <button class="btn" onclick="filterSelection('Education')"><b>التعليم</b></button>
+        <button class="btn" onclick="filterSelection('Utilities')"><b>طاقة</b></button>
+        <button class="btn" onclick="filterSelection('Benefits')"><b>منافع</b></button>
+        <button class="btn" onclick="filterSelection('Electricity')"><b>كهرباء</b></button>
+
+
+    </div>
+    <div><br /><br /><br /><br /></div>
+    <div>
+        <hr class="rounded">
+    </div>
+    <!-- Portfolio Gallery Grid -->
+    <div dir="rtl" class="row">
+        <div dir="rtl" class="column Pension">
+            <div dir="rtl" class="content">
+                <img src="~/Images/GPSSA.png" style="height:75px; width:300px" alt="GPSSA">
+                <h6>@Html.ActionLink("الهيئة العامة للمعاشات والتأمينات الاجتماعية", "Index", "GPSSA")</h6>
+                <p><b>هيئة المعاشات - بيانات التقاعد ، بيانات الموظفين</b></p>
+            </div>
+        </div>
+
+        <div dir="rtl" class="column Benefits">
+            <div dir="rtl" class="content">
+                <img src="~/Images/ADKF.JPG" style="height:75px; width:300px" alt="ADKF">
+                <h6>@Html.ActionLink("صندوق خليفة لتنمية المشاريع", "Index", "ADKF")</h6>
+                <p><b>صندوق خليفة لتنمية المشاريع</b></p>
+            </div>
+        </div>
+
+
+
+
+
+        <div dir="rtl" class="column Benefits">
+            <div dir="rtl" class="content">
+                <img src="~/Images/SSSD.png" style="height:75px; width:300px" alt="ADKF">
+                <h6>@Html.ActionLink("دائرة الضمان الاجتماعي بالشارقة - المساعدات الاجتماعية", "Index", "AidsPersons")</h6>
+                <p><b>دائرة الضمان الاجتماعي بالشارقة - المساعدات الاجتماعية</b></p>
+            </div>
+        </div>
+
+        <div dir="rtl" class="column Benefits">
+            <div dir="rtl" class="content">
+                <img src="~/Images/SSSD.png" style="height:75px; width:300px" alt="ADKF">
+                <h6>@Html.ActionLink("دائرة الضمان الاجتماعي بالشارقة - بيانات مجهول الوالدين", "Index", "UnknownParents")</h6>
+                <p><b>دائرة الضمان الاجتماعي بالشارقة - بيانات مجهول الوالدين</b></p>
+            </div>
+        </div>
+
+
+        <div dir="rtl" class="column Benefits">
+            <div dir="rtl" class="content">
+                <img src="~/Images/lullu.png" style="height:75px; width:300px" alt="ADKF">
+                <h6>@Html.ActionLink("تاريخ معاملات اللولو", "Index", "LulluCardHistory")</h6>
+                <p><b>تاريخ معاملات اللولو</b></p>
+            </div>
+        </div>
+
+        <div dir="rtl" class="column Benefits">
+            <div dir="rtl" class="content">
+                <img src="~/Images/lullu.png" style="height:75px; width:300px" alt="ADKF">
+                <h6>@Html.ActionLink("استفسار عن رصيد اللولو", "Index", "LulluBalanceInquiry")</h6>
+                <p><b>استفسار عن رصيد اللولو</b></p>
+            </div>
+        </div>
+        <div dir="rtl" class="column Courts">
+            <div dir="rtl" class="content">
+                <img src="~/Images/PP.png" style="height:75px; width:300px" alt="PP">
+                <h6>@Html.ActionLink("النيابة العامة", "Index", "PPCaseDetails")</h6>
+                <p><b>النيابة العامة</b></p>
+            </div>
+        </div>
+
+        <div dir="rtl" class="column Courts">
+            <div dir="rtl" class="content">
+                <img src="~/Images/MOJ.png" style="height:75px; width:300px" alt="GPSSA">
+                <h6>@Html.ActionLink("تفاصيل قضية وزارة العدل", "Index", "MOJCaseDetails")</h6>
+                <p><b>تفاصيل قضية وزارة العدل</b></p>
+            </div>
+        </div>
+
+        <div dir="rtl" class="column Courts">
+            <div dir="rtl" class="content">
+                <img src="~/Images/RAKCourt.png" style="height:75px; width:300px" alt="GPSSA">
+                <h6>@Html.ActionLink("تفاصيل الطلاق من محكمة رأس الخيمة", "Index", "RAKCourtsDivorceDetails")</h6>
+                <p><b>تفاصيل الطلاق من محكمة رأس الخيمة</b></p>
+            </div>
+        </div>
+
+
+        <div dir="rtl" class="column Courts">
+            <div dir="rtl" class="content">
+                <img src="~/Images/RAKCourt.png" style="height:75px; width:300px" alt="GPSSA">
+                <h6>@Html.ActionLink("تفاصيل الزواج من محكمة رأس الخيمة", "Index", "RAKCourtsMarriageDetails")</h6>
+                <p><b>تفاصيل الزواج من محكمة رأس الخيمة</b></p>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="column Pension">
+            <div class="content">
+                <img src="~/Images/ADDOF.png" style="height:75px; width:300px" alt="DoF">
+                <h6>@Html.ActionLink("الاستعلام في دائرة المالية ابوظبي", "Index", "ADMILITARY")</h6>
+                <p><b>الاستعلام في دائرة المالية ابوظبي</b></p>
+            </div>
+        </div>
+
+        <div class="column Pension">
+            <div class="content">
+                <img src="~/Images/DoFDubai.png" style="height:75px; width:300px" alt="DoFDubai">
+                <h6>@Html.ActionLink("دائرة المالية - دبي", "Index", "DoF")</h6>
+                <p><b>دائرة المالية - دبي</b></p>
+            </div>
+        </div>
+
+        <div class="column Benefits">
+            <div class="content">
+                <img src="~/Images/SSSD.png" style="height:75px; width:300px" alt="SSSD">
+                <h6> @Html.ActionLink("دائرة الخدمات الاجتماعية - الشارقة", "Index", "SSSD")</h6>
+                <p><b>دائرة الخدمات الاجتماعية - الشارقة</b></p>
+            </div>
+        </div>
+
+        <div class="column Salary">
+            <div class="content">
+                <img src="~/Images/SHJHR.png" style="height:75px; width:300px" alt="Lights">
+                <h6>  @Html.ActionLink("الموارد البشرية الشارقة", "Index", "SHJHR")</h6>
+                <p><b>الموارد البشرية الشارقة</b></p>
+            </div>
+        </div>
+
+        <div class="column Salary">
+            <div class="content">
+                <img src="~/Images/FAHR.png" style="height:75px; width:300px" alt="FAHR">
+                <h6>@Html.ActionLink("الاستعلام في الموارد البشرية الاتحادية", "Index", "FAHR")</h6>
+                <p><b>الاستعلام في الموارد البشرية الاتحادية</b></p>
+            </div>
+        </div>
+        <div class="column Salary">
+            <div class="content">
+                <img src="~/Images/AjmanHR.png" style="height:75px; width:300px" alt="AjmanHR">
+                <h6>@Html.ActionLink("AJMAN HR", "Index", "ADG")</h6>
+                <p><b>الموارد البشرية عجمان</b></p>
+            </div>
+        </div>
+
+        <div class="column Salary">
+            <div class="content">
+                <img src="~/Images/ADP.png" style="height:75px; width:300px" alt="AjmanHR">
+                <h6>@Html.ActionLink("معلومات موظف شرطة - أبوظبي", "index", "ADPEmployeeInfo")</h6>
+                <p>
+                    <b>
+                        معلومات موظف شرطة - أبوظبي
+                    </b>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="column Trade">
+            <div class="content">
+                <img src="~/Images/ADDED.png" style="height:75px; width:300px" alt="Car">
+                <h6> @Html.ActionLink("التنمية الاقتصادية  أبوظبي", "Index", "ADDED") </h6>
+                <p><b>التنمية الاقتصادية  أبوظبي </b></p>
+            </div>
+        </div>
+        <div class="column Trade">
+            <div class="content">
+                <img src="~/Images/AJMANDED.png" style="height:75px; width:300px" alt="Car">
+                <h6> @Html.ActionLink("التنمية الاقتصادية عجمان - بيانات الرخص التجارية ، بيانات الشركاء", "Index", "AJMStakeHolderDetails")</h6>
+                <p><b>التنمية الاقتصادية عجمان - بيانات الرخص التجارية ، بيانات الشركاء</b></p>
+            </div>
+        </div>
+        <div class="column Trade">
+            <div class="content">
+                <img src="~/Images/AjmanFZ.png" style="height:75px; width:300px" alt="Car">
+                <h6> @Html.ActionLink("التنمية الاقتصادية عجمان - المنطقة الحرة", "Index", "AJMFZ")</h6>
+                <p><b>التنمية الاقتصادية عجمان - المنطقة الحرة</b></p>
+            </div>
+        </div>
+        <div class="column Trade">
+            <div class="content">
+                <img src="~/Images/SEDD.png" style="height:75px; width:300px" alt="Car">
+                <h6> @Html.ActionLink("دائرة التنمية الاقتصادية - الشارقة", "SEDD", "SEDD")</h6>
+                <p><b>دائرة التنمية الاقتصادية - الشارقة</b></p>
+            </div>
+        </div>
+
+        <div class="column Ica">
+            <div class="content">
+                <img src="~/Images/ICA.png" style="height:75px; width:300px" alt="ICA">
+                <h6> @Html.ActionLink("تفاصيل بطاقة الهوية", "Index", "PersonalProfile")</h6>
+                <p><b>تفاصيل بطاقة الهوية</b></p>
+            </div>
+        </div>
+        <div class="column Ica">
+            <div class="content">
+                <img src="~/Images/ICA.png" style="height:75px; width:300px" alt="ICA">
+                <h6> @Html.ActionLink("تفاصيل خلاصة القيد", "Index", "FamilyBook")</h6>
+                <p><b>تفاصيل خلاصة القيد</b></p>
+            </div>
+        </div>
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/AJMMUN.png" style="height:75px; width:300px" alt="AJMMUN">
+                <h6>
+                    @Html.ActionLink("دائرة البلدية والتخطيط - عجمان", "Index", "AJMResidentialDetails")
+                </h6>
+                <p><b>دائرة البلدية والتخطيط - عجمان</b></p>
+            </div>
+        </div>
+
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/SharjahMun.png" style="height:75px; width:300px" alt="AJMMUN">
+                <h6>
+                    @Html.ActionLink("بلدية مدينة - الشارقة", "Index", "SharjahMunicipality")
+                </h6>
+                <p><b>بلدية مدينة - الشارقة</b></p>
+            </div>
+        </div>
+
+        <div class="column Death">
+            <div class="content">
+                <img src="~/Images/MOHAP.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("وزارة الصحة - الوفيات", "Index", "MoH")
+                </h6>
+                <p><b>وزارة الصحة - الوفيات</b></p>
+            </div>
+        </div>
+
+        @*<div class="column Death">
+            <div class="content">
+                <img src="~/Images/Health.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("وزارة الصحة - الوفيات", "Index", "MoH")
+                </h6>
+                <p><b>وزارة الصحة - الوفيات</b></p>
+            </div>
+        </div>*@
+        <div class="column Death">
+            <div class="content">
+                <img src="~/Images/Health.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("دائرة الصحة - بيانات الميلاد", "Index", "BirthCertificate")
+                </h6>
+                <p><b>دائرة الصحة</b></p>
+            </div>
+        </div>
+
+        <div class="column Death">
+            <div class="content">
+                <img src="~/Images/Health.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("دائرة الصحة - بيانات الوفاة", "Index", "DeathCertificate")
+                </h6>
+                <p><b>دائرة الصحة - بيانات الوفاة</b></p>
+            </div>
+        </div>
+
+
+        <div class="column Trade">
+            <div class="content">
+                <img src="~/Images/MOHRE.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("وزارة الموارد البشرية - بيانات الرخص التجارية", "Index", "MOHRECompany")
+                </h6>
+                <p><b>وزارة الموارد البشرية - بيانات الرخص التجارية</b></p>
+            </div>
+        </div>
+        <div class="column Utilities">
+            <div class="content">
+                <img src="~/Images/ADEWA.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("شركة أبوظبي للتوزيع", "Index", "ADEWA")
+                </h6>
+                <p><b>شركة أبوظبي للتوزيع</b></p>
+            </div>
+        </div>
+
+        <div class="column Other">
+            <div class="content">
+                <img src="~/Images/ADAFSA.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("هيئة أبوظبي للزراعة والسلامة الغذائية", "Index", "ADAFSA")
+                </h6>
+                <p><b>هيئة أبوظبي للزراعة والسلامة الغذائية</b></p>
+            </div>
+        </div>
+
+        <div class="column Other">
+            <div class="content">
+                <img src="~/Images/ADEK.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("دائرة التعليم والمعرفة أبوظبي - بيانات العنف ضد الاطفال", "Index", "ChildViolence")
+                </h6>
+                <p><b>دائرة التعليم والمعرفة أبوظبي - بيانات العنف ضد الاطفال</b></p>
+            </div>
+        </div>
+
+
+
+        <div class="column Other">
+            <div class="content">
+                <img src="~/Images/ADNRC.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("المركز الوطني للتأهيل", "Index", "NRCClient")
+                </h6>
+                <p><b>المركز الوطني للتأهيل</b></p>
+            </div>
+        </div>
+
+        <div class="column Benefits">
+            <div class="content">
+                <img src="~/Images/ADP.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("تفاصيل عقد شرطة - أبوظبي", "Index", "ADPContractDetails")
+                </h6>
+                <p><b>تفاصيل عقد شرطة - أبوظبي</b></p>
+            </div>
+        </div>
+
+        <div class="column Benefits">
+            <div class="content">
+                <img src="~/Images/ADP.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("عدد سيارات شرطة - أبوظبي", "Index", "ADPVehicleCount")
+                </h6>
+                <p><b>عدد سيارات شرطة - أبوظبي</b></p>
+            </div>
+        </div>
+
+
+        <div class="column Benefits">
+            <div class="content">
+                <img src="~/Images/SHChar.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("جمعية الخيرية - الشارقة", "Index", "SharjahCharity")
+                </h6>
+                <p><b>جمعية الخيرية - الشارقة</b></p>
+            </div>
+        </div>
+
+
+        <div class="column Utilities">
+            <div class="content">
+                <img src="~/Images/SSSDSEWA.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("حكومة الشارقة دائرة الخدمات الاجتماعية", "Index", "SSSDSewa")
+                </h6>
+                <p><b>حكومة الشارقة دائرة الخدمات الاجتماعية</b></p>
+            </div>
+        </div>
+
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/TAWTHEEQ.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("توثيق عقود الايجار - أبوظبي", "Index", "TAWTHEEQ")
+                </h6>
+                <p><b>توثيق عقود الايجار - أبوظبي</b></p>
+            </div>
+        </div>
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/DubaiLand.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("نظام ايجاري - دبي", "Index", "DLD")
+                </h6>
+                <p><b>نظام ايجاري - دبي</b></p>
+            </div>
+        </div>
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/ADM.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("بلدية امارة أبوظبي / الأملاك", "Index", "OwnerProfile")
+                </h6>
+                <p><b>بلدية امارة أبوظبي / الأملاك</b></p>
+            </div>
+        </div>
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/AJRE.png" alt="Car" style="height:75px; width:300px">
+                <h6>@Html.ActionLink("دائرة الأراضي والتنظيم العقاري - عجمان", "Index", "AJMOwnerPropertyDetails")</h6>
+                <p><b>دائرة الأراضي والتنظيم العقاري - عجمان</b></p>
+            </div>
+        </div>
+
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/SHJDH.png" alt="Car" style="height:75px; width:300px">
+                <h6>@Html.ActionLink("دائرة الإسكان - الشارقة", "SHJDH", "SHJDH")</h6>
+                <p><b>دائرة الإسكان - الشارقة</b></p>
+            </div>
+        </div>
+
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/ADHA.png" alt="Car" style="height:75px; width:300px">
+                <h6>@Html.ActionLink("هيئة أبوظبي للإسكان", "Index", "ADHA")</h6>
+                <p><b>هيئة أبوظبي للإسكان</b></p>
+            </div>
+        </div>
+        <div class="column Inmate">
+            <div class="content">
+                <img src="~/Images/SHJPOLICE.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("شرطة الشارقة - المساجين", "Index", "SHJPRISON")
+                </h6>
+                <p><b>شرطة الشارقة - المساجين</b></p>
+            </div>
+        </div>
+        @*<div class="column Inmate">
+            <div class="content">
+                <img src="~/Images/DubaiPolice.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("الاستعلام عن المساجين", "Index", "DPPRISON")
+                </h6>
+                <p><b>الاستعلام عن المساجين</b></p>
+            </div>
+        </div>*@
+
+        <div class="column Inmate">
+            <div class="content">
+                <img src="~/Images/DubaiPolice.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("الاستعلام عن المساجين", "Index", "DPPRISON")
+                </h6>
+                <p><b>الاستعلام عن المساجين</b></p>
+            </div>
+        </div>
+
+        <div class="column Inmate">
+            <div class="content">
+                <img src="~/Images/MOIPris.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("معلومات السجين في وزارة الداخلية", "Index", "MOIPrisoners")
+                </h6>
+                <p><b>معلومات السجين في وزارة الداخلية</b></p>
+            </div>
+        </div>
+
+        <div class="column Inmate">
+            <div class="content">
+                <img src="~/Images/MOIPris.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("سجناء الإقامة الجبرية في وزارة الداخلية", "Index", "MOIHomeArresPrisoners")
+                </h6>
+                <p><b>سجناء الإقامة الجبرية في وزارة الداخلية</b></p>
+            </div>
+        </div>
+        <div class="column Other">
+            <div class="content">
+                <img src="~/Images/ADPolice.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("شرطة أبوظبي - نظام الورة", "Index", "ADPolice")
+                </h6>
+                <p>
+                    <b>
+                        شرطة أبوظبي - نظام الورة
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Courts">
+            <div class="content">
+                <img src="~/Images/MoJ.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("بيانات الزواج والطلاق - وزارة العدل", "Index", "MoJ")
+                </h6>
+                <p><b>الاستعلام في وزارة العدل</b></p>
+            </div>
+        </div>
+        <div class="column Pension">
+            <div class="content">
+                <img src="~/Images/ADRPBF.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("معلومات العضو في صندوق معاشات ومكافآت التقاعد لإمارة أبوظبي", "Index", "ADRPBF")
+                </h6>
+                <p>
+                    <b>
+                        معلومات العضو في صندوق معاشات ومكافآت التقاعد لإمارة أبوظبي
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Pension">
+            <div class="content">
+                <img src="~/Images/ADRPBF.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("تفاصيل الراتب من صندوق معاشات ومكافآت التقاعد لإمارة أبوظبي", "SalaryDetails", "ADRPBF")
+                </h6>
+                <p>
+                    <b>
+                        تفاصيل الراتب من صندوق معاشات ومكافآت التقاعد لإمارة أبوظبي
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Salary">
+            <div class="content">
+                <img src="~/Images/MOHRE.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("وزارة الموارد البشرية - العاملين في القطاع الخاص", "Index", "MOHREEmployee")
+                </h6>
+                <p><b>وزارة الموارد البشرية - العاملين في القطاع الخاص</b></p>
+            </div>
+        </div>
+
+        <div class="column Other">
+            <div class="content">
+                <img src="~/Images/MoI.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("الاستعلام في وزارة الداخلية", "Index", "MoI")
+                </h6>
+                <p><b>الاستعلام في وزارة الداخلية</b></p>
+            </div>
+        </div>
+        <div class="column Courts">
+            <div class="content">
+                <img src="~/Images/DubaiCourts.jpg" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("محاكم دبي- محكمة الأحوال الشخصية", "Index", "DCMARITAL")
+                </h6>
+                <p><b>محاكم دبي- بيانات الزواج والطلاق</b></p>
+            </div>
+
+            <!-- END GRID -->
+        </div>
+        <div class="column Benefits">
+            <div class="content">
+                <img src="~/Images/ADSSA.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("هيئة الدعم الاجتماعي أبوظبي", "Index", "ADSSA")
+                </h6>
+                <p>
+                    <b>
+                        هيئة الدعم الاجتماعي - تفاصيل المستفيد
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Benefits">
+            <div class="content">
+                <img src="~/Images/Zakat.png" style="height:75px; width:300px" alt="ZF">
+                <h6> @Html.ActionLink("صندوق الزكاة", "Index", "ZF")</h6>
+                <p>
+                    <b>
+                        صندوق الزكاة - منافع الضمان الاجتماعي
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Trade">
+            <div class="content">
+                <img src="~/Images/MoEc.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("وزارة الاقتصاد", "Index", "MOEcNERBLD")
+                </h6>
+                <p>
+                    <b>
+                        وزارة الاقتصاد - رخصة تجارية
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Trade">
+            <div class="content">
+                <img src="~/Images/UMMDED.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("دائرة التنمية الاقتصادية أم القيوين", "Index", "UMMDED")
+                </h6>
+                <p>
+                    <b>
+                        التنمية الاقتصادية أم القيوين
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Pension">
+            <div class="content">
+                <img src="~/Images/SSSFSHJ.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("صندوق الشارقة للضمان الاجتماعي", "Index", "SSSFP")
+                </h6>
+                <p>
+                    <b>
+                        صندوق الشارقة للضمان الاجتماعي - خدمة المتقاعدين
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Pension">
+            <div class="content">
+                <img src="~/Images/SSSFSHJ.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("صندوق الشارقة للضمان الاجتماعي", "Index", "SSSFRP")
+                </h6>
+                <p>
+                    <b>
+                        صندوق الشارقة للضمان الاجتماعي - خدمة المنتفعين من التقاعد
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Courts">
+            <div class="content">
+                <img src="~/Images/ADJD.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("دائرة القضاء - أبوظبي", "Index", "ADJD")
+                </h6>
+                <p>
+                    <b>
+                        دائرة القضاء أبوظبي - الاستعلام عن الحالة الاجتماعية
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        <div class="column Courts">
+            <div class="content">
+                <img src="~/Images/ADJD.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("خدمات دائرة القضاء تفاصيل تصديق - أبو ظبي", "Index", "ADJDAttestation")
+                </h6>
+                <p>
+                    <b>
+                        خدمات دائرة القضاء تفاصيل تصديق - أبو ظبي
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        <div class="column Courts">
+            <div class="content">
+                <img src="~/Images/ADJD.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink(" دائرة القضاء أبوظبي - قضايا المتهمين", "Index", "ADDC")
+                </h6>
+                <p>
+                    <b>
+                        دائرة القضاء أبوظبي - قضايا المتهمين
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/FUJMUN.png" alt="Car" style="height:75px; width:125px">
+                <h6>
+                    @Html.ActionLink("بلدية الفجيرة", "Index", "FUJLAND")
+                </h6>
+                <p>
+                    <b>
+                        بلدية الفجيرة - بيانات الأراضي
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/FUJMUN.png" alt="Car" style="height:75px; width:125px">
+                <h6>
+                    @Html.ActionLink("بلدية الفجيرة", "Index", "FUJRENTAL")
+                </h6>
+                <p>
+                    <b>
+                        بلدية الفجيرة - بيانات الايجار
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Trade">
+            <div class="content">
+                <img src="~/Images/FUJDED.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("دائرة التنمية الاقتصادية - الفجيرة", "Index", "FUJDED")
+                </h6>
+                <p>
+                    <b>
+                        دائرة التنمية الاقتصادية - الفجيرة - بيانات الرخص التجارية
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/SDTPS.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("نظام دائرة التخطيط والمساحة الشارقة", "Index", "SDTPS")
+                </h6>
+                <p>
+                    <b>
+                        نظام دائرة التخطيط والمساحة الشارقة
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/RAKMUN.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("RAKLEASE", "Index", "RAKLEASE")
+                </h6>
+                <p>
+                    <b>
+                        بلدية رأس الخيمة - عقود إيجار
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/RAKMUN.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("RAKLAND", "Index", "RAKLAND")
+                </h6>
+                <p>
+                    <b>
+                        بلدية رأس الخيمة - تفاصيل الأرض
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        @*<div class="column Ejari">
+            <div class="content">
+                <img src="~/Images/MBHRE.jpg" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("MBHRE", "Index", "MBHRE")
+                </h6>
+                <p>
+                    <b>
+                        مؤسسة محمد بن راشد للاسكان
+                    </b>
+                </p>
+            </div>
+        </div>*@
+
+
+        <div class="column Utilities">
+            <div class="content">
+                <img src="~/Images/SEWA.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("SEWA", "Index", "SEWA")
+                </h6>
+                <p>
+                    <b>
+                        سيوا - بيانات المساعدات الاجتماعية
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Utilities">
+            <div class="content">
+                <img src="~/Images/dewalogo.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("DEWA", "Index", "DEWA")
+                </h6>
+                <p>
+                    <b>
+                        بيانات هيئة كهرباء ومياه دبي للضمان الاجتماعي
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        <div class="column Electricity">
+            <div class="content">
+                <img src="~/Images/ADDCLogo.svg" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("ADDC", "Index", "ADDCAccount")
+                </h6>
+                <p>
+                    <b>
+                        ابو ظبي للتوزيع - استعلام عن حساب الطاقة
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        <div class="column Electricity">
+            <div class="content">
+                <img src="~/Images/AADCLogo.jpg" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("AADC", "Index", "AADCAccount")
+                </h6>
+                <p>
+                    <b>
+                        العين للتوزيع - استعلام عن حساب الطاقة
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        <div class="column Electricity">
+            <div class="content">
+                <img src="~/Images/dewalogo.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("DEWA", "Index", "DEWAValidateAccount")
+                </h6>
+                <p>
+                    <b>
+                        ديوا - استعلام عن حساب الكهرباء
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        <div class="column Electricity">
+            <div class="content">
+                <img src="~/Images/FEWAlogo.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("EWE", "Index", "EWEValidateAccount")
+                </h6>
+                <p>
+                    <b>
+                        الاتحاد - الاستعلام عن حساب الكهرباء
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        <div class="column Electricity">
+            <div class="content">
+                <img src="~/Images/SEWA.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("SEWA", "Index", "SEWAValidation")
+                </h6>
+                <p>
+                    <b>
+                        سيوا - استعلام عن حساب الكهرباء
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        <div class="column POD">
+            <div class="content">
+                <img src="~/Images/mocdlogo.png" alt="MOCD Services" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("POD Card", "Index", "PODCard")
+                </h6>
+                <p>
+                    <b>
+                        بطاقة أصحاب الهمم
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        @*<div class="column POD">
+            <div class="content">
+                <img src="~/Images/ZHO.png" alt="MOCD Services" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("ZHO", "Index", "ZHO")
+                </h6>
+                <p>
+                    <b>
+                        مؤسّسة زايد العليا لأصحاب الهمم
+                    </b>
+                </p>
+            </div>
+        </div>*@
+        <div class="column POD">
+            <div class="content">
+                <img src="~/Images/mocdlogo.png" alt="MOCD Services" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("Student Electronic File", "Index", "StudentEFile")
+                </h6>
+                <p>
+                    <b>
+                        طلاب في مراكز رعاية وتأهيل أصحاب الهمم الحكومية
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Grants">
+            <div class="content crm">
+                <img src="~/Images/mocdlogo.png" alt="MOCD Services" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("(Grants / Mass Weddings / Formal Letters) application", "Index", "Grants")
+                </h6>
+                <p>
+                    <b>
+                        طلبات المنح / الأعراس الجماعية / رسائل لمن يهمه الأمر
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Grants">
+            <div class="content crm">
+                <img src="~/Images/mocdlogo.png" alt="MOCD Services" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("Edaad Attendance", "Index", "Edaad")
+                </h6>
+                <p>
+                    <b>
+                        حضور برنامج إعداد من خلال المنصة الإلكترونية
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column PFMembership">
+            <div class="content crm">
+                <img src="~/Images/mocdlogo.png" alt="MOCD Services" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("Productive Families Membership application", "Index", "PFMembership")
+                </h6>
+                <p>
+                    <b>
+                        طلبات عضويات الأسر المنتجة
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Other">
+            <div class="content">
+                <img src="~/Images/MoEI.png" alt="MoEI" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("MoEI", "Index", "MoEI")
+                </h6>
+                <p>
+                    <b>
+                        معلومات السكن في وزارة الطاقة
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Benefits">
+            <div class="content">
+                <img src="~/Images/CDA.png" alt="CDA" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("CDA", "Index", "CDA")
+                </h6>
+                <p>
+                    <b>
+                        هيئة تنمية المجتمع - دبي
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        <div class="column Benefits">
+            <div class="content">
+                <img src="~/Images/SCMAF.png" alt="CDA" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("مؤسسة الرعاية الاجتماعية وشؤون القصر", "Index", "SCMAF")
+                </h6>
+                <p>
+                    <b>
+                        مؤسسة الرعاية الاجتماعية وشؤون القصر
+                    </b>
+                </p>
+            </div>
+        </div>
+
+        <div class="column Benefits">
+            <div class="content">
+                <img src="~/Images/SCMAF.png" alt="CDA" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("مؤسسة الرعاية الاجتماعية وشؤون القصر - بيانات المستفيدين", "Index", "SCMAFBenificiaryInfo")
+                </h6>
+                <p>
+                    <b>
+                        مؤسسة الرعاية الاجتماعية وشؤون القصر - معلومات المستفيد
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Death">
+            <div class="content">
+                <img src="~/Images/DubaiPolice.png" alt="Car" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("خدمة الاستعلام عن الوفيات", "Index", "DPDeathQuery")
+                </h6>
+                <p><b>خدمة الاستعلام عن الوفيات</b></p>
+            </div>
+        </div>
+
+
+
+        <div class="column Utilities">
+            <div class="content">
+                <img src="~/Images/FW.png" alt="CDA" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("FEWA", "Index", "FEWA")
+                </h6>
+                <p>
+                    <b>
+                        الاتحاد للماء والكهرباء
+                    </b>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="column Education">
+            <div class="content">
+                <img src="~/Images/ShjUniversity.png" alt="CDA" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("SharjahUniversity", "Index", "SharjahUniversity")
+                </h6>
+                <p>
+                    <b>
+                        جامعة الشارقة
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="column Salary">
+            <div class="content">
+                <img src="~/Images/logo-nafis.png" style="height:75px; width:300px" alt="Car">
+                <h6>
+                    @Html.ActionLink("NAFIS", "Index", "NAFIS")
+                </h6>
+                <p><b> برنامج نافس </b></p>
+            </div>
+        </div>
+        <div class="column Education">
+            <div class="content">
+                <img src="~/Images/ADEK.png" alt="CDA" style="height:75px; width:300px">
+                <h6>
+                    @Html.ActionLink("ADEKStudentInfo", "Index", "ADEKStudentInfo")
+                </h6>
+                <p>
+                    <b>
+                        دائرة التعليم والمعرفة
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div>
+            <hr class="rounded">
+        </div>
+        <!-- END MAIN -->
+    </div>
+    </div>
+    <script>
+
+        filterSelection("all")
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("column");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                w3RemoveClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+            }
+        }
+
+        function w3AddClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+            }
+        }
+
+        function w3RemoveClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);
+                }
+            }
+            element.className = arr1.join(" ");
+        }
+
+
+        // Add active class to the current button (highlight it)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+    </script>

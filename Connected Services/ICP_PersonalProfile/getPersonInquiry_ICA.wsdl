@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://id.gov.ae/ws/PersonInquiryService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://id.gov.ae/ws/personInquiry" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="getPersonInquiry_ICA" targetNamespace="http://id.gov.ae/ws/PersonInquiryService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This service will retrieve Personal Information from ICA using Emirates Id or Unified Number.</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://id.gov.ae/ws/personInquiry">
+      <xsd:include schemaLocation="52cd7cfe-8e0a-11ea-bd97-eb374c99a270?xsd=PersonInquiryService" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="52cd7cfe-8e0a-11ea-bd97-eb374c99a270?xsd=PersonInquiryService" namespace="http://id.gov.ae/ws/personInquiry" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="personInquiryResponseMsg">
+    <wsdl:part name="personInquiryResponse" element="xsd1:personInquiryResponse" />
+  </wsdl:message>
+  <wsdl:message name="personInquiryRequestMsg">
+    <wsdl:part name="personInquiry" element="xsd1:personInquiry" />
+  </wsdl:message>
+  <wsdl:portType name="PersonInquiryService">
+    <wsdl:operation name="personInquiry">
+      <wsdl:input name="personInquiryRequest" message="tns:personInquiryRequestMsg" />
+      <wsdl:output name="personInquiryResponse" message="tns:personInquiryResponseMsg" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PersonInquiryServiceHttpBinding" type="tns:PersonInquiryService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="personInquiry">
+      <soap:operation soapAction="http://id.gov.ae/ws/PersonInquiryService/personInquiry" />
+      <wsdl:input name="personInquiryRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="personInquiryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getPersonInquiry_ICA">
+    <wsdl:port name="getPersonInquiry_ICAsoaphttps2" binding="tns:PersonInquiryServiceHttpBinding">
+      <soap:address location="https://integrate.gsb.government.ae/ws/getPersonInquiry_ICA/1.0" />
+    </wsdl:port>
+    <wsdl:port name="getPersonInquiry_ICAsoaphttps" binding="tns:PersonInquiryServiceHttpBinding">
+      <soap:address location="https://integrate.gsb.government.ae/ws/getPersonInquiry_ICA.getPersonInquiry_ICAsoaphttps/1.0" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

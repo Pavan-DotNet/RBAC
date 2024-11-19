@@ -1,0 +1,480 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Zayed Higher Organization for People of Determination-مؤسّسة زايد العليا لأصحاب الهمم";
+}
+
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active">
+        <h4>
+            <small>
+                <b>
+                    مؤسّسة زايد العليا لأصحاب الهمم
+                </b>
+            </small>
+        </h4>
+    </div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "ZHO")';
+
+            $(".tbody").empty();
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+            var html1 = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { EmiratesId: EmiratesId, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+                if (obj.flag == "1") {
+
+                    console.log("s", obj)
+                    html = BindHTML(obj.apiResult);
+
+                    $("#divTables").append(html);
+                    $("#divTables").append(html1);
+
+                    $('.DataTable').show();
+
+
+                }
+                else {
+
+                    if (obj.flag == "2") {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("ZHO.pdf");
+       });
+
+
+        function BindHTML(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "ACCOMMODATION_TYPE_AR" + '</b></small></h6></td>';
+            html += '<td>' + item.ACCOMMODATION_TYPE_AR + '</td>';
+            html += '<td><h6><small><b>' + "ACCOMMODATION_TYPE_EN" + '</b></small></h6></td>';
+            html += '<td>' + item.ACCOMMODATION_TYPE_EN + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "AgeYears" + '</b></small></h6></td>';
+            html += '<td>' + item.AgeYears + '</td>';
+            html += '<td><h6><small><b>' + "CENTER_AR" + '</b></small></h6></td>';
+            html += '<td>' + item.CENTER_AR + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "CENTER_CODE" + '</b></small></h6></td>';
+            html += '<td>' + item.CENTER_CODE + '</td>';
+            html += '<td><h6><small><b>' + " CENTER_EN" + '</b></small></h6></td>';
+            html += '<td>' + item.CENTER_EN + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "CITIZEN_Ar" + '</b></small></h6></td>';
+            html += '<td>' + item.CITIZEN_Ar + '</td>';
+            html += '<td><h6><small><b>' + "CITIZEN_En" + '</b></small></h6></td>';
+            html += '<td>' + item.CITIZEN_En + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "CREATED_BY" + '</b></small></h6></td>';
+            html += '<td>' + item.CREATED_BY + '</td>';
+            html += '<td><h6><small><b>' + "CREATED_ON" + '</b></small></h6></td>';
+            html += '<td>' + item.CREATED_ON + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "DATE_OF_BIRTH" + '</b></small></h6></td>';
+            html += '<td>' + item.DATE_OF_BIRTH + '</td>';
+            html += '<td><h6><small><b>' + "DATE_OF_DEATH" + '</b></small></h6></td>';
+            html += '<td>' + item.DATE_OF_DEATH + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "DISABILITY_AR" + '</b></small></h6></td>';
+            html += '<td>' + item.DISABILITY_AR + '</td>';
+            html += '<td><h6><small><b>' + "DISABILITY_EN" + '</b></small></h6></td>';
+            html += '<td>' + item.DISABILITY_EN + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "DISABILITY_LEVEL_AR" + '</b></small></h6></td>';
+            html += '<td>' + item.DISABILITY_LEVEL_AR + '</td>';
+            html += '<td><h6><small><b>' + "DISABILITY_LEVEL_EN" + '</b></small></h6></td>';
+            html += '<td>' + item.DISABILITY_LEVEL_EN + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "DefaultLang" + '</b></small></h6></td>';
+            html += '<td>' + item.DefaultLang + '</td>';
+            html += '<td><h6><small><b>' + "DisabilityAxisAr" + '</b></small></h6></td>';
+            html += '<td>' + item.DisabilityAxisAr + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "DisabilityAxisCode" + '</b></small></h6></td>';
+            html += '<td>' + item.DisabilityAxisCode + '</td>';
+            html += '<td><h6><small><b>' + "DisabilityAxisEn" + '</b></small></h6></td>';
+            html += '<td>' + item.DisabilityAxisEn + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "EID" + '</b></small></h6></td>';
+            html += '<td>' + item.EID + '</td>';
+            html += '<td><h6><small><b>' + "EMAIL" + '</b></small></h6></td>';
+            html += '<td>' + item.EMAIL + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "Email_FromSEHA" + '</b></small></h6></td>';
+            html += '<td>' + item.Email_FromSEHA + '</td>';
+            html += '<td><h6><small><b>' + "FAMILY_BOOK_NO" + '</b></small></h6></td>';
+            html += '<td>' + item.FAMILY_BOOK_NO + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "FK_ACCOMMODATION_TYPE" + '</b></small></h6></td>';
+            html += '<td>' + item.FK_ACCOMMODATION_TYPE + '</td>';
+            html += '<td><h6><small><b>' + "FK_CITIZEN" + '</b></small></h6></td>';
+            html += '<td>' + item.FK_CITIZEN + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "FK_DISABILITY" + '</b></small></h6></td>';
+            html += '<td>' + item.FK_DISABILITY + '</td>';
+            html += '<td><h6><small><b>' + "FK_DISABILITY_LEVEL" + '</b></small></h6></td>';
+            html += '<td>' + item.FK_DISABILITY_LEVEL + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "FK_GENDER" + '</b></small></h6></td>';
+            html += '<td>' + item.FK_GENDER + '</td>';
+            html += '<td><h6><small><b>' + "FK_MARITAL_STATUS" + '</b></small></h6></td>';
+            html += '<td>' + item.FK_MARITAL_STATUS + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "FK_NATIONALITY" + '</b></small></h6></td>';
+            html += '<td>' + item.FK_NATIONALITY + '</td>';
+            html += '<td><h6><small><b>' + "FK_QUALIFICATION" + '</b></small></h6></td>';
+            html += '<td>' + item.FK_QUALIFICATION + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "FK_REGION" + '</b></small></h6></td>';
+            html += '<td>' + item.FK_REGION + '</td>';
+            html += '<td><h6><small><b>' + "FK_RELIGION" + '</b></small></h6></td>';
+            html += '<td>' + item.FK_RELIGION + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "FK_SOURCE" + '</b></small></h6></td>';
+            html += '<td>' + item.FK_SOURCE + '</td>';
+            html += '<td><h6><small><b>' + "FK_SUB_DISABILITY" + '</b></small></h6></td>';
+            html += '<td>' + item.FK_SUB_DISABILITY + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "FULL_NAME_AR" + '</b></small></h6></td>';
+            html += '<td>' + item.FULL_NAME_AR + '</td>';
+            html += '<td><h6><small><b>' + "FULL_NAME_EN" + '</b></small></h6></td>';
+            html += '<td>' + item.FazaaCardNo + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "GENDER_AR" + '</b></small></h6></td>';
+            html += '<td>' + item.GENDER_AR + '</td>';
+            html += '<td><h6><small><b>' + "GENDER_EN" + '</b></small></h6></td>';
+            html += '<td>' + item.GENDER_EN + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "HOME_TEL" + '</b></small></h6></td>';
+            html += '<td>' + item.HOME_TEL + '</td>';
+            html += '<td><h6><small><b>' + "HasFazaaCard" + '</b></small></h6></td>';
+            html += '<td>' + item.HasFazaaCard + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "HasZHOPODCard" + '</b></small></h6></td>';
+            html += '<td>' + item.HasZHOPODCard + '</td>';
+            html += '<td><h6><small><b>' + "Has_Social_Support" + '</b></small></h6></td>';
+            html += '<td>' + item.Has_Social_Support + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "HomeNo_FromSEHA" + '</b></small></h6></td>';
+            html += '<td>' + item.HomeNo_FromSEHA + '</td>';
+            html += '<td><h6><small><b>' + "IS_WORKING" + '</b></small></h6></td>';
+            html += '<td>' + item.IS_WORKING + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "IsConfirmed" + '</b></small></h6></td>';
+            html += '<td>' + item.IsConfirmed + '</td>';
+            html += '<td><h6><small><b>' + "IsDeath" + '</b></small></h6></td>';
+            html += '<td>' + item.IsDeath + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "IsValidEID" + '</b></small></h6></td>';
+            html += '<td>' + item.IsValidEID + '</td>';
+            html += '<td><h6><small><b>' + "IsZHOStudent" + '</b></small></h6></td>';
+            html += '<td>' + item.IsZHOStudent + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "Latitude" + '</b></small></h6></td>';
+            html += '<td>' + item.Latitude + '</td>';
+            html += '<td><h6><small><b>' + "Longitude" + '</b></small></h6></td>';
+            html += '<td>' + item.Longitude + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "MARITAL_STATUS_AR" + '</b></small></h6></td>';
+            html += '<td>' + item.MARITAL_STATUS_AR + '</td>';
+            html += '<td><h6><small><b>' + "MARITAL_STATUS_EN" + '</b></small></h6></td>';
+            html += '<td>' + item.MARITAL_STATUS_EN + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "MOBILE1" + '</b></small></h6></td>';
+            html += '<td>' + item.MOBILE1 + '</td>';
+            html += '<td><h6><small><b>' + "MOBILE2" + '</b></small></h6></td>';
+            html += '<td>' + item.MOBILE2 + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "MobileNo_FromSEHA" + '</b></small></h6></td>';
+            html += '<td>' + item.MobileNo_FromSEHA + '</td>';
+            html += '<td><h6><small><b>' + "NATIONALITY_AR" + '</b></small></h6></td>';
+            html += '<td>' + item.NATIONALITY_AR + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "NATIONALITY_EN" + '</b></small></h6></td>';
+            html += '<td>' + item.NATIONALITY_EN + '</td>';
+            html += '<td><h6><small><b>' + "PASSPORT_EXPIRY" + '</b></small></h6></td>';
+            html += '<td>' + item.PASSPORT_EXPIRY + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "PASSPORT_NO" + '</b></small></h6></td>';
+            html += '<td>' + item.PASSPORT_NO + '</td>';
+            html += '<td><h6><small><b>' + "PODID" + '</b></small></h6></td>';
+            html += '<td>' + item.PODID + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "QUALIFICATION_AR" + '</b></small></h6></td>';
+            html += '<td>' + item.QUALIFICATION_AR + '</td>';
+            html += '<td><h6><small><b>' + "QUALIFICATION_EN" + '</b></small></h6></td>';
+            html += '<td>' + item.QUALIFICATION_EN + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "REGION_AR" + '</b></small></h6></td>';
+            html += '<td>' + item.REGION_AR + '</td>';
+            html += '<td><h6><small><b>' + "REGION_EN" + '</b></small></h6></td>';
+            html += '<td>' + item.REGION_EN + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "REG_IN_CENTER" + '</b></small></h6></td>';
+            html += '<td>' + item.REG_IN_CENTER + '</td>';
+            html += '<td><h6><small><b>' + "REG_IN_SCHOOL" + '</b></small></h6></td>';
+            html += '<td>' + item.REG_IN_SCHOOL + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "SCHOOL_AR" + '</b></small></h6></td>';
+            html += '<td>' + item.SCHOOL_AR + '</td>';
+            html += '<td><h6><small><b>' + "SCHOOL_EN" + '</b></small></h6></td>';
+            html += '<td>' + item.SCHOOL_EN + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "SSA_Support_Amount" + '</b></small></h6></td>';
+            html += '<td>' + item.SSA_Support_Amount + '</td>';
+            html += '<td><h6><small><b>' + "Status" + '</b></small></h6></td>';
+            html += '<td>' + item.Status + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "UNIFIED_NO" + '</b></small></h6></td>';
+            html += '<td>' + item.UNIFIED_NO + '</td>';
+            html += '<td><h6><small><b>' + "UPDATED_BY" + '</b></small></h6></td>';
+            html += '<td>' + item.UPDATED_BY + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "UPDATED_ON" + '</b></small></h6></td>';
+            html += '<td>' + item.UPDATED_ON + '</td>';
+            html += '<td><h6><small><b>' + "VISA_EXPIRY" + '</b></small></h6></td>';
+            html += '<td>' + item.VISA_EXPIRY + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "ZHOPODCARDNo" + '</b></small></h6></td>';
+            html += '<td>' + item.ZHOPODCARDNo + '</td>';
+            html += '<td><h6><small><b>' + "ZHOPODCard_ExpiryDate" + '</b></small></h6></td>';
+            html += '<td>' + item.ZHOPODCard_ExpiryDate + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "ZHOPODCard_IssueDate" + '</b></small></h6></td>';
+            html += '<td>' + item.ZHOPODCard_IssueDate + '</td>';
+            html += '<td><h6><small><b>' + "ZHOStudentNo" + '</b></small></h6></td>';
+            html += '<td>' + item.ZHOStudentNo + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "ZHOStudentProgram_AR" + '</b></small></h6></td>';
+            html += '<td>' + item.ZHOStudentProgram_AR + '</td>';
+            html += '<td><h6><small><b>' + "ZHOStudentProgram_CODE" + '</b></small></h6></td>';
+            html += '<td>' + item.ZHOStudentProgram_CODE + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "ZHOStudentProgram_EN" + '</b></small></h6></td>';
+            html += '<td>' + item.ZHOStudentProgram_EN + '</td>';
+       
+            html += '</tr>';
+
+            html += '</tbody>  </table>';
+
+
+            return html
+        }
+
+    </script>
+}

@@ -1,0 +1,2172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="packages\JavaScriptEngineSwitcher.V8.Native.win-x64.3.5.5\build\net45\JavaScriptEngineSwitcher.V8.Native.win-x64.props" Condition="Exists('packages\JavaScriptEngineSwitcher.V8.Native.win-x64.3.5.5\build\net45\JavaScriptEngineSwitcher.V8.Native.win-x64.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{047F9D04-62EE-40D8-AA57-D64B1960B202}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MOCDIntegrations</RootNamespace>
+    <AssemblyName>MOCDIntegrations</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44349</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.7</TypeScriptToolsVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdvancedStringBuilder, Version=0.1.0.0, Culture=neutral, PublicKeyToken=e818a2fc08933ddb, processorArchitecture=MSIL">
+      <HintPath>packages\AdvancedStringBuilder.0.1.0\lib\net45\AdvancedStringBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearScript, Version=6.0.2.0, Culture=neutral, PublicKeyToken=935d0c957da47c73, processorArchitecture=MSIL">
+      <HintPath>packages\JavaScriptEngineSwitcher.V8.3.5.5\lib\net45\ClearScript.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="JSPool, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2fc7775f73072640, processorArchitecture=MSIL">
+      <HintPath>packages\JSPool.4.0.0\lib\net45\JSPool.dll</HintPath>
+    </Reference>
+    <Reference Include="MessageIntegrity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\MessageIntegrity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.Internal, Version=5.0.11.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Cryptography.Internal.5.0.11\lib\net461\Microsoft.AspNetCore.Cryptography.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation, Version=5.0.11.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Cryptography.KeyDerivation.5.0.11\lib\net461\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Services.AppAuthentication, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Azure.Services.AppAuthentication.1.4.0\lib\net472\Microsoft.Azure.Services.AppAuthentication.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.SqlClient, Version=1.13.20136.2, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.SqlClient.1.1.3\lib\net46\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Binder.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.5.0.0\lib\net461\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.5.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options.ConfigurationExtensions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.ConfigurationExtensions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=3.0.8.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Identity.Client.3.0.8\lib\net45\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Clients.ActiveDirectory.5.2.0\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.JsonWebTokens.5.5.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Logging.5.5.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Protocols.5.5.0\lib\net461\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.5.5.0\lib\net461\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Tokens.5.5.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.WebForms.10.0.40219.1\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=108.0.2.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>packages\RestSharp.108.0.2\lib\netstandard2.0\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>packages\Serilog.2.10.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.MSSqlServer, Version=5.6.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>packages\Serilog.Sinks.MSSqlServer.5.6.0\lib\net472\Serilog.Sinks.MSSqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.PeriodicBatching, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>packages\Serilog.Sinks.PeriodicBatching.2.3.0\lib\net45\Serilog.Sinks.PeriodicBatching.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Configuration.ConfigurationManager.4.5.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.5.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.IdentityModel.Tokens.Jwt.5.5.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Permissions.4.5.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Principal.Windows.4.5.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.5.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.5.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Connected Services\ADEWA\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ADJDService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ADMilitaryPensionService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ADMOwnerProfile\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ADPoliceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ADRPBFService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\AJMDEDLICENSE\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\AJMDED\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\AJMFZ\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\AJMHR\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\AJMMUNService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\AJREService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\BirthCertificate\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\CDAService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\DCMaritalService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\DeathQueryService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\DEWAService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\DMAT\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\DOFPENSION\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\FAHRService2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\FAHRService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\FamilyBook\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\FUJDEDService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\FUJLandService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\FUJRentalService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ICP_PersoanlProfileNew\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ICP_PersonalProfile\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\INPRISONSTATUS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\MoEcService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\MoEIService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\MoIService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\MoJService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\PersonalProfile\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\RAKLAND\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\RAKLEASECONTRACT\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SCMAF\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SDTPSService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SDTPSVS2019\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SCMAFBeneficiary\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SHJHR\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SSSFPService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SSSFRPService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UMMDEDService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ZFService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AADCAccountController.cs" />
+    <Compile Include="Controllers\CDANewController.cs" />
+    <Compile Include="Controllers\AJMLiscenceInformationController.cs" />
+    <Compile Include="Controllers\AJMOwnerPropertyDetailsController.cs" />
+    <Compile Include="Controllers\AJMResidentialDetailsController.cs" />
+    <Compile Include="Controllers\AJMShareholderDetailsController.cs" />
+    <Compile Include="Controllers\AJMStakeHolderDetailsController.cs" />
+    <Compile Include="Controllers\ADDCAccountController.cs" />
+    <Compile Include="Controllers\DEWAValidateAccountController.cs" />
+    <Compile Include="Controllers\EWAController.cs" />
+    <Compile Include="Controllers\EWEValidateAccountController.cs" />
+    <Compile Include="Controllers\InternalInflationController.cs" />
+    <Compile Include="Controllers\MOEcNERBLDController.cs" />
+    <Compile Include="Controllers\ADGController.cs" />
+    <Compile Include="Controllers\MOEChildProtectionController.cs" />
+    <Compile Include="Controllers\MOEStudentsHistoricalController.cs" />
+    <Compile Include="Controllers\MOIHomeArresPrisonersController.cs" />
+    <Compile Include="Controllers\MOJCaseDetailsController.cs" />
+    <Compile Include="Controllers\NAFISController.cs" />
+    <Compile Include="Controllers\SCHSController.cs" />
+    <Compile Include="Controllers\SEWAValidationController.cs" />
+    <Compile Include="Controllers\SPEAController.cs" />
+    <Compile Include="Controllers\UnknownParentsController.cs" />
+    <Compile Include="Controllers\AidsPersonsController.cs" />
+    <Compile Include="Controllers\ChildViolenceController.cs" />
+    <Compile Include="Controllers\NRCClientController.cs" />
+    <Compile Include="Controllers\ADAFSAController.cs" />
+    <Compile Include="Controllers\ADDCController.cs" />
+    <Compile Include="Controllers\ADDEDController.cs" />
+    <Compile Include="Controllers\ADEKStudentInfoController.cs" />
+    <Compile Include="Controllers\ADEWAController.cs" />
+    <Compile Include="Controllers\ADHAController.cs" />
+    <Compile Include="Controllers\ADJDAttestationController.cs" />
+    <Compile Include="Controllers\ADJDController.cs" />
+    <Compile Include="Controllers\ADKFController.cs" />
+    <Compile Include="Controllers\ADMILITARYController.cs" />
+    <Compile Include="Controllers\ADPContractDetailsController.cs" />
+    <Compile Include="Controllers\ADPEmployeeInfoController.cs" />
+    <Compile Include="Controllers\ADPoliceController.cs" />
+    <Compile Include="Controllers\ADPVehicleCountController.cs" />
+    <Compile Include="Controllers\ADRPBFController.cs" />
+    <Compile Include="Controllers\ADRPBF_NewController.cs" />
+    <Compile Include="Controllers\ADSSAController.cs" />
+    <Compile Include="Controllers\AJHRDController.cs" />
+    <Compile Include="Controllers\AJMMUNController.cs" />
+    <Compile Include="Controllers\BirthCertificateController.cs" />
+    <Compile Include="Controllers\CDAController.cs" />
+    <Compile Include="Controllers\DeathCertificateController.cs" />
+    <Compile Include="Controllers\LulluBalanceInquiryController.cs" />
+    <Compile Include="Controllers\LulluCardHistoryController.cs" />
+    <Compile Include="Controllers\MBHREController.cs" />
+    <Compile Include="Controllers\RAKCourtsMarriageDetailsController.cs" />
+    <Compile Include="Controllers\RAKCourtsDivorceDetailsController.cs" />
+    <Compile Include="Controllers\SharjahMunicipalityController.cs" />
+    <Compile Include="Controllers\SSSDSewaController.cs" />
+    <Compile Include="Controllers\FEWAController.cs" />
+    <Compile Include="Controllers\DCMARITALController.cs" />
+    <Compile Include="Controllers\DEWAController.cs" />
+    <Compile Include="Controllers\DMATController.cs" />
+    <Compile Include="Controllers\DPDeathQueryController.cs" />
+    <Compile Include="Controllers\EdaadController.cs" />
+    <Compile Include="Controllers\FAHRController.cs" />
+    <Compile Include="Controllers\FUJDEDController.cs" />
+    <Compile Include="Controllers\FUJLANDController.cs" />
+    <Compile Include="Controllers\FUJRENTALController.cs" />
+    <Compile Include="Controllers\GrantsController.cs" />
+    <Compile Include="Controllers\isodatetimeconverter.cs" />
+    <Compile Include="Controllers\MoEcController.cs" />
+    <Compile Include="Controllers\MoEIController.cs" />
+    <Compile Include="Controllers\MOHREEmployeeController.cs" />
+    <Compile Include="Controllers\MoIController.cs" />
+    <Compile Include="Controllers\MOIPrisonersController.cs" />
+    <Compile Include="Controllers\MoJController.cs" />
+    <Compile Include="Controllers\OwnerProfileController.cs" />
+    <Compile Include="Controllers\AJMANHRController.cs" />
+    <Compile Include="Controllers\AJMDEDController.cs" />
+    <Compile Include="Controllers\AJMFZController.cs" />
+    <Compile Include="Controllers\AJREController.cs" />
+    <Compile Include="Controllers\DLDController.cs" />
+    <Compile Include="Controllers\DPPRISONController.cs" />
+    <Compile Include="Controllers\FamilyBookController.cs" />
+    <Compile Include="Controllers\GPSSAController.cs" />
+    <Compile Include="Controllers\PFMembershipController.cs" />
+    <Compile Include="Controllers\PODCardController.cs" />
+    <Compile Include="Controllers\PPCaseDetailsController.cs" />
+    <Compile Include="Controllers\RAKLANDController.cs" />
+    <Compile Include="Controllers\RAKLEASEController.cs" />
+    <Compile Include="Controllers\SCMAFBenificiaryInfoController.cs" />
+    <Compile Include="Controllers\SCMAFController.cs" />
+    <Compile Include="Controllers\SDTPSController.cs" />
+    <Compile Include="Controllers\SEDDController.cs" />
+    <Compile Include="Controllers\SEWAController.cs" />
+    <Compile Include="Controllers\SharjahCharityController.cs" />
+    <Compile Include="Controllers\SharjahUniversityController.cs" />
+    <Compile Include="Controllers\SHJDHController.cs" />
+    <Compile Include="Controllers\SSSFPController.cs" />
+    <Compile Include="Controllers\SSSFRPController.cs" />
+    <Compile Include="Controllers\StudentEFileController.cs" />
+    <Compile Include="Controllers\UMMDEDController.cs" />
+    <Compile Include="Controllers\ZFController.cs" />
+    <Compile Include="Controllers\ZHOController.cs" />
+    <Compile Include="Models\ADAFSADetails.cs" />
+    <Compile Include="Models\ADDCDetails.cs" />
+    <Compile Include="Models\ADEKStudentInfoDetails.cs" />
+    <Compile Include="Models\ADGDetails.cs" />
+    <Compile Include="Models\ADHADetails.cs" />
+    <Compile Include="Models\ADJDAttestation.cs" />
+    <Compile Include="Models\ADJDDetails.cs" />
+    <Compile Include="Models\ADKFDetails.cs" />
+    <Compile Include="Models\ADMILITARYDetails.cs" />
+    <Compile Include="Models\ADPemployeeInfo\OutParameters.cs" />
+    <Compile Include="Models\ADPemployeeInfo\Root.cs" />
+    <Compile Include="Models\ADPemployeeInfo\Row.cs" />
+    <Compile Include="Models\ADPoliceDetails.cs" />
+    <Compile Include="Models\ADRPBFDetails.cs" />
+    <Compile Include="Models\ADRPBFDetails_New.cs" />
+    <Compile Include="Models\ADSSADetails.cs" />
+    <Compile Include="Models\AidsPerson\AidsPersons.cs" />
+    <Compile Include="Models\AidsPerson\APIResponse.cs" />
+    <Compile Include="Models\AJHRD.cs" />
+    <Compile Include="Models\AJMMUNDetails.cs" />
+    <Compile Include="Models\AJMOwnerPropertiesDetails.cs" />
+    <Compile Include="Models\AJMResidentialDetails.cs" />
+    <Compile Include="Models\AJMShareDetails.cs" />
+    <Compile Include="Models\AJMStakeHoldersDetails.cs" />
+    <Compile Include="Models\BirthCertificateDetails.cs" />
+    <Compile Include="Models\BlockChainLog.cs" />
+    <Compile Include="Models\CDADetails.cs" />
+    <Compile Include="Models\CDADetailsNew.cs" />
+    <Compile Include="Models\ChildViolence\APIResponse.cs" />
+    <Compile Include="Models\ChildViolence\ChildViolenceCase.cs" />
+    <Compile Include="Models\AADCAccountDetails.cs" />
+    <Compile Include="Models\DewaDetailsModel.cs" />
+    <Compile Include="Models\EWEAccountDetails.cs" />
+    <Compile Include="Models\SEWAAccountDetails.cs" />
+    <Compile Include="Models\DeathCertificateDetails.cs" />
+    <Compile Include="Models\EWAModel.cs" />
+    <Compile Include="Models\FamilyBookModel.cs" />
+    <Compile Include="Models\FEWA\AccountDetails.cs" />
+    <Compile Include="Models\FEWA\AddressDetails.cs" />
+    <Compile Include="Models\FEWA\LatestInvoice.cs" />
+    <Compile Include="Models\FEWA\Root.cs" />
+    <Compile Include="Models\CRMModels.cs" />
+    <Compile Include="Models\DEWADetails.cs" />
+    <Compile Include="Models\DMATDetails.cs" />
+    <Compile Include="Models\DPDeathQueryDeatils.cs" />
+    <Compile Include="Models\FUJDEDDetails.cs" />
+    <Compile Include="Models\FUJLANDDetails.cs" />
+    <Compile Include="Models\FUJRENTALDetails.cs" />
+    <Compile Include="Models\GPSSADetails.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MoHController.cs" />
+    <Compile Include="Controllers\MOHRECompanyController.cs" />
+    <Compile Include="Controllers\PersonalProfileController.cs" />
+    <Compile Include="Controllers\SHJHRController.cs" />
+    <Compile Include="Controllers\SHJPRISONController.cs" />
+    <Compile Include="Controllers\SSSDController.cs" />
+    <Compile Include="Controllers\TAWTHEEQController.cs" />
+    <Compile Include="Controllers\DoFController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADDEDDetails.cs" />
+    <Compile Include="Models\ADEWADetails.cs" />
+    <Compile Include="Models\AesOperation.cs" />
+    <Compile Include="Models\AJMANHR.cs" />
+    <Compile Include="Models\AJMDEDDetails.cs" />
+    <Compile Include="Models\AJMFZDetails.cs" />
+    <Compile Include="Models\AJRE.cs" />
+    <Compile Include="Models\DCMARITALDetails.cs" />
+    <Compile Include="Models\DeathDetail.cs" />
+    <Compile Include="Models\DLDDetails.cs" />
+    <Compile Include="Models\DoFDetails.cs" />
+    <Compile Include="Models\DPPRISONSTATUSDetails.cs" />
+    <Compile Include="Models\FAHRDetails.cs" />
+    <Compile Include="Models\FamilyBookDetails.cs" />
+    <Compile Include="Models\IEUtils.cs" />
+    <Compile Include="Models\InternalInflationDetails.cs" />
+    <Compile Include="Models\JsonHelper.cs" />
+    <Compile Include="Models\LogIntegrationDetails.cs" />
+    <Compile Include="Models\LogRequestParameters.cs" />
+    <Compile Include="Models\LulluBalanceInquiryDetails.cs" />
+    <Compile Include="Models\LulluCardHistoryDetails.cs" />
+    <Compile Include="Models\MBHREDetails.cs" />
+    <Compile Include="Models\MoEcDetails.cs" />
+    <Compile Include="Models\MOEcNERBL\ServiceResponseModel.cs" />
+    <Compile Include="Models\MOEEducationDetails.cs" />
+    <Compile Include="Models\MoEIDetails.cs" />
+    <Compile Include="Models\MOEStudentHistoricalDetails.cs" />
+    <Compile Include="Models\MOHDetails.cs" />
+    <Compile Include="Models\MOHREEmployeeDetails.cs" />
+    <Compile Include="Models\MoIDetails.cs" />
+    <Compile Include="Models\MOIHomeArresPrisonersDetails.cs" />
+    <Compile Include="Models\MOIPrisonersDetails.cs" />
+    <Compile Include="Models\MOJCaseDetailsModel.cs" />
+    <Compile Include="Models\MoJDeatils.cs" />
+    <Compile Include="Models\NAFIS.cs" />
+    <Compile Include="Models\NRC_Client\APIResponse.cs" />
+    <Compile Include="Models\NRC_Client\NRCClientDetails.cs" />
+    <Compile Include="Models\oAuthTokenGeneration.cs" />
+    <Compile Include="Models\ContractDetails\OutParameters.cs" />
+    <Compile Include="Models\OwnerProfileDetails.cs" />
+    <Compile Include="Models\PersonalProfileDetails.cs" />
+    <Compile Include="Models\POD.cs" />
+    <Compile Include="Models\PPCaseDetails.cs" />
+    <Compile Include="Models\PPDetails.cs" />
+    <Compile Include="Models\QueryCustomer.cs" />
+    <Compile Include="Models\RAKCourtsMarriageDetailsModel.cs" />
+    <Compile Include="Models\RAKDivorceDetailsModel.cs" />
+    <Compile Include="Models\RAKLandDetails.cs" />
+    <Compile Include="Models\RAKLEASEDetails.cs" />
+    <Compile Include="Models\ContractDetails\Root.cs" />
+    <Compile Include="Models\SCHSDetails.cs" />
+    <Compile Include="Models\SDTPSDetails.cs" />
+    <Compile Include="Models\SEDD.cs" />
+    <Compile Include="Models\SEWADetails.cs" />
+    <Compile Include="Models\SharjahCharityDetails.cs" />
+    <Compile Include="Models\SharjahUniversityDetails.cs" />
+    <Compile Include="Models\SHJDHDetails.cs" />
+    <Compile Include="Models\SHJHRDetails.cs" />
+    <Compile Include="Models\SHJPRISONDATA.cs" />
+    <Compile Include="Models\ShrajahMunciplalityDetails.cs" />
+    <Compile Include="Models\SPEADetails.cs" />
+    <Compile Include="Models\SSSD.cs" />
+    <Compile Include="Models\SSSDSewaDetails.cs" />
+    <Compile Include="Models\SSSFPDetails.cs" />
+    <Compile Include="Models\SSSFRPDetails.cs" />
+    <Compile Include="Models\StudentEFile.cs" />
+    <Compile Include="Models\StudentInfo\AcademicDetails.cs" />
+    <Compile Include="Models\StudentInfo\AddressDetails.cs" />
+    <Compile Include="Models\StudentInfo\BasicDetails.cs" />
+    <Compile Include="Models\StudentInfo\ContactDetails.cs" />
+    <Compile Include="Models\StudentInfo\Homeform.cs" />
+    <Compile Include="Models\StudentInfo\NameArabic.cs" />
+    <Compile Include="Models\StudentInfo\PageDetails.cs" />
+    <Compile Include="Models\StudentInfo\PersonName.cs" />
+    <Compile Include="Models\StudentInfo\ResponseStatus.cs" />
+    <Compile Include="Models\StudentInfo\Root.cs" />
+    <Compile Include="Models\StudentInfo\School.cs" />
+    <Compile Include="Models\StudentInfo\StudentDatum.cs" />
+    <Compile Include="Models\TAWTHEEQDetails.cs" />
+    <Compile Include="Models\MOHRECompanyDetails.cs" />
+    <Compile Include="Models\TokenDetails.cs" />
+    <Compile Include="Models\UMMDEDDetails.cs" />
+    <Compile Include="Models\UnknownParents\APIResponse.cs" />
+    <Compile Include="Models\UnknownParents\UnknownParents.cs" />
+    <Compile Include="Models\VehicleCount\OutParameters.cs" />
+    <Compile Include="Models\VehicleCount\Root.cs" />
+    <Compile Include="Models\ZFDetails.cs" />
+    <Compile Include="Models\ZHODetails.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\CustomJsonFilter.cs" />
+    <Compile Include="Utils\CustomJsonResult.cs" />
+    <Compile Include="Utils\DBManager.cs" />
+    <Compile Include="Utils\Tables.cs" />
+    <Compile Include="Utils\Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Connected Services\ADEWA\MOCDIntegrations.ADEWA.CustomerClass.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADEWA\MOCDIntegrations.ADEWA.CustomerName.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADEWA\MOCDIntegrations.ADEWA.CustomerPremiseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADEWA\MOCDIntegrations.ADEWA.ResponseTrnHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADEWA\MOCDIntegrations.ADEWA.WaterElectricityBillDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADEWA\MOCDIntegrations.ADEWA.WaterElectricityBillList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADEWA\MOCDIntegrations.ADEWA.WaterElectricityBillListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ADEWA\getWaterAndElectricityBill_ADWEA1.wsdl" />
+    <None Include="Connected Services\ADJDService\ABU_JD_GetMarraigeContractDetails.wsdl" />
+    <Content Include="Connected Services\ADJDService\MOCDIntegrations.ADJDService.GetMarriageContractDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADJDService\MOCDIntegrations.ADJDService.GetMarriageContractDetails_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ADMilitaryPensionService\5e6b734e2f9c68db4bdfe810bfe6d96e.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ADMilitaryPensionService\getMilitaryPensionDetails_ADDOF.wsdl" />
+    <None Include="Connected Services\ADEWA\configuration91.svcinfo" />
+    <None Include="Connected Services\ADEWA\configuration.svcinfo" />
+    <None Include="Connected Services\ADEWA\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\ADJDService\configuration91.svcinfo" />
+    <None Include="Connected Services\ADJDService\configuration.svcinfo" />
+    <None Include="Connected Services\ADJDService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\ADMilitaryPensionService\MOCDIntegrations.ADMilitaryPensionService.GetHREmployeeDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADMilitaryPensionService\MOCDIntegrations.ADMilitaryPensionService.HREmployeeDetailsOut.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ADMilitaryPensionService\configuration91.svcinfo" />
+    <None Include="Connected Services\ADMilitaryPensionService\configuration.svcinfo" />
+    <None Include="Connected Services\ADMilitaryPensionService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\ADMOwnerProfile\MOCDIntegrations.ADMOwnerProfile.GetOwnerIdByOwnerIDNResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADMOwnerProfile\MOCDIntegrations.ADMOwnerProfile.GetOwnerIdByOwnerIDNResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADMOwnerProfile\MOCDIntegrations.ADMOwnerProfile.GetPlotOwnershipResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADMOwnerProfile\MOCDIntegrations.ADMOwnerProfile.GetPlotOwnershipResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ADMOwnerProfile\getOwnerProfile.wsdl" />
+    <None Include="Connected Services\ADPoliceService\5e6b734e2f9c68db4bdfe810bfe6d96e.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ADPoliceService\5e6b734e2f9c68db4bdfe810bfe6d96e1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ADPoliceService\5e6b734e2f9c68db4bdfe810bfe6d96e2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ADPoliceService\5e6b734e2f9c68db4bdfe810bfe6d96e3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\ADPoliceService\MOCDIntegrations.ADPoliceService.getVehicleRegistrationListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADPoliceService\MOCDIntegrations.ADPoliceService.getVehicleRegistrationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADPoliceService\MOCDIntegrations.ADPoliceService.ResponseTrnHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADPoliceService\MOCDIntegrations.ADPoliceService.VehicleRegistrationDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADPoliceService\MOCDIntegrations.ADPoliceService.VehicleRegistrationListType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ADPoliceService\V1.wsdl" />
+    <None Include="Connected Services\ADRPBFService\5e6b734e2f9c68db4bdfe810bfe6d96e.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ADRPBFService\5e6b734e2f9c68db4bdfe810bfe6d96e1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ADRPBFService\5e6b734e2f9c68db4bdfe810bfe6d96e2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ADRPBFService\5e6b734e2f9c68db4bdfe810bfe6d96e3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ADRPBFService\getSalaryDetails_ADRPBF.wsdl" />
+    <Content Include="Connected Services\ADRPBFService\MOCDIntegrations.ADRPBFService.GetSalaryDetails_Resp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ADRPBFService\MOCDIntegrations.ADRPBFService.MemberInformationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\AJMDEDLICENSE\AJM_DED_getLicenseOwnershipDetails.wsdl" />
+    <None Include="Connected Services\ADPoliceService\configuration91.svcinfo" />
+    <None Include="Connected Services\ADPoliceService\configuration.svcinfo" />
+    <None Include="Connected Services\ADPoliceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\ADRPBFService\configuration91.svcinfo" />
+    <None Include="Connected Services\ADRPBFService\configuration.svcinfo" />
+    <None Include="Connected Services\ADRPBFService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\AJMDEDLICENSE\MOCDIntegrations.AJMDEDLICENSE.GetLicenseOwnershipDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\AJMDEDLICENSE\MOCDIntegrations.AJMDEDLICENSE.GetLicenseOwnershipDetails_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\AJMDED\AJM_DED_getLicenseDetailsbyEID.wsdl" />
+    <None Include="Connected Services\ADMOwnerProfile\configuration91.svcinfo" />
+    <None Include="Connected Services\ADMOwnerProfile\configuration.svcinfo" />
+    <None Include="Connected Services\ADMOwnerProfile\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\AJMDEDLICENSE\configuration91.svcinfo" />
+    <None Include="Connected Services\AJMDEDLICENSE\configuration.svcinfo" />
+    <None Include="Connected Services\AJMDEDLICENSE\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\AJMDED\MOCDIntegrations.AJMDED.GetLicenseDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\AJMDED\MOCDIntegrations.AJMDED.GetLicenseDetails_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\AJMFZ\AJM_DED_FZ_getLicenseDetailsbyPP.wsdl" />
+    <None Include="Connected Services\AJMDED\configuration91.svcinfo" />
+    <None Include="Connected Services\AJMDED\configuration.svcinfo" />
+    <None Include="Connected Services\AJMDED\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\AJMFZ\MOCDIntegrations.AJMFZ.GetLicenseDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\AJMFZ\MOCDIntegrations.AJMFZ.GetLicenseDetails_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\AJMHR\AJM_HRD_getEmployeeDetailsbyEID.wsdl" />
+    <Content Include="Connected Services\AJMHR\MOCDIntegrations.AJMHR.GetEmployeeDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\AJMHR\MOCDIntegrations.AJMHR.GetEmployeeDetails_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\AJMMUNService\AJM_MPD_getResidentialGrantStatusbyEID.wsdl" />
+    <Content Include="Connected Services\AJMMUNService\MOCDIntegrations.AJMMUNService.GetResidentialGrantStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\AJMMUNService\MOCDIntegrations.AJMMUNService.GetResidentialGrantStatus_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\AJREService\AJM_RE_getOwnerPropertyDetailsbyEID.wsdl" />
+    <None Include="Connected Services\AJMMUNService\configuration91.svcinfo" />
+    <None Include="Connected Services\AJMMUNService\configuration.svcinfo" />
+    <None Include="Connected Services\AJMMUNService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\AJREService\MOCDIntegrations.AJREService.GetOwnerPropertyDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\AJREService\MOCDIntegrations.AJREService.GetOwnerPropertyDetails_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\AJMHR\configuration91.svcinfo" />
+    <None Include="Connected Services\AJMHR\configuration.svcinfo" />
+    <None Include="Connected Services\AJMHR\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\AJREService\configuration91.svcinfo" />
+    <None Include="Connected Services\AJREService\configuration.svcinfo" />
+    <None Include="Connected Services\AJREService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\AJMFZ\configuration91.svcinfo" />
+    <None Include="Connected Services\AJMFZ\configuration.svcinfo" />
+    <None Include="Connected Services\AJMFZ\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\BirthCertificate\5e6b734e2f9c68db4bdfe810bfe6d96e.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BirthCertificate\5e6b734e2f9c68db4bdfe810bfe6d96e1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BirthCertificate\5e6b734e2f9c68db4bdfe810bfe6d96e2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\BirthCertificate\MOCDIntegrations.BirthCertificate.BirthCertificatePullDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BirthCertificate\MOCDIntegrations.BirthCertificate.BirthCertificatePullListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BirthCertificate\MOCDIntegrations.BirthCertificate.getBirthCertificatePullDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BirthCertificate\MOCDIntegrations.BirthCertificate.getBirthCertificatePullListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BirthCertificate\MOCDIntegrations.BirthCertificate.ResponseTrnHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\BirthCertificate\V1.wsdl" />
+    <None Include="Connected Services\CDAService\1.wsdl" />
+    <None Include="Connected Services\BirthCertificate\configuration91.svcinfo" />
+    <None Include="Connected Services\BirthCertificate\configuration.svcinfo" />
+    <None Include="Connected Services\BirthCertificate\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\CDAService\MOCDIntegrations.CDAService.CDA_spcMOCD_spcWSDL_spcWFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CDAService\MOCDIntegrations.CDAService.CDA_spcMOCD_spcWSDL_spcWF_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\DCMaritalService\5e6b734e2f9c68db4bdfe810bfe6d96e.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CDAService\configuration91.svcinfo" />
+    <None Include="Connected Services\CDAService\configuration.svcinfo" />
+    <None Include="Connected Services\CDAService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.getBinaryFileByCertifcateRefResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.getBinaryFileByCertifcateRefResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.getMDinfoByCertifcateRefResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.getMDinfoByCertifcateRefResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.getMDinfoByDateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.getMDinfoByDateResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.getMDinfoByEidaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.getMDinfoByEidaResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.getMDinfoByFullNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.getMDinfoByFullNameResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.getMDinfoBySimilarNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.getMDinfoBySimilarNameResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DCMaritalService\MOCDIntegrations.DCMaritalService.outHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\DCMaritalService\V1.wsdl" />
+    <None Include="Connected Services\DeathQueryService\deathQuery_MOH.wsdl" />
+    <None Include="Connected Services\DCMaritalService\configuration91.svcinfo" />
+    <None Include="Connected Services\DCMaritalService\configuration.svcinfo" />
+    <None Include="Connected Services\DCMaritalService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\DeathQueryService\MOCDIntegrations.DeathQueryService.DeathQueryResponseModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DeathQueryService\MOCDIntegrations.DeathQueryService.RequestHeader.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DeathQueryService\MOCDIntegrations.DeathQueryService.ResponseContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\DeathQueryService\configuration91.svcinfo" />
+    <None Include="Connected Services\DeathQueryService\configuration.svcinfo" />
+    <None Include="Connected Services\DeathQueryService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\DEWAService\configuration91.svcinfo" />
+    <None Include="Connected Services\DEWAService\configuration.svcinfo" />
+    <Content Include="Connected Services\DEWAService\MOCDIntegrations.DEWAService.GetPremiseDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DEWAService\MOCDIntegrations.DEWAService.GetPremiseDetailsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\DEWAService\getPremiseAccountDetails_DEWA1.wsdl" />
+    <None Include="Connected Services\DEWAService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\DMAT\MOCDIntegrations.DMAT.getTawtheeqDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DMAT\MOCDIntegrations.DMAT.getTawtheeqListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DMAT\MOCDIntegrations.DMAT.ResponseTrnHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DMAT\MOCDIntegrations.DMAT.TawtheeqAllDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DMAT\MOCDIntegrations.DMAT.TawtheeqListResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DOFPENSION\MOCDIntegrations.DOFPENSION.Entry.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\DOFPENSION\MOCDIntegrations.DOFPENSION.pensionDetailsPerEmiratesIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\DMAT\1.wsdl" />
+    <None Include="Connected Services\DMAT\358d5ac2-ae69-11e7-a1c8-98eaa63972e2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DMAT\358d5ac2-ae69-11e7-a1c8-98eaa63972e21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DMAT\cea6c482-ebc1-44c0-bd2e-3772b8881d38.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DMAT\cea6c482-ebc1-44c0-bd2e-3772b8881d381.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DOFPENSION\v1.wsdl" />
+    <None Include="Connected Services\FAHRService2\APPS_XXFAHR_MOCD_WEBSERVICE_PKG_GET_EMPLOYEE_DETAILS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FAHRService2\ISGServiceFault.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\FAHRService2\MOCDIntegrations.FAHRService2.GET_EMPLOYEE_DETAILSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FAHRService2\MOCDIntegrations.FAHRService2.OutputParameters.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\FAHRService2\XXFAHR_MOCD_WEBSERVICE_PKG.wsdl" />
+    <None Include="Connected Services\FAHRService\5e6b734e2f9c68db4bdfe810bfe6d96e.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FAHRService\5e6b734e2f9c68db4bdfe810bfe6d96e1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FAHRService2\configuration91.svcinfo" />
+    <None Include="Connected Services\FAHRService2\configuration.svcinfo" />
+    <None Include="Connected Services\FAHRService2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\FAHRService\MOCDIntegrations.FAHRService.GET_EMPLOYEE_DETAILSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FAHRService\MOCDIntegrations.FAHRService.OutputParameters.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\FAHRService\XXFAHR_MOCD_WEBSERVICE_PKG.wsdl" />
+    <None Include="Connected Services\FAHRService\configuration91.svcinfo" />
+    <None Include="Connected Services\FAHRService\configuration.svcinfo" />
+    <None Include="Connected Services\FAHRService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\DOFPENSION\configuration91.svcinfo" />
+    <None Include="Connected Services\DOFPENSION\configuration.svcinfo" />
+    <None Include="Connected Services\DOFPENSION\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\FamilyBook\MOCDIntegrations.FamilyBook.FamilyBookDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FamilyBook\MOCDIntegrations.FamilyBook.getFamilyBookDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FamilyBook\MOCDIntegrations.FamilyBook.TrnHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\FamilyBook\cbc4a143-4b60-11e7-a81c-e8f666d71dd9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FamilyBook\getFamilyBookDetails1.wsdl" />
+    <None Include="Connected Services\FUJDEDService\FUJ_DED_getTradeLicenseDetailsbyEID.wsdl" />
+    <None Include="Connected Services\FamilyBook\configuration91.svcinfo" />
+    <None Include="Connected Services\FamilyBook\configuration.svcinfo" />
+    <None Include="Connected Services\FamilyBook\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\FUJDEDService\MOCDIntegrations.FUJDEDService.GetTradeLicenseDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FUJDEDService\MOCDIntegrations.FUJDEDService.GetTradeLicenseDetails_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\FUJLandService\FUJ_MUN_getLandDetailsbyEID.wsdl" />
+    <Content Include="Connected Services\FUJLandService\MOCDIntegrations.FUJLandService.GetLandDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FUJLandService\MOCDIntegrations.FUJLandService.GetLandDetails_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\FUJRentalService\FUJ_MUN_getRentalDetailsbyEID.wsdl" />
+    <Content Include="Connected Services\FUJRentalService\MOCDIntegrations.FUJRentalService.GetRentalDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FUJRentalService\MOCDIntegrations.FUJRentalService.GetRentalDetails_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ICP_PersoanlProfileNew\b04c6829-0b67-4d22-923e-ed3201decf10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ICP_PersoanlProfileNew\b04c6829-0b67-4d22-923e-ed3201decf101.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ICP_PersoanlProfileNew\b04c6829-0b67-4d22-923e-ed3201decf102.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ICP_PersoanlProfileNew\getPersonInquiry_ICA.wsdl" />
+    <Content Include="Connected Services\ICP_PersoanlProfileNew\MOCDIntegrations.ICP_PersoanlProfileNew.personInquiryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ICP_PersoanlProfileNew\MOCDIntegrations.ICP_PersoanlProfileNew.PersonInquiryResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ICP_PersonalProfile\52cd7cfe-8e0a-11ea-bd97-eb374c99a270.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ICP_PersonalProfile\52cd7cfe-8e0a-11ea-bd97-eb374c99a2701.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ICP_PersonalProfile\52cd7cfe-8e0a-11ea-bd97-eb374c99a2702.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ICP_PersonalProfile\getPersonInquiry_ICA.wsdl" />
+    <None Include="Connected Services\ICP_PersoanlProfileNew\configuration91.svcinfo" />
+    <None Include="Connected Services\ICP_PersoanlProfileNew\configuration.svcinfo" />
+    <None Include="Connected Services\ICP_PersoanlProfileNew\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\ICP_PersonalProfile\MOCDIntegrations.ICP_PersonalProfile.personInquiryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ICP_PersonalProfile\MOCDIntegrations.ICP_PersonalProfile.PersonInquiryResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\INPRISONSTATUS\DUB_POL_getPrisonStatusbyEID.wsdl" />
+    <None Include="Connected Services\FUJDEDService\configuration91.svcinfo" />
+    <None Include="Connected Services\FUJDEDService\configuration.svcinfo" />
+    <None Include="Connected Services\FUJDEDService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\FUJLandService\configuration91.svcinfo" />
+    <None Include="Connected Services\FUJLandService\configuration.svcinfo" />
+    <None Include="Connected Services\FUJLandService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\FUJRentalService\configuration91.svcinfo" />
+    <None Include="Connected Services\FUJRentalService\configuration.svcinfo" />
+    <None Include="Connected Services\FUJRentalService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\ICP_PersonalProfile\configuration91.svcinfo" />
+    <None Include="Connected Services\ICP_PersonalProfile\configuration.svcinfo" />
+    <None Include="Connected Services\ICP_PersonalProfile\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\INPRISONSTATUS\MOCDIntegrations.INPRISONSTATUS.GetMOIPrisonStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\INPRISONSTATUS\MOCDIntegrations.INPRISONSTATUS.GetMOIPrisonStatus_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\MoEcService\MOCDIntegrations.MoEcService.GetTradeLicenseBasicByEIDPPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\MoEcService\MOCDIntegrations.MoEcService.GetTradeLicenseBasicByEIDPP_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\MoEcService\MOE_getTradeLicenseBasicByEIDPP.wsdl" />
+    <None Include="Connected Services\MoEIService\1.wsdl" />
+    <Content Include="Connected Services\MoEIService\MOCDIntegrations.MoEIService.getHousingDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\MoIService\5e6b734e2f9c68db4bdfe810bfe6d96e.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MoIService\getConductInformation.wsdl" />
+    <None Include="Connected Services\MoEcService\configuration91.svcinfo" />
+    <None Include="Connected Services\MoEcService\configuration.svcinfo" />
+    <None Include="Connected Services\MoEcService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\MoEIService\configuration91.svcinfo" />
+    <None Include="Connected Services\MoEIService\configuration.svcinfo" />
+    <None Include="Connected Services\MoEIService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\MoIService\MOCDIntegrations.MoIService.getPersonCIDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\MoIService\MOCDIntegrations.MoIService.PersonCIDetailsType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\MoIService\MOCDIntegrations.MoIService.TrnHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\MoJService\MOCDIntegrations.MoJService.Data_OutPut.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\MoJService\V1.wsdl" />
+    <None Include="Connected Services\INPRISONSTATUS\configuration91.svcinfo" />
+    <None Include="Connected Services\INPRISONSTATUS\configuration.svcinfo" />
+    <None Include="Connected Services\INPRISONSTATUS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\MoIService\configuration91.svcinfo" />
+    <None Include="Connected Services\MoIService\configuration.svcinfo" />
+    <None Include="Connected Services\MoIService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\MoJService\configuration91.svcinfo" />
+    <None Include="Connected Services\MoJService\configuration.svcinfo" />
+    <None Include="Connected Services\MoJService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\PersonalProfile\getPersonInquiry_ICA.wsdl" />
+    <Content Include="Connected Services\PersonalProfile\MOCDIntegrations.PersonalProfile.personInquiryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\PersonalProfile\MOCDIntegrations.PersonalProfile.PersonInquiryResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\RAKLAND\createCase_RAKM.wsdl" />
+    <Content Include="Connected Services\RAKLAND\MOCDIntegrations.RAKLAND.DT_MOCD_CI_Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\RAKLAND\MOCDIntegrations.RAKLAND.SI_MOCD_CI_OBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\RAKLEASECONTRACT\getLeaseContractDetails_RAKM.wsdl" />
+    <None Include="Connected Services\RAKLAND\configuration91.svcinfo" />
+    <None Include="Connected Services\RAKLAND\configuration.svcinfo" />
+    <None Include="Connected Services\RAKLAND\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\RAKLEASECONTRACT\MOCDIntegrations.RAKLEASECONTRACT.DT_MOCD_Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\RAKLEASECONTRACT\MOCDIntegrations.RAKLEASECONTRACT.SI_MOCD_OBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SCMAFBeneficiary\MOCDIntegrations.SCMAFBeneficiary.SCAMFBeneficiariesInformationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SCMAFBeneficiary\MOCDIntegrations.SCMAFBeneficiary.SCAMFBeneficiariesInformation_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\SCMAFBeneficiary\V1.wsdl" />
+    <None Include="Connected Services\SCMAF\5e6b734e2f9c68db4bdfe810bfe6d96e.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SCMAF\5e6b734e2f9c68db4bdfe810bfe6d96e1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SCMAF\5e6b734e2f9c68db4bdfe810bfe6d96e2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\SCMAF\MOCDIntegrations.SCMAF.getInheritorStatementDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SCMAF\MOCDIntegrations.SCMAF.getInheritorStatementDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SCMAF\MOCDIntegrations.SCMAF.getInheritorStatementListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SCMAF\MOCDIntegrations.SCMAF.InheritorStatementDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SCMAF\MOCDIntegrations.SCMAF.InheritorStatementDocumentResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SCMAF\MOCDIntegrations.SCMAF.InheritorStatementListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SCMAF\MOCDIntegrations.SCMAF.ResponseTrnHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\SCMAF\V1.wsdl" />
+    <None Include="Connected Services\SDTPSService\5e6b734e2f9c68db4bdfe810bfe6d96e1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SDTPSService\DhIntegrationService.wsdl" />
+    <None Include="Connected Services\RAKLEASECONTRACT\configuration91.svcinfo" />
+    <None Include="Connected Services\RAKLEASECONTRACT\configuration.svcinfo" />
+    <None Include="Connected Services\RAKLEASECONTRACT\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\SCMAF\configuration91.svcinfo" />
+    <None Include="Connected Services\SCMAF\configuration.svcinfo" />
+    <None Include="Connected Services\SCMAF\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.attachmentTypeVO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.branchVO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.createGrantedPlotLetterTrResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.finalProductVO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.getAttachmentTypeByIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.getAttachmentTypesListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.getBranchesListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.getFinalProductStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.getStatusByIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.getStatusListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.statusVO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.getFPStatusDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.getLandUsageByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSService\MOCDIntegrations.SDTPSService.landUsageVO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\SDTPSVS2019\configuration91.svcinfo" />
+    <None Include="Connected Services\SDTPSVS2019\configuration.svcinfo" />
+    <None Include="Connected Services\DMAT\configuration91.svcinfo" />
+    <None Include="Connected Services\DMAT\configuration.svcinfo" />
+    <None Include="Connected Services\DMAT\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\PersonalProfile\configuration91.svcinfo" />
+    <None Include="Connected Services\PersonalProfile\configuration.svcinfo" />
+    <None Include="Connected Services\PersonalProfile\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\SDTPSService\configuration91.svcinfo" />
+    <None Include="Connected Services\SDTPSService\configuration.svcinfo" />
+    <None Include="Connected Services\SDTPSService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\SDTPSVS2019\MOCDIntegrations.SDTPSVS2019.attachmentTypeVO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSVS2019\MOCDIntegrations.SDTPSVS2019.branchVO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSVS2019\MOCDIntegrations.SDTPSVS2019.createGrantedPlotLetterTrResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSVS2019\MOCDIntegrations.SDTPSVS2019.finalProductVO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSVS2019\MOCDIntegrations.SDTPSVS2019.getAttachmentTypeByIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSVS2019\MOCDIntegrations.SDTPSVS2019.getAttachmentTypesListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSVS2019\MOCDIntegrations.SDTPSVS2019.getBranchesListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSVS2019\MOCDIntegrations.SDTPSVS2019.getFinalProductStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSVS2019\MOCDIntegrations.SDTPSVS2019.getStatusByIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSVS2019\MOCDIntegrations.SDTPSVS2019.getStatusListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SDTPSVS2019\MOCDIntegrations.SDTPSVS2019.statusVO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\SDTPSVS2019\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\SHJHR\configuration91.svcinfo" />
+    <None Include="Connected Services\SHJHR\configuration.svcinfo" />
+    <None Include="Connected Services\SCMAFBeneficiary\configuration91.svcinfo" />
+    <None Include="Connected Services\SCMAFBeneficiary\configuration.svcinfo" />
+    <None Include="Connected Services\SCMAFBeneficiary\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\SHJHR\MOCDIntegrations.SHJHR.GetEmployeeDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SHJHR\MOCDIntegrations.SHJHR.GetEmployeeDetails_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\SHJHR\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\SSSFPService\configuration91.svcinfo" />
+    <None Include="Connected Services\SSSFPService\configuration.svcinfo" />
+    <Content Include="Connected Services\SSSFPService\MOCDIntegrations.SSSFPService.GetPensionerDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SSSFPService\MOCDIntegrations.SSSFPService.GetPensionerDetails_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\SSSFPService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\SSSFRPService\configuration91.svcinfo" />
+    <None Include="Connected Services\SSSFRPService\configuration.svcinfo" />
+    <Content Include="Connected Services\SSSFRPService\MOCDIntegrations.SSSFRPService.RetirementPensionerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SSSFRPService\MOCDIntegrations.SSSFRPService.RetirementPensioner_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\SSSFRPService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\UMMDEDService\MOCDIntegrations.UMMDEDService.LicenseDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\UMMDEDService\MOCDIntegrations.UMMDEDService.LicenseDetails_Output.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\SSSFPService\SHJ_SSSF_getPensionerbyEID.wsdl" />
+    <None Include="Connected Services\SSSFRPService\SHJ_SSSF_getRetirementPensionerbyEID.wsdl" />
+    <None Include="Connected Services\UMMDEDService\UMM_DED_getLicenseDetailsbyEID.wsdl" />
+    <None Include="Connected Services\ZFService\configuration91.svcinfo" />
+    <None Include="Connected Services\ZFService\configuration.svcinfo" />
+    <None Include="Connected Services\UMMDEDService\configuration91.svcinfo" />
+    <None Include="Connected Services\UMMDEDService\configuration.svcinfo" />
+    <None Include="Connected Services\UMMDEDService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Connected Services\ZFService\MOCDIntegrations.ZFService.AppData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ZFService\MOCDIntegrations.ZFService.Resultmsg.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ZFService\MOCDIntegrations.ZFService.Resultmsg1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ZFService\MOCDIntegrations.ZFService.StatusResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ZFService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\responsive.dataTables.min.css" />
+    <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.structure.css" />
+    <Content Include="Content\jquery-ui.theme.css" />
+    <Content Include="Content\js\datatables.min.js" />
+    <Content Include="Content\js\dataTables.responsive.min.js" />
+    <Content Include="Content\metro-colors.css" />
+    <Content Include="Content\metro-colors.min.css" />
+    <Content Include="Content\metro-icons.css" />
+    <Content Include="Content\metro-icons.min.css" />
+    <Content Include="Content\metro-responsive.css" />
+    <Content Include="Content\metro-responsive.min.css" />
+    <Content Include="Content\metro-rtl.css" />
+    <Content Include="Content\metro-rtl.min.css" />
+    <Content Include="Content\metro-schemes.css" />
+    <Content Include="Content\metro-schemes.min.css" />
+    <Content Include="Content\metro.css" />
+    <Content Include="Content\metro.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\metro.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <None Include="Connected Services\SDTPSVS2019\2083429d1b966cedddd7a1700d70fd89.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SDTPSVS2019\DhIntegrationService.wsdl" />
+    <Content Include="Images\AADCLogo.jpg" />
+    <Content Include="Images\ADAFSA.jpeg" />
+    <Content Include="Images\ADAFSA.png" />
+    <Content Include="Images\ADDCLogo.svg" />
+    <Content Include="Images\ADDED.png" />
+    <Content Include="Images\ADDOF.png" />
+    <Content Include="Images\ADEK.png" />
+    <Content Include="Images\ADEWA.png" />
+    <Content Include="Images\ADHA.png" />
+    <Content Include="Images\ADJD.png" />
+    <Content Include="Images\ADKF.jpg" />
+    <Content Include="Images\ADM.png" />
+    <Content Include="Images\ADMILITARY.png" />
+    <Content Include="Images\ADNRC.png" />
+    <Content Include="Images\ADP.png" />
+    <Content Include="Images\ADPolice.png" />
+    <Content Include="Images\ADRPBF.png" />
+    <Content Include="Images\ADSSA.png" />
+    <Content Include="Images\AJMANDED.png" />
+    <Content Include="Images\AjmanFZ.png" />
+    <Content Include="Images\AjmanHR.png" />
+    <Content Include="Images\AJMMUN.png" />
+    <Content Include="Images\AJRE.png" />
+    <Content Include="Images\CDA.png" />
+    <Content Include="Images\crmlogo.png" />
+    <Content Include="Images\dewalogo.png" />
+    <Content Include="Images\DoF.png" />
+    <Content Include="Images\DoFDubai.png" />
+    <Content Include="Images\DubaiCourts.jpg" />
+    <Content Include="Images\DubaiLand.png" />
+    <Content Include="Images\DubaiPolice.png" />
+    <Content Include="Images\FAHR.png" />
+    <Content Include="Images\FEWA.png" />
+    <Content Include="Images\FEWAlogo.png" />
+    <Content Include="Images\FUJDED.png" />
+    <Content Include="Images\FUJLOGO.png" />
+    <Content Include="Images\FUJMUN.png" />
+    <Content Include="Images\FW.png" />
+    <Content Include="Images\GPSSA.png" />
+    <Content Include="Images\Health.png" />
+    <Content Include="Images\ICA.png" />
+    <Content Include="Images\logo-nafis.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\lullu.png" />
+    <Content Include="Images\MBHRE.jpg" />
+    <Content Include="Images\mocdlogo.png" />
+    <Content Include="Images\MoEc.png" />
+    <Content Include="Images\MoEI.png" />
+    <Content Include="Images\MOHAP.png" />
+    <Content Include="Images\MOHRE.png" />
+    <Content Include="Images\MoI.png" />
+    <Content Include="Images\MOIPris.png" />
+    <Content Include="Images\MoJ.png" />
+    <Content Include="Images\NRC.png" />
+    <Content Include="Images\PDF.png" />
+    <Content Include="Images\PP.png" />
+    <Content Include="Images\ppNewlogo.jpg" />
+    <Content Include="Images\RAKCourt.png" />
+    <Content Include="Images\RAKMUN.png" />
+    <Content Include="Images\SCMAF.png" />
+    <Content Include="Images\SDTPS.png" />
+    <Content Include="Images\SEDD.png" />
+    <Content Include="Images\SEWA.png" />
+    <Content Include="Images\SharjahMun.png" />
+    <Content Include="Images\SHChar.png" />
+    <Content Include="Images\SHJDH.png" />
+    <Content Include="Images\SHJHR.png" />
+    <Content Include="Images\SHJPOLICE.png" />
+    <Content Include="Images\SHJUn.png" />
+    <Content Include="Images\ShjUniversity.png" />
+    <Content Include="Images\SSSD.png" />
+    <Content Include="Images\SSSDSEWA.png" />
+    <Content Include="Images\SSSFSHJ.png" />
+    <Content Include="Images\TAWTHEEQ.png" />
+    <Content Include="Images\UMMDED.png" />
+    <Content Include="Images\Zakat.png" />
+    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <Content Include="fonts\selection.json" />
+    <Content Include="fonts\metro.woff" />
+    <Content Include="fonts\metro.ttf" />
+    <Content Include="fonts\metro.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Connected Services\SHJHR\SHJ_DHR_getEmployeeDetailsbyEID.wsdl" />
+    <None Include="Connected Services\ZFService\5e6b734e2f9c68db4bdfe810bfe6d96e.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ZFService\5e6b734e2f9c68db4bdfe810bfe6d96e1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ZFService\5e6b734e2f9c68db4bdfe810bfe6d96e2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ZFService\5e6b734e2f9c68db4bdfe810bfe6d96e3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ZFService\socialSecurityBenefit_ZF.wsdl" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\GeneratePDF.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\metro.js" />
+    <Content Include="Scripts\metro.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\select2.min.css" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\MOHRECompany\MOHRECompany.cshtml" />
+    <Content Include="Views\ADEWA\ADEWA.cshtml" />
+    <Content Include="Views\ADDED\Index.cshtml" />
+    <Content Include="Views\TAWTHEEQ\TAWTHEEQ.cshtml" />
+    <Content Include="Views\AJMANHR\AJMANHR.cshtml" />
+    <Content Include="Views\AJRE\AJRE.cshtml" />
+    <Content Include="Views\SSSD\SSSD.cshtml" />
+    <Content Include="Views\DoF\DoF.cshtml" />
+    <Content Include="Views\MoH\MoH.cshtml" />
+    <Content Include="Views\GPSSA\GPSSA.cshtml" />
+    <Content Include="Views\Shared\_CommonView.cshtml" />
+    <Content Include="Views\SHJPRISON\SHJPRISON.cshtml" />
+    <Content Include="Views\DPPRISON\DPPRISON.cshtml" />
+    <Content Include="Views\DLD\DLD.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\SHJHR\SHJHR.cshtml" />
+    <Content Include="Views\AJMFZ\AJMFZ.cshtml" />
+    <Content Include="Views\AJMDED\Index.cshtml" />
+    <Content Include="Views\PersonalProfile\PersonalProfile.cshtml" />
+    <Content Include="Views\FamilyBook\FamilyBook.cshtml" />
+    <Content Include="Views\OwnerProfile\OwnerProfile.cshtml" />
+    <Content Include="Views\FAHR\FAHR.cshtml" />
+    <Content Include="Views\DCMARITAL\Index.cshtml" />
+    <Content Include="Views\ADMILITARY\Index.cshtml" />
+    <Content Include="Views\AJMMUN\AJMMUN.cshtml" />
+    <Content Include="Views\MoI\MoI.cshtml" />
+    <Content Include="Views\MOHREEmployee\MOHREEmployee.cshtml" />
+    <Content Include="Views\ADPolice\ADPolice.cshtml" />
+    <Content Include="Views\ADRPBF\Index.cshtml" />
+    <Content Include="Views\DPDeathQuery\DPDeathQuery.cshtml" />
+    <Content Include="Views\MoJ\MoJ.cshtml" />
+    <Content Include="Views\ZF\ZF.cshtml" />
+    <Content Include="Views\ADSSA\Index.cshtml" />
+    <Content Include="Views\UMMDED\UMMDED.cshtml" />
+    <Content Include="Views\SSSFP\SSSFP.cshtml" />
+    <Content Include="Views\SSSFRP\SSSFRP.cshtml" />
+    <Content Include="Views\MoEc\MoEc.cshtml" />
+    <Content Include="Views\ADJD\ADJD.cshtml" />
+    <Content Include="Views\FUJDED\FUJDED.cshtml" />
+    <Content Include="Views\FUJLAND\FUJLAND.cshtml" />
+    <Content Include="Views\FUJRENTAL\FUJRENTAL.cshtml" />
+    <Content Include="Views\SDTPS\SDTPS.cshtml" />
+    <Content Include="Views\RAKLAND\RAKLAND.cshtml" />
+    <Content Include="Views\RAKLEASE\RAKLEASE.cshtml" />
+    <Content Include="Views\SEWA\SEWA.cshtml" />
+    <Content Include="Views\DEWA\Index.cshtml" />
+    <Content Include="Views\PODCard\PODCard.cshtml" />
+    <Content Include="Views\StudentEFile\StudentEFile.cshtml" />
+    <Content Include="Views\MoEI\MoEI.cshtml" />
+    <Content Include="Views\Edaad\Index.cshtml" />
+    <Content Include="Views\Grants\Index.cshtml" />
+    <Content Include="Views\PFMembership\Index.cshtml" />
+    <Content Include="Views\CDA\CDA.cshtml" />
+    <Content Include="Views\SEDD\SEDD.cshtml" />
+    <Content Include="Views\SHJDH\SHJDH.cshtml" />
+    <Content Include="Views\AJHRD\Index.cshtml" />
+    <Content Include="Views\DMAT\DMAT.cshtml" />
+    <Content Include="Views\FEWA\FEWA.cshtml" />
+    <Content Include="Views\SCMAFBenificiaryInfo\SCMAFBenificiaryInfo.cshtml" />
+    <Content Include="Views\SCMAF\SCMAF.cshtml" />
+    <Content Include="Views\ADKF\Index.cshtml" />
+    <Content Include="Views\MOIPrisoners\Index.cshtml" />
+    <Content Include="Views\ADAFSA\Index.cshtml" />
+    <Content Include="Views\ADHA\Index.cshtml" />
+    <Content Include="Views\ADEKStudentInfo\Index.cshtml" />
+    <Content Include="Views\PPCaseDetails\Index.cshtml" />
+    <Content Include="Views\BirthCertificate\Index.cshtml" />
+    <Content Include="Views\ADPEmployeeInfo\Index.cshtml" />
+    <Content Include="Views\ADPVehicleCount\Index.cshtml" />
+    <Content Include="Views\ADPContractDetails\Index.cshtml" />
+    <Content Include="Views\SharjahUniversity\Index.cshtml" />
+    <Content Include="Views\SharjahCharity\Index.cshtml" />
+    <Content Include="Views\SSSDSewa\Index.cshtml" />
+    <Content Include="Views\SharjahMunicipality\Index.cshtml" />
+    <Content Include="Views\MBHRE\Index.cshtml" />
+    <Content Include="Views\ADJDAttestation\Index.cshtml" />
+    <Content Include="Views\DeathCertificate\Index.cshtml" />
+    <Content Include="Views\NRCClient\Index.cshtml" />
+    <Content Include="Views\ChildViolence\Index.cshtml" />
+    <Content Include="Views\AidsPersons\Index.cshtml" />
+    <Content Include="Views\UnknownParents\Index.cshtml" />
+    <Content Include="Views\ADDC\Index.cshtml" />
+    <Content Include="Views\RAKCourtsMarriageDetails\Index.cshtml" />
+    <Content Include="Views\RAKCourtsDivorceDetails\Index.cshtml" />
+    <Content Include="Views\LulluCardHistory\Index.cshtml" />
+    <Content Include="Views\LulluBalanceInquiry\Index.cshtml" />
+    <Content Include="Views\MOJCaseDetails\Index.cshtml" />
+    <Content Include="Views\NAFIS\Index.cshtml" />
+    <Content Include="Views\ADG\Index.cshtml" />
+    <Content Include="Views\ADRPBF\SalaryDetails.cshtml" />
+    <Content Include="Views\MOEcNERBLD\Index.cshtml" />
+    <Content Include="Views\MOEChildProtection\Index.cshtml" />
+    <Content Include="Views\ZHO\Index.cshtml" />
+    <Content Include="Views\MOEStudentsHistorical\Index.cshtml" />
+    <Content Include="Views\AJMShareholderDetails\Index.cshtml" />
+    <Content Include="Views\AJMResidentialDetails\Index.cshtml" />
+    <Content Include="Views\AJMStakeHolderDetails\Index.cshtml" />
+    <Content Include="Views\AJMOwnerPropertyDetails\Index.cshtml" />
+    <Content Include="Views\InternalInflation\Index.cshtml" />
+    <Content Include="Views\SCHS\Index.cshtml" />
+    <Content Include="Views\SPEA\Index.cshtml" />
+    <Content Include="Views\MOIHomeArresPrisoners\Index.cshtml" />
+    <Content Include="Views\EWA\Index.cshtml" />
+    <Content Include="Views\CDANew\Index.cshtml" />
+    <Content Include="Views\SEWAValidation\Index.cshtml" />
+    <Content Include="Views\EWEValidateAccount\Index.cshtml" />
+    <Content Include="Views\DEWAValidateAccount\Index.cshtml" />
+    <Content Include="Views\AADCAccount\Index.cshtml" />
+    <Content Include="Views\ADDCAccountController\Index.cshtml" />
+    <Content Include="Views\ADDCAccount\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\AJMLiscenceInformation\" />
+    <Folder Include="Views\Default\" />
+    <Folder Include="Views\ICPPP\" />
+    <Folder Include="Views\RAKDivorceDetails\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ADEWA\" />
+    <WCFMetadataStorage Include="Connected Services\ADJDService\" />
+    <WCFMetadataStorage Include="Connected Services\ADMilitaryPensionService\" />
+    <WCFMetadataStorage Include="Connected Services\ADMOwnerProfile\" />
+    <WCFMetadataStorage Include="Connected Services\ADPoliceService\" />
+    <WCFMetadataStorage Include="Connected Services\ADRPBFService\" />
+    <WCFMetadataStorage Include="Connected Services\AJMDEDLICENSE\" />
+    <WCFMetadataStorage Include="Connected Services\AJMDED\" />
+    <WCFMetadataStorage Include="Connected Services\AJMFZ\" />
+    <WCFMetadataStorage Include="Connected Services\AJMHR\" />
+    <WCFMetadataStorage Include="Connected Services\AJMMUNService\" />
+    <WCFMetadataStorage Include="Connected Services\AJREService\" />
+    <WCFMetadataStorage Include="Connected Services\BirthCertificate\" />
+    <WCFMetadataStorage Include="Connected Services\CDAService\" />
+    <WCFMetadataStorage Include="Connected Services\DCMaritalService\" />
+    <WCFMetadataStorage Include="Connected Services\DeathQueryService\" />
+    <WCFMetadataStorage Include="Connected Services\DEWAService\" />
+    <WCFMetadataStorage Include="Connected Services\DMAT\" />
+    <WCFMetadataStorage Include="Connected Services\DOFPENSION\" />
+    <WCFMetadataStorage Include="Connected Services\FAHRService2\" />
+    <WCFMetadataStorage Include="Connected Services\FAHRService\" />
+    <WCFMetadataStorage Include="Connected Services\FamilyBook\" />
+    <WCFMetadataStorage Include="Connected Services\FUJDEDService\" />
+    <WCFMetadataStorage Include="Connected Services\FUJLandService\" />
+    <WCFMetadataStorage Include="Connected Services\FUJRentalService\" />
+    <WCFMetadataStorage Include="Connected Services\ICP_PersoanlProfileNew\" />
+    <WCFMetadataStorage Include="Connected Services\ICP_PersonalProfile\" />
+    <WCFMetadataStorage Include="Connected Services\INPRISONSTATUS\" />
+    <WCFMetadataStorage Include="Connected Services\MoEcService\" />
+    <WCFMetadataStorage Include="Connected Services\MoEIService\" />
+    <WCFMetadataStorage Include="Connected Services\MoIService\" />
+    <WCFMetadataStorage Include="Connected Services\MoJService\" />
+    <WCFMetadataStorage Include="Connected Services\PersonalProfile\" />
+    <WCFMetadataStorage Include="Connected Services\RAKLAND\" />
+    <WCFMetadataStorage Include="Connected Services\RAKLEASECONTRACT\" />
+    <WCFMetadataStorage Include="Connected Services\SCMAF\" />
+    <WCFMetadataStorage Include="Connected Services\SDTPSService\" />
+    <WCFMetadataStorage Include="Connected Services\SDTPSVS2019\" />
+    <WCFMetadataStorage Include="Connected Services\SCMAFBeneficiary\" />
+    <WCFMetadataStorage Include="Connected Services\SHJHR\" />
+    <WCFMetadataStorage Include="Connected Services\SSSFPService\" />
+    <WCFMetadataStorage Include="Connected Services\SSSFRPService\" />
+    <WCFMetadataStorage Include="Connected Services\UMMDEDService\" />
+    <WCFMetadataStorage Include="Connected Services\ZFService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64144</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44350/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\JavaScriptEngineSwitcher.V8.Native.win-x64.3.5.5\build\net45\JavaScriptEngineSwitcher.V8.Native.win-x64.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\JavaScriptEngineSwitcher.V8.Native.win-x64.3.5.5\build\net45\JavaScriptEngineSwitcher.V8.Native.win-x64.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Import Project="packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

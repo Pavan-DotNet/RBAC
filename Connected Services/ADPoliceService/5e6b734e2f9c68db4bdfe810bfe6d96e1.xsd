@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:VEH="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1" xmlns="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationMessages:1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationMessages:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f23f3&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8e4" namespace="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1" />
+  <xs:annotation>
+    <xs:appinfo>
+      <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+        <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationMessages:1">
+          <dcterms:title xml:lang="ar">Ø±Ø³Ø§Ø¦Ù Ø§ÙØ§Ø³ØªØ¹ÙØ§Ù Ø¹Ù Ø¨ÙØ§ÙØ§Øª ÙÙÙÙØ© Ø§ÙÙØ±ÙØ¨Ø©</dcterms:title>
+          <dcterms:title xml:lang="en">G2GVehicleRegistrationMessages</dcterms:title>
+          <dcterms:identifier>urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationMessages:1/1</dcterms:identifier>
+          <dcterms:description xml:lang="ar">Ø±Ø³Ø§Ø¦Ù Ø§ÙØ§Ø³ØªØ¹ÙØ§Ù Ø¹Ù Ø¨ÙØ§ÙØ§Øª ÙÙÙÙØ© Ø§ÙÙØ±ÙØ¨Ø©</dcterms:description>
+          <dcterms:description xml:lang="en">Vihicle Registration Information</dcterms:description>
+          <mireg:version>1</mireg:version>
+          <mireg:status>release</mireg:status>
+          <mireg:project>Digital Service Baseline and G2G Initiatives</mireg:project>
+          <mireg:category xml:lang="ar">Ø§ÙØªØ¨Ø§Ø¯Ù Ø§ÙÙØ´ØªØ±Ù</mireg:category>
+          <mireg:category xml:lang="en">G2G</mireg:category>
+          <dcterms:jurisdiction>AE-AZ</dcterms:jurisdiction>
+          <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi Systems and Information Centre (ADSIC)</adsic:OrganisationName>
+            <adsic:URL xml:lang="en">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:creator>
+          <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsic:OrganisationName>
+            <adsic:URL xml:lang="ar">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:creator>
+          <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi e-Government</adsic:OrganisationName>
+          </mireg:owner>
+          <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">Ø­ÙÙÙØ© Ø£Ø¨ÙØ¸Ø¨Ù Ø§ÙØ§ÙÙØªØ±ÙÙÙØ©</adsic:OrganisationName>
+          </mireg:owner>
+          <dcterms:contributor rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:PersonalName xml:lang="en">Abu Dhabi Police</adsic:PersonalName>
+          </dcterms:contributor>
+          <dcterms:contributor rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:PersonalName xml:lang="ar">Ø´Ø±Ø·Ø© Ø£Ø¨ÙØ¸Ø¨Ù</adsic:PersonalName>
+          </dcterms:contributor>
+          <dcterms:publisher rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi Systems and Information Centre (ADSIC)</adsic:OrganisationName>
+            <adsic:URL xml:lang="en">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:publisher>
+          <dcterms:publisher rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsic:OrganisationName>
+            <adsic:URL xml:lang="ar">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:publisher>
+          <dcterms:created />
+          <dcterms:medium>text/xml</dcterms:medium>
+          <dcterms:requires>G2G-VehicleRegistration/Modules/G2G-VehicleRegistrationTypes-v1-0.xsd</dcterms:requires>
+          <adsic:providesDefinitionOf>VehicleRegistrationDetailsResponseType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleRegistrationListResponseType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>
+            <adsic:name>VehicleRegistrationDetailsRequestType</adsic:name>
+            <adsic:MetaDataID />
+          </adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>
+            <adsic:name>VehicleRegistrationListRequestType</adsic:name>
+            <adsic:MetaDataID />
+          </adsic:providesDefinitionOf>
+          <dcterms:conformsTo>http://www.w3.org/2001/XMLSchema</dcterms:conformsTo>
+        </rdf:Description>
+      </rdf:RDF>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="VehicleRegistrationDetailsRequestType" type="VehicleRegistrationDetailsRequest" />
+  <xs:complexType name="VehicleRegistrationDetailsRequest">
+    <xs:choice>
+      <xs:element name="ChassisNumber" type="VEH:ChassisNumberType" />
+      <xs:sequence>
+        <xs:element name="PlateNumber" type="VEH:PlateNumberType" />
+        <xs:element name="PlateColorCode" type="VEH:PlateColorCodeType" />
+        <xs:element name="PlateSourceCode" type="VEH:PlateSourceCodeType" />
+        <xs:element name="PlateKindCode" type="VEH:PlateKindCodeType" />
+      </xs:sequence>
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="VehicleRegistrationListRequestType" type="VehicleRegistrationListRequest" />
+  <xs:complexType name="VehicleRegistrationListRequest">
+    <xs:choice>
+      <xs:element name="EmiratesIDNumber" type="VEH:EmiratesIDNumberType" />
+      <xs:element name="MOIUnifiedNumber" type="VEH:MOIUnifiedNumberType" />
+      <xs:element name="OwnerCode" type="VEH:OwnerCodeType" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="RequestTrnHeader" type="VEH:RequestTrnHeaderType" />
+  <xs:element name="ResponseTrnHeader" type="VEH:ResponseTrnHeaderType" />
+  <xs:element name="VehicleRegistrationDetailsResponseType" type="VehicleRegistrationDetailsResponse" />
+  <xs:complexType name="VehicleRegistrationDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contents" type="VEH:VehicleRegistrationDetailsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VehicleRegistrationListResponseType" type="VehicleRegistrationListResponse" />
+  <xs:complexType name="VehicleRegistrationListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Contents" type="VEH:VehicleRegistrationListType" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

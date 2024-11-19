@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.informatica.com/dis/ws/" name="ABU_JD_GetMarraigeContractDetails" targetNamespace="http://www.informatica.com/dis/ws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.informatica.com/dis/ws/">
+      <xsd:element name="GetMarriageContractDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GetMarriageContractDetails">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" name="EmiratesID" type="xsd:string" />
+                  <xsd:element minOccurs="0" name="PassportNumber" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetMarriageContractDetailsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="MarriageContractDetails">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="1" name="ReferenceNumber" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="FolderNumber" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="FolderYear" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="ContractNumber" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="ContractDate" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="RegionCode" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="RegionDescriptionArabic" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="RegionDescriptionEnglish" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="CourtNameCode" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="CourtNameDescriptionArabic" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="CourtNameDescriptionEnglish" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="CityCode" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="CityDescriptionArabic" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="CityDescriptionEnglish" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="MarriagePlaceCode" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="MarriagePlaceDescriptionArabic" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="MarriagePlaceDescriptionEnglish" type="xsd:string" />
+                  <xsd:element maxOccurs="unbounded" name="PartyDetails">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element minOccurs="1" name="FirstName" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="SecondName" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="ThirdName" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="FourthName" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="FamilyName" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="NameInEnglish" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="IDTypeCode" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="IDTypeDescriptionArabic" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="IDTypeDescriptionEnglish" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="EmiratesID" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="DateOfBirth" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="GenderCode" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="GenderDescriptionArabic" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="GenderDescriptionEnglish" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="ReligionCode" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="ReligionDescriptionArabic" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="ReligionDescriptionEnglish" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="PartyRoleCode" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="PartyRoleDescriptionArabic" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="PartyRoleDescriptionEnglish" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="EmailAddress" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="Telephone" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="PlaceOfBirth" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="PlaceOfResidence" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="RegionCode" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="RegionDescriptionArabic" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="RegionDescriptionEnglish" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="CityCode" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="CityDescriptionArabic" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="CityDescriptionEnglish" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="CountryCode" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="CountryDescriptionArabic" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="CountryDescriptionEnglish" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="NationalityCode" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="NationalityDescriptionArabic" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="NationalityDescriptionEnglish" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="QualificationCode" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="QualificationDescriptionArabic" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="QualificationDescriptionEnglish" type="xsd:string" />
+                        <xsd:element minOccurs="1" name="ProfessionDescription" type="xsd:string" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" name="Error">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="InputParameter" type="xsd:string" />
+                  <xsd:element name="ErrorCode" type="xsd:string" />
+                  <xsd:element name="ErrorDescription" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetMarriageContractDetailsResponse">
+    <wsdl:part name="GetMarriageContractDetailsResponse" element="tns:GetMarriageContractDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMarriageContractDetails">
+    <wsdl:part name="GetMarriageContractDetails" element="tns:GetMarriageContractDetails" />
+  </wsdl:message>
+  <wsdl:portType name="ABU_JD_GetMarraigeContractDetailsPortType">
+    <wsdl:operation name="GetMarriageContractDetails">
+      <wsdl:input name="GetMarriageContractDetails_Input" message="tns:GetMarriageContractDetails" />
+      <wsdl:output name="GetMarriageContractDetails_Output" message="tns:GetMarriageContractDetailsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ABU_JD_GetMarraigeContractDetailsBinding" type="tns:ABU_JD_GetMarraigeContractDetailsPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMarriageContractDetails">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="GetMarriageContractDetails_Input">
+        <soap:body use="literal" parts="GetMarriageContractDetails" />
+      </wsdl:input>
+      <wsdl:output name="GetMarriageContractDetails_Output">
+        <soap:body use="literal" parts="GetMarriageContractDetailsResponse" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ABU_JD_GetMarraigeContractDetails">
+    <wsdl:port name="ABU_JD_GetMarraigeContractDetails" binding="tns:ABU_JD_GetMarraigeContractDetailsBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/FCSA/Soap/ABU_JD_GetMarraigeContractDetails" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WL5G3N2:definitions xmlns:WL5G3N1="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:WL5G3N0="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N3="http://mocd.aderpws.apps.oracle.xxdof/" name="getMilitaryPensionDetails_ADDOF" targetNamespace="http://mocd.aderpws.apps.oracle.xxdof/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/">
+  <WL5G3N2:documentation>This service provides the Military pension details maintained by Abu Dhabi Department of Finance</WL5G3N2:documentation>
+  <WL5G3N2:types>
+    <xsd:schema xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://mocd.aderpws.apps.oracle.xxdof/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f1f14&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a9a9" namespace="http://mocd.aderpws.apps.oracle.xxdof/" />
+    </xsd:schema>
+  </WL5G3N2:types>
+  <WL5G3N2:message name="GetHREmployeeDetailsResponse">
+    <WL5G3N2:part name="parameters" element="WL5G3N3:GetHREmployeeDetailsResponse" />
+  </WL5G3N2:message>
+  <WL5G3N2:message name="SoapHeader">
+    <WL5G3N2:part name="CustomHeaderReq" element="WL5G3N3:SoapHeader" />
+  </WL5G3N2:message>
+  <WL5G3N2:message name="GetHREmployeeDetails">
+    <WL5G3N2:part name="parameters" element="WL5G3N3:GetHREmployeeDetails" />
+  </WL5G3N2:message>
+  <WL5G3N2:portType name="MocdWS">
+    <WL5G3N2:operation name="GetHREmployeeDetails">
+      <WL5G3N2:input message="WL5G3N3:GetHREmployeeDetails" />
+      <WL5G3N2:output message="WL5G3N3:GetHREmployeeDetailsResponse" />
+    </WL5G3N2:operation>
+  </WL5G3N2:portType>
+  <WL5G3N2:binding name="MocdWSPortBinding" type="WL5G3N3:MocdWS">
+    <WL5G3N4:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <WL5G3N2:operation name="GetHREmployeeDetails">
+      <WL5G3N4:operation soapAction="" />
+      <WL5G3N2:input>
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N3:SoapHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N2:input>
+      <WL5G3N2:output>
+        <WL5G3N4:body use="literal" />
+      </WL5G3N2:output>
+    </WL5G3N2:operation>
+  </WL5G3N2:binding>
+  <WL5G3N2:service name="getMilitaryPensionDetails_ADDOF">
+    <WL5G3N2:port name="getMilitaryPensionDetails_ADDOFsoaphttp" binding="WL5G3N3:MocdWSPortBinding">
+      <WL5G3N4:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/ADDOF/Soap/MilitaryPension/V1" />
+    </WL5G3N2:port>
+  </WL5G3N2:service>
+</WL5G3N2:definitions>

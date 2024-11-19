@@ -1,0 +1,368 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "تفاصيل بطاقة الهوية";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>تفاصيل بطاقة الهوية</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" required type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==15) return false;" class="form-control numbersOnly" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+        function validateFields(value, regex) {
+            var inputString = value;
+
+            if (value.length > 0) {
+
+                if (regex != null) {
+                    if (regex.test(inputString)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            return false;
+        }
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search","PersonalProfile")';
+
+            $(".tbody").empty();
+
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+
+            if ($("#txtEmiratesId").val().length == 0) {
+                document.getElementById('error').innerText = ('Emirates Id length should be 15 digits');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else if ($("#txtEmiratesId").val().length < 15) {
+                document.getElementById('error').innerText = ('Emirates Id length should be 15 digits');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+
+            }
+            else if ($("#txtEmiratesId").val().length > 15) {
+                document.getElementById('error').innerText = ('Emirates Id length should be 15 digits');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+
+            }
+                else {
+                    document.getElementById('error').innerText = ('');
+
+                }
+
+
+            if (!validateFields($("#txtEmiratesId").val(), /^(784)[0-9]{12}$/)) {
+                document.getElementById('error').innerText = ('Emirates Id  should start from 784');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+
+            }
+
+            var input = { "EmiratesId": $('#txtEmiratesId').val() };
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+                if (obj.flag == "1") {
+
+                    $.each(obj.lstResponse, function (key, item) {
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "الرقم الموحد" + '</b></small></h6></td>';
+                        html += '<td>' + item.unifiedNumber + '</td>';
+                        html += '<td><h6><small><b>' + "رقم الهوية" + '</b></small></h6></td>';
+                        html += '<td>' + item.identityCardnumber + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "تاريخ اصدار بطاقة الهوية" + '</b></small></h6></td>';
+                        html += '<td>' + item.identityCardissuDate + '</td>';
+                        html += '<td><h6><small><b>' + "تاريخ انتهاء بطاقة الهوية" + '</b></small></h6></td>';
+                        html += '<td>' + item.identityCardexpiryDate + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "الجنسية" + '</b></small></h6></td>';
+                        html += '<td>' + item.nationalityid + '</td>';
+                        html += '<td><h6><small><b>' + "الجنسية" + '</b></small></h6></td>';
+                        html += '<td>' + item.nationalityarDesc + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "الجنسية" + '</b></small></h6></td>';
+                        html += '<td>' + item.nationalityenDesc + '</td>';
+                        html += '<td><h6><small><b>' + "الاسم الكامل باللغة العربية" + '</b></small></h6></td>';
+                        html += '<td>' + item.fullArabicName + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "الاسم الاول باللغة العربية" + '</b></small></h6></td>';
+                        html += '<td>' + item.firstNameArabic + '</td>';
+                        html += '<td><h6><small><b>' + "الاسم الثاني باللغة العربية" + '</b></small></h6></td>';
+                        html += '<td>' + item.secondNameArabic + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "الاسم الثالث باللغة العربية" + '</b></small></h6></td>';
+                        html += '<td>' + item.thirdNameArabic + '</td>';
+                        html += '<td><h6><small><b>' + "الاسم الرابع باللغة العربية" + '</b></small></h6></td>';
+                        html += '<td>' + item.fourthNameArabic + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "القبيلة" + '</b></small></h6></td>';
+                        html += '<td>' + item.tribearDesc + '</td>';
+                        html += '<td><h6><small><b>' + "رقم خلاصة القيد" + '</b></small></h6></td>';
+                        html += '<td>' + item.khulasitQaidNumber + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "الاسم الكامل باللغة الانجليزية" + '</b></small></h6></td>';
+                        html += '<td>' + item.fullEnglishName + '</td>';
+                        html += '<td><h6><small><b>' + "الاسم الاول باللغة الانجليزية" + '</b></small></h6></td>';
+                        html += '<td>' + item.firstNameEnglish + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "الاسم الثاني باللغة الانجليزية" + '</b></small></h6></td>';
+                        html += '<td>' + item.secondNameEnglish + '</td>';
+                        html += '<td><h6><small><b>' + "الاسم الثالث باللغة الانجليزية" + '</b></small></h6></td>';
+                        html += '<td>' + item.thirdNameEnglish + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "الاسم الرابع باللغة الانجليزية" + '</b></small></h6></td>';
+                        html += '<td>' + item.fourthNameEnglish + '</td>';
+                        html += '<td><h6><small><b>' + "القبيلة" + '</b></small></h6></td>';
+                        html += '<td>' + item.tribeenDesc + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "رقم الاسرة" + '</b></small></h6></td>';
+                        html += '<td>' + item.familyBookNumber + '</td>';
+                        html += '<td><h6><small><b>' + "رقم ظهر بطاقة الهوية" + '</b></small></h6></td>';
+                        html += '<td>' + item.identityBacknumber + '</td>';
+                        //html += '<td><h6><small><b>' + "رقم الاضبارة" + '</b></small></h6></td>';
+                        //html += '<td>' + item.edbarahNumber + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "الجنس" + '</b></small></h6></td>';
+                        html += '<td>' + item.genderarDesc + '</td>';
+                        html += '<td><h6><small><b>' + "تاريخ الميلاد" + '</b></small></h6></td>';
+                        html += '<td>' + item.dateOfBirth + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + " بلد الولادة" + '</b></small></h6></td>';
+                        html += '<td>' + item.countryOfBirtharDesc + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "امارة الميلاد" + '</b></small></h6></td>';
+                        html += '<td>' + item.emirateOfBirtharDesc + '</td>';
+                        html += '<td><h6><small><b>' + "مدينة الميلاد" + '</b></small></h6></td>';
+                        html += '<td>' + item.cityOfBirtharDesc + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "مكان الميلاد باللغة العربية" + '</b></small></h6></td>';
+                        html += '<td>' + item.placeOfBirthAr + '</td>';
+                        html += '<td><h6><small><b>' + "الحالة الاجتماعية" + '</b></small></h6></td>';
+                        html += '<td>' + item.maritalStatusarDesc + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "الديانة" + '</b></small></h6></td>';
+                        html += '<td>' + item.religionarDesc + '</td>';
+                        html += '<td><h6><small><b>' + "رقم الجواز" + '</b></small></h6></td>';
+                        html += '<td>' + item.passportnumber + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "النوع" + '</b></small></h6></td>';
+                        html += '<td>' + item.passporttypearDesc + '</td>';
+                        html += '<td><h6><small><b>' + "تاريخ الاصدار" + '</b></small></h6></td>';
+                        html += '<td>' + item.passportissuDate + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "تاريخ الانتهاء" + '</b></small></h6></td>';
+                        html += '<td>' + item.passportexpiryDate + '</td>';
+                        html += '<td><h6><small><b>' + "بلد الاصدار" + '</b></small></h6></td>';
+                        html += '<td>' + item.passportissueCountryarDesc + '</td>';
+                        html += '</tr>';
+
+                        //html += '<tr>';
+                        //html += '<td><h6><small><b>' + "اسم الأم" + '</b></small></h6></td>';
+                        //html += '<td>' + item.motherNameAr + '</td>';
+                        //html += '<td><h6><small><b>' + "هل هو داخل البلد؟" + '</b></small></h6></td>';
+                        //html += '<td>' + item.isInsideCountry + '</td>';
+                        //html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "عدد الأسرة" + '</b></small></h6></td>';
+                        html += '<td>' + item.familyCount + '</td>';
+                        html += '<td><h6><small><b>' + "عدد الذكور في العائلة" + '</b></small></h6></td>';
+                        html += '<td>' + item.familyMaleCount + '</td>';
+                        html += '<tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "عدد الإناث في العائلة" + '</b></small></h6></td>';
+                        html += '<td>' + item.familyFemaleCount + '</td>';
+                        html += '<td><h6><small><b>' + "الامارة" + '</b></small></h6></td>';
+                        html += '<td>' + item.localAddressemiratearDesc + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "المدينة" + '</b></small></h6></td>';
+                        html += '<td>' + item.localAddresscityarDesc + '</td>';
+                        html += '<td><h6><small><b>' + "المنطقة" + '</b></small></h6></td>';
+                        html += '<td>' + item.localAddressareaarDesc + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "الشارع" + '</b></small></h6></td>';
+                        html += '<td>' + item.localAddressstreetarDesc + '</td>';
+                        html += '<td><h6><small><b>' + "المبنى" + '</b></small></h6></td>';
+                        html += '<td>' + (item.building) ? "-" : item.building + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "صندوق البريد" + '</b></small></h6></td>';
+                        html += '<td>' + item.pobox + '</td>';
+                        html += '<td><h6><small><b>' + "رقم الهاتف المحمول" + '</b></small></h6></td>';
+                        html += '<td>' + item.mobileNumber + '</td>';
+                        html += '<tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "هاتف العمل" + '</b></small></h6></td>';
+                        html += '<td>' + item.workPhone + '</td>';
+                        html += '<td><h6><small><b>' + "هاتف المنزل" + '</b></small></h6></td>';
+                        html += '<td>' + item.homePhone + '</td>';
+                        html += '</tr>';
+
+
+
+                    });
+
+                    $(".tbody").append(html);
+                    $('.DataTable').show();
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("PersonalProfile.pdf");
+       });
+
+    </script>
+}

@@ -1,0 +1,247 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "تفاصيل قضية وزارة العدل";
+}
+
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>
+    تفاصيل قضية وزارة العدل</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "MOJCaseDetails")';
+
+            $(".tbody").empty();
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+            var html1 = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { EmiratesId: EmiratesId, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+                if (obj.flag == "1") {
+
+                    html = BindHTML(obj.apiResult);
+                    html1 = BindHTML1(obj.apiResult.Plaintiff);
+
+                    $("#divTables").append(html);
+                    $("#divTables").append(html1);
+
+                    $('.DataTable').show();
+
+
+                }
+                else {
+
+                    if (obj.flag == "2") {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("MOJCaseDetails.pdf");
+       });
+
+
+        function BindHTML(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم القضية" + '</b></small></h6></td>';
+            html += '<td>' + item.CASE_NUMBER + '</td>';
+            html += '<td><h6><small><b>' + "وضع القضية" + '</b></small></h6></td>';
+            html += '<td>' + item.CASE_STATUS + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "المطالبة" + '</b></small></h6></td>';
+            html += '<td>' + item.CLAIM_AMOUNT + '</td>';
+            html += '<td><h6><small><b>' + "المحكمة" + '</b></small></h6></td>';
+            html += '<td>' + item.COURT + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "نوع المحكمة" + '</b></small></h6></td>';
+            html += '<td>' + item.COURT_TYPE + '</td>';
+            html += '<td><h6><small><b>' + " تاريخ القيد" + '</b></small></h6></td>';
+            html += '<td>' + item.DATE_CASE_OPENED + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الرسوم" + '</b></small></h6></td>';
+            html += '<td>' + item.FEE + '</td>';
+            html += '<td><h6><small><b>' + "حالة الدفع" + '</b></small></h6></td>';
+            html += '<td>' + item.FEE_PAYMENT_STATUS + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "إسم مقيد الدعوى" + '</b></small></h6></td>';
+            html += '<td>' + item.FILING_PARTY_NAME + '</td>';
+            html += '<td><h6><small><b>' + "نوع مقيد الدعوى" + '</b></small></h6></td>';
+            html += '<td>' + item.FILING_PARTY_TYPE + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الإماره" + '</b></small></h6></td>';
+            html += '<td>' + item.EMIRATE + '</td>';
+            html += '<td><h6><small><b>' + "نوع الدعوى" + '</b></small></h6></td>';
+            html += '<td>' + item.PROCEEDING_TYPE + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تصنيف الدعوى" + '</b></small></h6></td>';
+            html += '<td>' + item.SUB_PROCEEDING_TYPE + '</td>';
+            html += '<td><h6><small><b>' + "سنة" + '</b></small></h6></td>';
+            html += '<td>' + item.YEAR + '</td>';
+            html += '</tr>';
+
+   
+
+            html += '</tbody>  </table>';
+
+
+            return html
+        }
+
+        function BindHTML1(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+            html += '<tr>';
+            html += '<td><h6><small><b>' + " المدعى عليه/المدعي تفاصيل" + '</b></small></h6></td>';
+            html += '</tr>';
+
+            html += '</tbody>  </table>';
+
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "البريد الالكتروني" + '</b></small></h6></td>';
+            html += '<td>' + item.PLAINTIFF_EMAIL + '</td>';
+            html += '<td><h6><small><b>' + "رقم بطاقة الهوية" + '</b></small></h6></td>';
+            html += '<td>' + item.PLAINTIFF_E_ID + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الهاتف" + '</b></small></h6></td>';
+            html += '<td>' + item.PLAINTIFF_MOBILE + '</td>';
+            html += '<td><h6><small><b>' + "اسم" + '</b></small></h6></td>';
+            html += '<td>' + item.PLAINTIFF_NAME + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الجنسية" + '</b></small></h6></td>';
+            html += '<td>' + item.PLAINTIFF_NATIONALITY + '</td>';
+            html += '<td><h6><small><b>' + " يكتب" + '</b></small></h6></td>';
+            html += '<td>' + item.Type + '</td>';
+            html += '</tr>';
+
+            html += '</tbody>  </table>';
+
+
+
+            return html;
+        }
+    </script>
+}

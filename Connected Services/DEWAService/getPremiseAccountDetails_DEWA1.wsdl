@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:p1="http://dewa.gov.ae/MovementProcess" name="getPremiseAccountDetails_DEWA" targetNamespace="http://dewa.gov.ae/MovementProcess" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This service is to retrieve premise details of a customer's account by passing EmiratesID.</wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="OP_GetPremiseDetails" />
+  <wsdl:types>
+    <xsd:schema xmlns="http://dewa.gov.ae/MovementProcess" targetNamespace="http://dewa.gov.ae/MovementProcess" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="GetPremiseDetailsRequest" type="p1:GetPremiseDetailsRequest" />
+      <xsd:element name="GetPremiseDetailsResponse" type="p1:GetPremiseDetailsResponse" />
+      <xsd:element name="StandardMessageFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="standard" type="p1:ExchangeFaultData" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="RefKeydataType">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">a494ee3dff9c11eaa2bd000000af0f6e</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="refMessageId">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c3e9b011ea9fc154e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Reference Message Id</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="36" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="timeStamp" type="xsd:dateTime">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">30652ad7eb2511ea8fbe54e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Time Stamp</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" default="3" name="validityTime" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e35cabfdaa11eabcaa54e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Message Validity period</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GetPremiseDetailsRespType">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">9f9b7cd2408311ec808b000000af0f6e</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="premiseNo">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">10ae4773eb7d11ea9d5a8c1645c05831</xsd:appinfo>
+              <xsd:documentation>Premise Number</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="10" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="premiseType" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">8b832b5ea56f11ebca6f54d97b9dab14</xsd:appinfo>
+              <xsd:documentation>Premise Owner Type</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="contractAccount">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">8b832b5fa56f11ebbc5a54d97b9dab14</xsd:appinfo>
+              <xsd:documentation>Contract Account Number</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="12" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ownerName">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">05a69b2bd24811eb830354d97b9dab14</xsd:appinfo>
+              <xsd:documentation>Owner Name</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="100" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="moveInDate" type="xsd:date">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">8b832b60a56f11eb9c1c54d97b9dab14</xsd:appinfo>
+              <xsd:documentation>Move In Date</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="moveOutDate" type="xsd:date">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">8b832b61a56f11ebbe6854d97b9dab14</xsd:appinfo>
+              <xsd:documentation>Move Out Date</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="makaniNumber">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">8b832b62a56f11eba7dc54d97b9dab14</xsd:appinfo>
+              <xsd:documentation>Makani Number</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="11" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="socialBenifit" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">3e11cd20bf6611eb9c3054d97b9dab14</xsd:appinfo>
+              <xsd:documentation>Social Benefit</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="communityNumber" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">9f91ec9e408311ec832d8c1645c05831</xsd:appinfo>
+              <xsd:documentation>Community Number</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Address">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">4e22a4afda4011eba04954d97b9dab14</xsd:appinfo>
+              <xsd:documentation>Connection Address</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="houseNumber" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">4e22a4aada4011eb957154d97b9dab14</xsd:appinfo>
+                    <xsd:documentation>House Number</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="street" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">4e22a4abda4011eb8be454d97b9dab14</xsd:appinfo>
+                    <xsd:documentation>Street</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="district" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">4e22a4acda4011eb820f54d97b9dab14</xsd:appinfo>
+                    <xsd:documentation>District</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="postalCode" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">4e22a4adda4011eba21154d97b9dab14</xsd:appinfo>
+                    <xsd:documentation>Postal Code</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="city" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">4e22a4aeda4011ebc0ab54d97b9dab14</xsd:appinfo>
+                    <xsd:documentation>City</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="attributelist" type="p1:AttributeDataType">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">a3bd5b9ace6711eb99e554d97b9dab14</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GetPremiseDetailsRequest">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">6259c501a56d11ebb80f000000af0f6e</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Header" type="p1:HeaderType">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">7edf40d9eb2511eac26a54e80a3a9414</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Body" type="p1:getPremiseDetailsReqBodyType">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">7edf40ddeb2511eaa28954e80a3a9414</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getPremiseDetailsReqBodyType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">s</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">0771d48da56f11eb957f000000af0f6e</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="keyData" type="p1:KeyDataType">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c3e9b011ea9fc154e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Transaction Reference Number</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="premiseDetailsReq">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b8b5d9cee9b211ea8b7f54e80a3a9414</xsd:appinfo>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="record" type="p1:getPremiseDetailsReqType">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">fb031c47eb2611eaca0454e80a3a9414</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="KeyDataType">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">b9a42e59061d11eb8b8d000000af0f6f</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="transactionRefNo" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c3e9b011ea9fc154e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Transaction Reference Number</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="timeStamp" type="xsd:dateTime">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">30652ad7eb2511ea8fbe54e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Time Stamp</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="dewaRefNo">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">2e5af62f022f11eb832c54e80a3a9414</xsd:appinfo>
+              <xsd:documentation>DEWA Reference Number</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="12" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getPremiseDetailsReqType">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">297eb767a56d11ebbf34000000af0f6e</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="idType">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">4c4798e6a56b11ebaabd54d97b9dab14</xsd:appinfo>
+              <xsd:documentation>ID Type</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="30" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="idNumber">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">4c47bedaa56b11ebb01b54d97b9dab14</xsd:appinfo>
+              <xsd:documentation>ID Number</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="5" />
+                <xsd:maxLength value="20" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AttributeDataType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">Addtional Attirbute details</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">5d569c72038411eb809e000000af0f6e</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="attribute">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">4677c891ecbf11ea82eb54e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Additional Attributes</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">b13cc7eeecbf11ea95f554e80a3a9414</xsd:appinfo>
+                    <xsd:documentation>Atrribute Value</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:appinfo source="http://sap.com/xi/TextID">b4989209ed5e11eabdf554e80a3a9414</xsd:appinfo>
+                  <xsd:documentation>Attribute Name</xsd:documentation>
+                </xsd:annotation>
+              </xsd:attribute>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GetPremiseDetailsRespBodyType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">sss</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">a95d3ef6a63211ebc6af000000af0f6f</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="keyData" type="p1:KeyDataType">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c3e9b011ea9fc154e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Transaction Reference Number</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="premiseDetailsResp">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b8b5d9cee9b211ea8b7f54e80a3a9414</xsd:appinfo>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="record" type="p1:GetPremiseDetailsRespType">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">fb031c47eb2611eaca0454e80a3a9414</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="message" type="p1:ResponseMessageType">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">773a259b009711eb9e288c1645c05831</xsd:appinfo>
+              <xsd:documentation>Time Stamp</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResponseMessageType">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">83c51bfd008e11ebb4a6000000af0f6f</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="type">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">ed129bd3eb2811ea99dc54e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Response Type</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="code">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">83be9835008e11ebcdb28c1645c05831</xsd:appinfo>
+              <xsd:documentation>Response Code</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="description">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">e95c8e15e9b411ea942854e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Response Message</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="250" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RespHeaderType">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">42937930fda911ea9b4b000000af0f6e</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="serviceName" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">e95c8e15e9b411ea942854e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Operation Name</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="serviceVersion" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c5e9b011eac96b54e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Service Version</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" default="EN" name="serviceLang" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c6e9b011ea95a654e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Language</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="hashvalue" type="xsd:base64Binary">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c9e9b011eac54d54e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Hash Value</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="refkeydata" type="p1:RefKeydataType">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">af4a8c51fda611ea964554e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Reference Key Data</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="attributelist" type="p1:AttributeDataType">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">ca77672bed5e11eabe3054e80a3a9414</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ExchangeFaultData">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">ae9249b8ff3e11ea9d50000000af0f6f</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="faultText" type="xsd:string" />
+          <xsd:element minOccurs="0" name="faultUrl" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="faultDetail" type="p1:ExchangeLogData" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GetPremiseDetailsResponse">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">ce2e805ea56c11eba2dd000000af0f6e</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Header" type="p1:RespHeaderType">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">7edf40d9eb2511eac26a54e80a3a9414</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Body" type="p1:GetPremiseDetailsRespBodyType">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">7edf40ddeb2511eaa28954e80a3a9414</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ExchangeLogData">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">d9e12447ff3e11ea8892000000af0f6f</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="severity" type="xsd:string" />
+          <xsd:element name="text" type="xsd:string" />
+          <xsd:element minOccurs="0" name="url" type="xsd:string" />
+          <xsd:element minOccurs="0" name="id" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HeaderType">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">d06a97cbfdaa11eab9e9000000af0f6e</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="consumerID" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c4e9b011eacc5c54e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Consumer ID</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="serviceName" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">e95c8e15e9b411ea942854e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Operation Name</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="serviceVersion" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c5e9b011eac96b54e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Service Version</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" default="EN" name="serviceLang" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c6e9b011ea95a654e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Language</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="userName" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c7e9b011ea8cfb54e80a3a9414</xsd:appinfo>
+              <xsd:documentation>User Name</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="password" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c8e9b011ea839354e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Password</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="hashvalue" type="xsd:base64Binary">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">b7e093c9e9b011eac54d54e80a3a9414</xsd:appinfo>
+              <xsd:documentation>Hash Value</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="attributelist" type="p1:AttributeDataType">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">ca77672bed5e11eabe3054e80a3a9414</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetPremiseDetailsRequest">
+    <wsdl:documentation />
+    <wsdl:part name="GetPremiseDetailsRequest" element="p1:GetPremiseDetailsRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetPremiseDetailsResponse">
+    <wsdl:documentation />
+    <wsdl:part name="GetPremiseDetailsResponse" element="p1:GetPremiseDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="StandardMessageFault">
+    <wsdl:documentation />
+    <wsdl:part name="StandardMessageFault" element="p1:StandardMessageFault" />
+  </wsdl:message>
+  <wsdl:portType name="SI_O_PremiseDetails">
+    <wsdl:documentation />
+    <wsdl:operation name="GetPremiseDetails">
+      <wsdl:documentation />
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_GetPremiseDetails" />
+      </wsp:Policy>
+      <wsdl:input message="p1:GetPremiseDetailsRequest" />
+      <wsdl:output message="p1:GetPremiseDetailsResponse" />
+      <wsdl:fault name="StandardMessageFault" message="p1:StandardMessageFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SI_O_PremiseDetailsBinding" type="p1:SI_O_PremiseDetails">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPremiseDetails">
+      <soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="StandardMessageFault">
+        <soap:fault use="literal" name="StandardMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getPremiseAccountDetails_DEWA">
+    <wsdl:port name="getPremiseAccountDetails_DEWAsoaphttps" binding="p1:SI_O_PremiseDetailsBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/DEWA/Soap/GetPremiseAccountDetails/V1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

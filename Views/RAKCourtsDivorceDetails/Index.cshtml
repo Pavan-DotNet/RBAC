@@ -1,0 +1,435 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "محاكم رأس الخيمة - بيانات الطلاق";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>محاكم رأس الخيمة - بيانات الطلاق</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> نوع المستند</b></small></h6></td>
+                <td colspan="3" align="center">
+                    <select id="documentype" class="dropdown dropdown-header form-control">
+                        <option value="-1">-- اختر --</option>
+                        <option value="2">بطاقة هوية</option>
+                        <option value="3">جواز سفر</option>
+                    </select>
+                </td>
+
+            </tr>
+        </table>
+        <table id="NationalId" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> بطاقة هوية </b></small></h6></td>
+                <td colspan="3"> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="Passport" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> جواز سفر </b></small></h6></td>
+                <td> <input id="txtPassportNo" type="text" class="form-control" style="width:100%" /></td>
+                
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+        var base64String = "";
+        $(document).ready(function () {
+            $('.DataTable').hide();
+            $('#Passport').hide();
+            $('#NationalId').hide();
+        });
+
+        $("#documentype").change(function () {
+
+            $('#txtEmiratesId').val('');
+            $('#txtPassportNo').val('');
+            $('#txtDoB').val('');
+            $('#txtName').val('');
+            $('#Other').val("-1");
+
+
+            var val = $("#documentype option:selected").val();
+
+            if (val == '-1') {
+                $('#Passport').hide();
+                $('#NationalId').hide();
+                $('#Other').hide();
+                $(".tbody").empty();
+                $('#SubmitTable').hide();
+            }
+            else if (val == '2') {
+                $('#Passport').hide();
+                $('#NationalId').show();
+                $('#Other').hide();
+                $('#SubmitTable').show();
+            }
+            else if (val == '3') {
+                $('#Passport').show();
+                $('#NationalId').hide();
+                $('#Other').hide();
+                $('#SubmitTable').show();
+            }
+           
+
+        });
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "RAKCourtsDivorceDetails")';
+
+            $(".tbody").empty();
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            var id = $("#documentype option:selected").val();
+
+            if (id == 2 && $("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid EmiratesId');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+            }
+            else if (id == 3 && $("#txtPassportNo").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid passport number');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtPassportNo").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+            }
+            //else if (id == 4) {
+
+            //    document.getElementById('error').innerText = ('Invalid Nationality ');
+            //    document.getElementById('error').style.color = 'white';
+
+            //    $("#txtPassportNo").focus();
+            //
+
+            //    $("#divLoading").html("");
+
+            //    return false;
+            //}
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+            var Passport = $('#txtPassportNo').val();
+
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { EmiratesId: EmiratesId, PassportNo: Passport,Type:id, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+                if (obj.flag == "1") {
+                    if (obj.divourceDetails != null) {
+                        for (var i = 0; i < obj.divourceDetails.length; i++) {
+                            var refNumber = "'" + obj.divourceDetails[i].ZTransactionId.toString() + "'";
+                            html = '';
+                            html += BindHTML(obj.divourceDetails[i]);
+                            //var accord = '<div class="accordion open accordion-flush" id="accordionFlushExample" style="border: 1px solid #979494;>';
+                            //accord += '<div class="accordion-item">';
+                            //accord += '<h2 class="accordion-header" id = "flush-' + obj.divourceDetails[i].ZTransactionId + 'headingOne" >';
+                            //accord += '<button  id = "btn' + obj.divourceDetails[i].ZTransactionId + '" class="accordion-button collapsed" onclick="getMoreDetails(' + refNumber + ')" type = "button" data-bs-toggle="collapse" data-bs-target="#flush-' + obj.divourceDetails[i].ZTransactionId + 'collapseOne" aria-expanded="false" aria-controls="flush-' + obj.divourceDetails[i].ZTransactionId + 'collapseOne" style="direction: ltr;color: #a9a59a; background-color: #ffffff !important;" >';
+                            //accord += 'Click here to find more details about document Ref# : ' + obj.divourceDetails[i].ZTransactionId;
+                            //accord += '</button >';
+                            //accord += '</h2>';
+                            //accord += '<div id="flush-' + obj.divourceDetails[i].ZTransactionId + 'collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-' + obj.divourceDetails[i].ZTransactionId + 'headingOne" >';
+                            //accord += '<div class="accordion-body">';
+                            //accord += '<div class="DataTable" id="dd' + obj.divourceDetails[i].ZTransactionId + '"></div>';
+                            //accord += '</div></div></div>';
+                            //html += accord;
+                            $("#divTables").append(html);
+                            $('.DataTable').show();
+                        }
+                    }
+
+                }
+                else {
+
+                    if (obj.flag == "2") {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("RAKDivorce.pdf");
+       });
+
+
+        function BindHTML(item) {
+            var refNumber = "'" + item.ZTransactionId.toString() + "'";
+
+            var html = '<div style="width: 100%;height: 2px;background: #b9b3b3;margin-bottom: 19px;"></div>';
+            html += '<h4>رقم التحويل Ref# : ' + StringHasValue(item.ZTransactionId)+'</h4>';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تاريخ الطلاق الفعلي" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZActualDivorceDate) + '</td>';
+            html += '<td><h6><small><b>' + "تاريخ العقد" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZContractDate) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "التاريخ الهجري  للعقد" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZContractDateHijri) + '</td>';
+            html += '<td><h6><small><b>' + "رقم عقد الطلاق" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorceContractNum) + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "سنة عقد الطلاق" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorceContractYear) + '</td>';
+            html += '<td><h6><small><b>' + "نوع الطلاق" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorceType) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تاريخ الميلاد للمطلقة" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorceeDOB) + '</td>';
+            html += '<td><h6><small><b>' + "رقم الهوية للمطلقه" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorceeEid) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "اسم المطلقه باللغة العربيه" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorceeNameAr) + '</td>';
+            html += '<td><h6><small><b>' + "هوية المطلقة" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorceeNat) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "جواز سفر مطلق" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorceePassportCou) + '</td>';
+            html += '<td><h6><small><b>' + "رقم الجواز للمطلقه" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorceePassportNum) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "ديانة المطلقة" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorceeRel) + '</td>';
+            html += '<td><h6><small><b>' + "تاريخ الميلاد للمطلق" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorcerDOB) + '</td>'
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "اسم المطلق باللغة الانجليزية" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorcerEid) + '</td>';
+            html += '<td><h6><small><b>' + "خلاصة القيد للمطلق" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorcerKhulasitQaid) + '</td>'
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "اسم المطلق باللغة العربيه" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorcerNameAr) + '</td>';
+            html += '<td><h6><small><b>' + "جنسية المطلق" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorcerNat) + '</td>'
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "جواز سفر المطلق" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorcerPassportCou) + '</td>';
+            html += '<td><h6><small><b>' + "رقم جواز المطلق" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorcerPassportNum) + '</td>'
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "ديانة المطلق" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.ZDivorcerRel) + '</td>';
+            html += '<td></td>';
+            html += '<td></td>'
+            html += '</tr>';
+
+
+            html += '</tbody>  </table>';
+            return html
+        }
+
+        function BindMoreDetails(item, transId) {
+            var docDetials = '<h4>Document Details</h4>';
+            docDetials += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            docDetials += '<tbody class="tbody text-center" id="tbody">';
+
+            docDetials += '<tr>';
+            docDetials += '<td><h6><small><b>' + "رقم التحويل" + '</b></small></h6></td>';
+            docDetials += '<td><a href="javascript:dataURItoBlob(' + transId + ');">' + transId + '</a></td>'
+            docDetials += '<td><h6><small><b>' + "وصف الوثيقة باللغة العربية" + '</b></small></h6></td>';
+            docDetials += '<td>' + item.ZDocArabicDesc + '</td>';
+
+            docDetials += '</tr>';
+
+            docDetials += '<tr>';
+            docDetials += '<td><h6><small><b>' + "وصف الوثيقة باللغة الإنجليزية" + '</b></small></h6></td>';
+            docDetials += '<td>' + item.ZDocEnglishDesc + '</td>';
+            docDetials += '<td><h6><small><b>' + "اسم الوثيقة" + '</b></small></h6></td>';
+            docDetials += '<td>' + item.ZDocName + '</td>';
+            docDetials += '</tr>';
+
+            docDetials += '<tr>';
+            docDetials += '<td><h6><small><b>' + "كود نوع الوثيقة" + '</b></small></h6></td>';
+            docDetials += '<td>' + item.ZDocTypeCode + '</td>';
+            docDetials += '<td><h6><small><b>' + "إنشاء وثيقة في" + '</b></small></h6></td>';
+            docDetials += '<td>' + item.ZDocCreationAt + '</td>';
+
+            docDetials += '</tr>';
+
+
+            docDetials += '</tbody>  </table>';
+
+            return docDetials;
+        }
+        var StringHasValue = function (strValue) {
+            if ($.trim(strValue) != "" && $.trim(strValue) != null && $.trim(strValue) != undefined)
+                return strValue;
+            else
+                return "-";
+        };
+        function dataURItoBlob(base64) {
+
+            var base64St = base64String.find(x => x.ZTransactionId == base64)
+
+            const byteString = window.atob(base64St.ZDocument);
+            const arrayBuffer = new ArrayBuffer(base64St.ZDocument.length);
+            const int8Array = new Uint8Array(arrayBuffer);
+            for (let i = 0; i < byteString.length; i++) {
+                int8Array[i] = byteString.charCodeAt(i);
+            }
+            const blob = new Blob([int8Array], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+            window.open(url);
+
+        }
+
+        function getMoreDetails(item) {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("ViewMoreDetails", "RAKCourtsDivorceDetails")';
+
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+        
+
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { transactionId: item, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+                if (obj.flag == "1") {
+                    $("#divLoading").html("");
+
+                    base64String = obj.listDocument;
+                    if (obj.listDocument != null) {
+                        for (var i = 0; i < obj.listDocument.length; i++) {
+                            html = '';
+                            html = BindMoreDetails(obj.listDocument[i], item);
+                            if ($("#dd" + item).is(':empty')) {
+                                $("#dd" + item).append(html);
+                            }
+                        }
+                    }
+                }
+                else {
+                    $("#divLoading").html("");
+
+                    if (obj.flag == "2") {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                }
+            });
+        }
+
+    </script>
+}

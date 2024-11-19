@@ -1,0 +1,202 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "طلاب في مراكز رعاية وتأهيل أصحاب الهمم الحكومية";
+}
+
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>طلاب في مراكز رعاية وتأهيل أصحاب الهمم الحكومية</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "StudentEFile")';
+
+            $(".tbody").empty();
+
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var input = { "EmiratesId": $('#txtEmiratesId').val() };
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+
+                if (obj.flag == "1") {
+
+
+                    html += '<tr>';
+                    html += '<td><h6><small><b>' + "رقم الطلب" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.TranReferenceNo + '</td>';
+                    html += '<td><h6><small><b>' + "تاريخ الطلب" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.TranRequestDate + '</td>';
+                    html += '</tr>';
+
+                    html += '<tr>';
+                    html += '<td><h6><small><b>' + "حالة الطلب" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.StatusTitleAr + '</td>';
+                    html += '<td><h6><small><b>' + " " + '</b></small></h6></td>';
+                    html += '<td>' + '</td>';
+                    html += '</tr>';
+
+                    html += '<tr>';
+                    html += '<td><h6><small><b>' + "رقم الهوية" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.NationalId + '</td>';
+                    html += '<td><h6><small><b>' + "رقم البطاقة" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.DisabledCardNo + '</td>';
+                    html += '</tr>';
+
+                    html += '<tr>';
+                    html += '<td><h6><small><b>' + "اسم الطفل" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.ChildName + '</td>';
+                    html += '<td><h6><small><b>' + "تاريخ الميلاد" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.DateOfBirth + '</td>';
+                    html += '</tr>';
+
+
+                    html += '<tr>';
+                    html += '<td><h6><small><b>' + "الجنس" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.GenderNameAr + '</td>';
+                    html += '<td><h6><small><b>' + "نوع الإعاقة" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.TypeTitleAr + '</td>';
+                    html += '</tr>';
+
+                    html += '<tr>';
+                    html += '<td><h6><small><b>' + "المركز" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.CenterTitleAr + '</td>';
+                    html += '<td><h6><small><b>' + " " + '</b></small></h6></td>';
+                    html += '<td>' + '</td>';
+                    html += '</tr>';
+
+                    html += '<tr>';
+                    html += '<td><h6><small><b>' + "اسم ولي الأمر" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.GuardianName + '</td>';
+                    html += '<td><h6><small><b>' + "صلة القرابة" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.RNameAr + '</td>';
+                    html += '</tr>';
+
+                    html += '<tr>';
+                    html += '<td><h6><small><b>' + "رقم الهاتف الثابت" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.PhoneNumber + '</td>';
+                    html += '<td><h6><small><b>' + "رقم الهاتف المتحرك" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.MobileNumber + '</td>';
+                    html += '</tr>';
+
+                    html += '<tr>';
+                    html += '<td><h6><small><b>' + "الإمارة" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.EmirateTitleAr + '</td>';
+                    html += '<td><h6><small><b>' + "المنطقة" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.Area + '</td>';
+                    html += '</tr>';
+
+                    html += '<tr>';
+                    html += '<td><h6><small><b>' + "البريد الإلكتروني" + '</b></small></h6></td>';
+                    html += '<td>' + obj.objResponse.Email + '</td>';
+                    html += '<td><h6><small><b>' + " " + '</b></small></h6></td>';
+                    html += '<td>' +  '</td>';
+                    html += '</tr>';
+
+                    
+                    $(".tbody").append(html);
+                    $('.DataTable').show();
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("PODCenterStudent.pdf");
+       });
+
+    </script>
+}
+

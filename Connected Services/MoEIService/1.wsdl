@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This service is used to get the housing details information of the UAE citizens from MOEI.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getHousingDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmirateIdCardNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TownNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FamilyNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getHousingDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getHousingDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserCredentials" type="tns:UserCredentials" />
+      <s:complexType name="UserCredentials">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APIKey" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getHousingDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:getHousingDetails" />
+  </wsdl:message>
+  <wsdl:message name="getHousingDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:getHousingDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHousingDetailsUserCredentials">
+    <wsdl:part name="UserCredentials" element="tns:UserCredentials" />
+  </wsdl:message>
+  <wsdl:portType name="IntegratedHousingSoap">
+    <wsdl:operation name="getHousingDetails">
+      <wsdl:input message="tns:getHousingDetailsSoapIn" />
+      <wsdl:output message="tns:getHousingDetailsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IntegratedHousingSoap12" type="tns:IntegratedHousingSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getHousingDetails">
+      <soap12:operation soapAction="http://tempuri.org/getHousingDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getHousingDetailsUserCredentials" part="UserCredentials" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IntegratedHousingSoap" type="tns:IntegratedHousingSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getHousingDetails">
+      <soap:operation soapAction="http://tempuri.org/getHousingDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getHousingDetailsUserCredentials" part="UserCredentials" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getHousingDetails_MOEI">
+    <wsdl:port name="getHousingDetails_MOEIsoaphttps" binding="tns:IntegratedHousingSoap">
+      <soap:address location="https://integrate.gsb.government.ae/ws/getHousingDetails_MOEI.getHousingDetails_MOEIsoaphttps/1.0" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

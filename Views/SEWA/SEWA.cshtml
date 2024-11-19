@@ -1,0 +1,425 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "هيئة كهرباء ومياه الشارقة";
+}
+<br />
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>خدمة هيئة كهرباء و مياه الشارقة</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+        <table class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> بطاقة هوية </b></small></h6></td>
+                <td><h6><small><b> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></b></small></h6></td>
+
+            </tr>
+        </table>
+        <table class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم المساعدة الاجتماعية الاتحادي </b></small></h6></td>
+                <td><h6><small><b> <input id="txtFedSSNo" type="text" class="form-control" style="width:100%" /></b></small></h6></td>
+                <td><h6><small><b> رقم المساعدة الاجتماعية المحلي </b></small></h6></td>
+                <td><h6><small><b> <input id="txtShjSSNo" type="text" class="form-control" style="width:100%" /></b></small></h6></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <table class="DataTable">
+            <tr>
+                <th class="text-center">
+                    <h4>
+                        <small>
+                            <b>
+                                سيوا - بيانات المساعدات الاجتماعية
+                            </b>
+                        </small>
+                    </h4>
+            </tr>
+        </table>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+
+
+            <thead class="">
+                <tr>
+
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    العنوان 2
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    العنوان 1
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الوصف باللغة العربية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    موقع المكتب
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم المؤجر
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم المالك
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    نوع المبنى
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم المستهلك
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    معرف الحساب
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    العنوان 3
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    نسبة الخصم
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ بدء الخصم
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    البريد الالكتروني للمستأجر
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم هاتف المستأجر
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الهوية الاماراتية للمستأجر
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم المساعدة الاجتماعية للمستأجر
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم المساعدة الاجتماعية (الشارقة) للمستأجر
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الاحتياجات الخاصة للمستأجر
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody1 text-center" id="tbody1"></tbody>
+        </table>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    البريد الالكتروني للمالك
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم الهاتف للمالك
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الهوية الاماراتية للمالك
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم المساعدة الاجتماعية للمالك
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم المساعدة الاجتماعية (الشارقة) للمالك
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody2 text-center" id="tbody2"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <!-- Bootstrap -->
+    <!-- Bootstrap DatePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!-- Bootstrap DatePicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+            var url = '@Url.Action("Search","SEWA")';
+
+            $(".tbody").empty();
+            $(".tbody1").empty();
+            $(".tbody2").empty();
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+            var html1 = '';
+            var html2 = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0 && $("#txtFedSSNo").val().length == 0 && $("#txtShjSSNo").val().length == 0 ) {
+
+                document.getElementById('error').innerText = ('Please input any one of the fields  -  EmiratesId or Federal/Local Security Numbers');
+                document.getElementById('error').style.color = 'white';
+
+               // $("#txtEmiratesId").focus();
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var input = { "EmiratesId": $('#txtEmiratesId').val(), "LSocialSecurityNo": $("#txtShjSSNo").val(), "FSocialSecurityNo": $("#txtFedSSNo").val() };
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent)  }, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+                if (obj.flag == "1") {
+
+                    $.each(obj.lstSEWAResponse, function (key, item) {
+
+                        html += '<tr>';
+                        html += '<td>' + item.addresS2 + '</td>';
+                        html += '<td>' + item.addresS1 + '</td>';
+                        html += '<td>' + item.areA_DESC + '</td>';
+                        html += '<td>' + item.sitE_OFFICE + '</td>';
+                        html += '<td>' + item.tenanT_NAME + '</td>';
+                        html += '<td>' + item.owneR_NAME + '</td>';
+                        html += '<td>' + item.preM_TYPE + '</td>';
+                        html += '<td>' + item.conS_NUM + '</td>';
+                        html += '<td>' + item.accT_ID + '</td>';
+                        html += '</tr>';
+
+                    });
+
+                     $.each(obj.lstSEWAResponse, function (key, item) {
+
+                        html1 += '<tr>';
+                        html1 += '<td>' + item.addresS3 + '</td>';
+                        html1 += '<td>' + item.discounT_PERCENTAGE + '</td>';
+                        html1 += '<td>' + item.discounT_START_DT + '</td>';
+                        html1 += '<td>' + item.tenanT_EMAIL + '</td>';
+                        html1 += '<td>' + item.tenanT_MOBILE + '</td>';
+                        html1 += '<td>' + item.tenanT_EMIRATES_ID + '</td>';
+                        html1 += '<td>' + item.tenanT_SOCIAL_SEC_NUM + '</td>';
+                        html1 += '<td>' + item.tenanT_SHJ_SOCIAL_SEC_NUM + '</td>';
+                        html1 += '<td>' + item.tenanT_SPL_NEED + '</td>';
+                        html1 += '</tr>';                  
+
+                     });
+
+                     $.each(obj.lstSEWAResponse, function (key, item) {
+
+                        html2 += '<tr>';
+                        html2 += '<td>' + item.owneR_EMAIL + '</td>';
+                        html2 += '<td>' + item.owneR_MOBILE + '</td>';
+                        html2 += '<td>' + item.owneR_EMIRATES_ID + '</td>';
+                        html2 += '<td>' + item.owneR_SOCIAL_SEC_NUM + '</td>';
+                        html2 += '<td>' + item.owneR_SHJ_SOCIAL_SEC_NUM + '</td>';                       
+                        html2 += '</tr>';
+                    });
+
+
+                    $(".tbody").append(html);
+                    $(".tbody1").append(html1);
+                    $(".tbody2").append(html2);
+                    $('.DataTable').show();
+                }
+                 else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+        $('#create_pdf').on('click', function () {
+            getPDF("SEWA.pdf");
+       });
+
+    </script>
+}
+

@@ -1,0 +1,1551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1" xmlns:cd="urn:ae:gov:abudhabi:core:CommonDataTypes:1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f23f3&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8e3" namespace="urn:ae:gov:abudhabi:core:CommonDataTypes:1" />
+  <xs:annotation>
+    <xs:appinfo>
+      <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+        <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1">
+          <dcterms:title xml:lang="ar">Ø¨ÙØ§ÙØ§Øª ÙÙÙÙØ© Ø§ÙÙØ±ÙØ¨Ø©</dcterms:title>
+          <dcterms:title xml:lang="en">G2GVehicleRegistrationTypes</dcterms:title>
+          <dcterms:identifier>urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1</dcterms:identifier>
+          <dcterms:description xml:lang="ar">Ø¨ÙØ§ÙØ§Øª ÙÙÙÙØ© Ø§ÙÙØ±ÙØ¨Ø©</dcterms:description>
+          <dcterms:description xml:lang="en">Vihicle Registration Information</dcterms:description>
+          <mireg:version>1</mireg:version>
+          <mireg:status>release</mireg:status>
+          <mireg:project>Digital Service Baseline and G2G Initiatives</mireg:project>
+          <mireg:category xml:lang="ar">Ø§ÙØªØ¨Ø§Ø¯Ù Ø§ÙÙØ´ØªØ±Ù</mireg:category>
+          <mireg:category xml:lang="en">G2G</mireg:category>
+          <dcterms:jurisdiction>AE-AZ</dcterms:jurisdiction>
+          <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi Systems and Information Centre (ADSIC)</adsic:OrganisationName>
+            <adsic:URL xml:lang="en">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:creator>
+          <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsic:OrganisationName>
+            <adsic:URL xml:lang="ar">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:creator>
+          <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi e-Government</adsic:OrganisationName>
+          </mireg:owner>
+          <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">Ø­ÙÙÙØ© Ø£Ø¨ÙØ¸Ø¨Ù Ø§ÙØ§ÙÙØªØ±ÙÙÙØ©</adsic:OrganisationName>
+          </mireg:owner>
+          <dcterms:contributor rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:PersonalName xml:lang="en">Abu Dhabi Police</adsic:PersonalName>
+          </dcterms:contributor>
+          <dcterms:contributor rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:PersonalName xml:lang="ar">Ø´Ø±Ø·Ø© Ø£Ø¨ÙØ¸Ø¨Ù</adsic:PersonalName>
+          </dcterms:contributor>
+          <dcterms:publisher rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi Systems and Information Centre (ADSIC)</adsic:OrganisationName>
+            <adsic:URL xml:lang="en">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:publisher>
+          <dcterms:publisher rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsic:OrganisationName>
+            <adsic:URL xml:lang="ar">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:publisher>
+          <dcterms:created />
+          <dcterms:medium>text/xml</dcterms:medium>
+          <dcterms:requires>Core/Modules/CommonDataTypes.xsd</dcterms:requires>
+          <adsic:providesDefinitionOf>AxisCountType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ChairNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ChassisNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>CylindersCountType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>DateOfRegisterType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>DoorsCountType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EmiratesIDNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EmptyWeightType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EngineNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>FuelTypeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>FuelType-ArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>FuelTypeCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>FuelTypeEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>FullWeightType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>GearTypeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>GearType-ArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>GearTypeCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>GearTypeEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>HorsePowerType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>InsuranceCompanyType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>InsuranceExpiryDateType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>InsuranceTypeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>InsuranceTypeArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>InsuranceTypeCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>InsuranceTypeEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>MOIUnifiedNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ManufacturingCountryType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ManufacturingCountryArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ManufacturingCountryCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ManufacturingCountryEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ManufacturingYearType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>MortgageReferencesType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>MortgageSourceType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>OwnerArabicNameType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>OwnerCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>OwnerEnglishNameType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>OwnerNationalityType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>OwnerNationalityArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>OwnerNationalityCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>OwnerNationalityEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateColorType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateColorArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateColorCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateColorEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateKindType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateKindArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateKindCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateKindEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateSourceType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateSourceArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateSourceCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateSourceEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateTypeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateTypeArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateTypeCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PlateTypeEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>PolicyNumberType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>SteeringTypeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>SteeringType-ArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>SteeringTypeCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>SteeringTypeEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleClassType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleClassArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleClassCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleClassEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleColorType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleColorArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleColorCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleColorEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleLicenseEndDateType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleLicenseNotesType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleModelType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleModelArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleModelCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleModelEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleRegistrationDetailsType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleRegistrationListType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleTypeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleTypeArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleTypeCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>VehicleTypeEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>WeightTypeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>WeightType-ArabicDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>WeightTypeCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>WeightTypeEnglishDescriptionType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>WheelsCountType</adsic:providesDefinitionOf>
+          <dcterms:conformsTo>http://www.w3.org/2001/XMLSchema</dcterms:conformsTo>
+        </rdf:Description>
+      </rdf:RDF>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:simpleType name="AxisCountType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#AxisCountType">
+            <dcterms:title xml:lang="ar">Ø¹Ø¯Ø¯ Ø§ÙÙØ­Ø§ÙØ±</dcterms:title>
+            <dcterms:title xml:lang="en">Axis Count</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¹Ø¯Ø¯ Ø§ÙÙØ­Ø§ÙØ± ÙÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Axis Count</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ChairNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#ChairNumberType">
+            <dcterms:title xml:lang="ar">Ø¹Ø¯Ø¯ Ø§ÙÙÙØ§Ø¹Ø¯</dcterms:title>
+            <dcterms:title xml:lang="en">Chair Number</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¹Ø¯Ø¯ Ø§ÙÙÙØ§Ø¹Ø¯ Ø¨Ø§ÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Chair Number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ChassisNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#ChassisNumberType">
+            <dcterms:title xml:lang="ar">Ø±ÙÙ Ø§ÙÙØ§Ø¹Ø¯Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Chassis Number</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙÙ Ø±ÙÙ Ø§ÙÙÙÙØ© Ø§ÙØªØ¹Ø±ÙÙÙ Ø§ÙØ®Ø§Øµ Ø¨Ø§ÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Chassis Number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="25" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CylindersCountType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#CylindersCountType">
+            <dcterms:title xml:lang="ar">Ø¹Ø¯Ø¯ Ø§ÙØ§Ø³Ø·ÙØ§ÙØ§Øª</dcterms:title>
+            <dcterms:title xml:lang="en">Cylinders Count</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¹Ø¯Ø¯ Ø§ÙØ£Ø³Ø·ÙØ§ÙØ§Øª ÙÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Cylinders Count</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DateOfRegisterType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#DateOfRegisterType">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙØªØ³Ø¬ÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Date Of Register</dcterms:title>
+            <dcterms:description xml:lang="ar">ØªØ§Ø±ÙØ® ØªØ³Ø¬ÙÙ Ø§ÙØªØ±Ø®ÙØµ ÙÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Date Of Register of vehicle</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="10" />
+      <xs:maxLength value="10" />
+      <xs:pattern value="\d{2}[/]\d{2}[/]\d{4}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DoorsCountType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#DoorsCountType">
+            <dcterms:title xml:lang="ar">Ø¹Ø¯Ø¯ Ø§ÙØ§Ø¨ÙØ§Ø¨</dcterms:title>
+            <dcterms:title xml:lang="en">Doors Count</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¹Ø¯Ø¯ Ø§ÙØ£Ø¨ÙØ§Ø¨ ÙÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Doors Count</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EmiratesIDNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#EmiratesIDNumberType">
+            <dcterms:title xml:lang="ar">Ø±ÙÙ Ø§ÙÙÙÙØ© Ø§ÙØ¥ÙØ§Ø±Ø§ØªÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Emirates ID Number</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙÙ Ø§ÙÙÙÙØ© ÙÙ Ø§ÙØ±ÙÙ Ø§ÙØªØ¹Ø±ÙÙÙ ÙÙØ£Ø´Ø®Ø§Øµ Ø§ÙÙÙØ§Ø·ÙÙÙ ÙØ§ÙÙÙÙÙÙÙ Ø¨Ø§ÙØ¯ÙÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Emirates ID is necessary for all UAE residents as part of their residency
+                                               requirement. Emirates ID serves as an identification purpose in all the
+                                               Government departments.</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="15" />
+      <xs:maxLength value="15" />
+      <xs:pattern value="[0-9]{18}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EmptyWeightType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#EmptyWeightType">
+            <dcterms:title xml:lang="ar">Ø§ÙÙØ²Ù ÙØ§Ø±Øº</dcterms:title>
+            <dcterms:title xml:lang="en">Empty Weight</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØ²Ù Ø§ÙÙØ±ÙØ¨Ø© ÙÙÙ ÙØ§Ø±ØºØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Empty Weight</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EngineNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#EngineNumberType">
+            <dcterms:title xml:lang="ar">Ø±ÙÙ Ø§ÙÙØ­Ø±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Engine Number</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ Ø±ÙÙ Ø§ÙÙØ­Ø±Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Engine Number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="25" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FuelType-ArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#FuelType-ArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙÙÙÙØ¯ -Ø¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Fuel Type - Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙÙÙÙØ¯ -Ø¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Fuel Type - Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FuelTypeCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#FuelTypeCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² ÙÙØ¹ Ø§ÙÙÙÙØ¯</dcterms:title>
+            <dcterms:title xml:lang="en">Fuel Type Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² ÙÙØ¹ Ø§ÙÙÙÙØ¯</dcterms:description>
+            <dcterms:description xml:lang="en">Fuel Type Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FuelTypeEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#FuelTypeEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙÙÙÙØ¯ -Ø§ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Fuel Type â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙÙÙÙØ¯ -Ø§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Fuel Type â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FullWeightType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#FullWeightType">
+            <dcterms:title xml:lang="ar">Ø§ÙÙØ²Ù ÙØ§Ø¦Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Full Weight</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙÙØ²Ù Ø§ÙÙØ³ÙÙØ­ ÙÙÙØ±ÙØ¨Ø© ÙÙÙ ÙØ­ÙÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Allowed for a vehicle Full Weight</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="GearType-ArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#GearType-ArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙØºÙØ§Ø± -Ø¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Gear Type - Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙØºÙØ§Ø± ÙÙÙØ±ÙØ¨Ø© ((Ø¹Ø§Ø¯Ù Ø§Ù Ø§ØªÙÙØ§ØªÙÙ)) -Ø¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Gear Type of Vehicle - Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="GearTypeCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#GearTypeCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² ÙÙØ¹ Ø§ÙØºÙØ§Ø±</dcterms:title>
+            <dcterms:title xml:lang="en">Gear Type Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² ÙÙØ¹ Ø§ÙØºÙØ§Ø± ÙÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Gear Type Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="GearTypeEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#GearTypeEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙØºÙØ§Ø± -Ø§ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Gear Type â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙØºÙØ§Ø± ÙÙÙØ±ÙØ¨Ø© ((Ø¹Ø§Ø¯Ù Ø§Ù Ø§ØªÙÙØ§ØªÙÙ )) Ø§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Gear Type of Vehicle â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="HorsePowerType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#HorsePowerType">
+            <dcterms:title xml:lang="ar">ÙÙØ© Ø§ÙÙØ­Ø±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Horse Power</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙÙØ© Ø§ÙÙØ­Ø±Ù ÙÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Horse Power</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="InsuranceCompanyType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#InsuranceCompanyType">
+            <dcterms:title xml:lang="ar">Ø´Ø±ÙØ© Ø§ÙØªØ§ÙÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Insurance Company</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØ¬ÙØ© Ø§ÙÙØ³Ø¤ÙÙØ© Ø¹Ù Ø§ÙØªØ§ÙÙÙ Ø¹ÙÙ Ø§ÙÙØ±ÙØ¨Ø§Øª Ø¶Ø¯ Ø§ÙØ­ÙØ§Ø¯Ø«</dcterms:description>
+            <dcterms:description xml:lang="en">Insurance Company</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="InsuranceExpiryDateType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#InsuranceExpiryDateType">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙØªÙØ§Ø¡ Ø§ÙØªØ§ÙÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Insurance Expiry Date</dcterms:title>
+            <dcterms:description xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙØªÙØ§Ø¡ Ø§ÙØªØ§ÙÙÙ</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Insurance Expiry Date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="10" />
+      <xs:maxLength value="10" />
+      <xs:pattern value="\d{2}[/]\d{2}[/]\d{4}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="InsuranceTypeArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#InsuranceTypeArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙØªØ§ÙÙÙ â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Insurance Type â Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙØªØ§ÙÙÙ ( Ø´Ø§ÙÙ Ø§Ù Ø¶Ø¯ Ø§ÙØºÙØ± )â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Insurance Type â Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="InsuranceTypeCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#InsuranceTypeCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² ÙÙØ¹ Ø§ÙØªØ§ÙÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Insurance Type Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² ÙÙØ¹ Ø§ÙØªØ§ÙÙÙ</dcterms:description>
+            <dcterms:description xml:lang="en">Insurance Type Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="InsuranceTypeEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#InsuranceTypeEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙØªØ§ÙÙÙ â Ø§ÙÙØµÙ Ø§ÙØ¥ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Insurance Type â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙØªØ§ÙÙÙ (Ø´Ø§ÙÙ Ø§Ù Ø¶Ø¯ Ø§ÙØºÙØ± )â Ø§ÙÙØµÙ Ø§ÙØ§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Insurance Type â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MOIUnifiedNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#MOIUnifiedNumberType">
+            <dcterms:title xml:lang="ar">Ø§ÙØ±ÙÙ Ø§ÙÙÙØ­Ø¯ â ÙØ²Ø§Ø±Ø© Ø§ÙØ¯Ø§Ø®ÙÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">MOI Unified Number</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØ±ÙÙ Ø§ÙÙÙØ­Ø¯ ÙÙ Ø±ÙÙ ØªØ¹Ø±ÙÙÙ ÙÙØ£Ø´Ø®Ø§Øµ Ø§ÙÙÙØ§Ø·ÙÙÙ ÙØ§ÙÙÙÙÙÙÙ ÙØ§ÙØ²Ø§Ø¦Ø±ÙÙ ÙÙ Ø§ÙØ¯ÙÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Unique Number for UAE Nationals, Residences and Visitors</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="15" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ManufacturingCountryArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#ManufacturingCountryArabicDescriptionType">
+            <dcterms:title xml:lang="ar">Ø¨ÙØ¯ Ø§ÙØµÙØ¹ â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Manufacturing Country â Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ Ø¨ÙØ¯ Ø§ÙØµÙØ¹ â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Manufacturing Country â Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="80" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ManufacturingCountryCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#ManufacturingCountryCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² Ø¨ÙØ¯ Ø§ÙØµÙØ¹</dcterms:title>
+            <dcterms:title xml:lang="en">Manufacturing Country Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² Ø§ÙØ¨ÙØ¯ Ø§ÙÙØµÙØ¹Ø© ÙÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Manufacturing of the vehicle Country Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ManufacturingCountryEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#ManufacturingCountryEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">Ø¨ÙØ¯ Ø§ÙØµÙØ¹ â Ø§ÙÙØµÙ Ø§ÙØ¥ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Manufacturing Country â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ Ø¨ÙØ¯ Ø§ÙØµÙØ¹ â Ø§ÙÙØµÙ Ø§ÙØ§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Manufacturing Country â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="80" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ManufacturingYearType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#ManufacturingYearType">
+            <dcterms:title xml:lang="ar">Ø³ÙØ© ØµÙØ¹ Ø§ÙÙØ±ÙØ¨Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Manufacturing Year</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø³ÙØ© ØªØµÙØ¹ Ø§ï¿½ï¿½ÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Manufacturing Year</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MortgageReferencesType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#MortgageReferencesType">
+            <dcterms:title xml:lang="ar">ÙØ±Ø¬Ø¹ Ø§ÙØ±ÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Mortgage References</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØ±ÙÙ Ø§ÙØªØ¹Ø±ÙÙÙ ÙÙØ±ÙÙ</dcterms:description>
+            <dcterms:description xml:lang="en">Mortgage References</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MortgageSourceType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#MortgageSourceType">
+            <dcterms:title xml:lang="ar">Ø¬ÙØ© Ø§ÙØ±ÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Mortgage Source</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ Ø¬ÙØ© Ø§ÙØ±ÙÙ ÙÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Mortgage Source</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OwnerArabicNameType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#OwnerArabicNameType">
+            <dcterms:title xml:lang="ar">Ø§Ø³Ù Ø§ÙÙØ§ÙÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Owner Arabic Name</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§Ø³Ù Ø§ÙÙØ§ÙÙ ÙÙÙØ±ÙØ¨Ø© Ø§ÙØ¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Owner Arabic Name</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="80" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OwnerCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#OwnerCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² Ø§ÙÙØ§ÙÙ Ø§ÙÙØ±ÙØ±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Owner Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØ±ÙØ² Ø§ Ø§ÙÙØ±ÙØ±Ù ÙØªØ¹Ø±ÙÙÙ ÙÙØ§ÙÙ Ø§ÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Owner Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="12" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OwnerEnglishNameType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#OwnerEnglishNameType">
+            <dcterms:title xml:lang="ar">Ø§Ø³Ù Ø§ÙÙØ§ÙÙ Ø§ÙØ§ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Owner English Name</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§Ø³Ù Ø§ÙÙØ§ÙÙ Ø§ÙØ§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Owner English Name</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="80" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OwnerNationalityArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#OwnerNationalityArabicDescriptionType">
+            <dcterms:title xml:lang="ar">Ø¬ÙØ³ÙØ© Ø§ÙÙØ§ÙÙ â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Owner Nationality â Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ Ø¬ÙØ³ÙØ© Ø§ÙÙØ§ÙÙ â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Owner Nationality â Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="80" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OwnerNationalityCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#OwnerNationalityCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² Ø¬ÙØ³ÙØ© Ø§ÙÙØ§ÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Owner Nationality Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² Ø¬ÙØ³ÙØ© Ø§ÙÙØ§ÙÙ</dcterms:description>
+            <dcterms:description xml:lang="en">Owner Nationality Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OwnerNationalityEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#OwnerNationalityEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">Ø¬ÙØ³ÙØ© Ø§ÙÙØ§ÙÙ â Ø§ÙÙØµÙ Ø§ÙØ§ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Owner Nationality â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ Ø¬ÙØ³ÙØ© Ø§ÙÙØ§ÙÙ â Ø§ÙÙØµÙ Ø§ÙØ§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Owner Nationality â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="80" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateColorArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateColorArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ÙÙÙ Ø§ÙÙÙØ­Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Color â Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙÙ Ø§ÙÙÙØ­Ø© Ø¨Ø§ÙØ¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Plate Color â Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateColorCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateColorCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² ÙÙÙ Ø§ÙÙÙØ­Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Color Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØ±ÙØ² Ø§ÙÙÙÙØ² ÙÙÙÙ Ø§ÙÙÙØ­Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Plate Color Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateColorEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateColorEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ÙÙÙ Ø§ÙÙÙØ­Ø© â Ø§ÙÙØµÙ Ø§ÙØ¥ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Color â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ Ø§ÙÙÙÙ Ø¨Ø§ÙØ¥ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Plate Color â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateKindArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateKindArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙÙÙØ­Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Kind â Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙÙÙØ­Ø© Ø¨Ø§ÙØ¹Ø±Ø¨Ù (ÙØ«Ø§Ù Ø®ØµÙØµÙ Ø¹ÙÙÙÙ)</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Plate Kind â Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateKindCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateKindCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² ÙÙØ¹ Ø§ÙÙÙØ­Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Kind Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØ±ÙØ² Ø§ÙÙØ­Ø¯Ø¯ ÙÙØ¹ Ø§ÙÙÙØ­Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Plate Kind Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateKindEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateKindEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙÙÙØ­Ø© â Ø§ÙÙØµÙ Ø§ÙØ¥ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Kind â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙÙÙØ­Ø© Ø¨Ø§ÙØ¥ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Plate Kind â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateNumberType">
+            <dcterms:title xml:lang="ar">Ø±ÙÙ Ø§ÙÙÙØ­Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Number</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙÙ Ø±ÙÙ ØªØ¹Ø±ÙÙÙ ÙØªØ³Ø¬ÙÙ Ø§ÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Plate Number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateSourceArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateSourceArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ÙØµØ¯Ø± Ø§ÙÙÙØ­Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Source â Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¬ÙØ© ØªØ±Ø®ÙØµ Ø§ÙÙÙØ­Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Plate Source â Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateSourceCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateSourceCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² ÙØµØ¯Ø± Ø§ÙÙÙØ­Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Source Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² ÙØµØ¯Ø± Ø§ÙÙÙØ­Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Plate Source Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateSourceEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateSourceEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ÙØµØ¯Ø± Ø§ÙÙÙØ­Ø© â Ø§ÙÙØµÙ Ø§ÙØ¥ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Source â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¬ÙØ© ØªØ±Ø®ÙØµ Ø§ÙÙÙØ­Ø© â Ø§ÙÙØµÙ Ø§ÙØ§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Plate Source â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateTypeArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateTypeArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ÙØ¦Ø© Ø§ÙÙÙØ­Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Class â Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙØ¦Ø© Ø§ÙÙÙØ­Ø© Ø¨Ø§ÙØ¹Ø±Ø¨Ù ÙØ«Ø§Ù (Ø®ØµÙØµ -Ø¹ÙÙÙÙ)</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Plate Class â Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateTypeCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateTypeCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² ÙØ¦Ø© Ø§ÙÙÙØ­Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Class Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² Ø§ÙÙØ­Ø¯Ø¯ ÙÙØ¦Ø© Ø§ÙÙÙØ­Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Plate Class Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlateTypeEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PlateTypeEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ÙØ¦Ø© Ø§ÙÙÙØ­Ø© â Ø§ÙÙØµÙ Ø§ÙØ¥ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Plate Class â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙØ¦Ø© Ø§ÙÙÙØ­Ø© â Ø§ÙÙØµÙ Ø§ÙØ§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Plate Class â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PolicyNumberType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#PolicyNumberType">
+            <dcterms:title xml:lang="ar">Ø±ÙÙ Ø§ÙØ¨ÙÙÙØµØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Policy Number</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙÙ Ø§ÙØªØ¹Ø±ÙÙÙ ÙÙØªØ§ÙÙÙ</dcterms:description>
+            <dcterms:description xml:lang="en">Policy Number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SteeringType-ArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#SteeringType-ArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙÙÙÙØ¯ -Ø¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Steering Type - Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙÙÙÙØ¯ -Ø¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Steering Type - Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SteeringTypeCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#SteeringTypeCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² ÙÙØ¹ Ø§ÙÙÙÙØ¯</dcterms:title>
+            <dcterms:title xml:lang="en">Steering Type Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² ÙÙØ¹ Ø§ÙÙÙÙØ¯</dcterms:description>
+            <dcterms:description xml:lang="en">Steering Type Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SteeringTypeEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#SteeringTypeEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙÙÙÙØ¯ -Ø§ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Steering Type â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙÙÙÙØ¯ -Ø§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Steering Type â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleClassArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleClassArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ØµÙÙ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle Class â Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ØµÙÙ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Vehicle Class â Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleClassCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleClassCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² ØµÙÙ Ø§ÙÙØ±ÙØ¨Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle Class Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² ØµÙÙ Ø§ÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Vehicle Class Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleClassEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleClassEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ØµÙÙ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ¥ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle Class â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ØµÙÙ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Vehicle Class â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleColorArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleColorArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ÙÙÙ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle Color â Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙÙ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Vehicle Color â Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="60" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleColorCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleColorCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² ÙÙÙ Ø§ÙÙØ±ÙØ¨Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle Color Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² ÙÙÙ Ø§ÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Vehicle Color Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleColorEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleColorEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ÙÙÙ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ¥ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle Color â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙÙ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Vehicle Color â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="60" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleLicenseEndDateType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleLicenseEndDateType">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙØªÙØ§Ø¡ Ø§ÙÙÙÙÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle License End Date</dcterms:title>
+            <dcterms:description xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙØªÙØ§Ø¡ Ø§ÙØªØ±Ø®ÙØµ ÙÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Vehicle License End Date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="10" />
+      <xs:maxLength value="10" />
+      <xs:pattern value="\d{2}[/]\d{2}[/]\d{4}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleLicenseNotesType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleLicenseNotesType">
+            <dcterms:title xml:lang="ar">ÙÙØ§Ø­Ø¸Ø§Øª Ø§ÙÙÙÙÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle License Notes</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØ­ÙÙ Ø§ÙØ®Ø§Øµ Ø¨Ø£Ø¯Ø±Ø§Ø¬ Ø§ÙÙÙØ§Ø­Ø¸Ø§Øª Ø¹ÙÙ Ø§ÙÙÙÙÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Vehicle License Notes</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleModelArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleModelArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ÙÙØ¯ÙÙ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle Model â Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¯ÙÙ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Vehicle Model â Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleModelCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleModelCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² ÙÙØ¯ÙÙ Ø§ÙÙØ±ÙØ¨Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle Model Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² ÙÙØ¯ÙÙ Ø§ÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Vehicle Model Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleModelEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleModelEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ÙÙØ¯ÙÙ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ¥ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle Model â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¯ÙÙ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Vehicle Model â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleTypeArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleTypeArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle Type â Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Vehicle Type â Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleTypeCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleTypeCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² ÙÙØ¹ Ø§ÙÙØ±ÙØ¨Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle Type Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² ÙÙØ¹ Ø§ÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Vehicle Type Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleTypeEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#VehicleTypeEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ¥ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Vehicle Type â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ ÙÙØ¹ Ø§ÙÙØ±ÙØ¨Ø© â Ø§ÙÙØµÙ Ø§ÙØ§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Vehicle Type â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="WeightType-ArabicDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#WeightType-ArabicDescriptionType">
+            <dcterms:title xml:lang="ar">ÙØµÙ Ø§ÙÙØ²Ù -Ø¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Weight Type - Arabic Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ Ø§ÙÙØ²Ù Ø§ÙÙØ³ÙÙØ­ ÙÙÙØ±ÙØ¨Ø© ÙÙÙ ÙØ­ÙÙØ© -Ø¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Weight Type of vehicle - Arabic Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="WeightTypeCodeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#WeightTypeCodeType">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² Ø§ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Weight Type Code</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙØ² Ø§ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Weight Type Code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="WeightTypeEnglishDescriptionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#WeightTypeEnglishDescriptionType">
+            <dcterms:title xml:lang="ar">ÙØµÙ Ø§ÙÙØ²Ù -Ø§ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Weight Type â English Description</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØµÙ Ø§ÙÙØ²Ù Ø§ÙÙØ³ÙÙØ­ ÙÙÙØ±ÙØ¨Ø© ÙÙÙ ÙØ­ÙÙØ© -Ø§ÙØ¬ÙÙØ²Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Describe Weight Type of vehicle â English Description</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:StringType">
+      <xs:minLength value="1" />
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="WheelsCountType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:1/1#WheelsCountType">
+            <dcterms:title xml:lang="ar">Ø¹Ø¯Ø¯ Ø§ÙØ§Ø·Ø§Ø±Ø§Øª</dcterms:title>
+            <dcterms:title xml:lang="en">Wheels Count</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¹Ø¯Ø¯ Ø§ÙØ¥Ø·Ø§Ø±Ø§Øª ÙÙÙØ±ÙØ¨Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Wheels Count</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="cd:NumericIdentifierType">
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="FuelTypeType">
+    <xs:sequence>
+      <xs:element name="FuelTypeCode" nillable="true" type="FuelTypeCodeType" />
+      <xs:element name="FuelType-ArabicDescription" nillable="true" type="FuelType-ArabicDescriptionType" />
+      <xs:element name="FuelTypeEnglishDescription" nillable="true" type="FuelTypeEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GearTypeType">
+    <xs:sequence>
+      <xs:element name="GearTypeCode" nillable="true" type="GearTypeCodeType" />
+      <xs:element name="GearType-ArabicDescription" nillable="true" type="GearType-ArabicDescriptionType" />
+      <xs:element name="GearTypeEnglishDescription" nillable="true" type="GearTypeEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InsuranceTypeType">
+    <xs:sequence>
+      <xs:element name="InsuranceTypeCode" nillable="true" type="InsuranceTypeCodeType" />
+      <xs:element name="InsuranceTypeArabicDescription" nillable="true" type="InsuranceTypeArabicDescriptionType" />
+      <xs:element name="InsuranceTypeEnglishDescription" nillable="true" type="InsuranceTypeEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ManufacturingCountryType">
+    <xs:sequence>
+      <xs:element name="ManufacturingCountryCode" nillable="true" type="ManufacturingCountryCodeType" />
+      <xs:element name="ManufacturingCountryArabicDescription" nillable="true" type="ManufacturingCountryArabicDescriptionType" />
+      <xs:element name="ManufacturingCountryEnglishDescription" nillable="true" type="ManufacturingCountryEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OwnerNationalityType">
+    <xs:sequence>
+      <xs:element name="OwnerNationalityCode" nillable="true" type="OwnerNationalityCodeType" />
+      <xs:element name="OwnerNationalityArabicDescription" nillable="true" type="OwnerNationalityArabicDescriptionType" />
+      <xs:element name="OwnerNationalityEnglishDescription" nillable="true" type="OwnerNationalityEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlateColorType">
+    <xs:sequence>
+      <xs:element name="PlateColorCode" nillable="true" type="PlateColorCodeType" />
+      <xs:element name="PlateColorArabicDescription" nillable="true" type="PlateColorArabicDescriptionType" />
+      <xs:element name="PlateColorEnglishDescription" nillable="true" type="PlateColorEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlateKindType">
+    <xs:sequence>
+      <xs:element name="PlateKindCode" nillable="true" type="PlateKindCodeType" />
+      <xs:element name="PlateKindArabicDescription" nillable="true" type="PlateKindArabicDescriptionType" />
+      <xs:element name="PlateKindEnglishDescription" nillable="true" type="PlateKindEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlateSourceType">
+    <xs:sequence>
+      <xs:element name="PlateSourceCode" nillable="true" type="PlateSourceCodeType" />
+      <xs:element name="PlateSourceArabicDescription" nillable="true" type="PlateSourceArabicDescriptionType" />
+      <xs:element name="PlateSourceEnglishDescription" nillable="true" type="PlateSourceEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlateTypeType">
+    <xs:sequence>
+      <xs:element name="PlateTypeCode" nillable="true" type="PlateTypeCodeType" />
+      <xs:element name="PlateTypeArabicDescription" nillable="true" type="PlateTypeArabicDescriptionType" />
+      <xs:element name="PlateTypeEnglishDescription" nillable="true" type="PlateTypeEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SteeringTypeType">
+    <xs:sequence>
+      <xs:element name="SteeringTypeCode" nillable="true" type="SteeringTypeCodeType" />
+      <xs:element name="SteeringType-ArabicDescription" nillable="true" type="SteeringType-ArabicDescriptionType" />
+      <xs:element name="SteeringTypeEnglishDescription" nillable="true" type="SteeringTypeEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VehicleClassType">
+    <xs:sequence>
+      <xs:element name="VehicleClassCode" nillable="true" type="VehicleClassCodeType" />
+      <xs:element name="VehicleClassArabicDescription" nillable="true" type="VehicleClassArabicDescriptionType" />
+      <xs:element name="VehicleClassEnglishDescription" nillable="true" type="VehicleClassEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VehicleColorType">
+    <xs:sequence>
+      <xs:element name="VehicleColorCode" nillable="true" type="VehicleColorCodeType" />
+      <xs:element name="VehicleColorArabicDescription" nillable="true" type="VehicleColorArabicDescriptionType" />
+      <xs:element name="VehicleColorEnglishDescription" nillable="true" type="VehicleColorEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VehicleModelType">
+    <xs:sequence>
+      <xs:element name="VehicleModelCode" nillable="true" type="VehicleModelCodeType" />
+      <xs:element name="VehicleModelArabicDescription" nillable="true" type="VehicleModelArabicDescriptionType" />
+      <xs:element name="VehicleModelEnglishDescription" nillable="true" type="VehicleModelEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VehicleRegistrationDetailsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmiratesIDNumber" nillable="true" type="EmiratesIDNumberType" />
+      <xs:element minOccurs="0" name="MOIUnifiedNumber" nillable="true" type="MOIUnifiedNumberType" />
+      <xs:element name="OwnerCode" nillable="true" type="OwnerCodeType" />
+      <xs:element name="OwnerArabicName" nillable="true" type="OwnerArabicNameType" />
+      <xs:element name="OwnerEnglishName" nillable="true" type="OwnerEnglishNameType" />
+      <xs:element name="OwnerNationality" nillable="true" type="OwnerNationalityType" />
+      <xs:element name="PlateNumber" nillable="true" type="PlateNumberType" />
+      <xs:element name="PlateColor" nillable="true" type="PlateColorType" />
+      <xs:element name="PlateKind" nillable="true" type="PlateKindType" />
+      <xs:element name="PlateType" nillable="true" type="PlateTypeType" />
+      <xs:element name="PlateSource" nillable="true" type="PlateSourceType" />
+      <xs:element name="InsuranceCompany" nillable="true" type="InsuranceCompanyType" />
+      <xs:element name="InsuranceType" nillable="true" type="InsuranceTypeType" />
+      <xs:element name="InsuranceExpiryDate" nillable="true" type="InsuranceExpiryDateType" />
+      <xs:element name="PolicyNumber" nillable="true" type="PolicyNumberType" />
+      <xs:element minOccurs="0" name="MortgageSource" nillable="true" type="MortgageSourceType" />
+      <xs:element minOccurs="0" name="MortgageReferences" nillable="true" type="MortgageReferencesType" />
+      <xs:element minOccurs="0" name="VehicleLicenseNotes" nillable="true" type="VehicleLicenseNotesType" />
+      <xs:element name="ChassisNumber" nillable="true" type="ChassisNumberType" />
+      <xs:element name="EngineNumber" nillable="true" type="EngineNumberType" />
+      <xs:element name="VehicleLicenseEndDate" nillable="true" type="VehicleLicenseEndDateType" />
+      <xs:element name="DateOfRegister" nillable="true" type="DateOfRegisterType" />
+      <xs:element minOccurs="0" name="FullWeight" nillable="true" type="FullWeightType" />
+      <xs:element minOccurs="0" name="EmptyWeight" nillable="true" type="EmptyWeightType" />
+      <xs:element name="VehicleType" nillable="true" type="VehicleTypeType" />
+      <xs:element name="VehicleModel" nillable="true" type="VehicleModelType" />
+      <xs:element minOccurs="0" name="ChairNumber" nillable="true" type="ChairNumberType" />
+      <xs:element name="ManufacturingYear" nillable="true" type="ManufacturingYearType" />
+      <xs:element name="ManufacturingCountry" nillable="true" type="ManufacturingCountryType" />
+      <xs:element name="VehicleClass" nillable="true" type="VehicleClassType" />
+      <xs:element name="VehicleColor" nillable="true" type="VehicleColorType" />
+      <xs:element name="GearType" nillable="true" type="GearTypeType" />
+      <xs:element name="FuelType" nillable="true" type="FuelTypeType" />
+      <xs:element name="WeightType" nillable="true" type="WeightTypeType" />
+      <xs:element name="SteeringType" nillable="true" type="SteeringTypeType" />
+      <xs:element name="CylindersCount" nillable="true" type="CylindersCountType" />
+      <xs:element name="AxisCount" nillable="true" type="AxisCountType" />
+      <xs:element name="DoorsCount" nillable="true" type="DoorsCountType" />
+      <xs:element name="HorsePower" nillable="true" type="HorsePowerType" />
+      <xs:element name="WheelsCount" nillable="true" type="WheelsCountType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VehicleRegistrationListType">
+    <xs:sequence>
+      <xs:element name="PlateNumber" nillable="true" type="PlateNumberType" />
+      <xs:element name="PlateColor" nillable="true" type="PlateColorType" />
+      <xs:element name="PlateSource" nillable="true" type="PlateSourceType" />
+      <xs:element name="PlateKind" nillable="true" type="PlateKindType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VehicleTypeType">
+    <xs:sequence>
+      <xs:element name="VehicleTypeCode" nillable="true" type="VehicleTypeCodeType" />
+      <xs:element name="VehicleTypeArabicDescription" nillable="true" type="VehicleTypeArabicDescriptionType" />
+      <xs:element name="VehicleTypeEnglishDescription" nillable="true" type="VehicleTypeEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WeightTypeType">
+    <xs:sequence>
+      <xs:element name="WeightTypeCode" nillable="true" type="WeightTypeCodeType" />
+      <xs:element name="WeightType-ArabicDescription" nillable="true" type="WeightType-ArabicDescriptionType" />
+      <xs:element name="WeightTypeEnglishDescription" nillable="true" type="WeightTypeEnglishDescriptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestTrnHeaderType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntityCode" type="cd:String20Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResponseTrnHeaderType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TransactionId" type="cd:String50Type" />
+      <xs:element minOccurs="0" name="EntityCode" type="cd:String20Type" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

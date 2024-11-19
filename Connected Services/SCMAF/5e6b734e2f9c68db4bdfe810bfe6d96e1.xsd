@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xdb="http://xmlns.oracle.com/xdb" xmlns:cd="urn:ae:gov:abudhabi:core:CommonDataTypes:2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="urn:ae:gov:abudhabi:DigitalDocuments:SocialMinor:1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:SocialMinor:1">
+  <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=ee5c09163b27428ef60c1a300aff7d92&amp;servdocoid=c224a13300998783141f63d95a56e897" namespace="urn:ae:gov:abudhabi:core:CommonDataTypes:2" />
+  <xsd:annotation>
+    <xsd:appinfo>
+      <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+        <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:HealthTypes:1">
+          <dcterms:title xml:lang="ar">أنواع سوسيل الصغرى</dcterms:title>
+          <dcterms:title xml:lang="en">G2GSocialMinorTypes</dcterms:title>
+          <dcterms:identifier>urn:ae:gov:abudhabi:DigitalDocuments:SocialMinor:1/1</dcterms:identifier>
+          <dcterms:description xml:lang="ar">أنواع سوسيل الصغرى</dcterms:description>
+          <dcterms:description xml:lang="en">Social Minor Types Information</dcterms:description>
+          <mireg:version>1</mireg:version>
+          <mireg:status>release</mireg:status>
+          <mireg:project>Digital Service Baseline and G2G Initiatives</mireg:project>
+          <mireg:category xml:lang="ar">التبادل المشترك</mireg:category>
+          <mireg:category xml:lang="en">G2G</mireg:category>
+          <dcterms:jurisdiction>AE-AZ</dcterms:jurisdiction>
+          <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="en">Abu Dhabi Smart Solutions and Services Authority (adsssa)</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="en">http://adsssa.abudhabi.ae</adsssa:URL>
+          </dcterms:creator>
+          <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="ar">مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="ar">http://adsssa.abudhabi.ae</adsssa:URL>
+          </dcterms:creator>
+          <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="en">Abu Dhabi e-Government</adsssa:OrganisationName>
+          </mireg:owner>
+          <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="ar">حكومة أبوظبي الالكترونية</adsssa:OrganisationName>
+          </mireg:owner>
+          <dcterms:contributor rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:PersonalName xml:lang="en">SCMAF</adsssa:PersonalName>
+          </dcterms:contributor>
+          <dcterms:contributor rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:PersonalName xml:lang="ar">قسم الصحة</adsssa:PersonalName>
+          </dcterms:contributor>
+          <dcterms:publisher rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="en">Abu Dhabi Smart Solutions and Services Authority (adsssa)</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="en">http://adsssa.abudhabi.ae</adsssa:URL>
+          </dcterms:publisher>
+          <dcterms:publisher rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="ar">مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="ar">http://adsssa.abudhabi.ae</adsssa:URL>
+          </dcterms:publisher>
+          <dcterms:created />
+          <dcterms:medium>text/xml</dcterms:medium>
+          <dcterms:requires>../../Core/Modules/CommonDataTypes.xsd</dcterms:requires>
+          <adsssa:providesDefinitionOf>SRNumberType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DateType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FileOwnerType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FileOwnerNameType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FileNumberType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>ApplyToType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>RequesterNameType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>TotalAmountType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DateFromType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DateToType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BankAccountNoType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BankAccountOwnerNameType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>TransactionTypeType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>TransactionNumberType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>TransactionDateType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>TransactionDetailsType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CreditAmountType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DebitAmountType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BalanceType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>InheritorNumberType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>InheritorNameType</adsssa:providesDefinitionOf>
+          <dcterms:conformsTo>http://www.w3.org/2001/XMLSchema</dcterms:conformsTo>
+        </rdf:Description>
+      </rdf:RDF>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:simpleType name="SRNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="SRNumber">
+            <dcterms:title xml:lang="ar">رقم الطلب</dcterms:title>
+            <dcterms:title xml:lang="en">SR Number</dcterms:title>
+            <dcterms:description xml:lang="ar">رقم طلب الخدمة</dcterms:description>
+            <dcterms:description xml:lang="en">Service Request Number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="EmiratesIDNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:AnimalTypes:1/1#EmiratesIDNumberType">
+            <dcterms:title xml:lang="ar">رقم الهوية الإماراتية</dcterms:title>
+            <dcterms:title xml:lang="en">Emirates ID Number</dcterms:title>
+            <dcterms:description xml:lang="ar">تعتبر الهوية الإماراتية إجبارية لجميع مواطني ومقيمي دولة الامارات العربية
+                                               حيث يتم إبرازها عند التقدم لجميع المعاملات الحكومية</dcterms:description>
+            <dcterms:description xml:lang="en">Emirates ID is necessary for all UAE residents as part of their residency
+                                               requirement. Emirates ID serves as an identification purpose in all the
+                                               Government departments.</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType">
+      <xsd:minLength value="15" />
+      <xsd:maxLength value="15" />
+      <xsd:pattern value="[0-9]{15}" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="Date">
+            <dcterms:title xml:lang="ar">التاريخ</dcterms:title>
+            <dcterms:title xml:lang="en">Date</dcterms:title>
+            <dcterms:description xml:lang="ar">تاريخ تقديم طلب الخدمة</dcterms:description>
+            <dcterms:description xml:lang="en">Service Request Date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="FileOwnerTypeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FileOwnerType">
+            <dcterms:title xml:lang="ar">نوع صاحب الملف</dcterms:title>
+            <dcterms:title xml:lang="en">File owner Type</dcterms:title>
+            <dcterms:description xml:lang="ar">نوع صاحب الملف</dcterms:description>
+            <dcterms:description xml:lang="en">File owner Type</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="FileOwnerNameEnType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FileOwnerName">
+            <dcterms:title xml:lang="ar">اسم صاحب الملف</dcterms:title>
+            <dcterms:title xml:lang="en">File owner name English</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم صاحب الملف</dcterms:description>
+            <dcterms:description xml:lang="en">File owner name English</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="FileOwnerNameArType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FileOwnerName">
+            <dcterms:title xml:lang="ar">اسم صاحب الملف</dcterms:title>
+            <dcterms:title xml:lang="en">File owner name English</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم صاحب الملف</dcterms:description>
+            <dcterms:description xml:lang="en">File owner name English</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="FileNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FileNumber">
+            <dcterms:title xml:lang="ar">رقم الملف</dcterms:title>
+            <dcterms:title xml:lang="en">File Number</dcterms:title>
+            <dcterms:description xml:lang="ar">رقم الملف</dcterms:description>
+            <dcterms:description xml:lang="en">File Number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="ApplyToType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="ApplyTo">
+            <dcterms:title xml:lang="ar">جهة التقديم</dcterms:title>
+            <dcterms:title xml:lang="en">Apply To</dcterms:title>
+            <dcterms:description xml:lang="ar">جهة التقديم</dcterms:description>
+            <dcterms:description xml:lang="en">Apply To</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DocumentType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="ApplyTo">
+            <dcterms:title xml:lang="ar">نوع الوثيقة</dcterms:title>
+            <dcterms:title xml:lang="en">Document Type</dcterms:title>
+            <dcterms:description xml:lang="ar">نوع الوثيقة</dcterms:description>
+            <dcterms:description xml:lang="en">Document Type</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="RequesterNameEnType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="RequesterName">
+            <dcterms:title xml:lang="ar">اسم المستفيد / مقدم الطلب</dcterms:title>
+            <dcterms:title xml:lang="en">Requester name English</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم المستفيد / مقدم الطلب</dcterms:description>
+            <dcterms:description xml:lang="en">Requester name English</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="RequesterNameArType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="RequesterName">
+            <dcterms:title xml:lang="ar">اسم المستفيد / مقدم الطلب</dcterms:title>
+            <dcterms:title xml:lang="en">Requester name Arabic</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم المستفيد / مقدم الطلب</dcterms:description>
+            <dcterms:description xml:lang="en">Requester name Arabic</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="TotalAmountType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="TotalAmount">
+            <dcterms:title xml:lang="ar">المبلغ الاجمالي</dcterms:title>
+            <dcterms:title xml:lang="en">Total Amount</dcterms:title>
+            <dcterms:description xml:lang="ar">المبلغ الاجمالي</dcterms:description>
+            <dcterms:description xml:lang="en">Total Amount</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String20Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DocTypeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="DocTypeType">
+            <dcterms:title xml:lang="ar">نوع المرفق</dcterms:title>
+            <dcterms:title xml:lang="en">Type of the attachment</dcterms:title>
+            <dcterms:description xml:lang="ar">نوع المرفق</dcterms:description>
+            <dcterms:description xml:lang="en">Type of the attachment</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType">
+      <xsd:minLength value="0" />
+      <xsd:maxLength value="30" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FileNameType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FileNameType">
+            <dcterms:title xml:lang="ar">اسم الملف</dcterms:title>
+            <dcterms:title xml:lang="en">Name of the file</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم الملف</dcterms:description>
+            <dcterms:description xml:lang="en">Name of the file</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType">
+      <xsd:minLength value="0" />
+      <xsd:maxLength value="200" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FileExtType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FileExtType">
+            <dcterms:title xml:lang="ar">النوع</dcterms:title>
+            <dcterms:title xml:lang="en">Extension of the file</dcterms:title>
+            <dcterms:description xml:lang="ar">امتداد الملف</dcterms:description>
+            <dcterms:description xml:lang="en">Extension of the file</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType">
+      <xsd:minLength value="0" />
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FileBufferType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FileBufferType">
+            <dcterms:title xml:lang="ar">الملف</dcterms:title>
+            <dcterms:title xml:lang="en">Document in Byte64 code</dcterms:title>
+            <dcterms:description xml:lang="ar">الملف</dcterms:description>
+            <dcterms:description xml:lang="en">Document in Byte64 code</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:Base64BinaryType">
+      <xsd:minLength value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CommentsType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:PartnershipContractTypes:1/1#CommentsType">
+            <dcterms:title xml:lang="ar">ملاحظات</dcterms:title>
+            <dcterms:title xml:lang="en">Any Comments</dcterms:title>
+            <dcterms:description xml:lang="ar">ملاحظات</dcterms:description>
+            <dcterms:description xml:lang="en">Any Comments</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType">
+      <xsd:minLength value="0" />
+      <xsd:maxLength value="2000" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FileSizeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:PartnershipContractTypes:1/1#FileSizeType">
+            <dcterms:title xml:lang="ar">حجم الملف</dcterms:title>
+            <dcterms:title xml:lang="en">File Size</dcterms:title>
+            <dcterms:description xml:lang="ar">حجم الملف</dcterms:description>
+            <dcterms:description xml:lang="en">File Size</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:NumericIdentifierType">
+      <xsd:minLength value="0" />
+      <xsd:maxLength value="30" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DateFromType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="DateFrom">
+            <dcterms:title xml:lang="ar">من تاريخ</dcterms:title>
+            <dcterms:title xml:lang="en">Date From</dcterms:title>
+            <dcterms:description xml:lang="ar">من تاريخ</dcterms:description>
+            <dcterms:description xml:lang="en">Date From</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DateToType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="DateTo">
+            <dcterms:title xml:lang="ar">إلى تاريخ</dcterms:title>
+            <dcterms:title xml:lang="en">Date To</dcterms:title>
+            <dcterms:description xml:lang="ar">إلى تاريخ</dcterms:description>
+            <dcterms:description xml:lang="en">Date To</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="InheritorNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="InheritorNumber">
+            <dcterms:title xml:lang="ar">رقم الوريث</dcterms:title>
+            <dcterms:title xml:lang="en">Inheritor Number</dcterms:title>
+            <dcterms:description xml:lang="ar">رقم الوريث</dcterms:description>
+            <dcterms:description xml:lang="en">Inheritor Number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="InheritorNameEnType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="InheritorName">
+            <dcterms:title xml:lang="ar">اسم الوريث / مقدم الطلب</dcterms:title>
+            <dcterms:title xml:lang="en">Inheritor name</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم الوريث / مقدم الطلب</dcterms:description>
+            <dcterms:description xml:lang="en">Inheritor name</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="HeirNameArType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="HeirName">
+            <dcterms:title xml:lang="ar">اسم الوريث / مقدم الطلب</dcterms:title>
+            <dcterms:title xml:lang="en">Heir name</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم الوريث / مقدم الطلب</dcterms:description>
+            <dcterms:description xml:lang="en">Heir name</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="HeirTypeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="Heir">
+            <dcterms:title xml:lang="ar">اسم الوريث / مقدم الطلب</dcterms:title>
+            <dcterms:title xml:lang="en">Heir Type</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم الوريث / مقدم الطلب</dcterms:description>
+            <dcterms:description xml:lang="en">Heir Type</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="RequestorTypeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="Requestor">
+            <dcterms:title xml:lang="ar">اسم الوريث / مقدم الطلب</dcterms:title>
+            <dcterms:title xml:lang="en">Requestor Type</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم الوريث / مقدم الطلب</dcterms:description>
+            <dcterms:description xml:lang="en">Requestor Type</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="CourtNameType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="CourtName">
+            <dcterms:title xml:lang="ar">اسم الوريث / مقدم الطلب</dcterms:title>
+            <dcterms:title xml:lang="en">Court name</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم الوريث / مقدم الطلب</dcterms:description>
+            <dcterms:description xml:lang="en">Court name</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="InheritorNameArType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="InheritorName">
+            <dcterms:title xml:lang="ar">اسم الوريث / مقدم الطلب</dcterms:title>
+            <dcterms:title xml:lang="en">Inheritor name</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم الوريث / مقدم الطلب</dcterms:description>
+            <dcterms:description xml:lang="en">Inheritor name</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="BankAccountNoType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="BankAccountNo">
+            <dcterms:title xml:lang="ar">رقم الحساب البنكي</dcterms:title>
+            <dcterms:title xml:lang="en">Bank Account no</dcterms:title>
+            <dcterms:description xml:lang="ar">رقم الحساب البنكي</dcterms:description>
+            <dcterms:description xml:lang="en">Bank Account no</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String50Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="BankAccountOwnerNameEnType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="BankAccountOwnerName">
+            <dcterms:title xml:lang="ar">اسم مالك الحساب البنكي</dcterms:title>
+            <dcterms:title xml:lang="en">Bank Account Owner name in English</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم مالك الحساب البنكي</dcterms:description>
+            <dcterms:description xml:lang="en">Bank Account Owner name in English </dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="BankAccountOwnerNameArType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="BankAccountOwnerName">
+            <dcterms:title xml:lang="ar">اسم مالك الحساب البنكي</dcterms:title>
+            <dcterms:title xml:lang="en">Bank Account Owner name in Arabic</dcterms:title>
+            <dcterms:description xml:lang="ar">اسم مالك الحساب البنكي</dcterms:description>
+            <dcterms:description xml:lang="en">Bank Account Owner name in Arabic</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="TransactionTypeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="TransactionType">
+            <dcterms:title xml:lang="ar">نوع الحركة</dcterms:title>
+            <dcterms:title xml:lang="en">Transaction Type</dcterms:title>
+            <dcterms:description xml:lang="ar">نوع الحركة</dcterms:description>
+            <dcterms:description xml:lang="en">Transaction Type</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String50Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="TransactionNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="TransactionNumber">
+            <dcterms:title xml:lang="ar">رقم الحركة</dcterms:title>
+            <dcterms:title xml:lang="en">Transaction Number</dcterms:title>
+            <dcterms:description xml:lang="ar">رقم الحركة</dcterms:description>
+            <dcterms:description xml:lang="en">Transaction Number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="ReferenceNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="ReferenceNumber">
+            <dcterms:title xml:lang="ar">رقم الحركة</dcterms:title>
+            <dcterms:title xml:lang="en">Reference Number</dcterms:title>
+            <dcterms:description xml:lang="ar">رقم الحركة</dcterms:description>
+            <dcterms:description xml:lang="en">Reference Number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="TransactionDateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="TransactionDate">
+            <dcterms:title xml:lang="ar">تاريخ الحركة</dcterms:title>
+            <dcterms:title xml:lang="en">Transaction Date</dcterms:title>
+            <dcterms:description xml:lang="ar">تاريخ الحركة</dcterms:description>
+            <dcterms:description xml:lang="en">Transaction Date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="TransactionDetailsType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="TransactionDetails">
+            <dcterms:title xml:lang="ar">وصف الحركة</dcterms:title>
+            <dcterms:title xml:lang="en">Transaction Details</dcterms:title>
+            <dcterms:description xml:lang="ar">وصف الحركة</dcterms:description>
+            <dcterms:description xml:lang="en">Transaction Details</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String500Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="CreditAmountType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="CreditAmountType">
+            <dcterms:title xml:lang="ar">المبلغ الدائن</dcterms:title>
+            <dcterms:title xml:lang="en">Credit Amount</dcterms:title>
+            <dcterms:description xml:lang="ar">المبلغ الدائن</dcterms:description>
+            <dcterms:description xml:lang="en">Credit Amount</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String20Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DebitAmountType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="DebitAmountType">
+            <dcterms:title xml:lang="ar">المبلغ المدين</dcterms:title>
+            <dcterms:title xml:lang="en">Debit Amount</dcterms:title>
+            <dcterms:description xml:lang="ar">المبلغ المدين</dcterms:description>
+            <dcterms:description xml:lang="en">Debit Amount</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String20Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="BalanceType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="Balance">
+            <dcterms:title xml:lang="ar">الرصيد</dcterms:title>
+            <dcterms:title xml:lang="en">Balance</dcterms:title>
+            <dcterms:description xml:lang="ar">الرصيد</dcterms:description>
+            <dcterms:description xml:lang="en">Balance</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String20Type" />
+  </xsd:simpleType>
+  <xsd:complexType name="AttachmentDetailsType">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="DocType" nillable="true" type="DocTypeType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="FileName" type="FileNameType" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="FileExt" nillable="true" type="FileExtType" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="FileBuffer" nillable="true" type="FileBufferType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Comments" nillable="true" type="CommentsType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="FileSize" type="FileSizeType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseTrnHeaderType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="EntityCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="TransactionId" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FaultResponseType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="ErrorCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ErrorDescEn" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ErrorDescAr" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RequestTrnHeaderType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="EntityCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="TransactionId" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LookupType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" name="Code" nillable="true" type="cd:LookupCodeType" />
+      <xsd:element maxOccurs="1" name="DescriptionEnglish" nillable="true" type="cd:LookupDescriptionEnglishType" />
+      <xsd:element maxOccurs="1" name="DescriptionArabic" nillable="true" type="cd:LookupDescriptionArabicType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseStatusType">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="StatusCode" type="cd:StatusCodeType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="StatusDescriptionEnglish" type="cd:StatusDescriptionEnglishType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="StatusDescriptionArabic" type="cd:StatusDescriptionArabicType" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xs:schema>

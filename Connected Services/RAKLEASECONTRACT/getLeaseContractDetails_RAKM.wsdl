@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:p1="http://ega.rak.ae/xi/MOCD" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="getLeaseContractDetails_RAKM" targetNamespace="http://ega.rak.ae/xi/MOCD" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This service provides lease contract details for UAE nationals residing in Ras - Al - Khaimah Emirate.</wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="OP_SI_MOCD_OB" />
+  <wsdl:types>
+    <xsd:schema xmlns="http://ega.rak.ae/xi/MOCD" targetNamespace="http://ega.rak.ae/xi/MOCD" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="MT_MOCD_Request" type="p1:DT_MOCD_Request" />
+      <xsd:element name="MT_MOCD_Response" type="p1:DT_MOCD_Response" />
+      <xsd:complexType name="DT_MOCD_Request">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">d8fcd1f9c9bf11eb87e10000152572c6</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="Emirates_ID" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">0e14ae6bc8e011eba3cc005056a857b9</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ContractorType" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">0e14ae6cc8e011eb8fe8005056a857b9</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DT_MOCD_Response">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">59df5579cc1d11eb8b890000152572c6</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ContractDetails">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">021403e6c91111eb9e8a005056a857b9</xsd:appinfo>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="Contractor_Number" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">d597f27dc90c11eb90da005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Person_Name" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">d597f27ec90c11eb938e005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Property_Type" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">d597f27fc90c11eb882e005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Location" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">d597f280c90c11eba70e005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Annual_Lease_Amount" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">d597f281c90c11ebac1f005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Lease_Duration" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">d597f282c90c11eb94d8005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Start_Date" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">d597f283c90c11ebcf43005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="End_Date" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">d597f284c90c11eb95b5005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Contractor_Type" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">d597f285c90c11eb987a005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Api_Errors">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">5f47a114c91611eb8e88005056a857b9</xsd:appinfo>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="Type" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f4756bac91611ebc7d3005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Id" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f4756bbc91611eb989f005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Number" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f4756bcc91611ebb9ad005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Message" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f4756bdc91611eba6dc005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Log_No" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f4756bec91611ebac72005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Log_Msg_No" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f4756bfc91611eba782005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Message_V1" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f476e40c91611eb8b4f005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Message_V2" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f476e41c91611ebb701005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Message_V3" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f476e42c91611ebb682005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Message_V4" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f476e43c91611eb9386005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Parameter" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f476e44c91611eb8e37005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Row" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f476e45c91611eba7fd005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Field" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f476e46c91611eb968c005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="System" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">5f47a113c91611ebb59d005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="MT_MOCD_Response">
+    <wsdl:documentation />
+    <wsdl:part name="MT_MOCD_Response" element="p1:MT_MOCD_Response" />
+  </wsdl:message>
+  <wsdl:message name="MT_MOCD_Request">
+    <wsdl:documentation />
+    <wsdl:part name="MT_MOCD_Request" element="p1:MT_MOCD_Request" />
+  </wsdl:message>
+  <wsdl:portType name="SI_MOCD_OB">
+    <wsdl:documentation />
+    <wsdl:operation name="SI_MOCD_OB">
+      <wsdl:documentation />
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_SI_MOCD_OB" />
+      </wsp:Policy>
+      <wsdl:input message="p1:MT_MOCD_Request" />
+      <wsdl:output message="p1:MT_MOCD_Response" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SI_MOCD_OBBindingHttpGET" type="p1:SI_MOCD_OB">
+    <wsdlhttp:binding verb="GET" />
+    <wsdl:operation name="SI_MOCD_OB">
+      <soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SI_MOCD_OBBinding" type="p1:SI_MOCD_OB">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SI_MOCD_OB">
+      <soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SI_MOCD_OBBindingHttpPOST" type="p1:SI_MOCD_OB">
+    <wsdlhttp:binding verb="POST" />
+    <wsdl:operation name="SI_MOCD_OB">
+      <soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getLeaseContractDetails_RAKM">
+    <wsdl:port name="SI_MOCD_OBBindingHttpGET" binding="p1:SI_MOCD_OBBindingHttpGET">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/RAKM/Soap/GetLeaseContractDetails/V1" />
+    </wsdl:port>
+    <wsdl:port name="getLeaseContractDetails_RAKMsoaphttps" binding="p1:SI_MOCD_OBBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/RAKM/Soap/GetLeaseContractDetails/V1" />
+    </wsdl:port>
+    <wsdl:port name="SI_MOCD_OBBindingHttpPOST" binding="p1:SI_MOCD_OBBindingHttpPOST">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/RAKM/Soap/GetLeaseContractDetails/V1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

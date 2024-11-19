@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WL5G3N2:definitions xmlns:WL5G3N3="http://tempuri.org/" xmlns:WL5G3N5="http://schemas.datacontract.org/2004/07/System" xmlns:WL5G3N0="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:WL5G3N6="http://www.w3.org/2006/05/addressing/wsdl" xmlns:WL5G3N7="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N1="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:WL5G3N4="http://schemas.datacontract.org/2004/07/" name="getSalaryDetails_ADRPBF" targetNamespace="http://tempuri.org/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/">
+  <WL5G3N2:documentation>This service is to expose Pension details and Address details for individuals, which can be consumed by other Federal entities like MOCD.</WL5G3N2:documentation>
+  <WL5G3N2:types>
+    <xsd:schema xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" targetNamespace="http://tempuri.org/Imports" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f245d&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8c2" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f245d&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8c1" namespace="http://schemas.datacontract.org/2004/07/" />
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f245d&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8c3" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f245d&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8c0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </WL5G3N2:types>
+  <WL5G3N2:message name="GetSalaryDetails_Resp">
+    <WL5G3N2:part name="memberInformation" element="WL5G3N3:memberInformation" />
+  </WL5G3N2:message>
+  <WL5G3N2:message name="IService_GetSalaryDetails_CustomFaultMesgFault_FaultMessage">
+    <WL5G3N2:part name="detail" element="WL5G3N4:CustomFaultMesg" />
+  </WL5G3N2:message>
+  <WL5G3N2:message name="IService_GetSalaryDetails_ExceptionFault_FaultMessage">
+    <WL5G3N2:part name="detail" element="WL5G3N5:Exception" />
+  </WL5G3N2:message>
+  <WL5G3N2:message name="GetSalaryDetails_Resp_Headers">
+    <WL5G3N2:part name="ResponseCode" element="WL5G3N3:ResponseCode" />
+    <WL5G3N2:part name="ResponseDescription" element="WL5G3N3:ResponseDescription" />
+    <WL5G3N2:part name="TransactionRefNo" element="WL5G3N3:TransactionRefNo" />
+  </WL5G3N2:message>
+  <WL5G3N2:message name="GetSalaryDetails_Req_Headers">
+    <WL5G3N2:part name="ConsumerEntity" element="WL5G3N3:ConsumerEntity" />
+    <WL5G3N2:part name="ServiceKey" element="WL5G3N3:ServiceKey" />
+    <WL5G3N2:part name="TransactionRefNo" element="WL5G3N3:TransactionRefNo" />
+    <WL5G3N2:part name="UserName" element="WL5G3N3:UserName" />
+  </WL5G3N2:message>
+  <WL5G3N2:message name="GetSalaryDetails_Req">
+    <WL5G3N2:part name="MemberInformationReq" element="WL5G3N3:MemberInformationReq" />
+  </WL5G3N2:message>
+  <WL5G3N2:portType name="IService">
+    <WL5G3N2:operation name="GetSalaryDetails">
+      <WL5G3N2:input WL5G3N6:Action="http://tempuri.org/IService/GetSalaryDetails" name="GetSalaryDetails_Req" message="WL5G3N3:GetSalaryDetails_Req" />
+      <WL5G3N2:output WL5G3N6:Action="http://tempuri.org/IService/GetSalaryDetailsResponse" name="GetSalaryDetails_Resp" message="WL5G3N3:GetSalaryDetails_Resp" />
+      <WL5G3N2:fault name="ExceptionFault" message="WL5G3N3:IService_GetSalaryDetails_ExceptionFault_FaultMessage" />
+      <WL5G3N2:fault name="CustomFaultMesgFault" message="WL5G3N3:IService_GetSalaryDetails_CustomFaultMesgFault_FaultMessage" />
+    </WL5G3N2:operation>
+  </WL5G3N2:portType>
+  <WL5G3N2:binding name="getMemberInformationEP" type="WL5G3N3:IService">
+    <WL5G3N7:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <WL5G3N2:operation name="GetSalaryDetails">
+      <WL5G3N7:operation soapAction="http://tempuri.org/IService/GetSalaryDetails" style="document" />
+      <WL5G3N2:input name="GetSalaryDetails_Req">
+        <WL5G3N7:body use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Req_Headers" part="ConsumerEntity" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Req_Headers" part="ServiceKey" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Req_Headers" part="TransactionRefNo" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Req_Headers" part="UserName" use="literal" />
+      </WL5G3N2:input>
+      <WL5G3N2:output name="GetSalaryDetails_Resp">
+        <WL5G3N7:body use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Resp_Headers" part="ResponseCode" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Resp_Headers" part="ResponseDescription" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Resp_Headers" part="TransactionRefNo" use="literal" />
+      </WL5G3N2:output>
+      <WL5G3N2:fault name="ExceptionFault">
+        <WL5G3N7:fault use="literal" name="ExceptionFault" namespace="" />
+      </WL5G3N2:fault>
+      <WL5G3N2:fault name="CustomFaultMesgFault">
+        <WL5G3N7:fault use="literal" name="CustomFaultMesgFault" namespace="" />
+      </WL5G3N2:fault>
+    </WL5G3N2:operation>
+  </WL5G3N2:binding>
+  <WL5G3N2:binding name="getMemberInformationEPHttpPOST" type="WL5G3N3:IService">
+    <wsdlhttp:binding verb="POST" />
+    <WL5G3N2:operation name="GetSalaryDetails">
+      <WL5G3N7:operation soapAction="http://tempuri.org/IService/GetSalaryDetails" style="document" />
+      <WL5G3N2:input name="GetSalaryDetails_Req">
+        <WL5G3N7:body use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Req_Headers" part="ConsumerEntity" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Req_Headers" part="ServiceKey" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Req_Headers" part="TransactionRefNo" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Req_Headers" part="UserName" use="literal" />
+      </WL5G3N2:input>
+      <WL5G3N2:output name="GetSalaryDetails_Resp">
+        <WL5G3N7:body use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Resp_Headers" part="ResponseCode" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Resp_Headers" part="ResponseDescription" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Resp_Headers" part="TransactionRefNo" use="literal" />
+      </WL5G3N2:output>
+      <WL5G3N2:fault name="ExceptionFault">
+        <WL5G3N7:fault use="literal" name="ExceptionFault" namespace="" />
+      </WL5G3N2:fault>
+      <WL5G3N2:fault name="CustomFaultMesgFault">
+        <WL5G3N7:fault use="literal" name="CustomFaultMesgFault" namespace="" />
+      </WL5G3N2:fault>
+    </WL5G3N2:operation>
+  </WL5G3N2:binding>
+  <WL5G3N2:binding name="getMemberInformationEPHttpGET" type="WL5G3N3:IService">
+    <wsdlhttp:binding verb="GET" />
+    <WL5G3N2:operation name="GetSalaryDetails">
+      <WL5G3N7:operation soapAction="http://tempuri.org/IService/GetSalaryDetails" style="document" />
+      <WL5G3N2:input name="GetSalaryDetails_Req">
+        <WL5G3N7:body use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Req_Headers" part="ConsumerEntity" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Req_Headers" part="ServiceKey" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Req_Headers" part="TransactionRefNo" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Req_Headers" part="UserName" use="literal" />
+      </WL5G3N2:input>
+      <WL5G3N2:output name="GetSalaryDetails_Resp">
+        <WL5G3N7:body use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Resp_Headers" part="ResponseCode" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Resp_Headers" part="ResponseDescription" use="literal" />
+        <WL5G3N7:header message="WL5G3N3:GetSalaryDetails_Resp_Headers" part="TransactionRefNo" use="literal" />
+      </WL5G3N2:output>
+      <WL5G3N2:fault name="ExceptionFault">
+        <WL5G3N7:fault use="literal" name="ExceptionFault" namespace="" />
+      </WL5G3N2:fault>
+      <WL5G3N2:fault name="CustomFaultMesgFault">
+        <WL5G3N7:fault use="literal" name="CustomFaultMesgFault" namespace="" />
+      </WL5G3N2:fault>
+    </WL5G3N2:operation>
+  </WL5G3N2:binding>
+  <WL5G3N2:service name="getSalaryDetails_ADRPBF">
+    <WL5G3N2:port name="getSalaryDetails_ADRPBFhttp" binding="WL5G3N3:getMemberInformationEPHttpPOST">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/ADRPBF/Soap/SalaryDetails/V1" />
+    </WL5G3N2:port>
+    <WL5G3N2:port name="getSalaryDetails_ADRPBFsoaphttp" binding="WL5G3N3:getMemberInformationEP">
+      <WL5G3N7:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/ADRPBF/Soap/SalaryDetails/V1" />
+    </WL5G3N2:port>
+  </WL5G3N2:service>
+</WL5G3N2:definitions>

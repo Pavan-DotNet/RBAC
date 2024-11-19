@@ -1,0 +1,469 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "تفاصيل خلاصة القيد";
+}
+<br />
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>تفاصيل خلاصة القيد</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td colspan="3"><h6><small><b>  بطاقة هوية </b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <br />
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم بطاقة الهوية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تسلسل الأسرة
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    المدينة
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الرقم الموحد
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الاسم الكامل باللغة العربية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم العشيرة باللغة العربية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الجنس
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الأم باللغة العربية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ الميلاد
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الحالة الاجتماعية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    العلاقة مع العائلة
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم بطاقة هوية الأم
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody1 text-center" id="tbody1"></tbody>
+        </table>
+        <br />
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم بطاقة الهوية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تسلسل الأسرة
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    المدينة
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الرقم الموحد
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    @*<th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    مدينة
+                                </b>
+                            </small>
+                        </h6>
+                    </th>*@
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الاسم الكامل باللغة العربية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم العشيرة باللغة العربية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الجنس
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الأم باللغة العربية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ الميلادة
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الحالة الاجتماعية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ الزواج
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody2 text-center" id="tbody2"></tbody>
+
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+
+
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+        function validateFields(value, regex) {
+            var inputString = value;
+
+            if (value.length > 0) {
+
+                if (regex != null) {
+                    if (regex.test(inputString)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            return false;
+        }
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search","FamilyBook")';
+
+            $(".tbody").empty();
+            $(".tbody1").empty();
+            $(".tbody2").empty();
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+            var html1 = '';
+            var html2 = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+                document.getElementById('error').innerText = ('Emirates Id length should be 15 digits');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+            }
+            else if ($("#txtEmiratesId").val().length < 15) {
+                document.getElementById('error').innerText = ('Emirates Id length should be 15 digits');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+
+            }
+            else if ($("#txtEmiratesId").val().length > 15) {
+                document.getElementById('error').innerText = ('Emirates Id length should be 15 digits');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+
+            }
+
+
+            if (!validateFields($("#txtEmiratesId").val(), /^(784)[0-9]{12}$/)) {
+                document.getElementById('error').innerText = ('Emirates Id  should start from 784');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+
+            }
+
+
+            var input = { "EmiratesId": $('#txtEmiratesId').val() };
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent)  }, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+                if (obj.flag == "1") {
+
+                    html += '<tr ><td>' +obj.objFamilyHead.city + '</td><td><h6><small><b>المدينة</b></small></h6></td><td>' + obj.objFamilyHead.familySequence + '</td><td><h6><small><b>تسلسل الأسرة</b></small></h6></td></tr>';
+                    html += '<tr ><td>' + obj.objFamilyHead.wivesCount+ '</td><td><h6><small><b>عدد الزوجات</b></small></h6></td><td>' +obj.objFamilyHead.childrenCount + '</td><td><h6><small><b>عدد الأطفال</b></small></h6></td></tr>';
+                    html += '<tr ><td>' + obj.objFamilyHead.identityCardNumber + '</td><td><h6><small><b>رقم الهوية</b></small></h6></td><td>' +obj.objFamilyHead.unifiedNumber + '</td><td><h6><small><b>الرقم الموحد</b></small></h6></td></tr>';
+                    html += '<tr ><td>' + obj.objFamilyHead.fullEnglishName + '</td><td><h6><small><b>الاسم الكامل باللغة الانجليزية</b></small></h6></td><td>' +obj.objFamilyHead.fullArabicName + '</td><td><h6><small><b>الاسم الكامل باللغة العربية</b></small></h6></td></tr>';
+                    html += '<tr ><td>' + obj.objFamilyHead.clanNameEnglish + '</td><td><h6><small><b>اسم العشيرة باللغة الانجليزية</b></small></h6></td><td>' +obj.objFamilyHead.clanNameArabic + '</td><td><h6><small><b>اسم العشيرة باللغة العربية</b></small></h6></td></tr>';
+                    html += '<tr ><td>' + obj.objFamilyHead.nationality + '</td><td><h6><small><b>الجنسية</b></small></h6></td><td>' + obj.objFamilyHead.gender+ '</td><td><h6><small><b>الجنس</b></small></h6></td></tr>';
+                    html += '<tr ><td>' + obj.objFamilyHead.countryOfBirth + '</td><td><h6><small><b>بلد الولادة</b></small></h6></td><td>' + obj.objFamilyHead.dateOfBirth + '</td><td><h6><small><b>تاريخ الميلاد</b></small></h6></td></tr>';
+                    html += '<tr ><td>' + obj.objFamilyHead.placeOfBirthEn + '</td><td><h6><small><b>مكان الميلاد باللغة الانجليزية</b></small></h6></td><td>' + obj.objFamilyHead.placeOfBirthAr + '</td><td><h6><small><b>مكان الميلاد باللغة العربية</b></small></h6></td></tr>';
+                    html += '<tr ><td>' + obj.objFamilyHead.religion + '</td><td><h6><small><b>الديانة</b></small></h6></td><td>' + obj.objFamilyHead.maritalStatus+ '</td><td><h6><small><b>الحالة الاجتماعية</b></small></h6></td></tr>';
+                    html += '<tr ><td>' + obj.objFamilyHead.motherNameEnglish + '</td><td><h6><small><b>اسم الأم باللغة الإنجليزية</b></small></h6></td><td>' + obj.objFamilyHead.motherNameArabic + '</td><td><h6><small><b>اسم الأم باللغة العربية</b></small></h6></td></tr>';
+
+                   if( obj.objFamilyHead.lstDependent != null)
+                    $.each(obj.objFamilyHead.lstDependent, function (key, item) {
+
+                        html1 += '<tr>';
+                        html1 += '<td>' + item.identityCardNumber + '</td>';
+                        html1 += '<td>' + item.familySequence + '</td>';
+                        html1 += '<td>' + item.city + '</td>';
+                        html1 += '<td>' + item.unifiedNumber + '</td>';
+                        html1 += '<td>' + item.fullArabicName + '</td>';
+                        html1 += '<td>' + item.clanNameArabic + '</td>';
+                        html1 += '<td>' + item.gender + '</td>';
+                        html1 += '<td>' + item.motherNameArabic + '</td>';
+                        html1 += '<td>' + item.dateOfBirth + '</td>';
+                        html1 += '<td>' + item.maritalStatus + '</td>';
+                        html1 += '<td>' + item.relationshipToFamily + '</td>';
+                        html1 += '<td>' + item.motherIdentityCardNumber + '</td>';
+                        html1 += '</tr>';
+                    });
+
+                     if( obj.objFamilyHead.lstWives != null)
+                         $.each(obj.objFamilyHead.lstWives, function (key, item) {
+                             console.log("f", item)
+
+                        html2 += '<tr>';
+                        html2 += '<td>' + item.identityCardNumber + '</td>';
+                        html2 += '<td>' + item.familySequence + '</td>';
+                        html2 += '<td>' + item.city + '</td>';
+                        html2 += '<td>' + item.unifiedNumber + '</td>';
+                        //html2 += '<td>' + item.birthCity + '</td>';
+                        html2 += '<td>' + item.fullArabicName + '</td>';
+                        html2 += '<td>' + item.clanNameArabic + '</td>';
+                        html2 += '<td>' + item.gender + '</td>';
+                        html2 += '<td>' + item.motherNameArabic + '</td>';
+                        html2 += '<td>' + item.dateOfBirth + '</td>';
+                        html2 += '<td>' + item.maritalStatus + '</td>';
+                        html2 += '<td>' + item.marriageDateSpecified + '</td>';
+                        html2 += '</tr>';
+                    });
+
+                    $(".tbody").append(html);
+                    $(".tbody1").append(html1);
+                    $(".tbody2").append(html2);
+                    $('.DataTable').show();
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+        $('#create_pdf').on('click', function () {
+            getPDF("FamilyBook.pdf");
+       });
+    </script>
+}

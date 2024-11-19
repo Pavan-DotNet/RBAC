@@ -1,0 +1,184 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "الاستعلام عن المساجين";
+}
+<br />
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>الاستعلام عن المساجين</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+        <table class="table table-bordered table-active">
+            <tr>
+            <tr>
+                <td>
+                    <h6>
+                        <small>
+                            <b> بطاقة هوية </b>
+                        </small>
+                    </h6>
+                </td>
+                <td colspan="3">
+                    <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" />
+                </td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+
+
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    بطاقة هوية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الرقم الشخصي
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الشخص
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    هل هو مسجون ؟
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+     $(document).ready(function () {
+
+            $('.DataTable').hide();
+
+        });
+
+
+        function getData() {
+
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search","DPPRISON")';
+
+            $(".tbody").empty();
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtIDType").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+            var input = { "EmiratesId": $('#txtEmiratesId').val() };
+            var UsrAgent = { "UserAgent": $.browser };
+            $.get(url, { postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+
+                if (obj.flag == "1") {
+
+                 html += '<tr>';
+                 html += '<td>' +  obj.objDPStaus.MOIPrisonStatus[0].EmirateID + '</td>';
+                 html += '<td>' + obj.objDPStaus.MOIPrisonStatus[0].PersonNumber + '</td>';
+                 html += '<td>' + obj.objDPStaus.MOIPrisonStatus[0].PersonName + '</td>';
+                 html += '<td>' + obj.objDPStaus.MOIPrisonStatus[0].InPrisonFlag + '</td>';
+                 html += '</tr>';
+
+                    $(".tbody").append(html);
+                    $('.DataTable').show();
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+        $("#btnsubmit").on("click", getData);
+
+         $('#create_pdf').on('click', function () {
+            getPDF("DubaiPolicePrison.pdf");
+       });
+
+    </script>
+
+}
+

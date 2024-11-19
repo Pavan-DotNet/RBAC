@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationFault:1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationFault:1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="VehicleRegistrationSoapFault">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ErrorCode" type="xsd:string" />
+        <xsd:element name="ErrorMessageAr" type="xsd:string" />
+        <xsd:element name="ErrorMessageEn" type="xsd:string" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

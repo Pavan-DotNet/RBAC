@@ -1,0 +1,343 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Aids Persons - دائرة الضمان الاجتماعي بالشارقة - المساعدات الاجتماعية";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>دائرة الضمان الاجتماعي بالشارقة - المساعدات الاجتماعية</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" mask="###############" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "AidsPersons")';
+
+            $(".tbody").empty();
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { EmiratesId: EmiratesId, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+
+                if (obj.flag == "1") {
+
+                    html = BindHTML(obj.Data);
+                    $("#divTables").append(html);
+                    $('.DataTable').show();
+
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("AidsPersonDetail.pdf");
+       });
+
+
+        function BindHTML(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الملف" + '</b></small></h6></td>';
+            html += '<td>' + item.File_No + '</td>';
+            html += '<td><h6><small><b>' + "الاسم" + '</b></small></h6></td>';
+            html += '<td>' + item.Name + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الفئه - 1" + '</b></small></h6></td>';
+            html += '<td>' + item.Category_1 + '</td>';
+            html += '<td><h6><small><b>' + "الهوية الاماراتيه" + '</b></small></h6></td>';
+            html += '<td>' + item.EmiratesId + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الجنسيه" + '</b></small></h6></td>';
+            html += '<td>' + item.Nationality + '</td>';
+            html += '<td><h6><small><b>' + "الفئه" + '</b></small></h6></td>';
+            html += '<td>' + item.Category + '</td>';
+            html += '</tr>';
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "المساعدة" + '</b></small></h6></td>';
+            html += '<td>' + item.HelpArea + '</td>';
+            html += '<td><h6><small><b>' + "الإماره" + '</b></small></h6></td>';
+            html += '<td>' + item.Emirate + '</td>';
+            html += '</tr>';
+
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "المدينة" + '</b></small></h6></td>';
+            html += '<td>' + item.City + '</td>';
+            html += '<td><h6><small><b>' + "عدد المستفيدين التابعين/ المعتمدين" + '</b></small></h6></td>';
+            html += '<td>' + item.NumberofDependent_Beneficiary + '</td>';
+            html += '</tr>';
+
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "المستفيدين التابعين" + '</b></small></h6></td>';
+            html += '<td>' + item.Dependent + '</td>';
+            html += '<td><h6><small><b>' + "عدد أفراد الأسرة" + '</b></small></h6></td>';
+            html += '<td>' + item.NumberofFamilyMembers + '</td>';
+            html += '</tr>';
+            
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "المتوفى" + '</b></small></h6></td>';
+            html += '<td>' + item.Dead + '</td>';
+            html += '<td><h6><small><b>' + "الجنس" + '</b></small></h6></td>';
+            html += '<td>' + item.Gender + '</td>';
+            html += '</tr>';
+
+            
+
+            
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الحاله الاجتماعية" + '</b></small></h6></td>';
+            html += '<td>' + item.Social_Situation + '</td>';
+            html += '<td><h6><small><b>' + "الحاله الصحيه" + '</b></small></h6></td>';
+            html += '<td>' + item.Health_status + '</td>';
+            html += '</tr>';
+            
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تاريخ الميلاد" + '</b></small></h6></td>';
+            html += '<td>' + item.DateofBirth + '</td>';
+            html += '<td><h6><small><b>' + "العمر" + '</b></small></h6></td>';
+            html += '<td>' + item.Age + '</td>';
+            html += '</tr>';
+
+            
+
+            
+            
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الحاله العمليه" + '</b></small></h6></td>';
+            html += '<td>' + item.Practical_case + '</td>';
+            html += '<td><h6><small><b>' + "رقم ملخص التسجيل" + '</b></small></h6></td>';
+            html += '<td>' + item.Registration_Summary_Number + '</td>';
+            html += '</tr>';
+            
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الاماره" + '</b></small></h6></td>';
+            html += '<td>' + item.TownNumber + '</td>';
+            html += '<td><h6><small><b>' + "رقم العائله" + '</b></small></h6></td>';
+            html += '<td>' + item.FamilyNumber + '</td>';
+            html += '</tr>';
+
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الهاتف" + '</b></small></h6></td>';
+            html += '<td>' + item.PhoneNo + '</td>';
+            html += '<td><h6><small><b>' + "التخرج" + '</b></small></h6></td>';
+            html += '<td>' + item.Hand_graduation + '</td>';
+            html += '</tr>';
+            
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "المتوسط" + '</b></small></h6></td>';
+            html += '<td>' + item.Average + '</td>';
+            html += '<td><h6><small><b>' + "سنة التخرج" + '</b></small></h6></td>';
+            html += '<td>' + item.Graduation_Year + '</td>';
+            html += '</tr>';
+
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "حالة التجنيد " + '</b></small></h6></td>';
+            html += '<td>' + item.Enlistment_Status + '</td>';
+            html += '<td><h6><small><b>' + "المؤهلات" + '</b></small></h6></td>';
+            html += '<td>' + item.Qualification + '</td>';
+            html += '</tr>';
+            
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "العلاوات الشهريه" + '</b></small></h6></td>';
+            html += '<td>' + item.Monthly_allowance + '</td>';
+            html += '<td><h6><small><b>' + "الاستثناءات" + '</b></small></h6></td>';
+            html += '<td>' + item.Exceptional + '</td>';
+            html += '</tr>';
+
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "مساعدة الزوجة" + '</b></small></h6></td>';
+            html += '<td>' + item.HelpingTheHousewife + '</td>';
+            html += '<td><h6><small><b>' + "مساعدة طريح الفراش" + '</b></small></h6></td>';
+            html += '<td>' + item.Bedridden_Help + '</td>';
+            html += '</tr>';
+            
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "علاوة الطاقه/ البترول" + '</b></small></h6></td>';
+            html += '<td>' + item.EnergyAllowanceAid + '</td>';
+            html += '<td><h6><small><b>' + "الدخل" + '</b></small></h6></td>';
+            html += '<td>' + item.Income + '</td>';
+            html += '</tr>';
+
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "دخل الإيرادات" + '</b></small></h6></td>';
+            html += '<td>' + item.IncomeWithRevenue + '</td>';
+            html += '<td><h6><small><b>' + "عدد الممتلكات" + '</b></small></h6></td>';
+            html += '<td>' + item.NoOfProperties + '</td>';
+            html += '</tr>';
+            
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "دخل الممتلكات" + '</b></small></h6></td>';
+            html += '<td>' + item.Property_In_Income + '</td>';
+            html += '<td><h6><small><b>' + "عدد الرخص" + '</b></small></h6></td>';
+            html += '<td>' + item.NumberOfLicenses + '</td>';
+            html += '</tr>';
+
+            
+            
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "دخل بسيط" + '</b></small></h6></td>';
+            html += '<td>' + item.CheapIncome + '</td>';
+            html += '<td><h6><small><b>' + "باحث اجتماعي" + '</b></small></h6></td>';
+            html += '<td>' + item.Social_Researcher + '</td>';
+            html += '</tr>';
+
+            
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "التخصص" + '</b></small></h6></td>';
+            html += '<td>' + item.Specialization + '</td>';
+            html += '</tr>';
+            
+            html += '</tbody>  </table>';
+            return html
+        }
+    </script>
+}

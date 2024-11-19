@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.informatica.com/dis/ws/" name="AJM_DED_getLicenseOwnershipDetails" targetNamespace="http://www.informatica.com/dis/ws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.informatica.com/dis/ws/">
+      <xsd:element name="GetLicenseOwnershipDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="LicenseNumber" type="xsd:string" />
+            <xsd:element minOccurs="0" name="ApplicationNumber" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLicenseOwnershipDetailsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="LicenseOwnershipDetails">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="LicenseNumber" type="xsd:string" />
+                  <xsd:element name="ApplicationNumber" type="xsd:string" />
+                  <xsd:element name="LicenseNameAR" type="xsd:string" />
+                  <xsd:element name="LicenseNameEN" type="xsd:string" />
+                  <xsd:element name="LicenseTypeAR" type="xsd:string" />
+                  <xsd:element name="LicenseTypeEN" type="xsd:string" />
+                  <xsd:element name="LegalFormAR" type="xsd:string" />
+                  <xsd:element name="LegalFormEN" type="xsd:string" />
+                  <xsd:element name="LicenseStatusAR" type="xsd:string" />
+                  <xsd:element name="LicenseStatusEN" type="xsd:string" />
+                  <xsd:element name="LicenseStartDate" type="xsd:string" />
+                  <xsd:element name="LicenseEndDate" type="xsd:string" />
+                  <xsd:element name="POBoxNo" type="xsd:string" />
+                  <xsd:element name="TelephoneNumber" type="xsd:string" />
+                  <xsd:element name="MobileNumber" type="xsd:string" />
+                  <xsd:element name="EmailAddress" type="xsd:string" />
+                  <xsd:element name="BanningStatus" type="xsd:string" />
+                  <xsd:element name="BanningReason" type="xsd:string" />
+                  <xsd:element name="LicenseClassification" type="xsd:string" />
+                  <xsd:element name="isTaziz" type="xsd:string" />
+                  <xsd:element name="LicenseID" type="xsd:string" />
+                  <xsd:element maxOccurs="unbounded" name="LicenseActivityDetails">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="SerialNo" type="xsd:string" />
+                        <xsd:element name="LicenseActivityCode" type="xsd:string" />
+                        <xsd:element name="LicenseActivityDescAR" type="xsd:string" />
+                        <xsd:element name="LicenseActivityDescEN" type="xsd:string" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element maxOccurs="unbounded" name="LicenseOwnerDetails">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="OwnerEmiratesID" type="xsd:string" />
+                        <xsd:element name="OwnerPassportNumber" type="xsd:string" />
+                        <xsd:element name="OwnerNameAR" type="xsd:string" />
+                        <xsd:element name="OwnerNameEN" type="xsd:string" />
+                        <xsd:element name="OwnerGenderAR" type="xsd:string" />
+                        <xsd:element name="OwnerGenderEN" type="xsd:string" />
+                        <xsd:element name="OwnerNationalityAR" type="xsd:string" />
+                        <xsd:element name="OwnerNationalityEN" type="xsd:string" />
+                        <xsd:element name="OwnerPhoneNumber" type="xsd:string" />
+                        <xsd:element name="OwnerMobileNumber" type="xsd:string" />
+                        <xsd:element name="OwnerTypeAR" type="xsd:string" />
+                        <xsd:element name="OwnerTypeEN" type="xsd:string" />
+                        <xsd:element name="LeasorTypeAR" type="xsd:string" />
+                        <xsd:element name="LeasorTypeEN" type="xsd:string" />
+                        <xsd:element name="Notes" type="xsd:string" />
+                        <xsd:element name="LicenseSource" type="xsd:string" />
+                        <xsd:element name="SharePercent" type="xsd:string" />
+                        <xsd:element name="OwnerSerialID" type="xsd:string" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element maxOccurs="unbounded" name="Transaction_Info">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="TransactionAR" type="xsd:string" />
+                        <xsd:element name="TransactionEN" type="xsd:string" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Error">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="InputParameter" type="xsd:string" />
+                  <xsd:element name="ErrorCode" type="xsd:string" />
+                  <xsd:element name="ErrorDescription" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLicenseOwnershipDetails">
+    <wsdl:part name="GetLicenseOwnershipDetails" element="tns:GetLicenseOwnershipDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetLicenseOwnershipDetailsResponse">
+    <wsdl:part name="GetLicenseOwnershipDetailsResponse" element="tns:GetLicenseOwnershipDetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AJM_DED_getLicenseOwnershipDetailsPortType">
+    <wsdl:operation name="GetLicenseOwnershipDetails">
+      <wsdl:input name="GetLicenseOwnershipDetails_Input" message="tns:GetLicenseOwnershipDetails" />
+      <wsdl:output name="GetLicenseOwnershipDetails_Output" message="tns:GetLicenseOwnershipDetailsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AJM_DED_getLicenseOwnershipDetailsBinding" type="tns:AJM_DED_getLicenseOwnershipDetailsPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLicenseOwnershipDetails">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="GetLicenseOwnershipDetails_Input">
+        <soap:body use="literal" parts="GetLicenseOwnershipDetails" />
+      </wsdl:input>
+      <wsdl:output name="GetLicenseOwnershipDetails_Output">
+        <soap:body use="literal" parts="GetLicenseOwnershipDetailsResponse" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AJM_DED_getLicenseOwnershipDetails">
+    <wsdl:port name="AJM_DED_getLicenseOwnershipDetails" binding="tns:AJM_DED_getLicenseOwnershipDetailsBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/FCSA/Soap/AJM_DED_getLicenseOwnershipDetails" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

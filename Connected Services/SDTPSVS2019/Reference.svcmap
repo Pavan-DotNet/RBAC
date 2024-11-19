@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1f6258b7-a670-449f-b5f7-b8175d5aec55" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://staging.mocd.gov.ae/Outbound/SDTPS/Soap/GrantedPlot/V1?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DhIntegrationService.wsdl" MetadataType="Wsdl" ID="e7575a19-3da3-414d-a1ac-34e3ac80a28c" SourceId="1" SourceUrl="https://staging.mocd.gov.ae/Outbound/SDTPS/Soap/GrantedPlot/V1?wsdl" />
+    <MetadataFile FileName="2083429d1b966cedddd7a1700d70fd89.xsd" MetadataType="Schema" ID="8cbc8707-680d-4dfc-8898-e765648b8f12" SourceId="1" SourceUrl="https://staging.mocd.gov.ae/service/2083429d1b966cedddd7a1700d70fd89?serviceoid=7a51040c10a5d94182912950957f205c&amp;servdocoid=2083429d1b966cedddd7a1700d78615f" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

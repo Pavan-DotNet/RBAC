@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WL5G3N0:definitions xmlns:WL5G3N1="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePullMessages:1" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N2="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePull" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePull" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/">
+  <WL5G3N0:documentation>This service is used to retrieve the Birth Certificate Details from Department of Health for Constituents of the Emirate of Abu Dhabi.</WL5G3N0:documentation>
+  <WL5G3N0:types>
+    <xsd:schema xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:types="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePullMessages:1" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePull" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=ee5c09163b27428ef60c1a300cf84e0c&amp;servdocoid=c224a13300998783141f63d95c303319" namespace="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePullMessages:1" />
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="BirthCertificatePullListResMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:BirthCertificatePullListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="BirthCertificatePullDetailsReqMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:BirthCertificatePullDetailsRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="BirthCertificatePullDetailsResMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:BirthCertificatePullDetailsResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="BirthCertificatePullDetailsSoapFault">
+    <WL5G3N0:part name="part" element="WL5G3N1:FaultResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SoapResponseHeader">
+    <WL5G3N0:part name="CustomHeaderRes" element="WL5G3N1:ResponseTrnHeader" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SoapRequestHeader">
+    <WL5G3N0:part name="CustomHeaderReq" element="WL5G3N1:RequestTrnHeader" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="BirthCertificatePullListReqMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:BirthCertificatePullListRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="BirthCertificatePullListSoapFault">
+    <WL5G3N0:part name="part" element="WL5G3N1:FaultResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="BirthCertificatePullPort">
+    <WL5G3N0:operation name="getBirthCertificatePullDetails">
+      <WL5G3N0:input message="WL5G3N2:BirthCertificatePullDetailsReqMesg" />
+      <WL5G3N0:output message="WL5G3N2:BirthCertificatePullDetailsResMesg" />
+      <WL5G3N0:fault name="BirthCertificatePullDetailsSoapFault" message="WL5G3N2:BirthCertificatePullDetailsSoapFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getBirthCertificatePullList">
+      <WL5G3N0:input message="WL5G3N2:BirthCertificatePullListReqMesg" />
+      <WL5G3N0:output message="WL5G3N2:BirthCertificatePullListResMesg" />
+      <WL5G3N0:fault name="BirthCertificatePullListSoapFault" message="WL5G3N2:BirthCertificatePullListSoapFault" />
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="BirthCertificatePullPortSOAP11Binding" type="WL5G3N2:BirthCertificatePullPort">
+    <WL5G3N3:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <WL5G3N0:operation name="getBirthCertificatePullDetails">
+      <WL5G3N3:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePull:getBirthCertificatePullDetails" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="BirthCertificatePullDetailsSoapFault">
+        <WL5G3N3:fault use="literal" name="BirthCertificatePullDetailsSoapFault" namespace="" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getBirthCertificatePullList">
+      <WL5G3N3:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePull:getBirthCertificatePull" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="BirthCertificatePullListSoapFault">
+        <WL5G3N3:fault use="literal" name="BirthCertificatePullListSoapFault" namespace="" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:binding name="BirthCertificatePullPortHttpGETBinding" type="WL5G3N2:BirthCertificatePullPort">
+    <wsdlhttp:binding verb="GET" />
+    <WL5G3N0:operation name="getBirthCertificatePullDetails">
+      <WL5G3N3:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePull:getBirthCertificatePullDetails" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="BirthCertificatePullDetailsSoapFault">
+        <WL5G3N3:fault use="literal" name="BirthCertificatePullDetailsSoapFault" namespace="" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getBirthCertificatePullList">
+      <WL5G3N3:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePull:getBirthCertificatePull" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="BirthCertificatePullListSoapFault">
+        <WL5G3N3:fault use="literal" name="BirthCertificatePullListSoapFault" namespace="" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:binding name="BirthCertificatePullPortHttpPOSTBinding" type="WL5G3N2:BirthCertificatePullPort">
+    <wsdlhttp:binding verb="POST" />
+    <WL5G3N0:operation name="getBirthCertificatePullDetails">
+      <WL5G3N3:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePull:getBirthCertificatePullDetails" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="BirthCertificatePullDetailsSoapFault">
+        <WL5G3N3:fault use="literal" name="BirthCertificatePullDetailsSoapFault" namespace="" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getBirthCertificatePullList">
+      <WL5G3N3:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePull:getBirthCertificatePull" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="BirthCertificatePullListSoapFault">
+        <WL5G3N3:fault use="literal" name="BirthCertificatePullListSoapFault" namespace="" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="retrieveBirthCertificateDetails_DOH">
+    <WL5G3N0:port name="BirthCertificatePullPortHttpPOSTBinding" binding="WL5G3N2:BirthCertificatePullPortHttpPOSTBinding">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/DOH/Soap/RetrieveBirthCertificateDetails/V1" />
+    </WL5G3N0:port>
+    <WL5G3N0:port name="retrieveBirthCertificateDetails_DOHsoaphttps" binding="WL5G3N2:BirthCertificatePullPortSOAP11Binding">
+      <WL5G3N3:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/DOH/Soap/RetrieveBirthCertificateDetails/V1" />
+    </WL5G3N0:port>
+    <WL5G3N0:port name="BirthCertificatePullPortHttpGETBinding" binding="WL5G3N2:BirthCertificatePullPortHttpGETBinding">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/DOH/Soap/RetrieveBirthCertificateDetails/V1" />
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

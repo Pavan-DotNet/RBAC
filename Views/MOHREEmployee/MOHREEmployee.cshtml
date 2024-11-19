@@ -1,0 +1,229 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "وزارة الموارد البشرية - العاملين في القطاع الخاص";
+}
+<br />
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>وزارة الموارد البشرية - العاملين في القطاع الخاص</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+        <table class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> بطاقة هوية </b></small></h6></td>
+                <td><h6><small><b> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></b></small></h6></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+
+
+            <thead class="">
+                <tr>
+
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم بطاقة الهوية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الموظف بالعربي
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الموظف بالانجليزي
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رمز الشركة
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الشركة بالعربي
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الشركة بالانجليزي
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الراتب
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ بداية العقد
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ نهاية العقد
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <!-- Bootstrap -->
+    <!-- Bootstrap DatePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!-- Bootstrap DatePicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+            var url = '@Url.Action("Search","MOHREEmployee")';
+
+            $(".tbody").empty();
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid EmiratesId');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var input = { "EmiratesId": $('#txtEmiratesId').val() };
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent)  }, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+                if (obj.flag == "1") {
+
+                    $.each(obj.lstMOHREResponse, function (key, item) {
+
+                        html += '<tr>';
+                        html += '<td>' + item.emiratesIDNumber + '</td>';
+                        html += '<td>' + item.employeeNameArabic + '</td>';
+                        html += '<td>' + item.employeeNameEnglish + '</td>';
+                        html += '<td>' + item.companyCode + '</td>';
+                        html += '<td>' + item.companyNameArabic + '</td>';
+                        html += '<td>' + item.companyNameEnglish + '</td>';
+                        html += '<td>' + item.salary + '</td>';
+                        html += '<td>' + item.contractStartDate + '</td>';
+                        html += '<td>' + item.contractEndDate + '</td>';
+                        html += '</tr>';
+                    });
+
+
+                    $(".tbody").append(html);
+                    $('.DataTable').show();
+                }
+                 else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+        $('#create_pdf').on('click', function () {
+            getPDF("MoHREEmployee.pdf");
+       });
+
+    </script>
+}
+

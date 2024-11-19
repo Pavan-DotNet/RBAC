@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:p1="http://ega.rak.ae/xi/MOCD/ComprehensiveInvestigation" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="createCase_RAKM" targetNamespace="http://ega.rak.ae/xi/MOCD/ComprehensiveInvestigation" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This service is to create a comprehensive case to validate the customer details by validating the documents like EID, Passport Number, etc.. submitted by them.</wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="OP_SI_MOCD_CI_OB" />
+  <wsdl:types>
+    <xsd:schema xmlns="http://ega.rak.ae/xi/MOCD/ComprehensiveInvestigation" targetNamespace="http://ega.rak.ae/xi/MOCD/ComprehensiveInvestigation" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="MT_MOCD_CI_Request" type="p1:DT_MOCD_CI_Request" />
+      <xsd:element name="MT_MOCD_CI_Response" type="p1:DT_MOCD_CI_Response" />
+      <xsd:complexType name="DT_MOCD_CI_Response">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">c1e73bb4cccd11ebb6410000152572c6</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="es_result" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bf1cccc11eb93c6005056a857b9</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="et_return">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">06ae9dfbcccc11eb8e53005056a857b9</xsd:appinfo>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="type" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bf2cccc11ebc71f005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="id" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bf3cccc11eb9daa005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="number" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bf4cccc11ebbc5c005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="message" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bf5cccc11ebc5c1005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="log_no" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bf6cccc11ebbd24005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="log_msg_no" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bf7cccc11ebb70a005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="message_v1" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bf8cccc11ebb39c005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="message_v2" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bf9cccc11ebbd89005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="message_v3" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bfacccc11eb9f01005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="message_v4" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bfbcccc11ebc889005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="parameter" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bfccccc11ebcb55005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="row" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bfdcccc11ebc463005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="field" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bfecccc11eb84e3005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="system" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">06ae8bffcccc11eb976e005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DT_MOCD_CI_Request">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">c3f33caccd9011eb8e060000152572c6</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="eid" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">f7f7c732cc2d11eb81c3005056a857b9</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="eid_att">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e875cc2d11eb8a43005056a857b9</xsd:appinfo>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="doc_type" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7c733cc2d11ebaa0e005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="file_description" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e86ccc2d11ebc3d0005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="file_data" type="xsd:base64Binary">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e86dcc2d11eb8baf005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="file_mime_type" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e86ecc2d11eb817c005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="bp_id" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e86fcc2d11ebb939005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="bp_role" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e870cc2d11eb9c8a005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="anchor" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e871cc2d11eb8fe2005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="doc_type_description" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e872cc2d11eb9097005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="sub_scenario" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e873cc2d11ebb04a005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="doc_type_as_file_name" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e874cc2d11eb8b80005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="passport_att">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">f7f8c3fecc2d11eb85b0005056a857b9</xsd:appinfo>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="doc_type" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e876cc2d11eb9f8f005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="file_description" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e877cc2d11ebc9de005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="file_data" type="xsd:base64Binary">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e878cc2d11ebc7cd005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="file_mime_type" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e879cc2d11eb84b4005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="bp_id" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e87acc2d11eb9895005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="bp_role" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e87bcc2d11ebb2b8005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="anchor" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e87ccc2d11eb85e4005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="doc_type_description" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e87dcc2d11ebcd4e005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="sub_scenario" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f7e87ecc2d11eba356005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="doc_type_as_file_name" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f80c30cc2d11ebb0af005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="family_book_att">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">f7f9293acc2d11eba260005056a857b9</xsd:appinfo>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="doc_type" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f8f08ecc2d11ebaa09005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="file_description" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f8f08fcc2d11eb9452005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="file_data" type="xsd:base64Binary">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f8f090cc2d11eb9d74005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="file_mime_type" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f92933cc2d11eb857f005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="bp_id" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f92934cc2d11eb8877005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="bp_role" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f92935cc2d11ebabf0005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="anchor" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f92936cc2d11ebcc25005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="doc_type_description" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f92937cc2d11eba0f9005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="sub_scenario" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f92938cc2d11ebcd70005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="doc_type_as_file_name" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">f7f92939cc2d11ebb0dd005056a857b9</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="email" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">c3a0cf41cd9011eb92c4f875a427645b</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="MT_MOCD_CI_Response">
+    <wsdl:documentation />
+    <wsdl:part name="MT_MOCD_CI_Response" element="p1:MT_MOCD_CI_Response" />
+  </wsdl:message>
+  <wsdl:message name="MT_MOCD_CI_Request">
+    <wsdl:documentation />
+    <wsdl:part name="MT_MOCD_CI_Request" element="p1:MT_MOCD_CI_Request" />
+  </wsdl:message>
+  <wsdl:portType name="SI_MOCD_CI_OB">
+    <wsdl:documentation />
+    <wsdl:operation name="SI_MOCD_CI_OB">
+      <wsdl:documentation />
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_SI_MOCD_CI_OB" />
+      </wsp:Policy>
+      <wsdl:input message="p1:MT_MOCD_CI_Request" />
+      <wsdl:output message="p1:MT_MOCD_CI_Response" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SI_MOCD_CI_OBBindingHttpGET" type="p1:SI_MOCD_CI_OB">
+    <wsdlhttp:binding verb="GET" />
+    <wsdl:operation name="SI_MOCD_CI_OB">
+      <soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SI_MOCD_CI_OBBindingHttpPOST" type="p1:SI_MOCD_CI_OB">
+    <wsdlhttp:binding verb="POST" />
+    <wsdl:operation name="SI_MOCD_CI_OB">
+      <soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SI_MOCD_CI_OBBinding" type="p1:SI_MOCD_CI_OB">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SI_MOCD_CI_OB">
+      <soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="createCase_RAKM">
+    <wsdl:port name="createCase_RAKMsoaphttps" binding="p1:SI_MOCD_CI_OBBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/RAKM/Soap/CreateCase/V1" />
+    </wsdl:port>
+    <wsdl:port name="SI_MOCD_CI_OBBindingHttpGET" binding="p1:SI_MOCD_CI_OBBindingHttpGET">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/RAKM/Soap/CreateCase/V1" />
+    </wsdl:port>
+    <wsdl:port name="SI_MOCD_CI_OBBindingHttpPOST" binding="p1:SI_MOCD_CI_OBBindingHttpPOST">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/RAKM/Soap/CreateCase/V1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

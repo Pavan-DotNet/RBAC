@@ -1,0 +1,1033 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:ae:gov:abudhabi:core:CommonDataTypes:2" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:core:CommonDataTypes:2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:appinfo>
+      <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+        <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:2">
+          <dcterms:title xml:lang="ar">Ø£ÙÙØ§Ø¹ Ø§ÙØ¨ÙØ§ÙØ§Øª Ø§ÙÙØ´ØªØ±ÙØ©</dcterms:title>
+          <dcterms:title xml:lang="en">Common Data Types</dcterms:title>
+          <dcterms:identifier>urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2</dcterms:identifier>
+          <dcterms:description xml:lang="ar">ÙØ¬ÙÙØ¹Ø© ÙÙ Ø£ÙÙØ§Ø¹ Ø§ÙØ¨ÙØ§ÙØ§Øª Ø§ÙÙØ´ØªØ±ÙØ© Ø§ÙØªÙ ÙÙÙÙ Ø§Ø³ØªØ¹ÙØ§ÙÙØ§ ÙÙ Ø£Ù ÙÙØ§Ù Ø¨Ø¯Ù ÙÙ
+                                             ÙØ§Ø¹Ø¯Ø© Ø£ÙÙØ§Ø¹ XSD</dcterms:description>
+          <dcterms:description xml:lang="en">A set of common data types that can be used elsewhere instead of the base
+                                             XSD types</dcterms:description>
+          <mireg:version>1.2</mireg:version>
+          <mireg:status>draft</mireg:status>
+          <mireg:project>Abu Dhabi eGIF</mireg:project>
+          <mireg:category xml:lang="ar">Ø§ÙØªØ¨Ø§Ø¯Ù Ø§ÙÙØ´ØªØ±Ù</mireg:category>
+          <mireg:category xml:lang="en">interoperability</mireg:category>
+          <dcterms:jurisdiction />
+          <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="en">Abu Dhabi Systems and Information Centre (ADSIC)</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="en">http://adsssa.abudhabi.ae</adsssa:URL>
+          </mireg:owner>
+          <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="ar">ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="ar">http://adsssa.abudhabi.ae</adsssa:URL>
+          </mireg:owner>
+          <dcterms:contributor rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:PersonalName xml:lang="en">Abu Dhabi eGIF Team</adsssa:PersonalName>
+          </dcterms:contributor>
+          <dcterms:contributor rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:PersonalName xml:lang="ar">ÙØ±ÙÙ Ø¹ÙÙ Ø§ÙØ¥Ø·Ø§Ø± Ø§ÙØªØ´ØºÙÙÙ ÙØ±Ø¨Ø· Ø§ÙÙØ¹ÙÙÙØ§Øª Ø§ÙØ­ÙÙÙÙØ© Ø§ÙØ¥ÙÙØªØ±ÙÙÙØ© ÙØ§ÙØ§Ø±Ø© Ø£Ø¨Ù Ø¸Ø¨Ù</adsssa:PersonalName>
+          </dcterms:contributor>
+          <dcterms:created>2009-06-04</dcterms:created>
+          <dcterms:modified>2009-06-04</dcterms:modified>
+          <dcterms:medium>text/xml</dcterms:medium>
+          <adsssa:providesDefinitionOf>AdditionalInformationType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>AdditionalInformationDataType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>AmountType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>AmountValueType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>ArabicStringType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>ArabicString100Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>ArabicString20Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>ArabicString250Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>ArabicString50Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>ArabicString500Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>ArabicString80Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>Base64BinaryType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BasicDateType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BasicDateTimeType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BasicTimeType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BooleanType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CalendarType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>ContentMetadataType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CurrencyCodeType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DateType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DateGregorianType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DateHigriType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>EnglishStringType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>EnglishString100Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>EnglishString20Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>EnglishString250Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>EnglishString30Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>EnglishString50Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>EnglishString500Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>EnglishString80Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>GUIDType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>NonNegativeIntegerType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>NumericIdentifierType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>StringType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>String100Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>String20Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>String250Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>String255Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>String30Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>String50Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>String500Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>String80Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>WebAddressType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>YearType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>LookupCodeType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>LookupDescriptionEnglishType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>LookupDescriptionArabicType</adsssa:providesDefinitionOf>
+          <dcterms:conformsTo>http://www.w3.org/2001/XMLSchema</dcterms:conformsTo>
+        </rdf:Description>
+      </rdf:RDF>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:simpleType name="AmountValueType">
+    <xs:restriction base="xs:decimal">
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Base64BinaryType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#Base64BinaryType">
+            <dcterms:title xml:lang="ar">Ø§ÙÙÙØ¹ Ø§ÙØ«ÙØ§Ø¦Ù Ø§ÙØ¹Ø§Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Generic Binary type</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙÙÙØ¹ Ø§ÙØ«ÙØ§Ø¦Ù ÙØ¹Ø·Ù ÙÙ Ø­Ø§Ù ÙØ§Ù ÙÙØ§Ù ÙÙÙ ÙØ§Ø´ÙØ§Ø¡ ÙØ¨ÙØ±Ø©ØÙØ«Ù Ø§ÙØµÙØ±Ø© Ø£Ù
+                                               Ø§ÙÙØ«ÙÙØ©.ÙØ§ÙÙØ¹Ø±ÙØ© Ø¨Ø£Ù ÙÙØ§Ù ÙØµÙØ© Ø§ÙÙ Ø§ÙÙÙÙ ÙÙØµÙ Ø¨Ù.ÙØ£ÙÙØ§Ø¹ Ø§ÙØ¨ÙØ§ÙØ§Øª ØªÙØªÙÙ
+                                               Ø­ÙÙ ÙÙÙ ÙØµÙØ© (WebAddresstype) ÙÙ Ø­Ø§Ù Ø§Ø­ØªØ§Ø¬ ÙÙÙ Ø§ÙØµÙØ±Ø© ÙÙØµÙØ© Ø¹ÙÙ ÙÙØ¨.</dcterms:description>
+            <dcterms:description xml:lang="en">Binary Type is provided in case there's a transfer of Large Objects, such
+                                               as Image or documents. Knowing that having a link to the file when
+                                               possible is recommended. Already common data types hold a URL field
+                                               (WebAddressType) in case the image need to be passed as a web link.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-09</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:simpleType name="BasicDateType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#BasicDateType">
+            <dcterms:title xml:lang="ar">Ø£ÙÙØ§Ø¹ Ø¨ÙØ§ÙØ§Øª Ø§ÙØªØ§Ø±ÙØ® Ø§ÙØ¹Ø§ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Generic date data type</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙÙØ¹ ØªØ§Ø±ÙØ® ISO 8601 Ø§Ø³Ø§Ø³ÙØÙÙÙ ÙÙØ³ ÙÙØ¹ ÙØ§Ø¹Ø¯Ø© Ø¨ÙØ§ÙØ§Øª Ø§ÙXML. ÙÙØ§Ù Ø£ÙÙØ§Ø¹ Ø§Ø®Ø±Ù
+                                               ÙÙØ§Ø´Ø§Ø±Ø© Ø§ÙÙ Ø§ÙØªØ§Ø±ÙØ® Ø§Ø°Ø§ ÙØ§Ù ÙØ¬Ø±Ù Ø£Ù ÙÙÙØ§Ø¯Ù</dcterms:description>
+            <dcterms:description xml:lang="en">A basic ISO 8601 date type, being the same as the XML Schema date type.
+                                               There are additional types to indicate whether a date is Higri or
+                                               Gregorian.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:date" />
+  </xs:simpleType>
+  <xs:simpleType name="BasicDateTimeType">
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:simpleType name="BasicTimeType">
+    <xs:restriction base="xs:time" />
+  </xs:simpleType>
+  <xs:simpleType name="BooleanType">
+    <xs:restriction base="xs:boolean" />
+  </xs:simpleType>
+  <xs:simpleType name="CalendarType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#CalendarType">
+            <dcterms:title xml:lang="ar">Ø§ÙØªÙÙÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Calendar</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØªÙ Ø§Ø³ØªØ®Ø¯Ø§ÙÙØ§ ÙÙØ§Ø´Ø§Ø±Ø© Ø§ÙÙ Ø§Ø³ØªØ¹ÙØ§Ù Ø§ÙØªØ§Ø±ÙØ® ÙÙØªÙÙÙÙ Ø§ÙÙØ¬Ø±Ù Ø£Ù Ø§ÙÙÙÙØ§Ø¯Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Used to indicate whether a date uses the Gregorian or Higri calendar.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Gregorian" />
+      <xs:enumeration value="Higri" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CurrencyCodeType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="GUIDType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NonNegativeIntegerType">
+    <xs:restriction base="xs:nonNegativeInteger" />
+  </xs:simpleType>
+  <xs:simpleType name="NumericIdentifierType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#NumericIdentifierType">
+            <dcterms:title xml:lang="ar">Ø§ÙÙØ¹Ø±Ù Ø§ÙØ±ÙÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Numeric Identifier</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙÙÙ Ø£Ù ØªØ­ØªÙÙ ÙÙØ· Ø§ÙØ§Ø±ÙØ§Ù 0-9 .ÙØ§ÙÙÙÙÙ Ø§Ø³ØªØ®Ø¯Ø§ÙÙØ§ ÙÙÙØ¹Ø±ÙÙÙ
+                                               Ø§ÙØ¹Ø¯Ø¯ÙÙÙØÙØ¨Ø§ÙØ§ÙÙØ§Ù Ø§ÙØ­Ø¯ ÙÙ Ø·ÙÙÙØ§</dcterms:description>
+            <dcterms:description xml:lang="en">A string that can only have the digits 0-9. It is intended for use for
+                                               numeric identifiers, and can have its length restricted.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-08</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StringType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="String100Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String100Type">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙØ¨ÙØ§Ù Ø§ÙØ¹Ø§Ù ÙØ³ÙØ³ÙØ© ÙÙ 100 Ø­Ø±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 100 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø³ÙØ³ÙØ© Ø¨Ø·ÙÙ Ø£Ø¯ÙÙ ÙÙ Ø­Ø±Ù ÙØ§Ø­Ø¯ ÙØ¨Ø·ÙÙ Ø£ÙØµÙ ÙÙ 100 Ø­Ø±Ù</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 100
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-12</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String20Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String20Type">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙØ¨ÙØ§Ù Ø§ÙØ¹Ø§Ù ÙØ³ÙØ³ÙØ© ÙÙ 20Ø­Ø±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 20 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø³ÙØ³ÙØ© Ø¨Ø·ÙÙ Ø£Ø¯ÙÙ ÙÙ Ø­Ø±Ù ÙØ§Ø­Ø¯ ÙØ¨Ø·ÙÙ Ø£ÙØµÙ ÙÙ 20Ø­Ø±Ù</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 20
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String250Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String250Type">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙØ¨ÙØ§Ù Ø§ÙØ¹Ø§Ù ÙØ³ÙØ³ÙØ© ÙÙ 250 Ø­Ø±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 250 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø³ÙØ³ÙØ© Ø¨Ø·ÙÙ Ø£Ø¯ÙÙ ÙÙ Ø­Ø±Ù ÙØ§Ø­Ø¯ ÙØ¨Ø·ÙÙ Ø£ÙØµÙ ÙÙ 250 Ø­Ø±Ù</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 250
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-12</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="250" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String255Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String255Type">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙØ¨ÙØ§Ù Ø§ÙØ¹Ø§Ù ÙØ³ÙØ³ÙØ© ÙÙ 255 Ø­Ø±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 255 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø³ÙØ³ÙØ© Ø¨Ø·ÙÙ Ø£Ø¯ÙÙ ÙÙ Ø­Ø±Ù ÙØ§Ø­Ø¯ ÙØ¨Ø·ÙÙ Ø£ÙØµÙ ÙÙ 255 Ø­Ø±Ù</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 255
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸Ùï¿½ï¿½ Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2015-03-06</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String30Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String30Type">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙØ¨ÙØ§Ù Ø§ÙØ¹Ø§Ù ÙØ³ÙØ³ÙØ© ÙÙ 30Ø­Ø±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 30 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø³ÙØ³ÙØ© Ø¨Ø·ÙÙ Ø£Ø¯ÙÙ ÙÙ Ø­Ø±Ù ÙØ§Ø­Ø¯ ÙØ¨Ø·ÙÙ Ø£ÙØµÙ ÙÙ 30 Ø­Ø±Ù</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 30
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String50Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String50Type">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙØ¨ÙØ§Ù Ø§ÙØ¹Ø§Ù ÙØ³ÙØ³ÙØ© ÙÙ 50Ø­Ø±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 50 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø³ÙØ³ÙØ© Ø¨Ø·ÙÙ Ø£Ø¯ÙÙ ÙÙ Ø­Ø±Ù ÙØ§Ø­Ø¯ ÙØ¨Ø·ÙÙ Ø£ÙØµÙ ÙÙ 50 Ø­Ø±Ù</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 50
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String500Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String500Type">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙØ¨ÙØ§Ù Ø§ÙØ¹Ø§Ù ÙØ³ÙØ³ÙØ© ÙÙ 500 Ø­ÙØ±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 500 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø³ÙØ³ÙØ© Ø¨Ø·ÙÙ Ø£Ø¯ÙÙ ÙÙ Ø­Ø±Ù ÙØ§Ø­Ø¯ ÙØ¨Ø·ÙÙ Ø£ÙØµÙ ÙÙ 500 Ø­Ø±Ù</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 500
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String80Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String80Type">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙØ¨ï¿½ï¿½Ø§Ù Ø§ÙØ¹Ø§Ù ÙØ³ÙØ³ÙØ© ÙÙ 80 Ø­Ø±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 80 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø³ÙØ³ÙØ© Ø¨Ø·ÙÙ Ø£Ø¯ÙÙ ÙÙ Ø­Ø±Ù ÙØ§Ø­Ø¯ ÙØ¨Ø·ÙÙ Ø£ÙØµÙ ÙÙ 80 Ø­Ø±Ù</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 80
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="80" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="WebAddressType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="YearType">
+    <xs:restriction base="xs:gYear" />
+  </xs:simpleType>
+  <xs:simpleType name="LookupCodeType">
+    <xs:restriction base="String30Type" />
+  </xs:simpleType>
+  <xs:simpleType name="LookupDescriptionEnglishType">
+    <xs:restriction base="String255Type" />
+  </xs:simpleType>
+  <xs:simpleType name="LookupDescriptionArabicType">
+    <xs:restriction base="String255Type" />
+  </xs:simpleType>
+  <xs:simpleType name="StatusCodeType">
+    <xs:restriction base="String30Type" />
+  </xs:simpleType>
+  <xs:simpleType name="StatusDescriptionEnglishType">
+    <xs:restriction base="String255Type" />
+  </xs:simpleType>
+  <xs:simpleType name="StatusDescriptionArabicType">
+    <xs:restriction base="String255Type" />
+  </xs:simpleType>
+  <xs:complexType name="AdditionalInformationType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#AdditionalInformationType">
+            <dcterms:title xml:lang="ar">ÙØ¹ÙÙÙØ§Øª Ø§Ø¶Ø§ÙÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Additional Information</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙØ¹ÙÙÙØ§Øª Ø§Ø¶Ø§ÙÙØ© ÙØ«ÙØ§Ø¦Ù Ø§ÙØ§Ø³Ù/Ø§ÙÙÙÙØ©.ÙÙÙÙ ÙÙÙÙØ© Ø¹ÙØ¯ÙØ§ Ø§ÙØ«ÙØ§Ø¦Ù Ø§ÙØ§Ø³Ù-Ø§ÙÙÙÙØ©
+                                               ÙØ§ÙØ§Ø³Ù ÙÙ ØµÙØ© ÙÙØ¹ÙØµØ± ÙØ§ÙÙÙÙØ© ÙÙ ÙÙÙØ© Ø§ÙØ¹ÙØµØ±</dcterms:description>
+            <dcterms:description xml:lang="en">Additional Information</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-05-21</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Data" type="AdditionalInformationDataType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AdditionalInformationDataType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#AdditionalInformationDataType">
+            <dcterms:title xml:lang="ar">ÙØ¹ÙÙÙØ§Øª Ø¨ÙØ§ÙØ§Øª Ø§Ø¶Ø§ÙÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Additional Information Data</dcterms:title>
+            <dcterms:description xml:lang="en">Additional Information Data</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-05-21</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="StringType">
+        <xs:attribute name="name" type="StringType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AmountType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#AmountType">
+            <dcterms:title xml:lang="ar">Ø§ÙÙØ¨ÙØº</dcterms:title>
+            <dcterms:title xml:lang="en">Amount</dcterms:title>
+            <dcterms:description xml:lang="en">Amount</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-05-17</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="AmountValueType">
+        <xs:attribute default="AED" name="currencyCode" type="CurrencyCodeType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicStringType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicStringType">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© Ø¹Ø±Ø¨ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="StringType">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicString100Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicString100Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 100 Ø­Ø±Ù Ø¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">100 Character Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">100 Character Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String100Type">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicString20Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicString20Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 20 Ø­Ø±Ù Ø¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">20 Character Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">20 Character Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String20Type">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicString250Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicString250Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 250 Ø­Ø±Ù Ø¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">250 Character Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">250 Character Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String250Type">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicString50Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicString50Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 50Ø­Ø±Ù Ø¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">50 Character Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">50 Character Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String50Type">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicString500Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicString500Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 500 Ø­Ø±Ù Ø¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">500 Character Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">500 Character Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String500Type">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicString80Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicString80Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 80 Ø­Ø±Ù Ø¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">80 Character Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">80 Character Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String80Type">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ContentMetadataType">
+    <xs:sequence>
+      <xs:element name="Title" type="StringType" />
+      <xs:element name="TitleArabic" type="StringType" />
+      <xs:element name="DateCreated" type="DateType" />
+      <xs:element name="DateIssued" type="DateType" />
+      <xs:element minOccurs="0" name="DateModified" type="DateType" />
+      <xs:element name="Version" type="StringType" />
+      <xs:element name="Status" type="StringType" />
+      <xs:element name="Description" type="StringType" />
+      <xs:element name="DescriptionArabic" type="StringType" />
+      <xs:element name="Source" type="String255Type" />
+      <xs:element name="Publisher" type="StringType" />
+      <xs:element name="UpdateFrequency" type="StringType" />
+      <xs:element name="Licence" type="String255Type" />
+      <xs:element minOccurs="0" name="SubjectCategory" type="String255Type" />
+      <xs:element minOccurs="0" name="SubjectKeywords" type="String255Type" />
+      <xs:element minOccurs="0" name="SubjectProject" type="String255Type" />
+      <xs:element name="Creator" type="StringType" />
+      <xs:element name="Language" type="String255Type" />
+      <xs:element minOccurs="0" name="OtherInformation" type="StringType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#DateType">
+            <dcterms:title xml:lang="ar">Ø§ÙØªØ§Ø±ÙØ®</dcterms:title>
+            <dcterms:title xml:lang="en">Date</dcterms:title>
+            <dcterms:description xml:lang="en">Date</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="BasicDateType">
+        <xs:attribute default="Gregorian" name="calendar" type="CalendarType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateGregorianType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#DateGregorianType">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® ÙÙÙØ§Ø¯Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Gregorian Date</dcterms:title>
+            <dcterms:description xml:lang="en">Gregorian Date</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="BasicDateType">
+        <xs:attribute fixed="Gregorian" name="calendar" type="CalendarType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateHigriType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#DateHigriType">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® ÙØ¬Ø±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Higri Date</dcterms:title>
+            <dcterms:description xml:lang="en">Higri Date</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="BasicDateType">
+        <xs:attribute fixed="Higri" name="calendar" type="CalendarType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishStringType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishStringType">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© Ø§ÙØ¬ÙÙØ²ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">English String</dcterms:title>
+            <dcterms:description xml:lang="en">English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="StringType">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString100Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString100Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 100 Ø­Ø±Ù Ø§ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">100 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">100 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String100Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString20Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString20Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 20 Ø­Ø±Ù Ø§ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">20 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">20 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String20Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString250Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString250Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 250 Ø­Ø±Ù Ø§ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">250 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">250 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String250Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString30Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString30Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 30 Ø­Ø±Ù Ø§ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">30 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">30 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String30Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString50Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString50Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 50Ø­Ø±Ù Ø§ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">50 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">50 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String50Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString500Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString500Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 500 Ø­Ø±Ù Ø¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">500 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">500 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String500Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString80Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString80Type">
+            <dcterms:title xml:lang="ar">Ø³ÙØ³ÙØ© ÙÙ 80 Ø­Ø±Ù Ø§ÙØ¬ÙÙØ²Ù</dcterms:title>
+            <dcterms:title xml:lang="en">80 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">80 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsssa:OrganisationName xml:lang="en">ADSIC</adsssa:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String80Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

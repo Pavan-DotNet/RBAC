@@ -1,0 +1,272 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "التنمية الاقتصادية عجمان - المنطقة الحرة";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>التنمية الاقتصادية عجمان - المنطقة الحرة</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td colspan="3"><h6><small><b> جواز السفر </b></small></h6></td>
+                <td> <input id="txtPassportNumber" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم الرخصة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الاسم الأول للمساهم
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الاسم الأخير للمساهم
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    جنسية المساهم
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الشركة بالانجليزي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الشركة بالعربي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody text-center" id="tbody"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    نوع الشركة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ بداية الرخصة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ انتهاء الرخصة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    نسبة المساهمة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    عدد الأسهم
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    حصة تأشيرة الإقامة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody1 text-center" id="tbody1"></tbody>
+
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search","AJMFZ")';
+
+            $(".tbody").empty();
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+            var html1 = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtPassportNumber").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtPassportNumber").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var input = { "PassportNumber": $('#txtPassportNumber').val() };
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent)  }, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+                if (obj.flag == "1") {
+
+                    $.each(obj.lstResponse, function (key, item) {
+
+                        html += '<tr>';
+                        html += '<td>' + item.LicenseNumber + '</td>';
+                        html += '<td>' + item.ShareholderFirstName + '</td>';
+                        html += '<td>' + item.ShareholderLastName + '</td>';
+                        html += '<td>' + item.ShareHolderNationality + '</td>';
+                        html += '<td>' + item.CompanyNameEN + '</td>';
+                        html += '<td>' + item.CompanyNameAR + '</td>';
+                        html += '</tr>';
+                        html1 += '<tr>';
+                        html1 += '<td>' + item.CompanyStatus + '</td>';
+                        html1 += '<td>' + item.LicenseStartDate + '</td>';
+                        html1 += '<td>' + item.LicenseExpiryDate + '</td>';
+                        html1 += '<td>' + item.ShareHolderPercentage + '</td>';
+                        html1 += '<td>' + item.ShareHolderNoOfShares + '</td>';
+                        html1 += '<td>' + item.ResidenceVisaQuotaUsed + '</td>';
+                        html1 += '</tr>';
+                    });
+
+                    $(".tbody").append(html);
+                    $(".tbody1").append(html1);
+                    $('.DataTable').show();
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+ $('#create_pdf').on('click', function () {
+            getPDF("AJMANFZ.pdf");
+       });
+
+
+    </script>
+}

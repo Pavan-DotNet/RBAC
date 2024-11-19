@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.informatica.com/dis/ws/" name="AJM_RE_getOwnerPropertyDetailsbyEID" targetNamespace="http://www.informatica.com/dis/ws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.informatica.com/dis/ws/">
+      <xsd:element name="GetOwnerPropertyDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="EmiratesID" type="xsd:string" />
+            <xsd:element name="PreviousProperties" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetOwnerPropertyDetailsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="OwnerPropertyDetails">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="OwnerIdentityId" type="xsd:string" />
+                  <xsd:element name="OwnerNameAR" type="xsd:string" />
+                  <xsd:element name="OwnerNameEN" type="xsd:string" />
+                  <xsd:element name="OwnerNationalityCode" type="xsd:string" />
+                  <xsd:element maxOccurs="unbounded" name="LandsInfo">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="LandId" type="xsd:string" />
+                        <xsd:element name="LandDeedId" type="xsd:string" />
+                        <xsd:element name="LandOwnershipType" type="xsd:string" />
+                        <xsd:element name="LandCreatedAt" type="xsd:string" />
+                        <xsd:element name="LandShare" type="xsd:string" />
+                        <xsd:element name="LandCityAR" type="xsd:string" />
+                        <xsd:element name="LandCityEN" type="xsd:string" />
+                        <xsd:element name="LandSectorAR" type="xsd:string" />
+                        <xsd:element name="LandSectorEN" type="xsd:string" />
+                        <xsd:element name="LandDistrictAR" type="xsd:string" />
+                        <xsd:element name="LandDistrictEN" type="xsd:string" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element maxOccurs="unbounded" name="UnitsInfo">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="UnitPropertyId" type="xsd:string" />
+                        <xsd:element name="UnitProjectId" type="xsd:string" />
+                        <xsd:element name="UnitMainProjectNameAR" type="xsd:string" />
+                        <xsd:element name="UnitMainProjectNameEN" type="xsd:string" />
+                        <xsd:element name="UnitShare" type="xsd:string" />
+                        <xsd:element name="UnitCreatedAt" type="xsd:string" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" name="Error">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="InputParameter" type="xsd:string" />
+                  <xsd:element name="ErrorCode" type="xsd:string" />
+                  <xsd:element name="ErrorMessage" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetOwnerPropertyDetails">
+    <wsdl:part name="GetOwnerPropertyDetails" element="tns:GetOwnerPropertyDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetOwnerPropertyDetailsResponse">
+    <wsdl:part name="GetOwnerPropertyDetailsResponse" element="tns:GetOwnerPropertyDetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AJM_RE_getOwnerPropertyDetailsbyEIDPortType">
+    <wsdl:operation name="GetOwnerPropertyDetails">
+      <wsdl:input name="GetOwnerPropertyDetails_Input" message="tns:GetOwnerPropertyDetails" />
+      <wsdl:output name="GetOwnerPropertyDetails_Output" message="tns:GetOwnerPropertyDetailsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AJM_RE_getOwnerPropertyDetailsbyEIDBinding" type="tns:AJM_RE_getOwnerPropertyDetailsbyEIDPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetOwnerPropertyDetails">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="GetOwnerPropertyDetails_Input">
+        <soap:body use="literal" parts="GetOwnerPropertyDetails" />
+      </wsdl:input>
+      <wsdl:output name="GetOwnerPropertyDetails_Output">
+        <soap:body use="literal" parts="GetOwnerPropertyDetailsResponse" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AJM_RE_getOwnerPropertyDetailsbyEID">
+    <wsdl:port name="AJM_RE_getOwnerPropertyDetailsbyEID" binding="tns:AJM_RE_getOwnerPropertyDetailsbyEIDBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/FCSA/Soap/AJM_RE_getOwnerPropertyDetailsbyEID" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" xmlns:ns0="http://schemas.datacontract.org/2004/07/galaxyService" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=a721660e3356d35a3dfd2145c229bca8&amp;servdocoid=765ad773d0de39d764c43a46f5d916b0" namespace="http://schemas.datacontract.org/2004/07/galaxyService" />
+  <xs:element name="CredentialInput">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/galaxyService" minOccurs="0" name="SearchCriteria" nillable="true" type="q1:CustomerInput" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/galaxyService" minOccurs="0" name="credential" nillable="true" type="q2:CustomerCredential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StatusResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/galaxyService" minOccurs="0" name="Result" nillable="true" type="q3:Resultmsg" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/galaxyService" minOccurs="0" name="_AppData" nillable="true" type="q4:AppData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CDataCredentialinput">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/galaxyService" minOccurs="0" name="ProfileData" nillable="true" type="q5:CustomerDataInput" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/galaxyService" minOccurs="0" name="credential" nillable="true" type="q6:CustomerCredential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Resultmsg">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Status" type="xs:int" />
+        <xs:element minOccurs="0" name="Valid" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

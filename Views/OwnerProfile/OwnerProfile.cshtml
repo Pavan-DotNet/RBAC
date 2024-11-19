@@ -1,0 +1,598 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Contract Detail";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>بلدية امارة أبوظبي / الأملاك</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+
+
+
+        });
+
+
+        function getData() {
+            $("#divTables").empty();
+
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "OwnerProfile")';
+
+            $(".tbody").empty();
+
+
+            $('.DataTable').hide();
+
+
+            document.getElementById('response').innerText = ('');
+
+
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var input = { "EmiratesId": $('#txtEmiratesId').val() };
+            var UsrAgent = { "UserAgent": $.browser };
+            var html = '';
+            $.get(url, { postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+
+               if (obj.flag == "1") {
+                    html += '<h4>تفاصيل الملكية</h4>';
+
+                    $.each(obj.objRespo.PlotList, function (key, item) {
+
+                        html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+                        html += '<tbody class="tbody text-center" id="tbody">';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "قابل للتأجير" + '</b></small></h6></td>';
+                        html += '<td>' + item.AOIsMarkedRentableSpecified + '</td>';
+                        html += '<td><h6><small><b>' + "المجمع" + '</b></small></h6></td>';
+                        html += '<td>' + item.Community + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "رمز المجمع " + '</b></small></h6></td>';
+                        html += '<td>' + item.CommunityId + '</td>';
+                        html += '<td><h6><small><b>' + "رمز المجمع الخاصة" + '</b></small></h6></td>';
+                        html += '<td>' + item.CommunityIdSpecified + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "رقم المجمع" + '</b></small></h6></td>';
+                        html += '<td>' + item.CommunityNumber + '</td>';
+                        html += '<td><h6><small><b>' + "تاريخ البناء" + '</b></small></h6></td>';
+                        html += '<td>' + item.ConstructionDate + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "تاريخ البناء" + '</b></small></h6></td>';
+                        html += '<td>' + item.ConstructionDateSpecified + '</td>';
+                        html += '<td><h6><small><b>' + "وضع البناء" + '</b></small></h6></td>';
+                        html += '<td>' + item.ConstructionStatus + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "الوصف" + '</b></small></h6></td>';
+                        html += '<td>' + item.DimensionDescription + '</td>';
+                        html += '<td><h6><small><b>' + "المنطقة" + '</b></small></h6></td>';
+                        html += '<td>' + item.District + '</td>';
+                        html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "المنطقة" + '</b></small></h6></td>';
+                        html += '<td>' + item.DistrictId + '</td>';
+                        html += '<td><h6><small><b>' + "رمز المنطقة" + '</b></small></h6></td>';
+                        html += '<td>' + item.DistrictIdSpecified + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "رقم المنطقة" + '</b></small></h6></td>';
+                        html += '<td>' + item.DistrictNumber + '</td>';
+                        html += '<td><h6><small><b>' + "المساحة المقدرة" + '</b></small></h6></td>';
+                        html += '<td>' + item.EstimatedArea + '</td>';
+                        html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "المساحة المقدرة" + '</b></small></h6></td>';
+                        html += '<td>' + item.EstimatedAreaSpecified + '</td>';
+                        html += '<td><h6><small><b>' + "رقم القطعة" + '</b></small></h6></td>';
+                        html += '<td>' + item.FlatNumber + '</td>';
+                        html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "لديه قيد" + '</b></small></h6></td>';
+                        html += '<td>' + item.HasBlock + '</td>';
+                        html += '<td><h6><small><b>' + "المنطقة المحددة" + '</b></small></h6></td>';
+                        html += '<td>' + item.HasBlockSpecified + '</td>';
+                        html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "لديه رهن" + '</b></small></h6></td>';
+                        html += '<td>' + item.HasMortgage + '</td>';
+                        html += '<td><h6><small><b>' + "الرهن" + '</b></small></h6></td>';
+                        html += '<td>' + item.HasMortgageSpecified + '</td>';
+                        html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "استخدام الارض" + '</b></small></h6></td>';
+                        html += '<td>' + item.LandUse + '</td>';
+                        html += '<td><h6><small><b>' + "رمز استخدام الارض" + '</b></small></h6></td>';
+                        html += '<td>' + item.LandUseId + '</td>';
+                        html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "رمز استخدام الارض" + '</b></small></h6></td>';
+                        html += '<td>' + item.LandUseIdSpecified + '</td>';
+                        html += '<td><h6><small><b>' + "رمز خريطة الارض" + '</b></small></h6></td>';
+                        html += '<td>' + item.LandUseMepsIdentifier + '</td>';
+                        html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "ملاحظات قانونية" + '</b></small></h6></td>';
+                        html += '<td>' + item.LegalRemarks + '</td>';
+                        html += '<td><h6><small><b>' + "البلدية" + '</b></small></h6></td>';
+                        html += '<td>' + item.Municipality + '</td>';
+                        html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "رمز البلدية" + '</b></small></h6></td>';
+                        html += '<td>' + item.MunicipalityId + '</td>';
+                        html += '<td><h6><small><b>' + "رمز البلدية" + '</b></small></h6></td>';
+                        html += '<td>' + item.MunicipalityIdSpecified + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "استخدام الارض" + '</b></small></h6></td>';
+                        html += '<td>' + item.ParentLandUse + '</td>';
+                        html += '<td><h6><small><b>' + "استخدام الارض" + '</b></small></h6></td>';
+                        html += '<td>' + item.ParentLandUseId + '</td>';
+                        html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "معرف استخدام الارض" + '</b></small></h6></td>';
+                        html += '<td>' + item.ParentLandUseIdSpecified + '</td>';
+                        html += '<td><h6><small><b>' + "عنوان القطعة" + '</b></small></h6></td>';
+                        html += '<td>' + item.PlotAddress + '</td>';
+                        html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "معرف القطعة" + '</b></small></h6></td>';
+                        html += '<td>' + item.PlotId + '</td>';
+                        html += '<td><h6><small><b>' + "رمز القطعة " + '</b></small></h6></td>';
+                        html += '<td>' + item.PlotIdSpecified + '</td>';
+                        html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "رقم القطعة" + '</b></small></h6></td>';
+                        html += '<td>' + item.PlotNumber + '</td>';
+                        html += '<td><h6><small><b>' + "الشارع" + '</b></small></h6></td>';
+                        html += '<td>' + item.Road + '</td>';
+                        html += '</tr>';
+
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "رمز الشارع" + '</b></small></h6></td>';
+                        html += '<td>' + item.RoadId + '</td>';
+                        html += '<td><h6><small><b>' + "رمز الشارع" + '</b></small></h6></td>';
+                        html += '<td>' + item.RoadIdSpecified + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "رقم الشارع" + '</b></small></h6></td>';
+                        html += '<td>' + item.RoadNumber + '</td>';
+                        html += '<td><h6><small><b>' + "حالة الخدمة" + '</b></small></h6></td>';
+                        html += '<td>' + item.ServiceStatus + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr>';
+                        html += '<td><h6><small><b>' + "معرف القطعة" + '</b></small></h6></td>';
+                        html += '<td>' + item.TpdPlotId + '</td>';
+                        html += '<td><h6><small><b>' + "تم تحديد القطعة" + '</b></small></h6></td>';
+                        html += '<td>' + item.TpdPlotIdSpecified + '</td>';
+                        html += '</tr>';
+                        html += '</tbody></table>';
+
+                    });
+                    $("#divTables").append(html);
+                    $('.DataTable').show();
+                    if (obj.listPlot != null) {
+                        var html1 = '';
+
+                        html1 += '<h4>تفاصيل المؤامرة</h4>';
+
+                        for (var i = 0; i < obj.listPlot.length; i++) {
+
+                            html1 += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+                            html1 += '<tbody class="tbody text-center" id="tbody">';
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "رقم قطعة الارض" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].plotId) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رمز البلدية" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].municipalityId) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "اسم البلدية بالعربي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].municipalityNameA) + '</td>';
+                            html1 += '<td><h6><small><b>' + "اسم البلدية بالانجليزي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].municipalityNameE) + '</td>';
+                            html1 += '</tr>';
+
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "رمز المنطقة" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].districtId) + '</td>';
+                            html1 += '<td><h6><small><b>' + "اسم المنطقة بالعربي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].districtNameA) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "اسم المنطقة بالانجليزي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].districtNameE) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رقم المنطقة" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].districtNumber) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "رمز المجمع" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].communityId) + '</td>';
+                            html1 += '<td><h6><small><b>' + "اسم المجمع بالعربي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].communityNameA) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "اسم المجمع بالانجليزي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].communityNameE) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رقم المجمع" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].communityNumber) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "رمز الشارع" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].roadId) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رقم الشارع" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].roadNumber) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "اسم الشارع بالعربي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].roadNameA) + '</td>';
+                            html1 += '<td><h6><small><b>' + "اسم الشارع بالانجليزي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].roadNameE) + '</td>';
+                            html1 += '</tr>';
+
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "رمز استخدام الارض " + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].landuseId) + '</td>';
+                            html1 += '<td><h6><small><b>' + "استخدام الارض بالعربي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].landuseNameA) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "استخدام الارض بالانجليزي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].landuseNameE) + '</td>';
+                            html1 += '<td><h6><small><b>' + "استخدام الارض" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].landuseConst) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "معرف استخدام الارض" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].landuseMepsIdentifier) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رمز مالك الارض" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].parentLanduseId) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "اسم مالك الارض بالعربي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].parentLanduseNameA) + '</td>';
+                            html1 += '<td><h6><small><b>' + "اسم مالك الارض بالانجليزي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].parentLanduseNameE) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "رمز المالك" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].ownerId) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رمز المعاملة" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].plotTransactionId) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "رمز الشريك" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].plotOwnerShareId) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رمز نوع العقد" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].rightsHoldTypeId) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "رمز طريقة الاستحواذ" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].acquisitionTypeId) + '</td>';
+                            html1 += '<td><h6><small><b>' + "نسبة التملك" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].percentOwnership) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "قيمة العقار" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].priorityValue) + '</td>';
+                            html1 += '<td><h6><small><b>' + "ملاحظات الملكية" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].ownershipRemarks) + '</td>';
+                            html1 += '</tr>';
+
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "رقم ملف الارض" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].landFileNumber) + '</td>';
+                            html1 += '<td><h6><small><b>' + "نوع العقد بالعربي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].rightsHoldTypeNameA) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "نوع العقد بالانجليزي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].rightsHoldTypeNameE) + '</td>';
+                            html1 += '<td><h6><small><b>' + "نوع الاستحواذ 1" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].acquisitionTypeA) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "نوع الاستحواذ 2" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].acquisitionTypeE) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رمز عنوان المستخدم" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].userTitleId) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "عنوان المستخدم بالعربي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].userTitleNameA) + '</td>';
+                            html1 += '<td><h6><small><b>' + "عنوان المستخدم بالانجليزي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].userTitleNameE) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "عرض عنوان المستخدم" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].userTitleDisplay) + '</td>';
+                            html1 += '<td><h6><small><b>' + "اسم المالك بالعربي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].ownerNameA) + '</td>';
+                            html1 += '</tr>';
+
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "اسم المالك بالانجليزي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].ownerNameE) + '</td>';
+                            html1 += '<td><h6><small><b>' + "القبيلة بالعربي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].tribeNameA) + '</td>';
+                            html1 += '</tr>';
+
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "االقبيلة بالانجليزي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].tribeNameE) + '</td>';
+                            html1 += '<td><h6><small><b>' + "مدينة خلاصة القيد" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].familyBookCity) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "تاريخ اصدار خلاصة القيد" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].familyBookIssueDate) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رقم خلاصة القيد" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].familyBookNumber) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "رقم فحة العائلة" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].familyPageNumber) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رقم الرخصة التجارية" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].tradeLicenseNumber) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "تاريخ انتهاء الرخصة التجارية" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].tradeLicenseExpireDate) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رقم الغرفة التجارية" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].chamberNumberId) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "الرقم الوطني" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].nationalNumber) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رقم الملف في وزارة الاقتصاد" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].moiUnifiedNumber) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "الجنسية بالانجليزي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].nationalityNameE) + '</td>';
+                            html1 += '<td><h6><small><b>' + "الجنسية بالعربي" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].nationalityNameA) + '</td>';
+                            html1 += '</tr>';
+
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "الجنس" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].gender) + '</td>';
+                            html1 += '<td><h6><small><b>' + "تاريخ الميلاد" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].birthday) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "اسم الام" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].nameMother) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رقم الارشيف" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].townPlanningArchiveNumber) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "نوع المالك" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].ownerType) + '</td>';
+                            html1 += '<td><h6><small><b>' + "نوع الاستحواذ" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].acquisitionTypeConst) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "حقوق الملكية" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].rightsholdtypeconst) + '</td>';
+                            html1 += '<td><h6><small><b>' + "رقم القطعة" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].plotNumber) + '</td>';
+                            html1 += '</tr>';
+
+                            html1 += '<tr>';
+                            html1 += '<td><h6><small><b>' + "عنوان القطعة" + '</b></small></h6></td>';
+                            html1 += '<td>' + StringHasValue(obj.listPlot[i].plotAddress) + '</td>';
+                            html1 += '<td></td>';
+                            html1 += '<td></td>';
+                            html1 += '</tr>';
+                            html1 += '</tbody></table>';
+
+                            $("#divTables").append(html1);
+                            $('.DataTable').show();
+
+                            if (obj.listPlot[i].acquisitionTypeHistory != null) {
+                                var html2 = '';
+
+                                html2 += '<h4>التاريخ السابق لطريق التملك</h4>';
+
+                                for (var j = 0; j < obj.listPlot[i].acquisitionTypeHistory.length; j++) {
+
+
+                                    html2 += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+                                    html2 += '<tbody class="tbody text-center" id="tbody">';
+                                    html2 += '<tr>';
+                                    html2 += '<td><h6><small><b>' + "رقم قطعة الارض" + '</b></small></h6></td>';
+                                    html2 += '<td>' + StringHasValue(obj.listPlot[i].plotId) + '</td>';
+                                    html2 += '<td><h6><small><b>' + "نسبة التملك" + '</b></small></h6></td>';
+                                    html2 += '<td>' + StringHasValue(obj.listPlot[i].acquisitionTypeHistory[j].percentOwnership) + '</td>';
+                                    html2 += '</tr>';
+
+                                    html2 += '<tr>';
+                                    html2 += '<td><h6><small><b>' + "تاريخ التملك" + '</b></small></h6></td>';
+                                    html2 += '<td>' + StringHasValue(obj.listPlot[i].acquisitionTypeHistory[j].acquisitionDate) + '</td>';
+                                    html2 += '<td><h6><small><b>' + "تغيير التملك" + '</b></small></h6></td>';
+                                    html2 += '<td>' + StringHasValue(obj.listPlot[i].acquisitionTypeHistory[j].acquiisitionChange) + '</td>';
+                                    html2 += '</tr>';
+                                    html2 += '</tbody>  </table>';
+
+                                }
+                                $("#divTables").append(html2);
+                                $('.DataTable').show();
+                            }
+
+                        }
+
+                    }
+
+
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+        function BindHTMLOwner(item) {
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("ADPContractDetails.pdf");
+       });
+        var StringHasValue = function (strValue) {
+            if ($.trim(strValue) != "" && $.trim(strValue) != null && $.trim(strValue) != undefined)
+                return strValue;
+            else
+                return "-";
+        };
+
+    </script>
+}

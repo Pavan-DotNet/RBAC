@@ -1,0 +1,239 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "دائرة الصحة - بيانات الوفاة";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>دائرة الصحة - بيانات الوفاة</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "DeathCertificate")';
+
+            $(".tbody").empty();
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { EmiratesId: EmiratesId, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+
+
+
+                if (obj.flag == "1") {
+
+
+                    html = BindHTML(obj.deathResponse);
+                        $("#divTables").append(html);
+                        $('.DataTable').show();
+                }
+                else {
+
+                    if (obj.flag == "2") {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("ADPEmployeeInfo.pdf");
+       });
+
+
+        function BindHTML(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم مرجع الوفاة" + '</b></small></h6></td>';
+            html += '<td>' + item.DeathReferenceNo + '</td>';
+            html += '<td><h6><small><b>' + "الاسم بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.FullNameEnglish + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الاسم بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.FullNameArabic + '</td>';
+            html += '<td><h6><small><b>' + "تاريخ الميلاد" + '</b></small></h6></td>';
+            html += '<td>' + item.DateOfBirth + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رمز الجنس" + '</b></small></h6></td>';
+            html += '<td>' + item.GenderCode + '</td>';
+            html += '<td><h6><small><b>' + " الجنس بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.GenderDescriptionEnglish + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + " الجنس بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.GenderDescriptionArabic + '</td>';
+            html += '<td><h6><small><b>' + "رمز الديانة" + '</b></small></h6></td>';
+            html += '<td>' + item.ReligonCode + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الديانة بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.ReligonDescriptionEnglish + '</td>';
+            html += '<td><h6><small><b>' + "الديانة بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.ReligonDescriptionArabic + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رمز الجنسية" + '</b></small></h6></td>';
+            html += '<td>' + item.NationalityCode + '</td>';
+            html += '<td><h6><small><b>' + "الجنسية بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.NationalityDescriptionEnglish + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الجنسية بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.NationalityDescriptionArabic + '</td>';
+            html += '<td><h6><small><b>' + "رمز الحالة الاجتماعية" + '</b></small></h6></td>';
+            html += '<td>' + item.MaritalStatusCode + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الحالة الاجتماعية بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.MartialStatusDescriptionEnglish + '</td>';
+            html += '<td><h6><small><b>' + "الحالة الاجتماعية بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.MartialStatusDescriptionArabic + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رمز الوظيفة" + '</b></small></h6></td>';
+            html += '<td>' + item.OccupationCode + '</td>';
+            html += '<td><h6><small><b>' + "الوظيفة بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.OccupationDescriptionEnglish + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رمز مكان اصدار الشهادة" + '</b></small></h6></td>';
+            html += '<td>' + item.CertificatePlaceOfIssueCode + '</td>';
+            html += '<td><h6><small><b>' + "مكان اصدار الشهادة بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.CertificatePlaceOfIssueDescriptionEnglish + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "مكان اصدار الشهادة بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.CertificatePlaceOfIssueDescriptionArabic + '</td>';
+            html += '<td><h6><small><b>' + "مكان الوفاة" + '</b></small></h6></td>';
+            html += '<td>' + item.DeathPlace + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تاريخ الوفاة" + '</b></small></h6></td>';
+            html += '<td>' + item.DateOfDeath + '</td>';
+            html += '<td><h6><small><b>' + "تاريخ الوفاة كتابة" + '</b></small></h6></td>';
+            html += '<td>' + item.DateOfDeathInWordsEnglish + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تاريخ الوفاة بالهجري" + '</b></small></h6></td>';
+            html += '<td>' + item.DateOfDeathHijri + '</td>';
+            html += '<td><h6><small><b>' + "العمر" + '</b></small></h6></td>';
+            html += '<td>' + item.Age + '</td>';
+            html += '</tr>';
+
+
+            html += '</tbody>  </table>';
+            return html
+        }
+    </script>
+}

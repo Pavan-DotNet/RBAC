@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f245d&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8c0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="MemberInformationRequest">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FamilyBookNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NationalID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberInformationRequest" nillable="true" type="tns:MemberInformationRequest" />
+  <xs:complexType name="ArrayOfMemberInformationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MemberInformationResponse" type="tns:MemberInformationResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMemberInformationResponse" nillable="true" type="tns:ArrayOfMemberInformationResponse" />
+  <xs:complexType name="MemberInformationResponse">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Address" nillable="true" type="xs:string" />
+      <xs:element name="City" nillable="true" type="xs:string" />
+      <xs:element name="DOB" nillable="true" type="xs:string" />
+      <xs:element name="Email" nillable="true" type="xs:string" />
+      <xs:element name="Emirate" nillable="true" type="xs:string" />
+      <xs:element name="FamilyBookNo" nillable="true" type="xs:string" />
+      <xs:element name="Fax" nillable="true" type="xs:string" />
+      <xs:element name="MemberFullNameArabic" nillable="true" type="xs:string" />
+      <xs:element name="MemberFullNameEnglish" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MemberType" nillable="true" type="xs:string" />
+      <xs:element name="Mobile" nillable="true" type="xs:string" />
+      <xs:element name="NationalID" nillable="true" type="xs:string" />
+      <xs:element name="POBOX" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PensionAmount" type="xs:decimal" />
+      <xs:element name="PensionNumber" nillable="true" type="xs:string" />
+      <xs:element name="PensionStartDate" nillable="true" type="xs:string" />
+      <xs:element name="Phone" nillable="true" type="xs:string" />
+      <xs:element name="beneficiaryInformation" nillable="true" type="tns:ArrayOfBeneficiaryInformation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberInformationResponse" nillable="true" type="tns:MemberInformationResponse" />
+  <xs:complexType name="ArrayOfBeneficiaryInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BeneficiaryInformation" type="tns:BeneficiaryInformation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBeneficiaryInformation" nillable="true" type="tns:ArrayOfBeneficiaryInformation" />
+  <xs:complexType name="BeneficiaryInformation">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Address" nillable="true" type="xs:string" />
+      <xs:element name="BeneficiaryArabicName" nillable="true" type="xs:string" />
+      <xs:element name="BeneficiaryEnglishName" nillable="true" type="xs:string" />
+      <xs:element name="BeneficiaryID" type="xs:int" />
+      <xs:element name="City" nillable="true" type="xs:string" />
+      <xs:element name="Email" nillable="true" type="xs:string" />
+      <xs:element name="Emirate" nillable="true" type="xs:string" />
+      <xs:element name="Fax" nillable="true" type="xs:string" />
+      <xs:element name="Mobile" nillable="true" type="xs:string" />
+      <xs:element name="POBOX" nillable="true" type="xs:string" />
+      <xs:element name="PensionAmount" type="xs:decimal" />
+      <xs:element name="PensionStartDate" nillable="true" type="xs:string" />
+      <xs:element name="Phone" nillable="true" type="xs:string" />
+      <xs:element name="Relationship" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BeneficiaryInformation" nillable="true" type="tns:BeneficiaryInformation" />
+  <xs:complexType name="CustomFaultMesg">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomFaultMesg" nillable="true" type="tns:CustomFaultMesg" />
+</xs:schema>

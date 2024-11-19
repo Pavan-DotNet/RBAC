@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://integration.esi.dtps.gov.ae/" name="DhIntegrationService" targetNamespace="http://integration.esi.dtps.gov.ae/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f205c&amp;servdocoid=5a356db8f6cfeb20da1397ce9c1e5e37" namespace="http://integration.esi.dtps.gov.ae/" />
+    </xsd:schema>
+  </types>
+  <message name="getAttachmentTypeByID">
+    <part name="parameters" element="tns:getAttachmentTypeByID" />
+  </message>
+  <message name="getAttachmentTypeByIDResponse">
+    <part name="parameters" element="tns:getAttachmentTypeByIDResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="getLandUsageById">
+    <part name="parameters" element="tns:getLandUsageById" />
+  </message>
+  <message name="getLandUsageByIdResponse">
+    <part name="parameters" element="tns:getLandUsageByIdResponse" />
+  </message>
+  <message name="getAttachmentTypesList">
+    <part name="parameters" element="tns:getAttachmentTypesList" />
+  </message>
+  <message name="getAttachmentTypesListResponse">
+    <part name="parameters" element="tns:getAttachmentTypesListResponse" />
+  </message>
+  <message name="createGrantedPlotLetterTr">
+    <part name="parameters" element="tns:createGrantedPlotLetterTr" />
+  </message>
+  <message name="createGrantedPlotLetterTrResponse">
+    <part name="parameters" element="tns:createGrantedPlotLetterTrResponse" />
+  </message>
+  <message name="getStatusList">
+    <part name="parameters" element="tns:getStatusList" />
+  </message>
+  <message name="getStatusListResponse">
+    <part name="parameters" element="tns:getStatusListResponse" />
+  </message>
+  <message name="getBranchesList">
+    <part name="parameters" element="tns:getBranchesList" />
+  </message>
+  <message name="getBranchesListResponse">
+    <part name="parameters" element="tns:getBranchesListResponse" />
+  </message>
+  <message name="getStatusByID">
+    <part name="parameters" element="tns:getStatusByID" />
+  </message>
+  <message name="getStatusByIDResponse">
+    <part name="parameters" element="tns:getStatusByIDResponse" />
+  </message>
+  <message name="getFinalProductStatus">
+    <part name="parameters" element="tns:getFinalProductStatus" />
+  </message>
+  <message name="getFinalProductStatusResponse">
+    <part name="parameters" element="tns:getFinalProductStatusResponse" />
+  </message>
+  <message name="getFPStatusData">
+    <part name="parameters" element="tns:getFPStatusData" />
+  </message>
+  <message name="getFPStatusDataResponse">
+    <part name="parameters" element="tns:getFPStatusDataResponse" />
+  </message>
+  <portType name="DhIntegrationServicePortType">
+    <operation name="getAttachmentTypeByID">
+      <input message="tns:getAttachmentTypeByID" />
+      <output message="tns:getAttachmentTypeByIDResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getLandUsageById">
+      <input message="tns:getLandUsageById" />
+      <output message="tns:getLandUsageByIdResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getAttachmentTypesList">
+      <input message="tns:getAttachmentTypesList" />
+      <output message="tns:getAttachmentTypesListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="createGrantedPlotLetterTr">
+      <input message="tns:createGrantedPlotLetterTr" />
+      <output message="tns:createGrantedPlotLetterTrResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getStatusList">
+      <input message="tns:getStatusList" />
+      <output message="tns:getStatusListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getBranchesList">
+      <input message="tns:getBranchesList" />
+      <output message="tns:getBranchesListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getStatusByID">
+      <input message="tns:getStatusByID" />
+      <output message="tns:getStatusByIDResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getFinalProductStatus">
+      <input message="tns:getFinalProductStatus" />
+      <output message="tns:getFinalProductStatusResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getFPStatusData">
+      <input message="tns:getFPStatusData" />
+      <output message="tns:getFPStatusDataResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="DhIntegrationServicePortBinding" type="tns:DhIntegrationServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getAttachmentTypeByID">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getLandUsageById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAttachmentTypesList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="createGrantedPlotLetterTr">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getStatusList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getBranchesList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getStatusByID">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getFinalProductStatus">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getFPStatusData">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="DhIntegrationService">
+    <port name="DhIntegrationServicePort" binding="tns:DhIntegrationServicePortBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/SDTPS/Soap/GrantedPlot/V1" />
+    </port>
+  </service>
+</definitions>

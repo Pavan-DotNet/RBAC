@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="11d0b97f-7d98-413a-b0de-270139bc17c1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://mgov.mof.gov.ae:443/soa-infra/services/default/PRDEBS_PLSQL_XXFAHR_MOCD_WEBSERVICE_PKG/XXFAHR_MOCD_WEBSERVICE_PKG_Service?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ISGServiceFault.xsd" MetadataType="Schema" ID="391b45b4-f9c8-4638-8a6e-f20deed7b8fe" SourceId="1" SourceUrl="https://mgov.mof.gov.ae/soa-infra/services/default/PRDEBS_PLSQL_XXFAHR_MOCD_WEBSERVICE_PKG/XXFAHR_MOCD_WEBSERVICE_PKG_Service?XSD=xsd/ISGServiceFault.xsd" />
+    <MetadataFile FileName="APPS_XXFAHR_MOCD_WEBSERVICE_PKG_GET_EMPLOYEE_DETAILS.xsd" MetadataType="Schema" ID="3eddb947-2824-430e-80e8-5f69e04746bd" SourceId="1" SourceUrl="https://mgov.mof.gov.ae/soa-infra/services/default/PRDEBS_PLSQL_XXFAHR_MOCD_WEBSERVICE_PKG/XXFAHR_MOCD_WEBSERVICE_PKG_Service?XSD=xsd/APPS_XXFAHR_MOCD_WEBSERVICE_PKG_GET_EMPLOYEE_DETAILS.xsd" />
+    <MetadataFile FileName="XXFAHR_MOCD_WEBSERVICE_PKG.wsdl" MetadataType="Wsdl" ID="e8254592-e923-4d7e-8e0c-cb9d237022fe" SourceId="1" SourceUrl="https://mgov.mof.gov.ae/soa-infra/services/default/PRDEBS_PLSQL_XXFAHR_MOCD_WEBSERVICE_PKG/XXFAHR_MOCD_WEBSERVICE_PKG_Service?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6dfead53-b0b0-4ca8-8218-415180dbfa23" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://iapi.mocd.gov.ae/Outbound/GSB/ADP/Soap/VehicleOwnership/V1?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="V1.wsdl" MetadataType="Wsdl" ID="b704b22d-0284-4a5d-8ef3-090e5cf9b714" SourceId="1" SourceUrl="https://iapi.mocd.gov.ae/Outbound/GSB/ADP/Soap/VehicleOwnership/V1?wsdl" />
+    <MetadataFile FileName="5e6b734e2f9c68db4bdfe810bfe6d96e.xsd" MetadataType="Schema" ID="23f0a186-d2c1-4bd4-b167-52a07d1c0f52" SourceId="1" SourceUrl="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f23f3&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8e1" />
+    <MetadataFile FileName="5e6b734e2f9c68db4bdfe810bfe6d96e1.xsd" MetadataType="Schema" ID="7c865d68-1d82-4069-8eab-128ecc9a9179" SourceId="1" SourceUrl="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f23f3&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8e2" />
+    <MetadataFile FileName="5e6b734e2f9c68db4bdfe810bfe6d96e2.xsd" MetadataType="Schema" ID="f6372e6b-8d3b-4daa-87e4-89daea3920da" SourceId="1" SourceUrl="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f23f3&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8e3" />
+    <MetadataFile FileName="5e6b734e2f9c68db4bdfe810bfe6d96e3.xsd" MetadataType="Schema" ID="081bee34-94d3-4723-bf00-cd6449ebe810" SourceId="1" SourceUrl="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f23f3&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8e4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

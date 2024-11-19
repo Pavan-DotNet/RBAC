@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="15109225-099b-47a3-b511-cc22d561946c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://integrate.gsb.government.ae/ws/getLeaseContractDetails_DMAT/1.0?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="cea6c482-ebc1-44c0-bd2e-3772b8881d38.xsd" MetadataType="Schema" ID="825788ac-3099-466a-af1f-987f87f996a3" SourceId="1" SourceUrl="https://integrate.gsb.government.ae/ws/getLeaseContractDetails_DMAT/cea6c482-ebc1-44c0-bd2e-3772b8881d38?xsd=G2G-TawtheeqTypes_ProxyV41" />
+    <MetadataFile FileName="1.wsdl" MetadataType="Wsdl" ID="276eec9c-373c-4f7b-9266-500bf73a5ff1" SourceId="1" SourceUrl="https://integrate.gsb.government.ae/ws/getLeaseContractDetails_DMAT/1.0?wsdl" />
+    <MetadataFile FileName="cea6c482-ebc1-44c0-bd2e-3772b8881d381.xsd" MetadataType="Schema" ID="74d82fc4-7ead-4ee5-99cf-d80a26f7b503" SourceId="1" SourceUrl="https://integrate.gsb.government.ae/ws/getLeaseContractDetails_DMAT/cea6c482-ebc1-44c0-bd2e-3772b8881d38?xsd=CommonDataTypes_ProxyV42" />
+    <MetadataFile FileName="358d5ac2-ae69-11e7-a1c8-98eaa63972e2.xsd" MetadataType="Schema" ID="231133f6-22f4-4b63-a8fa-b5dc4971f5d5" SourceId="1" SourceUrl="https://integrate.gsb.government.ae/ws/getLeaseContractDetails_DMAT/358d5ac2-ae69-11e7-a1c8-98eaa63972e2?xsd=TawtheeqSoapFault_ProxyV13" />
+    <MetadataFile FileName="358d5ac2-ae69-11e7-a1c8-98eaa63972e21.xsd" MetadataType="Schema" ID="0c8250ef-aa6b-406e-a3f4-1b43fb7ed8b6" SourceId="1" SourceUrl="https://integrate.gsb.government.ae/ws/getLeaseContractDetails_DMAT/358d5ac2-ae69-11e7-a1c8-98eaa63972e2?xsd=G2G-TawtheeqMessages_ProxyV40" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

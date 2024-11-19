@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.informatica.com/dis/ws/" name="FUJ_MUN_getLandDetailsbyEID" targetNamespace="http://www.informatica.com/dis/ws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.informatica.com/dis/ws/">
+      <xsd:element name="GetLandDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="EmiratesID" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLandDetailsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="LandDetails">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="1" name="EmiratesID" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="RealEstateOwner" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="OwnershipPercentage" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="RealStateLocation" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="RealEstateNumber" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="OwnershipDate" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="RealEstateType" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="RealEstateStatus" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="PlotNumber" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="BlockNumber" type="xsd:string" />
+                  <xsd:element name="LastRefreshDate" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Error">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="ErrorDescription" type="xsd:string" />
+                  <xsd:element name="ErrorCode" type="xsd:string" />
+                  <xsd:element name="InputParameter" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLandDetails">
+    <wsdl:part name="GetLandDetails" element="tns:GetLandDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetLandDetailsResponse">
+    <wsdl:part name="GetLandDetailsResponse" element="tns:GetLandDetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FUJ_MUN_getLandDetailsbyEIDPortType">
+    <wsdl:operation name="GetLandDetails">
+      <wsdl:input name="GetLandDetails_Input" message="tns:GetLandDetails" />
+      <wsdl:output name="GetLandDetails_Output" message="tns:GetLandDetailsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FUJ_MUN_getLandDetailsbyEIDBinding" type="tns:FUJ_MUN_getLandDetailsbyEIDPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLandDetails">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="GetLandDetails_Input">
+        <soap:body use="literal" parts="GetLandDetails" />
+      </wsdl:input>
+      <wsdl:output name="GetLandDetails_Output">
+        <soap:body use="literal" parts="GetLandDetailsResponse" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FUJ_MUN_getLandDetailsbyEID">
+    <wsdl:port name="FUJ_MUN_getLandDetailsbyEID" binding="tns:FUJ_MUN_getLandDetailsbyEIDBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/FCSA/Soap/FUJ_MUN_getLandDetailsbyEID" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

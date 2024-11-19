@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd1="http://id.gov.ae/ws/personInquiry" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://id.gov.ae/ws/PersonInquiryService" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="getPersonInquiry_ICA" targetNamespace="http://id.gov.ae/ws/PersonInquiryService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This service will retrieve Personal Information from ICA using Emirates Id or Unified Number.</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema xmlns:tns="http://id.gov.ae/schema/personInquiry" xmlns:cmn="http://id.gov.ae/schema/commontypes" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://id.gov.ae/schema/personInquiry">
+      <xsd:complexType name="PersonInquiryRequestType">
+        <xsd:sequence>
+          <xsd:element ref="cmn:Header" />
+          <xsd:element name="Body" type="tns:PersonInquiryRequestBodyType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonInquiryResponseType">
+        <xsd:sequence>
+          <xsd:element ref="cmn:Header" />
+          <xsd:element name="Body" type="tns:PersonInquiryResponseBodyType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonInquiryRequestBodyType">
+        <xsd:sequence>
+          <xsd:element name="inquiry" type="tns:PersonInquiryType" />
+          <xsd:element minOccurs="0" name="OTP" type="xsd:string" />
+          <xsd:element minOccurs="0" name="txnType" type="xsd:integer" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonInquiryResponseBodyType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:CommonResponseType">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="personProfile" type="tns:PersonProfileType" />
+              <xsd:element name="timestamp" type="xsd:dateTime" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="PersonProfileType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="UN" type="tns:UNType" />
+          <xsd:element minOccurs="0" name="identityCard" type="tns:IdentityCardType" />
+          <xsd:element minOccurs="0" name="cardSerialNo" type="xsd:string" />
+          <xsd:element minOccurs="0" name="nationality" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="title" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="personName" type="tns:PersonNameType" />
+          <xsd:element minOccurs="0" name="khulasitQaidNo" type="cmn:English80Type" />
+          <xsd:element minOccurs="0" name="familyBookNo" type="cmn:English80Type" />
+          <xsd:element minOccurs="0" name="familyBookStartDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="familyBookCreateDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="familyBookRelation" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="edbarahNo" type="cmn:English80Type" />
+          <xsd:element minOccurs="0" name="gender" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="birthDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="birthCountry" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="birthEmirate" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="birthCity" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="birthPlaceArabic" type="cmn:ArabicName80Type" />
+          <xsd:element minOccurs="0" name="birthPlaceEnglish" type="cmn:English80Type" />
+          <xsd:element minOccurs="0" name="birthCertificateNo" type="xsd:string" />
+          <xsd:element minOccurs="0" name="maritalStatus" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="religion" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="pimarylangCode" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="passport" type="tns:PassportType" />
+          <xsd:element minOccurs="0" name="sponsor" type="tns:SponsorType" />
+          <xsd:element minOccurs="0" name="faith" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="personType" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="personClassification" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="immigrationFile" type="tns:ImmigrationFileType" />
+          <xsd:element minOccurs="0" name="occupation" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="companyTypeCode" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="companyCode" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="companyAr" type="xsd:string" />
+          <xsd:element minOccurs="0" name="companyEn" type="xsd:string" />
+          <xsd:element minOccurs="0" name="motherNameArabic" type="tns:ArabicName15Type" />
+          <xsd:element minOccurs="0" name="motherNameEnglish" type="tns:String15Type" />
+          <xsd:element minOccurs="0" name="motherFirstNameArabic" type="tns:ArabicName15Type" />
+          <xsd:element minOccurs="0" name="motherFirstNameEnglish" type="tns:String15Type" />
+          <xsd:element minOccurs="0" name="previousNationality" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="addresses" type="tns:AddressesType" />
+          <xsd:element minOccurs="0" name="qualification" type="tns:QualificationType" />
+          <xsd:element minOccurs="0" name="wives_count" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="wives" type="tns:PersonProfileWivesType" />
+          <xsd:element minOccurs="0" name="relatives" type="tns:RelativesType" />
+          <xsd:element minOccurs="0" name="isBlackListed" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="isInsideCountry" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="familyCount" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="familyMaleCount" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="familyFemaleCount" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="motherChildCount" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="motherChildren" type="tns:MotherChildrenType" />
+          <xsd:element minOccurs="0" name="disability" type="xsd:long" />
+          <xsd:element minOccurs="0" name="freeEducation" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="freeHealth" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="bloodType" type="xsd:string" />
+          <xsd:element minOccurs="0" name="socialSupportStatus" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="hasSpecialNationality" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="lastExitDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="lastEntryDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="icaDenied" type="xsd:string" />
+          <xsd:element minOccurs="0" name="fatherHasOnlySon" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="motherHasOnlySon" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="signature" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" name="portrait" type="xsd:base64Binary">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">Portrait</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="pr_portrait" type="xsd:base64Binary" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonInquiryType">
+        <xsd:sequence>
+          <xsd:choice>
+            <xsd:element name="UN" type="tns:UNType" />
+            <xsd:element name="IDN" type="tns:IDNType" />
+            <xsd:element name="document" type="tns:DocumentType" />
+            <xsd:element name="file" type="tns:FileType" />
+          </xsd:choice>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CommonResponseType">
+        <xsd:sequence>
+          <xsd:element name="transactionRefNo" type="cmn:TransactionRefNoType" />
+          <xsd:element name="responseCode" type="cmn:ResponseCodeType" />
+          <xsd:element minOccurs="0" name="responseDescription" type="xsd:string" />
+          <xsd:element minOccurs="0" name="responseDescriptionArabic" type="cmn:ArabicNameType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ImmigrationFileType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="status" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="fileNo" type="xsd:string" />
+          <xsd:element minOccurs="0" name="department" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="year" type="xsd:gYear">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="ar">سنة ملف الهجرة</xsd:documentation>
+              <xsd:documentation xml:lang="en">Immigration File Year</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="fileType" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="fileSequence" type="xsd:string" />
+          <xsd:element minOccurs="0" name="issueDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="expiryDate" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PassportType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="passportNo" type="tns:String16Type" />
+          <xsd:element minOccurs="0" name="passportType" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="issueDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="expiryDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="issueCountry" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="issuePlace" type="cmn:EnglishName80Type" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SponsorType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="nameArabic" type="cmn:ArabicName80Type" />
+          <xsd:element minOccurs="0" name="nameEnglish" type="cmn:EnglishName80Type" />
+          <xsd:element minOccurs="0" name="department" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="sponsorIDN" type="xsd:string" />
+          <xsd:element minOccurs="0" name="sponsorNo" type="xsd:long" />
+          <xsd:element minOccurs="0" name="addresses" type="tns:AddressesType" />
+          <xsd:element minOccurs="0" name="sponsorType" type="tns:DetailType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AddressesType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="address" type="tns:AddressType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MotherChildrenType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="child" type="tns:ChildType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AddressType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="localAddress" type="tns:LocalAddressType" />
+          <xsd:element minOccurs="0" name="abroadAddress" type="tns:AbroadAddressType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ChildType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="IDN" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LocalAddressType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="emirate" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="city" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="area" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="street" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="buildingNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" name="building" type="cmn:EnglishName80Type" />
+          <xsd:element minOccurs="0" name="poboxNo" type="cmn:EnglishName20Type" />
+          <xsd:element minOccurs="0" name="mobileNo" type="xsd:string" />
+          <xsd:element minOccurs="0" name="secondMobileNo" type="xsd:string" />
+          <xsd:element minOccurs="0" name="homePhone" type="xsd:string" />
+          <xsd:element minOccurs="0" name="workPhone" type="xsd:string" />
+          <xsd:element minOccurs="0" name="fax" type="xsd:string" />
+          <xsd:element minOccurs="0" name="emailAddress" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AbroadAddressType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="country" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="phoneNo" type="xsd:string" />
+          <xsd:element minOccurs="0" name="details" type="cmn:English500Type" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="QualificationType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="country" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="academyName" type="tns:String100Type" />
+          <xsd:element minOccurs="0" name="specialization" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="grade" type="xsd:string" />
+          <xsd:element minOccurs="0" name="qualificationDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="note" type="cmn:English500Type" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonProfileWivesType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="wife" type="tns:PersonProfileWifeType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonProfileWifeType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="name" type="tns:PersonNameType" />
+          <xsd:element minOccurs="0" name="nationality" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="birthDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="UN" type="tns:UNType" />
+          <xsd:element minOccurs="0" name="identityCard" type="tns:IdentityCardType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RelativesType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="relative" type="tns:RelativeType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RelativeType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="relation" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="name" type="tns:PersonNameType" />
+          <xsd:element minOccurs="0" name="nationality" type="tns:DetailType" />
+          <xsd:element minOccurs="0" name="birthDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="UN" type="tns:UNType" />
+          <xsd:element minOccurs="0" name="identityCard" type="tns:IdentityCardType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonNameType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="firstNameArabic" type="xsd:string" />
+          <xsd:element minOccurs="0" name="firstNameEnglish" type="xsd:string" />
+          <xsd:element minOccurs="0" name="secondNameArabic" type="xsd:string" />
+          <xsd:element minOccurs="0" name="secondNameEnglish" type="xsd:string" />
+          <xsd:element minOccurs="0" name="thirdNameArabic" type="xsd:string" />
+          <xsd:element minOccurs="0" name="thirdNameEnglish" type="xsd:string" />
+          <xsd:element minOccurs="0" name="fourthNameArabic" type="xsd:string" />
+          <xsd:element minOccurs="0" name="fourthNameEnglish" type="xsd:string" />
+          <xsd:element minOccurs="0" name="fullNameArabic" type="xsd:string" />
+          <xsd:element minOccurs="0" name="fullNameEnglish" type="xsd:string" />
+          <xsd:element minOccurs="0" name="familyNameArabic" type="xsd:string" />
+          <xsd:element minOccurs="0" name="familyNameEnglish" type="xsd:string" />
+          <xsd:element minOccurs="0" name="clanNameArabic" type="xsd:string" />
+          <xsd:element minOccurs="0" name="clanNameEnglish" type="xsd:string" />
+          <xsd:element minOccurs="0" name="tribe" type="tns:DetailType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DetailType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="id" type="xsd:long" />
+          <xsd:element minOccurs="0" name="descriptionArabic" type="xsd:string" />
+          <xsd:element minOccurs="0" name="descriptionEnglish" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IdentityCardType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="IDN" type="xsd:string" />
+          <xsd:element minOccurs="0" name="IDNBackNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" name="issueDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="expiryDate" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FileType">
+        <xsd:sequence>
+          <xsd:element name="fileType" type="xsd:integer" />
+          <xsd:element name="fileNo" type="tns:String16Type" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DocumentType">
+        <xsd:sequence>
+          <xsd:element name="documentType" type="xsd:integer" />
+          <xsd:element name="documentNo" type="tns:String16Type" />
+          <xsd:element name="documentNationality" type="xsd:integer" />
+          <xsd:element minOccurs="0" name="birthDate" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="String16Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="16" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="String100Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="100" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ArabicName15Type">
+        <xsd:restriction base="cmn:ArabicNameType">
+          <xsd:maxLength value="15" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="String15Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="15" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="UNType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="12" />
+          <xsd:pattern value="([\d])*|(-)([\d])*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="IDNType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="18" />
+          <xsd:pattern value="(784)([-]?)([\d]{4})([-]?)([\d]{7})([-]?)([\d]{1})|(-)([\d])*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+    <xsd:schema xmlns:tns="http://id.gov.ae/schema/commontypes" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://id.gov.ae/schema/commontypes">
+      <xsd:element name="Header" type="tns:HeaderType" />
+      <xsd:complexType name="HeaderType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="serviceName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="sourceChannel" type="xsd:string" />
+          <xsd:element minOccurs="0" name="serviceVersion" type="xsd:string" />
+          <xsd:element minOccurs="0" name="serviceLanguage" type="xsd:string" />
+          <xsd:element minOccurs="0" name="userName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="password" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hash" type="xsd:base64Binary" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ParameterType">
+        <xsd:sequence>
+          <xsd:element name="Name" type="xsd:string" />
+          <xsd:element name="Value" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ParameterListType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Parameter" type="tns:ParameterType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="CodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:pattern value="[0-9]+" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Code2Type">
+        <xsd:restriction base="tns:CodeType">
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Code3Type">
+        <xsd:restriction base="tns:CodeType">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Code4Type">
+        <xsd:restriction base="tns:CodeType">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CompanyCodeType">
+        <xsd:restriction base="tns:CodeType">
+          <xsd:maxLength value="15" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CountryCodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="3" />
+          <xsd:pattern value="[A-Z]+" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LanguageCodeType">
+        <xsd:restriction base="tns:AlphaNumericType">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="2" />
+          <xsd:pattern value="[A-Z]+" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CertificateNumberType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="30" />
+          <xsd:pattern value="[A-Za-z0-9_@/\\#-]*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="GenderCodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="1">
+            <xsd:annotation>
+              <xsd:documentation>Male</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="2">
+            <xsd:annotation>
+              <xsd:documentation>Female</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="MaritalStatusCodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="1">
+            <xsd:annotation>
+              <xsd:documentation>Single</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="2">
+            <xsd:annotation>
+              <xsd:documentation>Married</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="3">
+            <xsd:annotation>
+              <xsd:documentation>Divorced</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="4">
+            <xsd:annotation>
+              <xsd:documentation>Widowed</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="RoleCodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="1">
+            <xsd:annotation>
+              <xsd:documentation>Self</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="2">
+            <xsd:annotation>
+              <xsd:documentation>Husband</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="3">
+            <xsd:annotation>
+              <xsd:documentation>Wife</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="4">
+            <xsd:annotation>
+              <xsd:documentation>Father</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="5">
+            <xsd:annotation>
+              <xsd:documentation>Mother</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AddressTypeCodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="1">
+            <xsd:annotation>
+              <xsd:documentation>Main</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="2">
+            <xsd:annotation>
+              <xsd:documentation>Secondary</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="3">
+            <xsd:annotation>
+              <xsd:documentation>Job</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="4">
+            <xsd:annotation>
+              <xsd:documentation>Delivery</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CompanyTypeCodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="0">
+            <xsd:annotation>
+              <xsd:documentation>Government</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="1">
+            <xsd:annotation>
+              <xsd:documentation>Private</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="EmirateCodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="0">
+            <xsd:annotation>
+              <xsd:documentation>Abroad</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="1">
+            <xsd:annotation>
+              <xsd:documentation>Abu Dhabi</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="2">
+            <xsd:annotation>
+              <xsd:documentation>Dubai</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="3">
+            <xsd:annotation>
+              <xsd:documentation>Sharjah</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="4">
+            <xsd:annotation>
+              <xsd:documentation>Ajman</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="5">
+            <xsd:annotation>
+              <xsd:documentation>Um Al Quwain</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="6">
+            <xsd:annotation>
+              <xsd:documentation>Ras Al Khaima</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="7">
+            <xsd:annotation>
+              <xsd:documentation>Fujaira</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ReligionType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="0">
+            <xsd:annotation>
+              <xsd:documentation>Unknown Religion</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="1">
+            <xsd:annotation>
+              <xsd:documentation>Muslim</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="2">
+            <xsd:annotation>
+              <xsd:documentation>Christian</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="3">
+            <xsd:annotation>
+              <xsd:documentation>Hindu</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="4">
+            <xsd:annotation>
+              <xsd:documentation>Buddhist</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="5">
+            <xsd:annotation>
+              <xsd:documentation>Sikh</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="6">
+            <xsd:annotation>
+              <xsd:documentation>Kadiani</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="7">
+            <xsd:annotation>
+              <xsd:documentation>Baha’i</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="8">
+            <xsd:annotation>
+              <xsd:documentation>Jewish</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="EnglishNameType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="EnglishName20Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="EnglishName40Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="EnglishName80Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="80" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="EnglishType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="English15Type">
+        <xsd:restriction base="tns:EnglishType">
+          <xsd:maxLength value="15" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="English60Type">
+        <xsd:restriction base="tns:EnglishType">
+          <xsd:maxLength value="60" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="English80Type">
+        <xsd:restriction base="tns:EnglishType">
+          <xsd:maxLength value="80" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="English500Type">
+        <xsd:restriction base="tns:EnglishType">
+          <xsd:maxLength value="500" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AlphaType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:pattern value="[a-zA-Z]+" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AlphaNumericType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:pattern value="[a-zA-Z0-9]+" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AlphaNumeric10Type">
+        <xsd:restriction base="tns:AlphaNumericType">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ArabicNameType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ArabicName20Type">
+        <xsd:restriction base="tns:ArabicNameType">
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ArabicName40Type">
+        <xsd:restriction base="tns:ArabicNameType">
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ArabicName80Type">
+        <xsd:restriction base="tns:ArabicNameType">
+          <xsd:maxLength value="80" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ArabicType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Arabic60Type">
+        <xsd:restriction base="tns:ArabicType">
+          <xsd:maxLength value="60" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Arabic80Type">
+        <xsd:restriction base="tns:ArabicType">
+          <xsd:maxLength value="80" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Arabic500Type">
+        <xsd:restriction base="tns:ArabicType">
+          <xsd:maxLength value="500" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="UNType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="12" />
+          <xsd:pattern value="([\d])*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PositiveValueType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:pattern value="([\d])*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="IDNType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="15" />
+          <xsd:maxLength value="18" />
+          <xsd:pattern value="(784)([-]?)([\d]{4})([-]?)([\d]{7})([-]?)([\d]{1})" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PhoneNumberType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="20" />
+          <xsd:pattern value="((\d|\s|[+\(\)./-])*)" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AddressEnglishType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AddressArabicType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="EmailType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="80" />
+          <xsd:pattern value="[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CardStatusCodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="1">
+            <xsd:annotation>
+              <xsd:documentation>Created</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="2">
+            <xsd:annotation>
+              <xsd:documentation>Active</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="3">
+            <xsd:annotation>
+              <xsd:documentation>To Be Updated</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="4">
+            <xsd:annotation>
+              <xsd:documentation>To Be Renewed/Replaced</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="5">
+            <xsd:annotation>
+              <xsd:documentation>Deactivated/Destroyed</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ResponseCodeType">
+        <xsd:restriction base="tns:CodeType">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AlphaNumeric20Type">
+        <xsd:restriction base="tns:AlphaNumericType">
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="FamilyBookNumberType">
+        <xsd:restriction base="tns:CodeType">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="TransactionRefNoType">
+        <xsd:restriction base="tns:CodeType">
+          <xsd:length value="25" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+    <xsd:schema xmlns:tns="http://id.gov.ae/ws/personInquiry" xmlns:pis="http://id.gov.ae/schema/personInquiry" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://id.gov.ae/ws/personInquiry">
+      <xsd:element name="personInquiry" type="pis:PersonInquiryRequestType" />
+      <xsd:element name="personInquiryResponse" type="pis:PersonInquiryResponseType" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="personInquiryResponseMsg">
+    <wsdl:part name="personInquiryResponse" element="xsd1:personInquiryResponse" />
+  </wsdl:message>
+  <wsdl:message name="personInquiryRequestMsg">
+    <wsdl:part name="personInquiry" element="xsd1:personInquiry" />
+  </wsdl:message>
+  <wsdl:portType name="PersonInquiryService">
+    <wsdl:operation name="personInquiry">
+      <wsdl:input name="personInquiryRequest" message="tns:personInquiryRequestMsg" />
+      <wsdl:output name="personInquiryResponse" message="tns:personInquiryResponseMsg" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PersonInquiryServiceHttpBinding" type="tns:PersonInquiryService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="personInquiry">
+      <soap:operation soapAction="http://id.gov.ae/ws/PersonInquiryService/personInquiry" />
+      <wsdl:input name="personInquiryRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="personInquiryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PersonInquiryServiceHttpBindingHttpGET" type="tns:PersonInquiryService">
+    <wsdlhttp:binding verb="GET" />
+    <wsdl:operation name="personInquiry">
+      <soap:operation soapAction="http://id.gov.ae/ws/PersonInquiryService/personInquiry" />
+      <wsdl:input name="personInquiryRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="personInquiryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PersonInquiryServiceHttpBindingHttpPOST" type="tns:PersonInquiryService">
+    <wsdlhttp:binding verb="POST" />
+    <wsdl:operation name="personInquiry">
+      <soap:operation soapAction="http://id.gov.ae/ws/PersonInquiryService/personInquiry" />
+      <wsdl:input name="personInquiryRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="personInquiryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getPersonInquiry_ICA">
+    <wsdl:port name="PersonInquiryServiceHttpBindingHttpPOST" binding="tns:PersonInquiryServiceHttpBindingHttpPOST">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/ICA/Soap/PersonalProfile/V2" />
+    </wsdl:port>
+    <wsdl:port name="getPersonInquiry_ICAsoaphttps" binding="tns:PersonInquiryServiceHttpBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/ICA/Soap/PersonalProfile/V2" />
+    </wsdl:port>
+    <wsdl:port name="PersonInquiryServiceHttpBindingHttpGET" binding="tns:PersonInquiryServiceHttpBindingHttpGET">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/ICA/Soap/PersonalProfile/V2" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WL5G3N0:definitions xmlns:WL5G3N1="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqMessages:1" xmlns:WL5G3N3="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqService" xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N2="http://am.abudhabi.ae/schema/AAM/Tawtheeq" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqService" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/">
+  <WL5G3N0:documentation>This service will retrieve lease contract details from Department of Municipal Affairs and Transport which can be consumed by other Federal entities</WL5G3N0:documentation>
+  <WL5G3N0:types>
+    <xsd:schema xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:types="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqMessages:1" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="358d5ac2-ae69-11e7-a1c8-98eaa63972e2?xsd=G2G-TawtheeqMessages_ProxyV40" namespace="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqMessages:1" />
+    </xsd:schema>
+    <xsd:schema xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:types="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqMessages:1" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="358d5ac2-ae69-11e7-a1c8-98eaa63972e2?xsd=TawtheeqSoapFault_ProxyV13" namespace="http://am.abudhabi.ae/schema/AAM/Tawtheeq" />
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="TawtheeqSoapFault">
+    <WL5G3N0:part name="part" element="WL5G3N2:TawtheeqFault" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SoapResponseHeader">
+    <WL5G3N0:part name="CustomHeaderRes" element="WL5G3N1:ResponseTrnHeader" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="TawtheeqListRequestMsg">
+    <WL5G3N0:part name="part" element="WL5G3N1:TawtheeqListRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="TawtheeqDetailsRequestType">
+    <WL5G3N0:part name="part" element="WL5G3N1:TawtheeqRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="TawtheeqDetailsResponseType">
+    <WL5G3N0:part name="part" element="WL5G3N1:TawtheeqAllDetailsResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SoapRequestHeader">
+    <WL5G3N0:part name="CustomHeaderReq" element="WL5G3N1:RequestTrnHeader" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="TawtheeqListResponseMsg">
+    <WL5G3N0:part name="part" element="WL5G3N1:TawtheeqListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="tawtheeqPortType">
+    <WL5G3N0:operation name="getTawtheeqList">
+      <WL5G3N0:input message="WL5G3N3:TawtheeqListRequestMsg" />
+      <WL5G3N0:output message="WL5G3N3:TawtheeqListResponseMsg" />
+      <WL5G3N0:fault name="getTawtheeqSoapFault" message="WL5G3N3:TawtheeqSoapFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getTawtheeqDetails">
+      <WL5G3N0:input message="WL5G3N3:TawtheeqDetailsRequestType" />
+      <WL5G3N0:output message="WL5G3N3:TawtheeqDetailsResponseType" />
+      <WL5G3N0:fault name="getTawtheeqSoapFault" message="WL5G3N3:TawtheeqSoapFault" />
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="tawtheeqPortTypeSOAP11Binding" type="WL5G3N3:tawtheeqPortType">
+    <WL5G3N4:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <WL5G3N0:operation name="getTawtheeqList">
+      <WL5G3N4:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqService/getTawtheeqList" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N4:body use="literal" parts="part" />
+        <WL5G3N4:header message="WL5G3N3:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N4:body use="literal" parts="part" />
+        <WL5G3N4:header message="WL5G3N3:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="getTawtheeqSoapFault">
+        <WL5G3N4:fault use="literal" name="getTawtheeqSoapFault" namespace="" />
+        <WL5G3N4:header message="WL5G3N3:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getTawtheeqDetails">
+      <WL5G3N4:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqService/getTawtheeqDetails" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N4:body use="literal" parts="part" />
+        <WL5G3N4:header message="WL5G3N3:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N4:body use="literal" parts="part" />
+        <WL5G3N4:header message="WL5G3N3:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="getTawtheeqSoapFault">
+        <WL5G3N4:fault use="literal" name="getTawtheeqSoapFault" namespace="" />
+        <WL5G3N4:header message="WL5G3N3:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="getLeaseContractDetails_DMAT">
+    <WL5G3N0:port name="getLeaseContractDetails_DMATsoaphttps" binding="WL5G3N3:tawtheeqPortTypeSOAP11Binding">
+      <WL5G3N4:address location="https://integrate.gsb.government.ae/ws/getLeaseContractDetails_DMAT.getLeaseContractDetails_DMATsoaphttps/1.0" />
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

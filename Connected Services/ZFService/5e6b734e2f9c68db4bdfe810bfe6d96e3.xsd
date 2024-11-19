@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/galaxyService" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/galaxyService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CustomerInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdentityNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerInput" nillable="true" type="tns:CustomerInput" />
+  <xs:complexType name="CustomerCredential">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SecurityToken" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerCredential" nillable="true" type="tns:CustomerCredential" />
+  <xs:complexType name="Resultmsg">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="Valid" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Resultmsg" nillable="true" type="tns:Resultmsg" />
+  <xs:complexType name="AppData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ApprovalDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BeneficiaryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CaseTypeAr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CaseTypeEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassificationAr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassificationEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContainerAr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContainerEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FamilyNo" type="xs:int" />
+      <xs:element minOccurs="0" name="FileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileStatusAr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileStatusEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HelpAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="HelpTypeAr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HelpTypeEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentityNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameAr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NoOfApplications" type="xs:int" />
+      <xs:element minOccurs="0" name="NoOfInstallment" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppData" nillable="true" type="tns:AppData" />
+  <xs:complexType name="FaultHandle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="faultId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FaultHandle" nillable="true" type="tns:FaultHandle" />
+  <xs:complexType name="CustomerDataInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdentityNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="inputData" nillable="true" type="tns:InputData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerDataInput" nillable="true" type="tns:CustomerDataInput" />
+  <xs:complexType name="InputData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CaseExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CaseId" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CaseType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Center" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Classification" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FamilyBookNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="FamilyNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HelpAmt" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="HelpDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="HowManyChildren" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OtherHelp_En" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OtherHelp_NameAr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SocialAidStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TownNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ZakatAccommodations" nillable="true" type="tns:ArrayOfAccommodation" />
+      <xs:element minOccurs="0" name="ZakatIncomeSources" nillable="true" type="tns:ArrayOfIncomeSources" />
+      <xs:element minOccurs="0" name="mobileNoField" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nameArabicField" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nameEnglishField" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="transactionID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InputData" nillable="true" type="tns:InputData" />
+  <xs:complexType name="ArrayOfAccommodation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Accommodation" nillable="true" type="tns:Accommodation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccommodation" nillable="true" type="tns:ArrayOfAccommodation" />
+  <xs:complexType name="Accommodation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccommodationType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConditionOfHouse" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MakaniNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OwnershipType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PersonAccomodated" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PersonInHouse" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rooms" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Accommodation" nillable="true" type="tns:Accommodation" />
+  <xs:complexType name="ArrayOfIncomeSources">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IncomeSources" nillable="true" type="tns:IncomeSources" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIncomeSources" nillable="true" type="tns:ArrayOfIncomeSources" />
+  <xs:complexType name="IncomeSources">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IncomeAmount" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="IncomeSource" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IncomeSources" nillable="true" type="tns:IncomeSources" />
+</xs:schema>

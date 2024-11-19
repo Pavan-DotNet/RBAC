@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WL5G3N0:definitions xmlns:WL5G3N2="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationFault:1" xmlns:WL5G3N1="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationMessages:1" xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N3="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/">
+  <WL5G3N0:documentation>This service provides the Vehicle and Ownership details as maintained by Abu Dhabi Police</WL5G3N0:documentation>
+  <WL5G3N0:types>
+    <xsd:schema xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:tns="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration" xmlns:types="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationMessages:1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationFault:1" xmlns:WL5G3N6="http://schemas.xmlsoap.org/wsdl/soap/" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:types" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    <xsd:schema xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:tns="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration" xmlns:types="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationMessages:1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationFault:1" xmlns:WL5G3N6="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f23f3&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8e2" namespace="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationMessages:1" />
+    </xsd:schema>
+    <xsd:schema xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:tns="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration" xmlns:types="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationMessages:1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationFault:1" xmlns:WL5G3N6="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f23f3&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8e1" namespace="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistrationFault:1" />
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="VehicleRegistrationDetailsReqMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:VehicleRegistrationDetailsRequestType" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SoapResponseHeader">
+    <WL5G3N0:part name="CustomHeaderRes" element="WL5G3N1:ResponseTrnHeader" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="VehicleRegistrationDetailsResMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:VehicleRegistrationDetailsResponseType" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="VehicleRegistrationSoapFault">
+    <WL5G3N0:part name="part" element="WL5G3N2:VehicleRegistrationSoapFault" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SoapRequestHeader">
+    <WL5G3N0:part name="CustomHeaderReq" element="WL5G3N1:RequestTrnHeader" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="VehicleRegistrationListReqMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:VehicleRegistrationListRequestType" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="VehicleRegistrationListResMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:VehicleRegistrationListResponseType" />
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="VehicleRegistrationPort">
+    <WL5G3N0:operation name="getVehicleRegistration">
+      <WL5G3N0:input message="WL5G3N3:VehicleRegistrationDetailsReqMesg" />
+      <WL5G3N0:output message="WL5G3N3:VehicleRegistrationDetailsResMesg" />
+      <WL5G3N0:fault name="getVehicleRegistrationSoapFault" message="WL5G3N3:VehicleRegistrationSoapFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getVehicleRegistrationList">
+      <WL5G3N0:input message="WL5G3N3:VehicleRegistrationListReqMesg" />
+      <WL5G3N0:output message="WL5G3N3:VehicleRegistrationListResMesg" />
+      <WL5G3N0:fault name="getVehicleRegistrationSoapFault" message="WL5G3N3:VehicleRegistrationSoapFault" />
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="VehicleRegistrationPortSOAP11Binding" type="WL5G3N3:VehicleRegistrationPort">
+    <WL5G3N4:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <WL5G3N0:operation name="getVehicleRegistration">
+      <WL5G3N4:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:getVehicleRegistration" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N4:body use="literal" parts="part" />
+        <WL5G3N4:header message="WL5G3N3:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N4:body use="literal" parts="part" />
+        <WL5G3N4:header message="WL5G3N3:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="getVehicleRegistrationSoapFault">
+        <WL5G3N4:fault use="literal" name="getVehicleRegistrationSoapFault" namespace="" />
+        <WL5G3N4:header message="WL5G3N3:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getVehicleRegistrationList">
+      <WL5G3N4:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:VehicleRegistration:getVehicleRegistrationList" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N4:body use="literal" parts="part" />
+        <WL5G3N4:header message="WL5G3N3:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N4:body use="literal" parts="part" />
+        <WL5G3N4:header message="WL5G3N3:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="getVehicleRegistrationSoapFault">
+        <WL5G3N4:fault use="literal" name="getVehicleRegistrationSoapFault" namespace="" />
+        <WL5G3N4:header message="WL5G3N3:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="getVehiclesOwnershipDetails_ADP">
+    <WL5G3N0:port name="getVehiclesOwnershipDetails_ADPsoaphttp" binding="WL5G3N3:VehicleRegistrationPortSOAP11Binding">
+      <WL5G3N4:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/ADP/Soap/VehicleOwnership/V1" />
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

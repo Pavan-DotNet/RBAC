@@ -1,0 +1,621 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "هيئة تنمية المجتمع - دبي";
+}
+
+<br />
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>هيئة تنمية المجتمع - المنافع الاجتماعية</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+        <table class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> نوع المستند</b></small></h6></td>
+                <td colspan="3" align="center">
+                    <select id="documentype" class="dropdown dropdown-header form-control">
+                        <option value="-1">-- اختر --</option>
+                        <option value="1">رقم الاسرة</option>
+                        <option value="2">الرقم الموحد</option>
+                        <option value="3">بطاقة هوية</option>
+                        <option value="4">جواز سفر</option>
+                    </select>
+                </td>
+
+            </tr>
+        </table>
+        <table id="FamilyNumber" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم الاسرة </b></small></h6></td>
+                <td colspan="3"> <input id="txtFamilyNumber" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="UnifiedNumber" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> الرقم الموحد </b></small></h6></td>
+                <td> <input id="txtUnifiedNumber" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="NationalId" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> بطاقة هوية </b></small></h6></td>
+                <td colspan="3"> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="Passport" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> جواز سفر </b></small></h6></td>
+                <td> <input id="txtPassportNo" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+
+                </td>
+
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>الفئة</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>تاريخ الاعتماد</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>معتمد</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>جواز المالكاسم المستفيد</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>تاريخ الاصدار</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>تاريخ الميلاد</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>تاريخ الوفاة</b></small></h6></th>
+                </tr>
+
+            </thead>
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+
+        <br />
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>الوصف </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>حالة الصرف </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>المستوى التعليمي</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رقم الملف</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الاسم الأول</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الاسم الكامل (عربي)</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>هل يوجد لديك احكام قضائية سابقة او حالية</b></small></h6></th>
+                </tr>
+
+            </thead>
+            <tbody class="tbody1 text-center" id="tbody1"></tbody>
+        </table>
+        <br />
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>الحالة الصحية</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>جهة العمل</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رقم مكاني</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الحالة الاجتماعية</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الدخل الشهري</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>اسم الام (عربي)</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الجنسية</b></small></h6></th>
+                </tr>
+
+            </thead>
+            <tbody class="tbody2 text-center" id="tbody2"></tbody>
+        </table>
+        <br />
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>جديد</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الملاحظات</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>عدد أفراد العائلة</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>منفعة تجهيز مسكن المعتمدة </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>تاريخ انشاء منفعة تجهيز مسكن</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>منفعة جديدة لتجهيز المسكن</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>ملاحظات اضافية لمنفعة تجهيز مسكن</b></small></h6></th>
+                </tr>
+
+            </thead>
+            <tbody class="tbody3 text-center" id="tbody3"></tbody>
+        </table>
+        <br />
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>رقم طلب خدمة تجهيز مسكن</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>المرحلة الحالية لمنفعة تجهيز مسكن</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الحالة الحالية لمنفعة تجهيز مسكن</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>إعادة دراسة منفعة تجهيز مسكن </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>منفعة أصحاب الهمم المعتمدة </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>تاريخ انشاء منفعة أصحاب الهمم</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>منفعة جديدة لأصحاب الهمم</b></small></h6></th>
+                </tr>
+            </thead>
+            <tbody class="tbody4 text-center" id="tbody4"></tbody>
+        </table>
+        <br />
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>ملاحظات اضافية لمنفعة أصحاب الهمم </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>إعادة دراسة منفعة أصحاب الهمم </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رقم طلب خدمة أصحاب الهمم</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>المرحلة الحالية لمنفعة أصحاب الهمم </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الحالة الحالية لمنفعة أصحاب الهمم </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>المبلغ المعتمد لمنفعة أصحاب الهمم</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>المستفيد متوفي</b></small></h6></th>
+                </tr>
+            </thead>
+            <tbody class="tbody5 text-center" id="tbody5"></tbody>
+        </table>
+        <br />
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>إعداد مزايا المنزل </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رقم الهاتف </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>إعادة الدراسة</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>نوع العلاقة </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>حالة الطلب </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رقم طلب الخدمة </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>المرحلة</b></small></h6></th>
+                </tr>
+            </thead>
+            <tbody class="tbody6 text-center" id="tbody6"></tbody>
+        </table>
+        <br />
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>الحالة </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>منفعة سكن مؤقت المعتمدة</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>تاريخ انشاء منفعة سكن مؤقت</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>منفعة جديدة لسكن مؤقت </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>ملاحظات اضافية لمنفعة سكن مؤقت</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>إعادة دراسة منفعة سكن مؤقت</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>رقم طلب خدمة سكن مؤقت</b></small></h6></th>
+                </tr>
+            </thead>
+            <tbody class="tbody7 text-center" id="tbody7"></tbody>
+        </table>
+        <br />
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>المرحلة الحالية لمنفعة سكن مؤقت </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>الحالة الحالية لمنفعة سكن مؤقت </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>المبلغ المعتمد لمنفعة سكن مؤقت</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>المبلغ النهائي المعتمد </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>النوع </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>مصدر الدخل</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>مصدر الدخل 1</b></small></h6></th>
+                </tr>
+            </thead>
+            <tbody class="tbody8 text-center" id="tbody8"></tbody>
+        </table>
+        <br />
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center"> <h6><small><b>مصدر الدخل 2 </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>مصدر الدخل 3 </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>نوع السكن</b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>نوع الدخل </b></small></h6></th>
+                    <th class="text-center"> <h6><small><b>المنطقة السكنية </b></small></h6></th>
+                </tr>
+            </thead>
+            <tbody class="tbody9 text-center" id="tbody9"></tbody>
+        </table>
+        <br />
+
+
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.theme.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.structure.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+
+    <script>
+
+
+
+       $(document).ready(function () {
+
+           $('.DataTable').hide();
+           $('#FamilyNumber').hide();
+           $('#UnifiedNumber').hide();
+           $('#Passport').hide();
+           $('#NationalId').hide();
+           $('#SubmitTable').hide();
+
+        });
+
+        $("#documentype").change(function () {
+
+            $('#txtFamilyNumber').val('');
+            $('#txtUnifiedNumber').val('');
+            $('#txtEmiratesId').val('');
+            $('#txtPassportNo').val('');
+
+
+            var val = $("#documentype option:selected").val();
+
+            if (val == '-1') {
+                $('.DataTable').hide();
+                $('#FamilyNumber').hide();
+                $('#UnifiedNumber').hide();
+                $('#Passport').hide();
+                $('#NationalId').hide();
+                $(".tbody").empty();
+                $(".tbody1").empty();
+                $(".tbody2").empty();
+                $(".tbody3").empty();
+                $(".tbody4").empty();
+                $(".tbody5").empty();
+                $(".tbody6").empty();
+                $(".tbody7").empty();
+                $(".tbody8").empty();
+                $(".tbody9").empty();
+                 $('#SubmitTable').hide();
+            }
+            else if (val == '1')
+                {
+                $('#FamilyNumber').show();
+                $('#UnifiedNumber').hide();
+                $('#NationalId').hide();
+                $('#Passport').hide();
+                $('#SubmitTable').show();
+            }
+            else if (val == '2')
+            {
+                $('#FamilyNumber').hide();
+                $('#UnifiedNumber').show();
+                $('#NationalId').hide();
+                $('#Passport').hide();
+                 $('#SubmitTable').show();
+            }
+            else if (val == '3') {
+                $('#FamilyNumber').hide();
+                $('#UnifiedNumber').hide();
+                $('#NationalId').show();
+                $('#Passport').hide();
+                $('#SubmitTable').show();
+            }
+            else if (val == '4') {
+                $('#FamilyNumber').hide();
+                $('#UnifiedNumber').hide();
+                $('#NationalId').hide();
+                $('#Passport').show();
+                $('#SubmitTable').show();
+            }
+
+        });
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search","CDA")';
+            var id = $("#documentype option:selected").val();
+            $(".tbody").empty();
+            $(".tbody1").empty();
+            $(".tbody2").empty();
+            $(".tbody3").empty();
+            $(".tbody4").empty();
+            $(".tbody5").empty();
+            $(".tbody6").empty();
+            $(".tbody7").empty();
+            $(".tbody8").empty();
+            $(".tbody9").empty();
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+            var html1 = '';
+            var html2 = '';
+            var html3 = '';
+            var html4 = '';
+            var html5 = '';
+            var html6 = '';
+            var html7 = '';
+            var html8 = '';
+            var html9 = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if (id == 1 && $("#txtFamilyNumber").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid Family Number');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtFamilyNumber").focus();
+
+
+                $("#divLoading").html("");
+                $("#divLoading").html1("");
+                $("#divLoading").html2("");
+                $("#divLoading").html3("");
+                $("#divLoading").html4("");
+                $("#divLoading").html5("");
+                $("#divLoading").html6("");
+                $("#divLoading").html7("");
+                $("#divLoading").html8("");
+                $("#divLoading").html9("");
+                $("#divLoading").html10("");
+
+                return false;
+            }
+            else if (id == 2 && $("#txtUnifiedNumber").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid Unified Number');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtPassportNo").focus();
+
+
+                $("#divLoading").html("");
+                $("#divLoading").html1("");
+                $("#divLoading").html2("");
+                $("#divLoading").html3("");
+                $("#divLoading").html4("");
+                $("#divLoading").html5("");
+                $("#divLoading").html6("");
+                $("#divLoading").html7("");
+                $("#divLoading").html8("");
+                $("#divLoading").html9("");
+                $("#divLoading").html10("");
+
+                return false;
+            }
+            if (id == 3 && $("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid EmiratesId');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                $("#divLoading").html("");
+                $("#divLoading").html1("");
+                $("#divLoading").html2("");
+                $("#divLoading").html3("");
+                $("#divLoading").html4("");
+                $("#divLoading").html5("");
+                $("#divLoading").html6("");
+                $("#divLoading").html7("");
+                $("#divLoading").html8("");
+                $("#divLoading").html9("");
+                $("#divLoading").html10("");
+
+                return false;
+            }
+            else if (id == 4 && $("#txtPassportNo").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid passport number');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtPassportNo").focus();
+
+
+                $("#divLoading").html("");
+                $("#divLoading").html1("");
+                $("#divLoading").html2("");
+                $("#divLoading").html3("");
+                $("#divLoading").html4("");
+                $("#divLoading").html5("");
+                $("#divLoading").html6("");
+                $("#divLoading").html7("");
+                $("#divLoading").html8("");
+                $("#divLoading").html9("");
+                $("#divLoading").html10("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var input = { "FamilyNumber": $('#txtFamilyNumber').val(), "UnifiedNumber": $('#txtUnifiedNumber').val(),  "EmiratesId": $('#txtEmiratesId').val(), "PassportNo": $('#txtPassportNo').val() };
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { index: id, postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    $("#divLoading").html1("");
+                    $("#divLoading").html2("");
+                    $("#divLoading").html3("");
+                    $("#divLoading").html4("");
+                    $("#divLoading").html5("");
+                    $("#divLoading").html6("");
+                    $("#divLoading").html7("");
+                    $("#divLoading").html8("");
+                    $("#divLoading").html9("");
+                    $("#divLoading").html10("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+                if (obj.flag == "1") {
+
+
+                    $.each(obj.lstResponse, function (key, item) {
+
+                        html += '<tr>';
+                        html += '<td>' + item.Category + '</td>';
+                        html += '<td>' + item.Approval_Date + '</td>';
+                        html += '<td>' + item.Approved + '</td>';
+                        html += '<td>' + item.Beneficiary_Name + '</td>';
+                        html += '<td>' + item.CreatedDate + '</td>';
+                        html += '<td>' + item.DateofBirth + '</td>';
+                        html += '<td>' + item.DateofDeath + '</td>';
+                        html += '</tr>';
+
+                        html1 += '<tr>';
+                        html1 += '<td>' + item.Description + '</td>';
+                        html1 += '<td>' + item.Disbusrsment_Status + '</td>';
+                        html1 += '<td>' + item.Education_Level + '</td>';
+                        html1 += '<td>' + item.File_Number + '</td>';
+                        html1 += '<td>' + item.First_Name + '</td>';
+                        html1 += '<td>' + item.Full_Name_Arabic + '</td>';
+                        html1 += '<td>' + item.Good_Manner_and_Behavior_Letter + '</td>';
+                        html1 += '</tr>';
+
+                        html2 += '<tr>';
+                        html2 += '<td>' + item.Health_Situation + '</td>';
+                        html2 += '<td>' + item.Job + '</td>';
+                        html2 += '<td>' + item.Makani_Number + '</td>';
+                        html2 += '<td>' + item.Marital_Status + '</td>';
+                        html2 += '<td>' + item.Monthly_Income + '</td>';
+                        html2 += '<td>' + item.Mother_Name_Arabic + '</td>';
+                        html2 += '<td>' + item.Nationality + '</td>';
+                        html2 += '</tr>';
+
+                        html3 += '<tr>';
+                        html3 += '<td>' + item.New + '</td>';
+                        html3 += '<td>' + item.Notes + '</td>';
+                        html3 += '<td>' + item.Number_of_Family_Members + '</td>';
+                        html3 += '<td>' + item.PHApproved + '</td>';
+                        html3 += '<td>' + item.PHCreatedDate + '</td>';
+                        html3 += '<td>' + item.PHNew + '</td>';
+                        html3 += '<td>' + item.PHNotes + '</td>';
+                        html3 += '</tr>';
+
+                        html4 += '<tr>';
+                        html4 += '<td>' + item.PHSR_pnd + '</td>';
+                        html4 += '<td>' + item.PHStage + '</td>';
+                        html4 += '<td>' + item.PHStatus + '</td>';
+                        html4 += '<td>' + item.PH_ReStudy + '</td>';
+                        html4 += '<td>' + item.POD_Approved + '</td>';
+                        html4 += '<td>' + item.POD_Created_Date + '</td>';
+                        html4 += '<td>' + item.POD_New + '</td>';
+                        html4 += '</tr>';
+
+                        html5 += '<tr>';
+                        html5 += '<td>' + item.POD_Notes + '</td>';
+                        html5 += '<td>' + item.POD_ReStudy + '</td>';
+                        html5 += '<td>' + item.POD_SR_pnd + '</td>';
+                        html5 += '<td>' + item.POD_Stage + '</td>';
+                        html5 += '<td>' + item.POD_Status + '</td>';
+                        html5 += '<td>' + item.POD_Total_Benefit_Approved + '</td>';
+                        html5 += '<td>' + item.Person_is_Dead + '</td>';
+                        html5 += '</tr>';
+
+                        html6 += '<tr>';
+                        html6 += '<td>' + item.PreparingHouseBenefit + '</td>';
+                        html6 += '<td>' + item.Primary_Phone_Number + '</td>';
+                        html6 += '<td>' + item.Re_Study + '</td>';
+                        html6 += '<td>' + item.Relation_Type + '</td>';
+                        html6 += '<td>' + item.Request_Status + '</td>';
+                        html6 += '<td>' + item.SR_pnd + '</td>';
+                        html6 += '<td>' + item.Stage + '</td>';
+                        html6 += '</tr>';
+
+                        html7 += '<tr>';
+                        html7 += '<td>' + item.Status + '</td>';
+                        html7 += '<td>' + item.TH_Approved + '</td>';
+                        html7 += '<td>' + item.TH_Created_Date + '</td>';
+                        html7 += '<td>' + item.TH_New + '</td>';
+                        html7 += '<td>' + item.TH_Notes + '</td>';
+                        html7 += '<td>' + item.TH_ReStudy + '</td>';
+                        html7 += '<td>' + item.TH_SR_pnd + '</td>';
+                        html7 += '</tr>';
+
+                        html8 += '<tr>';
+                        html8 += '<td>' + item.TH_Stage + '</td>';
+                        html8 += '<td>' + item.TH_Status + '</td>';
+                        html8 += '<td>' + item.TH_Total_Benefit_Approved + '</td>';
+                        html8 += '<td>' + item.Total_Benefit_Approved + '</td>';
+                        html8 += '<td>' + item.Type + '</td>';
+                        html8 += '<td>' + item.TypeOfBenefit + '</td>';
+                        html8 += '<td>' + item.TypeOfBenefit_1 + '</td>';
+                        html8 += '</tr>';
+
+                        html9 += '<tr>';
+                        html9 += '<td>' + item.TypeOfBenefit_2 + '</td>';
+                        html9 += '<td>' + item.TypeOfBenefit_3 + '</td>';
+                        html9 += '<td>' + item.Type_of_Housing + '</td>';
+                        html9 += '<td>' + item.Type_of_Income + '</td>';
+                        html9 += '<td>' + item.Zone + '</td>';
+                        html9 += '</tr>';
+
+                    });
+
+
+                    $(".tbody").append(html);
+                    $(".tbody1").append(html1);
+                    $(".tbody2").append(html2);
+                    $(".tbody3").append(html3);
+                    $(".tbody4").append(html4);
+                    $(".tbody5").append(html5);
+                    $(".tbody6").append(html6);
+                    $(".tbody7").append(html7);
+                    $(".tbody8").append(html8);
+                    $(".tbody9").append(html9);
+                    $('.DataTable').show();
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+                $("#divLoading").html1("");
+                $("#divLoading").html2("");
+                $("#divLoading").html3("");
+                $("#divLoading").html4("");
+                $("#divLoading").html5("");
+                $("#divLoading").html6("");
+                $("#divLoading").html7("");
+                $("#divLoading").html8("");
+                $("#divLoading").html9("");
+                $("#divLoading").html10("");
+            });
+        }
+
+        $("#btnsubmit").on("click", getData);
+
+        $('#create_pdf').on('click', function () {
+            getPDF("CDA.pdf");
+       });
+
+    </script>
+}
+
+

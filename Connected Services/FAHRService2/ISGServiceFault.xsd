@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/isg/servicefault" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/isg/servicefault" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="ISGServiceFault">
+    <xsd:sequence>
+      <xsd:element name="Code" type="xsd:string" />
+      <xsd:element name="Message" type="xsd:string" />
+      <xsd:element name="Resolution" type="xsd:string" />
+      <xsd:element name="ServiceDetail" type="ServiceDetail" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ISGServiceFault" type="ISGServiceFault" />
+  <xsd:complexType name="ServiceDetail">
+    <xsd:sequence>
+      <xsd:element name="ServiceName" type="xsd:string" />
+      <xsd:element name="OperationName" type="xsd:string" />
+      <xsd:element name="InstanceId" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

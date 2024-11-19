@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WL5G3N0:definitions xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:WL5G3N3="http://www.w3.org/2006/05/addressing/wsdl" xmlns:WL5G3N2="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" xmlns:WL5G3N1="http://tempuri.org/" name="getWaterAndElectricityBill_ADWEA" targetNamespace="http://tempuri.org/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/">
+  <WL5G3N0:documentation>This service in GSB, is used to retrieve all details of water and electricity bill from Abu Dhabi Water and Electricity Authority(ADWEA).</WL5G3N0:documentation>
+  <WL5G3N0:types>
+    <xs:schema xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" />
+      <xsd:element name="GetWaterElectricityBillList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" name="AccountID" nillable="true" type="q1:AccountIDType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" name="Company" type="q1:CompanyType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" name="EmiratesIDNumber" nillable="true" type="q1:EmiratesIDType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" name="IdentityType" type="q1:IdentityType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" name="PremiseID" nillable="true" type="q1:PremiseIDType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" name="TradeLicenseNumber" nillable="true" type="q1:TradeLicenseType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Password" nillable="true" type="xsd:string" />
+      <xsd:element name="Username" nillable="true" type="xsd:string" />
+      <xsd:element xmlns:q3="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" name="WaterElectricityBillList" nillable="true" type="q3:ArrayOfWaterElectricityBillList" />
+      <xsd:element name="GetWaterElectricityBillDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="AccountID" nillable="true" type="q1:AccountIDType" />
+            <xsd:element xmlns:q4="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="Company" type="q4:CompanyType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="PremiseID" nillable="true" type="q1:PremiseIDType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WaterElectricityBillDetailsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="AccountID" nillable="true" type="q1:AccountIDType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="AccountStatus" nillable="true" type="q1:AccountStatusType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="CurrentBalance" type="q1:CurrentBalanceType" />
+            <xsd:element xmlns:q3="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="CustomerClass" nillable="true" type="q3:CustomerClass" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="CustomerMobileNumber" nillable="true" type="q1:CustomerMobileNumberType" />
+            <xsd:element xmlns:q4="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="CustomerName" nillable="true" type="q4:CustomerName" />
+            <xsd:element xmlns:q5="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="CustomerPremiseType" nillable="true" type="q5:CustomerPremiseType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="EmiratesIDNumber" nillable="true" type="q1:EmiratesIDType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="LandlordName" nillable="true" type="q1:LandlordNameType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="PersonPrimaryAddress" nillable="true" type="q1:PremiseAddressType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="PlotNumber" nillable="true" type="q1:PlotNumberType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="PremiseAddress" nillable="true" type="q1:PremiseAddressType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="PremiseArea" nillable="true" type="q1:PremiseAreaType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="PremiseCityPostal" nillable="true" type="q1:PremiseCityPostalType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="PremiseID" nillable="true" type="q1:PremiseIDType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="SectorCommunityCode" nillable="true" type="q1:SectorCommunityCodeType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="TradeLicense" nillable="true" type="q1:TradeLicenseType" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="ZoneDistrictCode" nillable="true" type="q1:ZoneDistrictCodeType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RequestTrnHeader" type="tns:RequestTrnHeaderType" />
+      <xsd:element name="ResponseTrnHeader" type="tns:ResponseTrnHeaderType" />
+      <xsd:complexType name="RequestTrnHeaderType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="EntityCode" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResponseTrnHeaderType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="TransactionId" type="xsd:string" />
+          <xsd:element minOccurs="0" name="EntityCode" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xs:schema>
+    <xs:schema xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="anyType" nillable="true" type="xsd:anyType" />
+      <xsd:element name="anyURI" nillable="true" type="xsd:anyURI" />
+      <xsd:element name="base64Binary" nillable="true" type="xsd:base64Binary" />
+      <xsd:element name="boolean" nillable="true" type="xsd:boolean" />
+      <xsd:element name="byte" nillable="true" type="xsd:byte" />
+      <xsd:element name="dateTime" nillable="true" type="xsd:dateTime" />
+      <xsd:element name="decimal" nillable="true" type="xsd:decimal" />
+      <xsd:element name="double" nillable="true" type="xsd:double" />
+      <xsd:element name="float" nillable="true" type="xsd:float" />
+      <xsd:element name="int" nillable="true" type="xsd:int" />
+      <xsd:element name="long" nillable="true" type="xsd:long" />
+      <xsd:element name="QName" nillable="true" type="xsd:QName" />
+      <xsd:element name="short" nillable="true" type="xsd:short" />
+      <xsd:element name="string" nillable="true" type="xsd:string" />
+      <xsd:element name="unsignedByte" nillable="true" type="xsd:unsignedByte" />
+      <xsd:element name="unsignedInt" nillable="true" type="xsd:unsignedInt" />
+      <xsd:element name="unsignedLong" nillable="true" type="xsd:unsignedLong" />
+      <xsd:element name="unsignedShort" nillable="true" type="xsd:unsignedShort" />
+      <xsd:element name="char" nillable="true" type="tns:char" />
+      <xsd:simpleType name="char">
+        <xsd:restriction base="xsd:int" />
+      </xsd:simpleType>
+      <xsd:element name="duration" nillable="true" type="tns:duration" />
+      <xsd:simpleType name="duration">
+        <xsd:restriction base="xsd:duration">
+          <xsd:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xsd:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xsd:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="guid" nillable="true" type="tns:guid" />
+      <xsd:simpleType name="guid">
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:attribute name="FactoryType" type="xsd:QName" />
+      <xsd:attribute name="Id" type="xsd:ID" />
+      <xsd:attribute name="Ref" type="xsd:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:simpleType name="CompanyType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ADDC" />
+          <xsd:enumeration value="AADC" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="CompanyType" nillable="true" type="tns:CompanyType" />
+      <xsd:simpleType name="IdentityType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="EMIRATESID" />
+          <xsd:enumeration value="TRADELICENSE" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="IdentityType" nillable="true" type="tns:IdentityType" />
+      <xsd:simpleType name="EmiratesIDType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="16" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="TradeLicenseType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PremiseIDType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AccountIDType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PersonIDType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PlotNumberType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PremiseAddressType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="100" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SectorCommunityCodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ZoneDistrictCodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AccountStatusType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CurrentBalanceType">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="9999999999" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CustomerMobileNumberType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LandlordNameType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="100" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PremiseAreaType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="100" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PremiseCityPostalType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="100" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfWaterElectricityBillList">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="WaterElectricityBillList" nillable="true" type="tns:WaterElectricityBillList" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfWaterElectricityBillList" nillable="true" type="tns:ArrayOfWaterElectricityBillList" />
+      <xsd:complexType name="WaterElectricityBillList">
+        <xsd:sequence>
+          <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="AccountID" nillable="true" type="q1:AccountIDType" />
+          <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="PersonID" nillable="true" type="q1:PersonIDType" />
+          <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="PlotNumber" nillable="true" type="q1:PlotNumberType" />
+          <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="PremiseAddress" nillable="true" type="q1:PremiseAddressType" />
+          <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="PremiseID" nillable="true" type="q1:PremiseIDType" />
+          <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="SectorCommunityCode" nillable="true" type="q1:SectorCommunityCodeType" />
+          <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/ADWEA.WaterElectricityBill.Entities" minOccurs="0" name="ZoneDistrictCode" nillable="true" type="q1:ZoneDistrictCodeType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="WaterElectricityBillList" nillable="true" type="tns:WaterElectricityBillList" />
+      <xsd:complexType name="WaterElectricityBillSoapFault">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ErrorCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ErrorMessageAr" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ErrorMessageEn" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="WaterElectricityBillSoapFault" nillable="true" type="tns:WaterElectricityBillSoapFault" />
+      <xsd:complexType name="CustomerClass">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CustomerClassArabicName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="CustomerClassCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="CustomerClassEnglishName" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CustomerClass" nillable="true" type="tns:CustomerClass" />
+      <xsd:complexType name="CustomerName">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CustomerNameArabic" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="CustomerNameEnglish" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CustomerName" nillable="true" type="tns:CustomerName" />
+      <xsd:complexType name="CustomerPremiseType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CustomerPremiseTypeArabicName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="CustomerPremiseTypeCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="CustomerPremiseTypeEnglishName" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CustomerPremiseType" nillable="true" type="tns:CustomerPremiseType" />
+    </xs:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="IWaterElectricityBill_GetWaterElectricityBillList_CustomFaultMesgFault_FaultMessage">
+    <WL5G3N0:part name="detail" element="WL5G3N2:WaterElectricityBillSoapFault" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SoapRequestHeader">
+    <WL5G3N0:part name="CustomHeaderReq" element="WL5G3N1:RequestTrnHeader" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="WaterElectricityBillDetailsResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:WaterElectricityBillDetailsResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="WaterElectricityBillDetailsRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetWaterElectricityBillDetails" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="WaterElectricityBillsListRequest_Headers">
+    <WL5G3N0:part name="Password" element="WL5G3N1:Password" />
+    <WL5G3N0:part name="Username" element="WL5G3N1:Username" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="WaterElectricityBillListResponse">
+    <WL5G3N0:part name="WaterElectricityBillList" element="WL5G3N1:WaterElectricityBillList" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="IWaterElectricityBill_GetWaterElectricityBillDetails_CustomFaultMesgFault_FaultMessage">
+    <WL5G3N0:part name="detail" element="WL5G3N2:WaterElectricityBillSoapFault" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="WaterElectricityBillDetailsRequest_Headers">
+    <WL5G3N0:part name="Password" element="WL5G3N1:Password" />
+    <WL5G3N0:part name="Username" element="WL5G3N1:Username" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SoapResponseHeader">
+    <WL5G3N0:part name="CustomHeaderRes" element="WL5G3N1:ResponseTrnHeader" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="WaterElectricityBillsListRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetWaterElectricityBillList" />
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="IWaterElectricityBill">
+    <WL5G3N0:operation name="GetWaterElectricityBillList">
+      <WL5G3N0:input WL5G3N3:Action="http://tempuri.org/IWaterElectricityBill/GetWaterElectricityBillList" name="WaterElectricityBillsListRequest" message="WL5G3N1:WaterElectricityBillsListRequest" />
+      <WL5G3N0:output WL5G3N3:Action="http://tempuri.org/IWaterElectricityBill/GetWaterElectricityBillListResponse" name="WaterElectricityBillListResponse" message="WL5G3N1:WaterElectricityBillListResponse" />
+      <WL5G3N0:fault name="WaterElectricityBillSoapFault" message="WL5G3N1:IWaterElectricityBill_GetWaterElectricityBillList_CustomFaultMesgFault_FaultMessage" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetWaterElectricityBillDetails">
+      <WL5G3N0:input WL5G3N3:Action="http://tempuri.org/IWaterElectricityBill/GetWaterElectricityBillDetails" name="WaterElectricityBillDetailsRequest" message="WL5G3N1:WaterElectricityBillDetailsRequest" />
+      <WL5G3N0:output WL5G3N3:Action="http://tempuri.org/IWaterElectricityBill/GetWaterElectricityBillDetailsResponse" name="WaterElectricityBillDetailsResponse" message="WL5G3N1:WaterElectricityBillDetailsResponse" />
+      <WL5G3N0:fault name="WaterElectricityBillSoapFault" message="WL5G3N1:IWaterElectricityBill_GetWaterElectricityBillDetails_CustomFaultMesgFault_FaultMessage" />
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="BasicHttpBinding_IWaterElectricityBillHttpPOST" type="WL5G3N1:IWaterElectricityBill">
+    <wsdlhttp:binding verb="POST" />
+    <WL5G3N0:operation name="GetWaterElectricityBillList">
+      <WL5G3N4:operation soapAction="http://tempuri.org/IWaterElectricityBill/GetWaterElectricityBillList" style="document" />
+      <WL5G3N0:input name="WaterElectricityBillsListRequest">
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N1:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output name="WaterElectricityBillListResponse">
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N1:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="WaterElectricityBillSoapFault">
+        <WL5G3N4:fault use="literal" name="WaterElectricityBillSoapFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetWaterElectricityBillDetails">
+      <WL5G3N4:operation soapAction="http://tempuri.org/IWaterElectricityBill/GetWaterElectricityBillDetails" style="document" />
+      <WL5G3N0:input name="WaterElectricityBillDetailsRequest">
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N1:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output name="WaterElectricityBillDetailsResponse">
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N1:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="WaterElectricityBillSoapFault">
+        <WL5G3N4:fault use="literal" name="WaterElectricityBillSoapFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:binding name="BasicHttpBinding_IWaterElectricityBillHttpGET" type="WL5G3N1:IWaterElectricityBill">
+    <wsdlhttp:binding verb="GET" />
+    <WL5G3N0:operation name="GetWaterElectricityBillList">
+      <WL5G3N4:operation soapAction="http://tempuri.org/IWaterElectricityBill/GetWaterElectricityBillList" style="document" />
+      <WL5G3N0:input name="WaterElectricityBillsListRequest">
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N1:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output name="WaterElectricityBillListResponse">
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N1:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="WaterElectricityBillSoapFault">
+        <WL5G3N4:fault use="literal" name="WaterElectricityBillSoapFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetWaterElectricityBillDetails">
+      <WL5G3N4:operation soapAction="http://tempuri.org/IWaterElectricityBill/GetWaterElectricityBillDetails" style="document" />
+      <WL5G3N0:input name="WaterElectricityBillDetailsRequest">
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N1:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output name="WaterElectricityBillDetailsResponse">
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N1:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="WaterElectricityBillSoapFault">
+        <WL5G3N4:fault use="literal" name="WaterElectricityBillSoapFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:binding name="BasicHttpBinding_IWaterElectricityBill" type="WL5G3N1:IWaterElectricityBill">
+    <WL5G3N4:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <WL5G3N0:operation name="GetWaterElectricityBillList">
+      <WL5G3N4:operation soapAction="http://tempuri.org/IWaterElectricityBill/GetWaterElectricityBillList" style="document" />
+      <WL5G3N0:input name="WaterElectricityBillsListRequest">
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N1:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output name="WaterElectricityBillListResponse">
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N1:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="WaterElectricityBillSoapFault">
+        <WL5G3N4:fault use="literal" name="WaterElectricityBillSoapFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetWaterElectricityBillDetails">
+      <WL5G3N4:operation soapAction="http://tempuri.org/IWaterElectricityBill/GetWaterElectricityBillDetails" style="document" />
+      <WL5G3N0:input name="WaterElectricityBillDetailsRequest">
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N1:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output name="WaterElectricityBillDetailsResponse">
+        <WL5G3N4:body use="literal" />
+        <WL5G3N4:header message="WL5G3N1:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="WaterElectricityBillSoapFault">
+        <WL5G3N4:fault use="literal" name="WaterElectricityBillSoapFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="getWaterAndElectricityBill_ADWEA">
+    <WL5G3N0:port name="BasicHttpBinding_IWaterElectricityBillHttpPOST" binding="WL5G3N1:BasicHttpBinding_IWaterElectricityBillHttpPOST">
+      <wsdlhttp:address location="https://integrate.gsb.government.ae/ws/getWaterAndElectricityBill_ADWEA.BasicHttpBinding_IWaterElectricityBillHttpPOST/1.0" />
+    </WL5G3N0:port>
+    <WL5G3N0:port name="BasicHttpBinding_IWaterElectricityBillHttpGET" binding="WL5G3N1:BasicHttpBinding_IWaterElectricityBillHttpGET">
+      <wsdlhttp:address location="https://integrate.gsb.government.ae/ws/getWaterAndElectricityBill_ADWEA.BasicHttpBinding_IWaterElectricityBillHttpGET/1.0" />
+    </WL5G3N0:port>
+    <WL5G3N0:port name="getWaterAndElectricityBill_ADWEAsoaphttps" binding="WL5G3N1:BasicHttpBinding_IWaterElectricityBill">
+      <WL5G3N4:address location="https://integrate.gsb.government.ae/ws/getWaterAndElectricityBill_ADWEA.getWaterAndElectricityBill_ADWEAsoaphttps/1.0" />
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

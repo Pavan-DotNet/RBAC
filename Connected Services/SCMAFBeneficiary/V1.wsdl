@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WL5G3N0:definitions xmlns:WL5G3N1="http://siebel.com/CustomUI" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://siebel.com/CustomUI" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/">
+  <WL5G3N0:documentation>This service is used to fetch beneficiaries information from SCMAF </WL5G3N0:documentation>
+  <WL5G3N0:types>
+    <xsd:schema xmlns:tns="http://siebel.com/CustomUI" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsdLocal1="http://www.siebel.com/xml/SCMAF%20Benefiries%20Information" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://siebel.com/CustomUI" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.siebel.com/xml/SCMAF%20Benefiries%20Information" />
+      <xsd:element name="SCAMFBeneficiariesInformation_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ServiceCode" type="xsd:string" />
+            <xsd:element name="Channel" type="xsd:string" />
+            <xsd:element name="Journey" type="xsd:string" />
+            <xsd:element name="EmiratesID" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SCAMFBeneficiariesInformation_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="BeneficiaryID" type="xsd:string" />
+            <xsd:element name="BeneficiaryNameARA" type="xsd:string" />
+            <xsd:element name="BeneficiaryNameENG" type="xsd:string" />
+            <xsd:element name="BeneficiarySMSMobile" type="xsd:string" />
+            <xsd:element name="BeneficiaryTypeARA" type="xsd:string" />
+            <xsd:element name="BeneficiaryTypeENG" type="xsd:string" />
+            <xsd:element name="ResponseCode" type="xsd:string" />
+            <xsd:element name="ResponseMessage_AR" type="xsd:string" />
+            <xsd:element name="ResponseMessage_EN" type="xsd:string" />
+            <xsd:element name="ServiceName" type="xsd:string" />
+            <xsd:element ref="xsdLocal1:ListOfScmafBenefiriesInformation" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema xmlns:tns="http://siebel.com/CustomUI" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsdLocal1="http://www.siebel.com/xml/SCMAF%20Benefiries%20Information" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.siebel.com/xml/SCMAF%20Benefiries%20Information" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:annotation>
+        <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+      </xsd:annotation>
+      <xsd:element name="ListOfScmafBenefiriesInformation" type="xsdLocal1:ListOfScmafBenefiriesInformation" />
+      <xsd:complexType name="ListOfScmafBenefiriesInformationTopElmt">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="ListOfScmafBenefiriesInformation" type="xsdLocal1:ListOfScmafBenefiriesInformation" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListOfScmafBenefiriesInformation">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ScmafBenefiriesInformation" type="xsdLocal1:ScmafBenefiriesInformation" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ScmafBenefiriesInformation">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="FileNo" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FileOwnerNameARA" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FileOwnerNameENG" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FileOwnerTypeARA" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FileOwnerTypeENG" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BeneficiaryID" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BeneficiaryNameAR" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BeneficiaryNameEN" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BeneficiaryEID" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BeneficiaryTypeARA" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BeneficiaryTypeENG" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="GuardianID" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="SCAMFBeneficiariesInformation_Output">
+    <WL5G3N0:part name="SCAMFBeneficiariesInformation_Output" element="WL5G3N1:SCAMFBeneficiariesInformation_Output" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SCAMFBeneficiariesInformation_Input">
+    <WL5G3N0:part name="SCAMFBeneficiariesInformation_Input" element="WL5G3N1:SCAMFBeneficiariesInformation_Input" />
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="SCMAF_spcBenefiries_spcEligibility_spcCheck">
+    <WL5G3N0:operation name="SCAMFBeneficiariesInformation">
+      <WL5G3N0:input message="WL5G3N1:SCAMFBeneficiariesInformation_Input" />
+      <WL5G3N0:output message="WL5G3N1:SCAMFBeneficiariesInformation_Output" />
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="SCMAF_spcBenefiries_spcEligibility_spcCheck" type="WL5G3N1:SCMAF_spcBenefiries_spcEligibility_spcCheck">
+    <WL5G3N2:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <WL5G3N0:operation name="SCAMFBeneficiariesInformation">
+      <WL5G3N2:operation soapAction="document/http://siebel.com/CustomUI:SCAMFBeneficiariesInformation" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="getBeneficiariesInformation_SCMAF">
+    <WL5G3N0:port name="getBeneficiariesInformation_SCMAFsoaphttps" binding="WL5G3N1:SCMAF_spcBenefiries_spcEligibility_spcCheck">
+      <WL5G3N2:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/SCMAF/Soap/GetBeneficiariesInfo/V1" />
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

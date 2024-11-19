@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.informatica.com/dis/ws/" name="UMM_DED_getLicenseDetailsbyEID" targetNamespace="http://www.informatica.com/dis/ws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.informatica.com/dis/ws/">
+      <xsd:element name="LicenseDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="EmiratesID" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LicenseDetailsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="LicenseDetails">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="BusinessLicenseID" type="xsd:string" />
+                  <xsd:element name="BusinessNameAR" type="xsd:string" />
+                  <xsd:element name="BusinessNameEN" type="xsd:string" />
+                  <xsd:element name="EstablishmentDate" type="xsd:string" />
+                  <xsd:element name="ExpiryDate" type="xsd:string" />
+                  <xsd:element maxOccurs="unbounded" name="OwnerDetails">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="OwnerEmirateID" type="xsd:string" />
+                        <xsd:element name="OwnerFulNameAR" type="xsd:string" />
+                        <xsd:element name="OwnerFulNameEN" type="xsd:string" />
+                        <xsd:element name="OwnerRoleAR" type="xsd:string" />
+                        <xsd:element name="OwnerRoleEN" type="xsd:string" />
+                        <xsd:element name="OwnershipPercentage" type="xsd:string" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element maxOccurs="unbounded" name="BusinessActivity">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="BusinessActivityCode" type="xsd:string" />
+                        <xsd:element name="BusinessActivityDescEN" type="xsd:string" />
+                        <xsd:element name="BusinessActivityDescAR" type="xsd:string" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" name="Error">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="InputParameter" type="xsd:string" />
+                  <xsd:element name="ErrorCode" type="xsd:string" />
+                  <xsd:element name="ErrorMessage" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="LicenseDetailsResponse">
+    <wsdl:part name="LicenseDetailsResponse" element="tns:LicenseDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="LicenseDetails">
+    <wsdl:part name="LicenseDetails" element="tns:LicenseDetails" />
+  </wsdl:message>
+  <wsdl:portType name="UMM_DED_getLicenseDetailsbyEIDPortType">
+    <wsdl:operation name="LicenseDetails">
+      <wsdl:input name="LicenseDetails_Input" message="tns:LicenseDetails" />
+      <wsdl:output name="LicenseDetails_Output" message="tns:LicenseDetailsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UMM_DED_getLicenseDetailsbyEIDBinding" type="tns:UMM_DED_getLicenseDetailsbyEIDPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LicenseDetails">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="LicenseDetails_Input">
+        <soap:body use="literal" parts="LicenseDetails" />
+      </wsdl:input>
+      <wsdl:output name="LicenseDetails_Output">
+        <soap:body use="literal" parts="LicenseDetailsResponse" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UMM_DED_getLicenseDetailsbyEID">
+    <wsdl:port name="UMM_DED_getLicenseDetailsbyEID" binding="tns:UMM_DED_getLicenseDetailsbyEIDBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/FCSA/Soap/UMM_DED_GetLicenseDetailsbyEID" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

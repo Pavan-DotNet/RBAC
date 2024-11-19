@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://mdws/MDAinquiry" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://mdws/MDAinquiry" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="mdwsrequestfifthoptType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="DocumentType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DocumetIssuerAuthority" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DocumentYear" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DocumentNumber" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mdwsrecType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="DocumentType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CertifcateRef" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="GregorianDate" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party1Name" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party1UID" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party1Nationality" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party1BirthDate" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party2Name" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party2UID" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party2Nationality" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party2BirthDate" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mdwsresponserecType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="item" type="mdwsrecType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="dcrequeststatusType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="dcCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="dcDescription" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mdwsResponseSixthOptAllType">
+    <xsd:sequence>
+      <xsd:element name="requestargs" type="mdwsrequestfifthoptType" />
+      <xsd:element name="response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="item" type="mdwsrecType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="requeststatus" type="dcrequeststatusType" />
+      <xsd:element minOccurs="0" name="BinaryFile" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mdwsresponsefifthoptallType">
+    <xsd:sequence>
+      <xsd:element name="requestargs" type="mdwsrequestfifthoptType" />
+      <xsd:element name="response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="item" type="mdwsrecType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="requeststatus" type="dcrequeststatusType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mdwsrequestfourthoptType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="DocumentType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="fromDate" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="toDate" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mdwsresponsefourthoptallType">
+    <xsd:sequence>
+      <xsd:element name="requestargs" type="mdwsrequestfourthoptType" />
+      <xsd:element name="response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="item" type="mdwsrecType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="requeststatus" type="dcrequeststatusType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mdwsrequestfirstoptType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="DocumentType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party1UID" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party2UID" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mdwsresponsefirstoptallType">
+    <xsd:sequence>
+      <xsd:element name="requestargs" type="mdwsrequestfirstoptType" />
+      <xsd:element name="response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="item" type="mdwsrecType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="requeststatus" type="dcrequeststatusType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mdwsrequestsecondoptType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="DocumentType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party1Name" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party2Name" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mdwsresponsesecondoptallType">
+    <xsd:sequence>
+      <xsd:element name="requestargs" type="mdwsrequestsecondoptType" />
+      <xsd:element name="response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="item" type="mdwsrecType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="requeststatus" type="dcrequeststatusType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mdwsrequestthirdoptType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="DocumentType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party1Name" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Party2Name" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mdwsresponsethirdoptallType">
+    <xsd:sequence>
+      <xsd:element name="requestargs" type="mdwsrequestthirdoptType" />
+      <xsd:element name="response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="item" type="mdwsrecType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="requeststatus" type="dcrequeststatusType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="mdwsrequestfifthoptType" type="mdwsrequestfifthoptType" />
+  <xsd:element name="mdwsrecType" type="mdwsrecType" />
+  <xsd:element name="mdwsresponserecType" type="mdwsresponserecType" />
+  <xsd:element name="dcrequeststatusType" type="dcrequeststatusType" />
+  <xsd:element name="mdwsResponseSixthOptAllType" type="mdwsResponseSixthOptAllType" />
+  <xsd:element name="mdwsresponsefifthoptallType" type="mdwsresponsefifthoptallType" />
+  <xsd:element name="mdwsrequestfourthoptType" type="mdwsrequestfourthoptType" />
+  <xsd:element name="mdwsresponsefourthoptallType" type="mdwsresponsefourthoptallType" />
+  <xsd:element name="mdwsrequestfirstoptType" type="mdwsrequestfirstoptType" />
+  <xsd:element name="mdwsresponsefirstoptallType" type="mdwsresponsefirstoptallType" />
+  <xsd:element name="mdwsrequestsecondoptType" type="mdwsrequestsecondoptType" />
+  <xsd:element name="mdwsresponsesecondoptallType" type="mdwsresponsesecondoptallType" />
+  <xsd:element name="mdwsrequestthirdoptType" type="mdwsrequestthirdoptType" />
+  <xsd:element name="mdwsresponsethirdoptallType" type="mdwsresponsethirdoptallType" />
+</xsd:schema>

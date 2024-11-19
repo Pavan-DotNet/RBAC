@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:BTH="urn:ae:gov:abudhabi:DigitalDocuments:HealthTypes:1" xmlns="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePullMessages:1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePullMessages:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=ee5c09163b27428ef60c1a300cf84e0c&amp;servdocoid=c224a13300998783141f63d95c30331a" namespace="urn:ae:gov:abudhabi:DigitalDocuments:HealthTypes:1" />
+  <xs:annotation>
+    <xs:appinfo>
+      <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+        <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePullMessages:1">
+          <dcterms:title xml:lang="ar">Ø´ÙØ§Ø¯Ø© ÙÙÙØ§Ø¯ ÙÙÙÙÙØ¯ Ø¬Ø¯Ù</dcterms:title>
+          <dcterms:title xml:lang="en">New Born Birth Certificate</dcterms:title>
+          <dcterms:identifier>urn:ae:gov:abudhabi:DigitalDocuments:BirthCertificatePullMessages:1/1</dcterms:identifier>
+          <dcterms:description xml:lang="ar">ÙÙ Ø®ÙØ§Ù ÙØ°Ù Ø§ÙØ®Ø¯ÙØ© Ø ÙØ¬ÙØ² ÙÙØ£ÙØ±Ø§Ø¯ ØªÙØ¯ÙÙ Ø·ÙØ¨ ÙØ¥ØµØ¯Ø§Ø± Ø´ÙØ§Ø¯Ø© Ø§ÙÙÙÙØ§Ø¯.</dcterms:description>
+          <dcterms:description xml:lang="en">Through this service, individuals may submit a request for the issuance of
+                                             a birth certificate.</dcterms:description>
+          <mireg:version>1</mireg:version>
+          <mireg:status>release</mireg:status>
+          <mireg:project>Digital Service Baseline and G2G Initiatives</mireg:project>
+          <mireg:category xml:lang="ar">Ø§ÙØªØ¨Ø§Ø¯Ù Ø§ÙÙØ´ØªØ±Ù</mireg:category>
+          <mireg:category xml:lang="en">G2G</mireg:category>
+          <dcterms:jurisdiction>AE-AZ</dcterms:jurisdiction>
+          <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="en">Abu Dhabi Systems and Information Centre (adsssa)</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="en">http://adsssa.abudhabi.ae</adsssa:URL>
+          </dcterms:creator>
+          <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="ar">ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="ar">http://adsssa.abudhabi.ae</adsssa:URL>
+          </dcterms:creator>
+          <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="en">Abu Dhabi e-Government</adsssa:OrganisationName>
+          </mireg:owner>
+          <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="ar">Ø­ÙÙÙØ© Ø£Ø¨ÙØ¸Ø¨Ù Ø§ÙØ§ÙÙØªØ±ÙÙÙØ©</adsssa:OrganisationName>
+          </mireg:owner>
+          <dcterms:contributor rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:PersonalName xml:lang="en">Department Of Health</adsssa:PersonalName>
+          </dcterms:contributor>
+          <dcterms:contributor rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:PersonalName xml:lang="ar">ÙØ³Ù Ø§ÙØµØ­Ø©</adsssa:PersonalName>
+          </dcterms:contributor>
+          <dcterms:publisher rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="en">Abu Dhabi Systems and Information Centre (adsssa)</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="en">http://adsssa.abudhabi.ae</adsssa:URL>
+          </dcterms:publisher>
+          <dcterms:publisher rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="ar">ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="ar">http://adsssa.abudhabi.ae</adsssa:URL>
+          </dcterms:publisher>
+          <dcterms:created />
+          <dcterms:medium>text/xml</dcterms:medium>
+          <dcterms:requires>../../G2G-ADEK\Modules/G2G-HealthTypes.xsd</dcterms:requires>
+          <adsssa:providesDefinitionOf>BirthCertificatePullListRequest</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BirthCertificatePullDetailsRequest</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BirthCertificatePullListResponse</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BirthCertificatePullDetailsResponse</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CertificateGeneratedDate</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CertificateGeneratedTime</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>LongTermSLApprovedDate</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BirthCertificateID</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FatherFullNameEnglish</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FatherFullNameArabic</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FatherReligion</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FatherNationality</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>MotherFullNameEnglish</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>MotherFullNameArabic</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>MotherReligion</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>MotherNationality</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BabyFirstNameEnglish</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BabyFirstNameArabic</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BabyGender</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BabyDateOfBirth</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BabyDateOfBirthInHijri</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BabyDateOfBirthInHijriWords</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CertificateIssueDate</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BirthPlace</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CertificatePlaceOfIssueEnglish</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CertificatePlaceOfIssueArabic</adsssa:providesDefinitionOf>
+          <dcterms:conformsTo>http://www.w3.org/2001/XMLSchema</dcterms:conformsTo>
+        </rdf:Description>
+      </rdf:RDF>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:complexType name="BirthCertificatePullDetailsResponseType">
+    <xs:sequence>
+      <xs:element name="BirthCertificateID" nillable="true" type="BTH:BirthCertificateIDType" />
+      <xs:element minOccurs="0" name="FatherFullNameEnglish" nillable="true" type="BTH:FatherFullNameEnglishType" />
+      <xs:element minOccurs="0" name="FatherFullNameArabic" nillable="true" type="BTH:FatherFullNameArabicType" />
+      <xs:element minOccurs="0" name="FatherReligion" nillable="true" type="BTH:LookupType" />
+      <xs:element minOccurs="0" name="FatherNationality" nillable="true" type="BTH:LookupType" />
+      <xs:element name="MotherFullNameEnglish" nillable="true" type="BTH:MotherFullNameEnglishType" />
+      <xs:element name="MotherFullNameArabic" nillable="true" type="BTH:MotherFullNameArabicType" />
+      <xs:element name="MotherReligion" nillable="true" type="BTH:LookupType" />
+      <xs:element name="MotherNationality" nillable="true" type="BTH:LookupType" />
+      <xs:element name="BabyFirstNameEnglish" nillable="true" type="BTH:BabyFirstNameEnglishType" />
+      <xs:element name="BabyFirstNameArabic" nillable="true" type="BTH:BabyFirstNameArabicType" />
+      <xs:element name="BabyGender" nillable="true" type="BTH:LookupType" />
+      <xs:element name="BabyDateOfBirth" nillable="true" type="BTH:BabyDateOfBirthType" />
+      <xs:element name="BabyDateOfBirthInHijri" nillable="true" type="BTH:BabyDateOfBirthInHijriType" />
+      <xs:element name="BabyDateOfBirthInHijriWords" nillable="true" type="BTH:BabyDateOfBirthInHijriWordsType" />
+      <xs:element name="CertificateIssueDate" nillable="true" type="BTH:CertificateIssueDateType" />
+      <xs:element name="BirthPlace" nillable="true" type="BTH:BirthPlaceType" />
+      <xs:element minOccurs="0" name="CertificatePlaceOfIssueEnglish" nillable="true" type="BTH:CertificatePlaceOfIssueEnglishType" />
+      <xs:element minOccurs="0" name="CertificatePlaceOfIssueArabic" nillable="true" type="BTH:CertificatePlaceOfIssueArabicType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BirthCertificatePullListResponseType">
+    <xs:sequence>
+      <xs:element name="BirthCertificateID" nillable="true" type="BTH:BirthCertificateIDType" />
+      <xs:element name="BabyFirstNameEnglish" nillable="true" type="BTH:BabyFirstNameEnglishType" />
+      <xs:element name="BabyFirstNameArabic" nillable="true" type="BTH:BabyFirstNameArabicType" />
+      <xs:element name="BabyDateOfBirth" nillable="true" type="BTH:BabyDateOfBirthType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BirthCertificatePullDetailsResponse">
+    <xs:sequence>
+      <xs:element name="ResponseStatus" type="BTH:ResponseStatusType" />
+      <xs:element name="Contents" type="BirthCertificatePullDetailsResponseType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BirthCertificatePullListResponse">
+    <xs:sequence>
+      <xs:element name="ResponseStatus" type="BTH:ResponseStatusType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Contents" type="BirthCertificatePullListResponseType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BirthCertificatePullListRequestType">
+    <xs:sequence>
+      <xs:element name="EmiratesID" nillable="true" type="BTH:EmiratesIDNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BirthCertificatePullDetailsRequestType">
+    <xs:sequence>
+      <xs:element name="EmiratesID" nillable="true" type="BTH:EmiratesIDNumberType" />
+      <xs:element name="BirthCertificateID" nillable="true" type="BTH:BirthCertificateIDType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestTrnHeader" type="BTH:RequestTrnHeaderType" />
+  <xs:element name="BirthCertificatePullListRequest" type="BirthCertificatePullListRequestType" />
+  <xs:element name="BirthCertificatePullDetailsRequest" type="BirthCertificatePullDetailsRequestType" />
+  <xs:element name="BirthCertificatePullListResponse" type="BirthCertificatePullListResponse" />
+  <xs:element name="BirthCertificatePullDetailsResponse" type="BirthCertificatePullDetailsResponse" />
+  <xs:element name="ResponseTrnHeader" type="BTH:ResponseTrnHeaderType" />
+  <xs:element name="FaultResponse" type="BTH:FaultResponseType" />
+</xs:schema>

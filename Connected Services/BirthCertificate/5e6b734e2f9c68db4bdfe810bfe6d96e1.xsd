@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xdb="http://xmlns.oracle.com/xdb" xmlns:cd="urn:ae:gov:abudhabi:core:CommonDataTypes:2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="urn:ae:gov:abudhabi:DigitalDocuments:HealthTypes:1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:HealthTypes:1">
+  <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=ee5c09163b27428ef60c1a300cf84e0c&amp;servdocoid=c224a13300998783141f63d95c303318" namespace="urn:ae:gov:abudhabi:core:CommonDataTypes:2" />
+  <xsd:annotation>
+    <xsd:appinfo>
+      <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+        <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:HealthTypes:1">
+          <dcterms:title xml:lang="ar">ÙÙØ¹ Ø§ÙØµØ­Ø©</dcterms:title>
+          <dcterms:title xml:lang="en">G2GHealthTypes</dcterms:title>
+          <dcterms:identifier>urn:ae:gov:abudhabi:DigitalDocuments:HealthTypes:1/1</dcterms:identifier>
+          <dcterms:description xml:lang="ar">Ø£ÙÙØ§Ø¹ Ø§ÙÙØ¹ÙÙÙØ§Øª Ø§ÙØµØ­ÙØ©</dcterms:description>
+          <dcterms:description xml:lang="en">Health Types Information</dcterms:description>
+          <mireg:version>1</mireg:version>
+          <mireg:status>release</mireg:status>
+          <mireg:project>Digital Service Baseline and G2G Initiatives</mireg:project>
+          <mireg:category xml:lang="ar">Ø§ÙØªØ¨Ø§Ø¯Ù Ø§ÙÙØ´ØªØ±Ù</mireg:category>
+          <mireg:category xml:lang="en">G2G</mireg:category>
+          <dcterms:jurisdiction>AE-AZ</dcterms:jurisdiction>
+          <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="en">Abu Dhabi Smart Solutions and Services Authority (adsssa)</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="en">http://adsssa.abudhabi.ae</adsssa:URL>
+          </dcterms:creator>
+          <dcterms:creator rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="ar">ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="ar">http://adsssa.abudhabi.ae</adsssa:URL>
+          </dcterms:creator>
+          <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="en">Abu Dhabi e-Government</adsssa:OrganisationName>
+          </mireg:owner>
+          <mireg:owner rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="ar">Ø­ÙÙÙØ© Ø£Ø¨ÙØ¸Ø¨Ù Ø§ÙØ§ÙÙØªØ±ÙÙÙØ©</adsssa:OrganisationName>
+          </mireg:owner>
+          <dcterms:contributor rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:PersonalName xml:lang="en">Department Of Health</adsssa:PersonalName>
+          </dcterms:contributor>
+          <dcterms:contributor rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:PersonalName xml:lang="ar">ÙØ³Ù Ø§ÙØµØ­Ø©</adsssa:PersonalName>
+          </dcterms:contributor>
+          <dcterms:publisher rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="en">Abu Dhabi Smart Solutions and Services Authority (adsssa)</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="en">http://adsssa.abudhabi.ae</adsssa:URL>
+          </dcterms:publisher>
+          <dcterms:publisher rdf:datatype="http://adsssa.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsssa:OrganisationName xml:lang="ar">ÙØ±ÙØ² Ø£Ø¨Ù Ø¸Ø¨Ù ÙÙØ§ÙØ¸ÙØ© Ø§ÙØ§ÙÙØªØ±ÙÙÙØ© ÙØ§ÙÙØ¹ÙÙÙØ§Øª</adsssa:OrganisationName>
+            <adsssa:URL xml:lang="ar">http://adsssa.abudhabi.ae</adsssa:URL>
+          </dcterms:publisher>
+          <dcterms:created />
+          <dcterms:medium>text/xml</dcterms:medium>
+          <dcterms:requires>../../Core/Modules/CommonDataTypes.xsd</dcterms:requires>
+          <adsssa:providesDefinitionOf>SickLeaveCertificateIDType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FacilityLicenseNumberType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FacilityNameType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FacilityCity</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FacilityRegion</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>PhysicianLicenseNumberType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>PhysicianFullNameType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>PhysicianSpecialtyType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>PatientMedicalRecordNumberType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>PatientFullNameType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>PatientNationalityType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>PatientDateOfBirthType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>PatientGenderType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>PatientEmployerNameType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>PatientWorkNatureType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>PatientEmiratesIDType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>PatientTreatmentTypeType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>SickLeaveFromDateType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>SickLeaveToDateType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DateofAdmissionType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DateofDischargeType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>SickLeavePeriodType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>SickLeaveStatusType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CertificateGeneratedDateType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CertificateGeneratedTimeType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>LongTermSLApprovedDateType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BirthCertificateIDType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FatherFullNameEnglishType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FatherFullNameArabicType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FatherReligionType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FatherNationalityType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>MotherFullNameEnglishType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>MotherFullNameArabicType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>MotherReligionType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>MotherNationalityType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BabyFirstNameEnglishType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BabyFirstNameArabicType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BabyGenderType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BabyDateOfBirthType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BabyDateOfBirthInHijriType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BabyDateOfBirthInHijriWordsType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CertificateIssueDateType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>BirthPlaceType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CertificatePlaceOfIssueEnglishType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CertificatePlaceOfIssueArabicType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DeathReferenceNoType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FullNameEnglishType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>FullNameArabicType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DateOfBirthType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>GenderType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>ReligonCode</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>Nationality</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>MaritalStatus</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>Occupation</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>CertificatePlaceOfIssue</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DeathPlaceType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DateOfDeath Type</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DateOfDeathInWordsEnglishType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>DateOfDeathHijriType</adsssa:providesDefinitionOf>
+          <adsssa:providesDefinitionOf>AgeType</adsssa:providesDefinitionOf>
+          <dcterms:conformsTo>http://www.w3.org/2001/XMLSchema</dcterms:conformsTo>
+        </rdf:Description>
+      </rdf:RDF>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:simpleType name="EmiratesIDNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:AnimalTypes:1/1#EmiratesIDNumberType">
+            <dcterms:title xml:lang="ar">Ø±ÙÙ Ø§ÙÙÙÙØ© Ø§ÙØ¥ÙØ§Ø±Ø§ØªÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Emirates ID Number</dcterms:title>
+            <dcterms:description xml:lang="ar">ØªØ¹ØªØ¨Ø± Ø§ÙÙÙÙØ© Ø§ÙØ¥ÙØ§Ø±Ø§ØªÙØ© Ø¥Ø¬Ø¨Ø§Ø±ÙØ© ÙØ¬ÙÙØ¹ ÙÙØ§Ø·ÙÙ ÙÙÙÙÙÙ Ø¯ÙÙØ© Ø§ÙØ§ÙØ§Ø±Ø§Øª Ø§ÙØ¹Ø±Ø¨ÙØ©
+                                               Ø­ÙØ« ÙØªÙ Ø¥Ø¨Ø±Ø§Ø²ÙØ§ Ø¹ÙØ¯ Ø§ÙØªÙØ¯Ù ÙØ¬ÙÙØ¹ Ø§ÙÙØ¹Ø§ÙÙØ§Øª Ø§ÙØ­ÙÙÙÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Emirates ID is necessary for all UAE residents as part of their residency
+                                               requirement. Emirates ID serves as an identification purpose in all the
+                                               Government departments.</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType">
+      <xsd:minLength value="15" />
+      <xsd:maxLength value="15" />
+      <xsd:pattern value="[0-9]{15}" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Year">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="Year">
+            <dcterms:title xml:lang="ar">Ø¹Ø§Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Year</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØ³ÙØ© Ø§ÙØªÙ ØªØªØ·ÙØ¨ Ø¥Ø¬Ø§Ø²Ø© ÙØ±Ø¶ÙØ© Ø§ÙØªÙØ§ØµÙÙ</dcterms:description>
+            <dcterms:description xml:lang="en">Year For which Sick Leave details required</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="SickLeaveCertificateIDType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="SickLeaveCertificateID">
+            <dcterms:title xml:lang="ar">Ø±ÙØ² Ø§ÙØ´ÙØ§Ø¯Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Sick Leave Certificate ID</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙÙ Ø´ÙØ§Ø¯Ø© Ø§ÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Sick Leave Certificate ID</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="FacilityLicenseNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FacilityLicenseNumber">
+            <dcterms:title xml:lang="ar">Ø±ÙÙ Ø±Ø®ØµØ© Ø§ÙÙÙØ´Ø£Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Facility License Number</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙÙ Ø±Ø®ØµØ© Ø§ÙÙÙØ´Ø£Ø© Ø§ÙØªÙ ØªØµØ¯Ø± ÙÙÙØ§ Ø§ÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Facility License Number from where Sick Leave is issued</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String50Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="FacilityNameType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FacilityName">
+            <dcterms:title xml:lang="ar">Ø§Ø³Ù Ø§ÙÙÙØ´Ø£Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Facility Name</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§Ø³Ù Ø§ÙÙÙØ´Ø£Ø© Ø§ÙÙØªÙ Ø§ØµØ¯Ø±Øª Ø§ÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Facility Name from where Sick Leave is issued</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="PhysicianLicenseNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="PhysicianLicenseNumber">
+            <dcterms:title xml:lang="ar">Ø±ÙÙ Ø±Ø®ØµØ© Ø§ÙØ·Ø¨ÙØ¨</dcterms:title>
+            <dcterms:title xml:lang="en">Physician License Number</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙÙ Ø±Ø®ØµØ© Ø§ÙØ·Ø¨ÙØ¨ Ø§ÙØ°Ù Ø£ØµØ¯Ø± Ø§ÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Physician License Number who have issued the sick leave</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String50Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="PhysicianFullNameType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="PhysicianFullName">
+            <dcterms:title xml:lang="ar">Ø§Ø³Ù Ø§ÙØ·Ø¨ÙØ¨ Ø§ÙÙØ§ÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Physician Full Name</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§Ø³Ù Ø§ÙØ·Ø¨ÙØ¨ Ø¨Ø§ÙÙØ§ÙÙ Ø§ÙØ°Ù Ø£ØµØ¯Ø± Ø§ÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Physician Full Name who have issued the sick leave</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="PhysicianSpecialtyType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="PhysicianSpecialty">
+            <dcterms:title xml:lang="ar">ØªØ®ØµØµ Ø§ÙØ·Ø¨ÙØ¨</dcterms:title>
+            <dcterms:title xml:lang="en">Physician Specialty</dcterms:title>
+            <dcterms:description xml:lang="ar">ØªØ®ØµØµ Ø§ÙØ·Ø¨ÙØ¨ Ø§ÙØ°Ù Ø£ØµØ¯Ø± Ø§ÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Physician Specialty who have issued the sick leave</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="PatientMedicalRecordNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FacilityName">
+            <dcterms:title xml:lang="ar">Ø±ÙÙ Ø§ÙØ³Ø¬Ù Ø§ÙØ·Ø¨Ù ÙÙÙØ±ÙØ¶</dcterms:title>
+            <dcterms:title xml:lang="en">Patient Medical Record Number</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙÙ Ø§ÙØ³Ø¬Ù Ø§ÙØ·Ø¨Ù ÙÙÙØ±ÙØ¶</dcterms:description>
+            <dcterms:description xml:lang="en">Patient Medical Record Number</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String50Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="PatientFullNameType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FacilityCityCode">
+            <dcterms:title xml:lang="ar">Ø§Ø³Ù Ø§ÙÙØ±ÙØ¶ Ø§ÙÙØ§ÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Patient Full Name</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§Ø³Ù Ø§ÙÙØ±ÙØ¶ Ø¨Ø§ÙÙØ§ÙÙ ÙÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Patient Full Name for whome sick Leave is issued</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="PatientDateOfBirthType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="PatientDateOfBirth">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® ÙÙÙØ§Ø¯ Ø§ÙÙØ±ÙØ¶</dcterms:title>
+            <dcterms:title xml:lang="en">Patient Date Of Birth</dcterms:title>
+            <dcterms:description xml:lang="ar">ØªØ§Ø±ÙØ® ÙÙÙØ§Ø¯ Ø§ÙÙØ±ÙØ¶ ÙÙØ§Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Patient Date Of Birth for whome sick Leave is issued</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="PatientEmployerNameType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="PatientEmployerName">
+            <dcterms:title xml:lang="ar">Ø§Ø³Ù Ø¬ÙØ© Ø§ÙØ¹ÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Patient Employer Name</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§Ø³Ù ØµØ§Ø­Ø¨ Ø§ÙØ¹ÙÙ ÙØ§ØµØ¯Ø§Ø±Ø§ÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Patient Employer Name for whome sick Leave is issued</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="PatientWorkNatureType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="PatientWorkNature">
+            <dcterms:title xml:lang="ar">Ø·Ø¨ÙØ¹Ø© Ø¹ÙÙ Ø§ÙÙØ±ÙØ¶</dcterms:title>
+            <dcterms:title xml:lang="en">Patient Work Nature</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø·Ø¨ÙØ¹Ø© Ø¹ÙÙ Ø§ÙÙØ±ÙØ¶ ÙÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Patient Work Nature for whome sick Leave is issued</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="PatientEmiratesIDType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="PatientEmiratesID">
+            <dcterms:title xml:lang="ar">Ø±ÙÙ Ø¨Ø·Ø§ÙØ© Ø§ÙÙÙÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Patient Emirates ID</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¨Ø·Ø§ÙØ© Ø§ÙÙÙÙØ© Ø§ÙØ¥ÙØ§Ø±Ø§ØªÙÙ ÙÙÙØ±ÙØ¶ ÙÙØ¥Ø¬Ø§Ø²Ø§Øª Ø§ÙÙØ±Ø¶ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Patient Emirates ID for whome sick Leave is issued</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="PatientTreatmentType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="PatientTreatmentType">
+            <dcterms:title xml:lang="ar">ÙÙØ¹ Ø¹ÙØ§Ø¬ Ø§ÙÙØ±ÙØ¶</dcterms:title>
+            <dcterms:title xml:lang="en">Patient Treatment Type</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙÙØ¹ Ø§ÙØ¹ÙØ§Ø¬ Ø§ÙÙÙØ¯Ù ÙÙÙØ±ÙØ¶ ÙØ§ÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ© Ø§ÙØµØ§Ø¯Ø±Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Treatment Type provided for patient and issued sick leave</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="SickLeaveFromDateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="SickLeaveFromDate">
+            <dcterms:title xml:lang="ar">Ø§ÙØ§Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ© ÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Sick Leave From Date</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø·ÙØ¨ Ø¥Ø¬Ø§Ø²Ø© ÙØ±Ø¶ÙØ© ÙÙ Ø§ÙØªØ§Ø±ÙØ®</dcterms:description>
+            <dcterms:description xml:lang="en">Requested Sick Leave From Date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="SickLeaveToDateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="SickLeaveToDate">
+            <dcterms:title xml:lang="ar">Ø§ÙØ§Ø¬Ø§Ø²Ø© Ø§ÙÙØ±ØµÙØ© Ø§ÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Sick Leave To Date</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø·ÙØ¨ Ø¥Ø¬Ø§Ø²Ø© ÙØ±Ø¶ÙØ© Ø§ÙÙ Ø§ÙØªØ§Ø±ÙØ®</dcterms:description>
+            <dcterms:description xml:lang="en">Requested Sick Leave To Date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DateofAdmissionType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="DateofAdmission">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙØ¯Ø®ÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Date of Admission</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¥Ø°Ø§ ÙØ§Ù ÙÙØ¹ Ø§ÙØ¹ÙØ§Ø¬ ÙØ±ÙØ¶ ÙÙÙÙØ Ø§Ø°Ø§Ù Ø£Ø¯Ø®Ù ØªØ§Ø±ÙØ® Ø§ÙØ¯Ø®ÙÙ</dcterms:description>
+            <dcterms:description xml:lang="en">If treatment type is in-patient then inpatient Admission date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DateofDischargeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="DateofDischarge">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙØ®Ø±ÙØ¬</dcterms:title>
+            <dcterms:title xml:lang="en">Date of Discharge</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¥Ø°Ø§ ÙØ§Ù ÙÙØ¹ Ø§ÙØ¹ÙØ§Ø¬ ÙØ±ÙØ¶ ÙÙÙÙØ Ø§Ø°Ø§Ù Ø£Ø¯Ø®Ù ØªØ§Ø±ÙØ® Ø§ÙØ®Ø±ÙØ¬</dcterms:description>
+            <dcterms:description xml:lang="en">If treatment type is in-patient then inpatient Dischanrge date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="SickLeavePeriodType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="SickLeavePeriod">
+            <dcterms:title xml:lang="ar">ÙØ¯Ø© Ø§ÙØ§Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Sick Leave Period</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¥Ø¬ÙØ§ÙÙ Ø¹Ø¯Ø¯ Ø§ÙØ§ÙØ§Ù Ø§ÙÙØ·ÙÙØ¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Total number of day requested</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="SickLeaveStatusType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="SickLeaveStatus">
+            <dcterms:title xml:lang="ar">Ø­Ø§ÙØ© Ø§ÙØ§Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Sick Leave Status</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙÙØ¶Ø¹ Ø§ÙØ­Ø§ÙÙ ÙØ´ÙØ§Ø¯Ø© Ø§ÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Current status of Sick Leave certitificate</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="CertificateGeneratedDateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="CertificateGeneratedDate">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ØµØ¯Ø§Ø± Ø§ÙØ´ÙØ§Ø¯Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Certificate Generated Date</dcterms:title>
+            <dcterms:description xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ© Ø§ÙÙØ¹ÙÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Actual Sick Leave generated Date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="CertificateGeneratedTimeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="CertificateGeneratedTime">
+            <dcterms:title xml:lang="ar">ÙÙØª Ø§ØµØ¯Ø§Ø± Ø§ÙØ´ÙØ§Ø¯Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Certificate Generated Time</dcterms:title>
+            <dcterms:description xml:lang="ar">ØªÙÙÙØª Ø§ÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ© Ø§ÙÙØ¹ÙÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Actual Sick Leave generated Time</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="LongTermSLApprovedDateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="LongTermSLApprovedDate">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® Ø§Ø¹ØªÙØ§Ø¯ Ø´ÙØ§Ø¯Ø© Ø·ÙÙÙØ© Ø§ÙØ£Ø¬Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Long Term SL Approved Date</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¥Ø°Ø§ ÙØ§ÙØª Ø§ÙØ¥Ø¬Ø§Ø²Ø© Ø§ÙÙØ±Ø¶ÙØ© Ø·ÙÙÙØ© Ø§ÙØ£ÙØ¯ Ø ÙØªØ§Ø±ÙØ® Ø§ÙÙÙØ§ÙÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">If Sick Leave is Long Term then Approved Date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="BirthCertificateIDType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="BirthCertificateID">
+            <dcterms:title xml:lang="ar">Ø±ÙÙ Ø´ÙØ§Ø¯Ø© Ø§ÙÙÙÙØ§Ø¯</dcterms:title>
+            <dcterms:title xml:lang="en">Birth Certificate ID</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø±ÙÙ Ø´ÙØ§Ø¯Ø© Ø§ÙÙÙÙØ§Ø¯</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby Birth Certificate Unique Case ID</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="FatherFullNameEnglishType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FatherFullNameEnglish">
+            <dcterms:title xml:lang="ar">Ø§Ø³Ù Ø§ÙØ£Ø¨ ÙØ§ÙÙ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¥ÙØ¬ÙÙØ²ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Father Full Name English</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§Ø³Ù Ø§ÙØ£Ø¨ ÙØ§ÙÙ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¥ÙØ¬ÙÙØ²ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby Fathers Full name English</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="FatherFullNameArabicType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FatherFullNameArabic">
+            <dcterms:title xml:lang="ar">Ø§Ø³Ù Ø§ÙØ£Ø¨ ÙØ§ÙÙ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¹Ø±Ø¨ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Father Full Name Arabic</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§Ø³Ù Ø§ÙØ£Ø¨ ÙØ§ÙÙ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¹Ø±Ø¨ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby Fathers Full name Arabic</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="MotherFullNameEnglishType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="MotherFullNameEnglish">
+            <dcterms:title xml:lang="ar">Ø§Ø³Ù Ø§ÙØ£Ù ÙØ§ÙÙ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¥ÙØ¬ÙÙØ²ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Mother Full Name English</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§Ø³Ù Ø§ÙØ£Ù ÙØ§ÙÙ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¥ÙØ¬ÙÙØ²ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby Mothers Full name English</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="MotherFullNameArabicType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="MotherFullNameArabic">
+            <dcterms:title xml:lang="ar">Ø§Ø³Ù Ø§ÙØ£Ù ÙØ§ÙÙ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¹Ø±Ø¨ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Mother Full Name Arabic</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§Ø³Ù Ø§ÙØ£Ù ÙØ§ÙÙ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¹Ø±Ø¨ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby Mothers Full name Arabic</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="BabyFirstNameEnglishType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="BabyFirstNameEnglish">
+            <dcterms:title xml:lang="ar">Ø§ÙØ§Ø³Ù Ø§ÙØ£ÙÙ ÙÙÙÙÙÙØ¯ Ø§ÙØ¬Ø¯ÙØ¯ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¥ÙØ¬ÙÙØ²ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Baby First Name English</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØ§Ø³Ù Ø§ÙØ£ÙÙ ÙÙÙÙÙÙØ¯ Ø§ÙØ¬Ø¯ÙØ¯ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¥ÙØ¬ÙÙØ²ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby First Name English</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="BabyFirstNameArabicType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="BabyFirstNameArabic">
+            <dcterms:title xml:lang="ar">Ø§ÙØ§Ø³Ù Ø§ÙØ£ÙÙ ÙÙÙÙÙÙØ¯ Ø§ÙØ¬Ø¯ÙØ¯ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¹Ø±Ø¨ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Baby First Name Arabic</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØ§Ø³Ù Ø§ÙØ£ÙÙ ÙÙÙÙÙÙØ¯ Ø§ÙØ¬Ø¯ÙØ¯ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¹Ø±Ø¨ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby First Name Arabic</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="BabyDateOfBirthType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="BabyDateOfBirth">
+            <dcterms:title xml:lang="ar">Ø§ÙØªØ§Ø±ÙØ® Ø§ÙÙÙÙØ§Ø¯Ù ÙÙÙÙ ÙÙØ§Ø¯Ø© Ø§ÙÙÙÙÙØ¯ Ø§ÙØ¬Ø¯ÙØ¯</dcterms:title>
+            <dcterms:title xml:lang="en">Baby Date of Birth</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØªØ§Ø±ÙØ® Ø§ÙÙÙÙØ§Ø¯Ù ÙÙÙÙ ÙÙØ§Ø¯Ø© Ø§ÙÙÙÙÙØ¯ Ø§ÙØ¬Ø¯ÙØ¯</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby Date of Birth Gregorian</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="BabyDateOfBirthInHijriType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="BabyDateOfBirthInHijri">
+            <dcterms:title xml:lang="ar">Ø§ÙØªØ§Ø±ÙØ® Ø§ÙÙØ¬Ø±Ù ÙÙÙÙ ÙÙØ§ï¿½ï¿½Ø© Ø§ÙÙÙÙÙØ¯ Ø§ÙØ¬Ø¯ÙØ¯</dcterms:title>
+            <dcterms:title xml:lang="en">Baby Date of Birth in Hijri</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØªØ§Ø±ÙØ® Ø§ÙÙØ¬Ø±Ù ÙÙÙÙ ÙÙØ§Ø¯Ø© Ø§ÙÙÙÙÙØ¯ Ø§ÙØ¬Ø¯ÙØ¯</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby Date of Birth Hijri</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="BabyDateOfBirthInHijriWordsType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="BabyDateOfBirthInHijriWords">
+            <dcterms:title xml:lang="ar">Ø§ÙØªØ§Ø±ÙØ® Ø§ÙÙØ¬Ø±Ù ÙÙÙÙ ÙÙØ§Ø¯Ø© Ø§ÙÙÙÙÙØ¯ Ø§ÙØ¬Ø¯ÙØ¯ Ø¨Ø§ÙØ­Ø±ÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Baby Date of Birth in Hijri Words</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØªØ§Ø±ÙØ® Ø§ÙÙØ¬Ø±Ù ÙÙÙÙ ÙÙØ§Ø¯Ø© Ø§ÙÙÙÙÙØ¯ Ø§ÙØ¬Ø¯ÙØ¯ Ø¨Ø§ÙØ­Ø±ÙÙ</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby Date Of Birth Hijri in words</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="CertificateIssueDateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="CertificateIssueDate">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® Ø¥ØµØ¯Ø§Ø± Ø´ÙØ§Ø¯Ø© ÙÙÙØ§Ø¯ Ø§ÙÙÙÙÙØ¯ Ø§ÙØ¬Ø¯ÙØ¯</dcterms:title>
+            <dcterms:title xml:lang="en">Certificate Issue Date</dcterms:title>
+            <dcterms:description xml:lang="ar">ØªØ§Ø±ÙØ® Ø¥ØµØ¯Ø§Ø± Ø´ÙØ§Ø¯Ø© ÙÙÙØ§Ø¯ Ø§ÙÙÙÙÙØ¯ Ø§ÙØ¬Ø¯ÙØ¯</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby Birth Certificate Issue Date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="BirthPlaceType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="BirthPlace">
+            <dcterms:title xml:lang="ar">ÙÙØ§Ù Ø§ÙÙÙØ§Ø¯Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Birth Place</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙÙØ§Ù Ø§ÙÙÙØ§Ø¯Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby place of birth</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="CertificatePlaceOfIssueEnglishType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="CertificatePlaceOfIssueEnglish">
+            <dcterms:title xml:lang="ar">ÙÙØ§Ù Ø¥ØµØ¯Ø§Ø± Ø´ÙØ§Ø¯Ø© Ø§ÙÙÙØ§Ø¯Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Certificate Place of Issue English</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙÙØ§Ù Ø¥ØµØ¯Ø§Ø± Ø´ÙØ§Ø¯Ø© Ø§ÙÙÙØ§Ø¯Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby birth Certificate Issue Place English</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="CertificatePlaceOfIssueArabicType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="CertificatePlaceOfIssueArabic">
+            <dcterms:title xml:lang="ar">ÙÙØ§Ù Ø¥ØµØ¯Ø§Ø± Ø´ÙØ§Ø¯Ø© Ø§ÙÙÙØ§Ø¯Ø© - Ø¹Ø±Ø¨Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Certificate Place of Issue Arabic</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙÙØ§Ù Ø¥ØµØ¯Ø§Ø± Ø´ÙØ§Ø¯Ø© Ø§ÙÙÙØ§Ø¯Ø© - Ø¹Ø±Ø¨Ù</dcterms:description>
+            <dcterms:description xml:lang="en">New Born Baby birth Certificate Issue Place Arabic</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DeathReferenceNoType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="DeathReferenceNo">
+            <dcterms:title xml:lang="ar">Ø§ÙØ±ÙÙ Ø§ÙÙØ±Ø¬Ø¹Ù ÙÙÙÙØ§Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Death Reference No</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØ±ÙÙ Ø§ÙÙØ±Ø¬Ø¹Ù ÙÙÙÙØ§Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Death Reference Unique Case No</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="FullNameEnglishType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FullNameEnglish">
+            <dcterms:title xml:lang="ar">Ø§Ø³Ù Ø§ÙÙØªÙÙÙ ÙØ§ÙÙ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¥ÙØ¬ÙÙØ²ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Full Name English</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§Ø³Ù Ø§ÙÙØªÙÙÙ ÙØ§ÙÙ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¥ÙØ¬ÙÙØ²ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Death Person Full name - English</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="FullNameArabicType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="FullNameArabic">
+            <dcterms:title xml:lang="ar">Ø§Ø³Ù Ø§ÙÙØªÙÙÙ ÙØ§ÙÙ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¹Ø±Ø¨ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Full Name Arabic</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§Ø³Ù Ø§ÙÙØªÙÙÙ ÙØ§ÙÙ Ø¨Ø§ÙÙØºØ© Ø§ÙØ¹Ø±Ø¨ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Death Person Full name - Arabic</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DateOfBirthType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="DateOfBirth">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙÙÙØ§Ø¯Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Date Of Birth</dcterms:title>
+            <dcterms:description xml:lang="ar">ØªØ§Ø±ÙØ® ÙÙØ§Ø¯Ø© Ø§ÙÙØªÙÙÙ</dcterms:description>
+            <dcterms:description xml:lang="en">Death Person Date of Birth</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DeathPlaceType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="DeathPlace">
+            <dcterms:title xml:lang="ar">ÙÙØ§Ù Ø§ÙÙÙØ§Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Death Place</dcterms:title>
+            <dcterms:description xml:lang="ar">ÙÙØ§Ù Ø§ÙÙÙØ§Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Place of Death</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DateOfDeathType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="DateOfDeath ">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙÙÙØ§Ø©</dcterms:title>
+            <dcterms:title xml:lang="en">Date of Death</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø§ÙØªØ§Ø±ÙØ® Ø§ÙØ­ÙÙÙÙ ÙÙÙÙØ§Ø©</dcterms:description>
+            <dcterms:description xml:lang="en">Actual Date of Death</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DateOfDeathInWordsEnglishType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="DateOfDeathInWordsEnglish">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙÙÙØ§Ø© ÙÙ Ø§ÙÙÙÙØ§Øª Ø§ÙØ¥ÙØ¬ÙÙØ²ÙØ©</dcterms:title>
+            <dcterms:title xml:lang="en">Date of Death in Words English</dcterms:title>
+            <dcterms:description xml:lang="ar">ï¿½ï¿½Ø§Ø±ÙØ® Ø§ÙÙÙØ§Ø© ÙÙ Ø§ÙÙÙÙØ§Øª Ø§ÙØ¥ÙØ¬ÙÙØ²ÙØ©</dcterms:description>
+            <dcterms:description xml:lang="en">Actual Date of Death in words English</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:String255Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DateOfDeathHijriType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="DateOfDeathHijri">
+            <dcterms:title xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙÙÙØ§Ø© ÙÙ Ø§ÙÙØ¬Ø±Ù</dcterms:title>
+            <dcterms:title xml:lang="en">Date of Death Hijri</dcterms:title>
+            <dcterms:description xml:lang="ar">ØªØ§Ø±ÙØ® Ø§ÙÙÙØ§Ø© ÙÙ Ø§ÙÙØ¬Ø±Ù</dcterms:description>
+            <dcterms:description xml:lang="en">Actual Date of Death in Hijri date</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:simpleType name="AgeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <rdf:RDF xmlns:adsssa="http://www.adsssa.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="Age">
+            <dcterms:title xml:lang="ar">Ø¹ÙØ± Ø§ÙÙØªÙÙÙ</dcterms:title>
+            <dcterms:title xml:lang="en">Age</dcterms:title>
+            <dcterms:description xml:lang="ar">Ø¹ÙØ± Ø§ÙØ´Ø®Øµ Ø§ÙÙØªÙÙÙ</dcterms:description>
+            <dcterms:description xml:lang="en">Age of Death Person</dcterms:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="cd:StringType" />
+  </xsd:simpleType>
+  <xsd:complexType name="ResponseTrnHeaderType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="TransactionId" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EntityCode" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FaultResponseType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ErrorCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ErrorDescEn" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ErrorDescAr" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RequestTrnHeaderType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="TransactionId" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EntityCode" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LookupType">
+    <xsd:sequence>
+      <xsd:element name="Code" nillable="true" type="cd:LookupCodeType" />
+      <xsd:element name="DescriptionEnglish" nillable="true" type="cd:LookupDescriptionEnglishType" />
+      <xsd:element name="DescriptionArabic" nillable="true" type="cd:LookupDescriptionArabicType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseStatusType">
+    <xsd:sequence>
+      <xsd:element name="StatusCode" type="cd:StatusCodeType" />
+      <xsd:element minOccurs="0" name="StatusDescriptionEnglish" type="cd:StatusDescriptionEnglishType" />
+      <xsd:element minOccurs="0" name="StatusDescriptionArabic" type="cd:StatusDescriptionArabicType" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xs:schema>

@@ -1,0 +1,250 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "معلومات موظف شرطة - أبوظبي";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>معلومات موظف شرطة - أبوظبي</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "SPEA")';
+
+            $(".tbody").empty();
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { EmiratesId: EmiratesId, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+                console.log(obj)
+
+                if (obj.flag == "1") {
+
+                        html = BindHTML(obj.data);
+                        $("#divTables").append(html);
+                        $('.DataTable').show();
+
+                }
+                else {
+
+
+                    if (obj.flag == "2") {
+                        document.getElementById('response').innerText = (obj.OutParameters.Message);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if (obj.flag == "4") {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("spea.pdf");
+       });
+
+
+        function BindHTML(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "currentAcademicYear" + '</b></small></h6></td>';
+            html += '<td>' + item.currentAcademicYear + '</td>';
+            html += '<td><h6><small><b>' + "currentCurriculumAr" + '</b></small></h6></td>';
+            html += '<td>' + item.currentCurriculumAr + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "currentCurriculumEn" + '</b></small></h6></td>';
+            html += '<td>' + item.currentCurriculumEn + '</td>';
+            html += '<td><h6><small><b>' + "currentCurriculumId" + '</b></small></h6></td>';
+            html += '<td>' + item.currentCurriculumId + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "currentGrade" + '</b></small></h6></td>';
+            html += '<td>' + item.currentGrade + '</td>';
+            html += '<td><h6><small><b>' + "studentId" + '</b></small></h6></td>';
+            html += '<td>' + item.studentId + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "currentSchoolEn" + '</b></small></h6></td>';
+            html += '<td>' + item.currentSchoolEn + '</td>';
+            html += '<td><h6><small><b>' + "currentSchoolId" + '</b></small></h6></td>';
+            html += '<td>' + item.currentSchoolId + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "currentTutionFee" + '</b></small></h6></td>';
+            html += '<td>' + item.currentTutionFee + '</td>';
+            html += '<td><h6><small><b>' + "id" + '</b></small></h6></td>';
+            html += '<td>' + item.id + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "isStillEnrolled" + '</b></small></h6></td>';
+            html += '<td>' + item.isStillEnrolled + '</td>';
+            html += '<td><h6><small><b>' + "issueDate" + '</b></small></h6></td>';
+            html += '<td>' + item.issueDate + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "lastAcademicYear" + '</b></small></h6></td>';
+            html += '<td>' + item.lastAcademicYear + '</td>';
+            html += '<td><h6><small><b>' + "lastCurriculumAr" + '</b></small></h6></td>';
+            html += '<td>' + item.lastCurriculumAr + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "lastCurriculumEn" + '</b></small></h6></td>';
+            html += '<td>' + item.lastCurriculumEn + '</td>';
+            html += '<td><h6><small><b>' + "lastCurriculumId" + '</b></small></h6></td>';
+            html += '<td>' + item.lastCurriculumId + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "lastGrade" + '</b></small></h6></td>';
+            html += '<td>' + item.lastGrade + '</td>';
+            html += '<td><h6><small><b>' + "lastSchoolAr" + '</b></small></h6></td>';
+            html += '<td>' + item.lastSchoolAr + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "lastSchoolEn" + '</b></small></h6></td>';
+            html += '<td>' + item.lastSchoolEn + '</td>';
+            html += '<td><h6><small><b>' + "lastSchoolId" + '</b></small></h6></td>';
+            html += '<td>' + item.lastSchoolId + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "lastTutionFee" + '</b></small></h6></td>';
+            html += '<td>' + item.lastTutionFee + '</td>';
+            html += '<td><h6><small><b>' + "nameAr" + '</b></small></h6></td>';
+            html += '<td>' + item.nameAr + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "nameEn" + '</b></small></h6></td>';
+            html += '<td>' + item.nameEn + '</td>';
+            html += '<td><h6><small><b>' + "notes" + '</b></small></h6></td>';
+            html += '<td>' + item.notes + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "pupilId" + '</b></small></h6></td>';
+            html += '<td>' + item.pupilId + '</td>';
+            html += '<td><h6><small><b>' + "requestIdentityNo" + '</b></small></h6></td>';
+            html += '<td>' + item.requestIdentityNo + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "scosId" + '</b></small></h6></td>';
+            html += '<td>' + item.scosId + '</td>';
+            html += '<td><h6><small><b>' + "scosTimeStamp" + '</b></small></h6></td>';
+            html += '<td>' + item.scosTimeStamp + '</td>';
+            html += '</tr>';
+
+
+            html += '</tbody>  </table>';
+            return html
+        }
+    </script>
+}

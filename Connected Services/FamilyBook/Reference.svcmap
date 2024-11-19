@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="52de17e2-d8f0-4529-8bac-22b7bd976888" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://integrate.gsb.government.ae/ws/getFamilyBookDetails/1.0?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="cbc4a143-4b60-11e7-a81c-e8f666d71dd9.xsd" MetadataType="Schema" ID="7261de08-15e7-4a13-af4c-a026ac3857a7" SourceId="1" SourceUrl="https://integrate.gsb.government.ae/ws/getFamilyBookDetails/cbc4a143-4b60-11e7-a81c-e8f666d71dd9?xsd=MOIFamilyBookDetailsSchema" />
+    <MetadataFile FileName="getFamilyBookDetails1.wsdl" MetadataType="Wsdl" ID="1ea184e3-4222-4fe0-a6bb-37c8f4d5cec2" SourceId="1" SourceUrl="https://integrate.gsb.government.ae/ws/getFamilyBookDetails/1.0?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,278 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Unknown Parents - دائرة الضمان الاجتماعي بالشارقة - بيانات مجهول الوالدين";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>دائرة الضمان الاجتماعي بالشارقة - بيانات مجهول الوالدين</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId"    type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center"  type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+        @*<div class="alert alert-danger" role="alert">
+            This is a danger alert—check it out!
+        </div>*@
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+            //$('#EmireateID').on("KeyPress", function () {
+
+            //    $("#myWish").click(function showAlert() {
+            //        $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+            //            $("#success-alert").slideUp(500);
+            //        });
+            //    });
+            //});
+        });
+
+
+        //function checkEmierateID(this) {
+        //    if (this.length != 15) {
+        //        $('.alert-danger').alert();
+        //    }
+        //}
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "UnknownParents")';
+
+            $(".tbody").empty();
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { EmiratesId: EmiratesId, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+
+                if (obj.flag == "1") {
+
+                        html = BindHTML(obj.Data);
+                        $("#divTables").append(html);
+                        $('.DataTable').show();
+                    
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("NRC_Clients.pdf");
+       });
+
+
+        function BindHTML(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الملف" + '</b></small></h6></td>';
+            html += '<td>' + item.File_No + '</td>';
+            html += '<td><h6><small><b>' + "الاسم" + '</b></small></h6></td>';
+            html += '<td>' + item.Name + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الهوية" + '</b></small></h6></td>';
+            html += '<td>' + item.EmiratesId + '</td>';
+            html += '<td><h6><small><b>' + "الجنسية" + '</b></small></h6></td>';
+            html += '<td>' + item.Nationality + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الفئة" + '</b></small></h6></td>';
+            html += '<td>' + item.Category + '</td>';
+            html += '<td><h6><small><b>' + "الامارة" + '</b></small></h6></td>';
+            html += '<td>' + item.Emirate + '</td>';
+            html += '</tr>';
+
+            
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "المدينة" + '</b></small></h6></td>';
+            html += '<td>' + item.City + '</td>';
+            html += '<td><h6><small><b>' + "الاعتماد" + '</b></small></h6></td>';
+            html += '<td>' + item.dependent + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الجنس " + '</b></small></h6></td>';
+            html += '<td>' + item.Gender + '</td>';
+            html += '<td><h6><small><b>' + "الحالة الاجتماعية" + '</b></small></h6></td>';
+            html += '<td>' + item.Social_Situation + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الحالة الصحية" + '</b></small></h6></td>';
+            html += '<td>' + item.Health_status + '</td>';
+            html += '<td><h6><small><b>' + "تاريخ الميلاد" + '</b></small></h6></td>';
+            html += '<td>' + item.DateofBirth + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "العمر" + '</b></small></h6></td>';
+            html += '<td>' + item.Age + '</td>';
+            html += '<td><h6><small><b>' + "العملية" + '</b></small></h6></td>';
+            html += '<td>' + item.Practical_case + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم ملخص التسجيل" + '</b></small></h6></td>';
+            html += '<td>' + item.Registration_Summary_Number + '</td>';
+            html += '<td><h6><small><b>' + "رقم البلدة" + '</b></small></h6></td>';
+            html += '<td>' + item.TownNumber + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الاسرة" + '</b></small></h6></td>';
+            html += '<td>' + item.FamilyNumber + '</td>';
+            html += '<td><h6><small><b>' + "رقم الهاتف" + '</b></small></h6></td>';
+            html += '<td>' + item.PhoneNo + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "التخرج" + '</b></small></h6></td>';
+            html += '<td>' + item.Hand_graduation + '</td>';
+            html += '<td><h6><small><b>' + "المتوسط" + '</b></small></h6></td>';
+            html += '<td>' + item.Average + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "سنة التخرج" + '</b></small></h6></td>';
+            html += '<td>' + item.Graduation_Year + '</td>';
+            html += '<td><h6><small><b>' + "التخصص" + '</b></small></h6></td>';
+            html += '<td>' + item.Specialization + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "وضع التجنيد" + '</b></small></h6></td>';
+            html += '<td>' + item.Enlistment_Status + '</td>';
+            html += '<td><h6><small><b>' + "المؤهلات" + '</b></small></h6></td>';
+            html += '<td>' + item.Qualification + '</td>';
+            html += '</tr>';
+
+            
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "العلاوات الشهريه" + '</b></small></h6></td>';
+            html += '<td>' + item.monthly_allowance + '</td>';
+            html += '<td><h6><small><b>' + "استثناءات   " + '</b></small></h6></td>';
+            html += '<td>' + item.exceptional + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "مساعدة ربة المنزل" + '</b></small></h6></td>';
+            html += '<td>' + item.Helping_the_housewife + '</td>';
+            html += '<td><h6><small><b>' + "مساعدة طريح الفراش" + '</b></small></h6></td>';
+            html += '<td>' + item.Bedridden_Help + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الباحث الاجتماعي" + '</b></small></h6></td>';
+            html += '<td>' + item.Social_Researcher + '</td>'
+            html += '</tr>';
+
+
+            
+            html += '</tbody>  </table>';
+            return html
+        }
+    </script>
+}

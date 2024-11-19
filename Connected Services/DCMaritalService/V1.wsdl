@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://mdws/MDAinquiryService" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wssutil="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ns0="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://mdws/MDAinquiry" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://mdws/MDAinquiryService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This service is to get the Marriage, Divorce and attestation information from Dubai Courts to inquire the personal details by passing the below search criteria.
+
+1) The Marriage, Divorce and attestation information will be retrieved based on the Emirates ID of the first or second party.
+2) The Marriage, Divorce and attestation information will be retrieved based on the full name of the first or second party
+3) The Marriage, Divorce and attestation information will be retrieved based on a substring of the first- or second-party name based on approvalRefNo.
+4) The Marriage, Divorce and attestation information will be retrieved based on a date range (The total days should not exceed 31).
+5) The Marriage, Divorce and attestation information will be retrieved based on the certificate ID
+6) The Marriage, Divorce and attestation information will be retrieved along with the certificate document (pdf file) based on the certificate ID.</wsdl:documentation>
+  <wsp:Policy wsu:Id="UTOverTransport" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient" />
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://mdws/MDAinquiryService">
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=95fa4a7544e365e4ef112a265288a3d6&amp;servdocoid=4c4b0a9e102019a7629657c25a8bef39" namespace="http://mdws/MDAinquiry" />
+      <xsd:complexType name="inHeaderType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="EntityTransRefId" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Entity" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="outHeaderType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="DcTransRefId" type="xsd:string" />
+          <xsd:element minOccurs="0" name="EntityTransRefId" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Entity" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMDinfoByEidaRequestType">
+        <xsd:sequence>
+          <xsd:element default="Marriage" name="DocumentType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Marriage" />
+                <xsd:enumeration value="Divorce" />
+                <xsd:enumeration value="Attestation" />
+                <xsd:enumeration value="All" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="Party1UID">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:integer">
+                <xsd:minInclusive value="1" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="Party2UID">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:integer">
+                <xsd:minInclusive value="1" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMDinfoByEidaResponseType">
+        <xsd:sequence>
+          <xsd:element name="result">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" ref="ns1:mdwsresponsefirstoptallType" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMDinfoByDateRequestType">
+        <xsd:sequence>
+          <xsd:element default="Marriage" name="DocumentType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Marriage" />
+                <xsd:enumeration value="Divorce" />
+                <xsd:enumeration value="Attestation" />
+                <xsd:enumeration value="All" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="fromDate" type="xsd:date" />
+          <xsd:element name="toDate" type="xsd:date" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMDinfoByDateResponseType">
+        <xsd:sequence>
+          <xsd:element name="result">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" ref="ns1:mdwsresponsefourthoptallType" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMDinfoBySimilarNameRequestType">
+        <xsd:sequence>
+          <xsd:element default="Marriage" name="DocumentType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Marriage" />
+                <xsd:enumeration value="Divorce" />
+                <xsd:enumeration value="Attestation" />
+                <xsd:enumeration value="All" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="Party1Name" type="xsd:string" />
+          <xsd:element name="Party2Name" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMDinfoBySimilarNameResponseType">
+        <xsd:sequence>
+          <xsd:element name="result">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" ref="ns1:mdwsresponsethirdoptallType" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getBinaryFileByCertifcateRefRequestType">
+        <xsd:sequence>
+          <xsd:element default="Marriage" name="DocumentType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Marriage" />
+                <xsd:enumeration value="Divorce" />
+                <xsd:enumeration value="Attestation" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element default="Court" name="DocumetIssuerAuthority">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Court" />
+                <xsd:enumeration value="Marriage Officials - Courts" />
+                <xsd:enumeration value="Marriage Officials - Others" />
+                <xsd:enumeration value="Old" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="DocumentYear">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:integer">
+                <xsd:minInclusive value="1" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="DocumentNumber">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:integer">
+                <xsd:minInclusive value="1" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getBinaryFileByCertifcateRefResponseType">
+        <xsd:sequence>
+          <xsd:element name="result">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" ref="ns1:mdwsResponseSixthOptAllType" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMDinfoByCertifcateRefRequestType">
+        <xsd:sequence>
+          <xsd:element default="Marriage" name="DocumentType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Marriage" />
+                <xsd:enumeration value="Divorce" />
+                <xsd:enumeration value="Attestation" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element default="Court" name="DocumetIssuerAuthority">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Court" />
+                <xsd:enumeration value="Marriage Officials - Courts" />
+                <xsd:enumeration value="Marriage Officials - Others" />
+                <xsd:enumeration value="Old" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="DocumentYear">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:integer">
+                <xsd:minInclusive value="1" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="DocumentNumber">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:integer">
+                <xsd:minInclusive value="1" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMDinfoByCertifcateRefResponseType">
+        <xsd:sequence>
+          <xsd:element name="result">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" ref="ns1:mdwsresponsefifthoptallType" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMDinfoByFullNameRequestType">
+        <xsd:sequence>
+          <xsd:element default="Marriage" name="DocumentType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Marriage" />
+                <xsd:enumeration value="Divorce" />
+                <xsd:enumeration value="Attestation" />
+                <xsd:enumeration value="All" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="Party1Name" type="xsd:string" />
+          <xsd:element name="Party2Name" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMDinfoByFullNameResponseType">
+        <xsd:sequence>
+          <xsd:element name="result">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" ref="ns1:mdwsresponsesecondoptallType" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="inHeaderKey" type="tns:inHeaderType" />
+      <xsd:element name="outHeaderKey" type="tns:outHeaderType" />
+      <xsd:element name="getMDinfoByEida" type="tns:getMDinfoByEidaRequestType" />
+      <xsd:element name="getMDinfoByEidaResponse" type="tns:getMDinfoByEidaResponseType" />
+      <xsd:element name="getMDinfoByDate" type="tns:getMDinfoByDateRequestType" />
+      <xsd:element name="getMDinfoByDateResponse" type="tns:getMDinfoByDateResponseType" />
+      <xsd:element name="getMDinfoBySimilarName" type="tns:getMDinfoBySimilarNameRequestType" />
+      <xsd:element name="getMDinfoBySimilarNameResponse" type="tns:getMDinfoBySimilarNameResponseType" />
+      <xsd:element name="getBinaryFileByCertifcateRef" type="tns:getBinaryFileByCertifcateRefRequestType" />
+      <xsd:element name="getBinaryFileByCertifcateRefResponse" type="tns:getBinaryFileByCertifcateRefResponseType" />
+      <xsd:element name="getMDinfoByCertifcateRef" type="tns:getMDinfoByCertifcateRefRequestType" />
+      <xsd:element name="getMDinfoByCertifcateRefResponse" type="tns:getMDinfoByCertifcateRefResponseType" />
+      <xsd:element name="getMDinfoByFullName" type="tns:getMDinfoByFullNameRequestType" />
+      <xsd:element name="getMDinfoByFullNameResponse" type="tns:getMDinfoByFullNameResponseType" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getMDinfoByEidaRequest">
+    <wsdl:part name="getMDinfoByEidaRequest" element="tns:getMDinfoByEida" />
+  </wsdl:message>
+  <wsdl:message name="getBinaryFileByCertifcateRefRequest">
+    <wsdl:part name="getBinaryFileByCertifcateRefRequest" element="tns:getBinaryFileByCertifcateRef" />
+  </wsdl:message>
+  <wsdl:message name="outHeaderMessage">
+    <wsdl:part name="outHeaderType" element="tns:outHeaderKey" />
+  </wsdl:message>
+  <wsdl:message name="getMDinfoByFullNameResponse">
+    <wsdl:part name="getMDinfoByFullNameResponse" element="tns:getMDinfoByFullNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMDinfoByCertifcateRefResponse">
+    <wsdl:part name="getMDinfoByCertifcateRefResponse" element="tns:getMDinfoByCertifcateRefResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBinaryFileByCertifcateRefResponse">
+    <wsdl:part name="getBinaryFileByCertifcateRefResponse" element="tns:getBinaryFileByCertifcateRefResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMDinfoByDateResponse">
+    <wsdl:part name="getMDinfoByDateResponse" element="tns:getMDinfoByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMDinfoByEidaResponse">
+    <wsdl:part name="getMDinfoByEidaResponse" element="tns:getMDinfoByEidaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMDinfoByDateRequest">
+    <wsdl:part name="getMDinfoByDateRequest" element="tns:getMDinfoByDate" />
+  </wsdl:message>
+  <wsdl:message name="inHeaderMessage">
+    <wsdl:part name="inHeaderType" element="tns:inHeaderKey" />
+  </wsdl:message>
+  <wsdl:message name="getMDinfoBySimilarNameRequest">
+    <wsdl:part name="getMDinfoBySimilarNameRequest" element="tns:getMDinfoBySimilarName" />
+  </wsdl:message>
+  <wsdl:message name="getMDinfoByCertifcateRefRequest">
+    <wsdl:part name="getMDinfoByCertifcateRefRequest" element="tns:getMDinfoByCertifcateRef" />
+  </wsdl:message>
+  <wsdl:message name="getMDinfoByFullNameRequest">
+    <wsdl:part name="getMDinfoByFullNameRequest" element="tns:getMDinfoByFullName" />
+  </wsdl:message>
+  <wsdl:message name="getMDinfoBySimilarNameResponse">
+    <wsdl:part name="getMDinfoBySimilarNameResponse" element="tns:getMDinfoBySimilarNameResponse" />
+  </wsdl:message>
+  <wsdl:portType ns0:PolicyURIs="#UTOverTransport" name="DubaiCourtMarriageDivorceAttestationPortType">
+    <wsdl:operation name="getBinaryFileByCertifcateRef">
+      <wsdl:input wsaw:Action="wsdlhttp://mdws/MDAinquiryService:getBinaryFileByCertifcateRef" message="tns:getBinaryFileByCertifcateRefRequest" />
+      <wsdl:output wsaw:Action="wsdlhttp://mdws/MDAinquiryService/MDAinquiryService_Interface/getBinaryFileByCertifcateRefResponse" message="tns:getBinaryFileByCertifcateRefResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByFullName">
+      <wsdl:input wsaw:Action="wsdlhttp://mdws/MDAinquiryService:getMDinfoByFullName" message="tns:getMDinfoByFullNameRequest" />
+      <wsdl:output wsaw:Action="wsdlhttp://mdws/MDAinquiryService/MDAinquiryService_Interface/getMDinfoByFullNameResponse" message="tns:getMDinfoByFullNameResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoBySimilarName">
+      <wsdl:input wsaw:Action="wsdlhttp://mdws/MDAinquiryService:getMDinfoBySimilarName" message="tns:getMDinfoBySimilarNameRequest" />
+      <wsdl:output wsaw:Action="wsdlhttp://mdws/MDAinquiryService/MDAinquiryService_Interface/getMDinfoBySimilarNameResponse" message="tns:getMDinfoBySimilarNameResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByCertifcateRef">
+      <wsdl:input wsaw:Action="wsdlhttp://mdws/MDAinquiryService:getMDinfoByCertifcateRef" message="tns:getMDinfoByCertifcateRefRequest" />
+      <wsdl:output wsaw:Action="wsdlhttp://mdws/MDAinquiryService/MDAinquiryService_Interface/getMDinfoByCertifcateRefResponse" message="tns:getMDinfoByCertifcateRefResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByEida">
+      <wsdl:input wsaw:Action="wsdlhttp://mdws/MDAinquiryService:getMDinfoByEida" message="tns:getMDinfoByEidaRequest" />
+      <wsdl:output wsaw:Action="wsdlhttp://mdws/MDAinquiryService/MDAinquiryService_Interface/getMDinfoByEidaResponse" message="tns:getMDinfoByEidaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByDate">
+      <wsdl:input wsaw:Action="wsdlhttp://mdws/MDAinquiryService:getMDinfoByDate" message="tns:getMDinfoByDateRequest" />
+      <wsdl:output wsaw:Action="wsdlhttp://mdws/MDAinquiryService/MDAinquiryService_Interface/getMDinfoByDateResponse" message="tns:getMDinfoByDateResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DubaiCourtMarriageDivorceAttestationSoap12Binding" type="tns:DubaiCourtMarriageDivorceAttestationPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getBinaryFileByCertifcateRef">
+      <soap12:operation soapAction="http://mdws/MDAinquiryService:getBinaryFileByCertifcateRef" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:inHeaderMessage" part="inHeaderType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:outHeaderMessage" part="outHeaderType" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByFullName">
+      <soap12:operation soapAction="http://mdws/MDAinquiryService:getMDinfoByFullName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:inHeaderMessage" part="inHeaderType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:outHeaderMessage" part="outHeaderType" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoBySimilarName">
+      <soap12:operation soapAction="http://mdws/MDAinquiryService:getMDinfoBySimilarName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:inHeaderMessage" part="inHeaderType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:outHeaderMessage" part="outHeaderType" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByCertifcateRef">
+      <soap12:operation soapAction="http://mdws/MDAinquiryService:getMDinfoByCertifcateRef" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:inHeaderMessage" part="inHeaderType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:outHeaderMessage" part="outHeaderType" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByEida">
+      <soap12:operation soapAction="http://mdws/MDAinquiryService:getMDinfoByEida" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:inHeaderMessage" part="inHeaderType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:outHeaderMessage" part="outHeaderType" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByDate">
+      <soap12:operation soapAction="http://mdws/MDAinquiryService:getMDinfoByDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:inHeaderMessage" part="inHeaderType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:outHeaderMessage" part="outHeaderType" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DubaiCourtMarriageDivorceAttestationSoap11Binding" type="tns:DubaiCourtMarriageDivorceAttestationPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getBinaryFileByCertifcateRef">
+      <soap:operation soapAction="http://mdws/MDAinquiryService:getBinaryFileByCertifcateRef" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap12:header message="tns:inHeaderMessage" part="inHeaderType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap12:header message="tns:outHeaderMessage" part="outHeaderType" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByFullName">
+      <soap:operation soapAction="http://mdws/MDAinquiryService:getMDinfoByFullName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap12:header message="tns:inHeaderMessage" part="inHeaderType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap12:header message="tns:outHeaderMessage" part="outHeaderType" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoBySimilarName">
+      <soap:operation soapAction="http://mdws/MDAinquiryService:getMDinfoBySimilarName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap12:header message="tns:inHeaderMessage" part="inHeaderType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap12:header message="tns:outHeaderMessage" part="outHeaderType" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByCertifcateRef">
+      <soap:operation soapAction="http://mdws/MDAinquiryService:getMDinfoByCertifcateRef" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap12:header message="tns:inHeaderMessage" part="inHeaderType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap12:header message="tns:outHeaderMessage" part="outHeaderType" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByEida">
+      <soap:operation soapAction="http://mdws/MDAinquiryService:getMDinfoByEida" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap12:header message="tns:inHeaderMessage" part="inHeaderType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap12:header message="tns:outHeaderMessage" part="outHeaderType" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByDate">
+      <soap:operation soapAction="http://mdws/MDAinquiryService:getMDinfoByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap12:header message="tns:inHeaderMessage" part="inHeaderType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap12:header message="tns:outHeaderMessage" part="outHeaderType" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DubaiCourtMarriageDivorceAttestationHttpBinding" type="tns:DubaiCourtMarriageDivorceAttestationPortType">
+    <wsdlhttp:binding verb="POST" />
+    <wsdl:operation name="getBinaryFileByCertifcateRef">
+      <wsdlhttp:operation location="getBinaryFileByCertifcateRef" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByFullName">
+      <wsdlhttp:operation location="getMDinfoByFullName" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoBySimilarName">
+      <wsdlhttp:operation location="getMDinfoBySimilarName" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByCertifcateRef">
+      <wsdlhttp:operation location="getMDinfoByCertifcateRef" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByEida">
+      <wsdlhttp:operation location="getMDinfoByEida" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMDinfoByDate">
+      <wsdlhttp:operation location="getMDinfoByDate" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getMarriageDivorceDetails_DC">
+    <wsdl:port name="getMarriageDivorceDetails_DCsoaphttps" binding="tns:DubaiCourtMarriageDivorceAttestationSoap11Binding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/DubaiCourts/Soap/PersonalCourt/V1" />
+    </wsdl:port>
+    <wsdl:port name="DubaiCourtMarriageDivorceAttestationHttpBinding" binding="tns:DubaiCourtMarriageDivorceAttestationHttpBinding">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/DubaiCourts/Soap/PersonalCourt/V1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

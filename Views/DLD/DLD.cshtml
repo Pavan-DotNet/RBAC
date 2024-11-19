@@ -1,0 +1,537 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "نظام ايجاري - دبي";
+}
+
+<br />
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>نظام ايجاري - دبي</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+        <table class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> نوع المستند</b></small></h6></td>
+                <td colspan="3" align="center">
+                    <select id="documentype" class="dropdown dropdown-header form-control">
+                        <option value="-1">-- اختر --</option>
+                        <option value="2">بطاقة هوية</option>
+                        <option value="3">جواز سفر</option>
+                        <option value="4">أخرى</option>
+                    </select>
+                </td>
+
+            </tr>
+        </table>
+        <table id="NationalId" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> بطاقة هوية </b></small></h6></td>
+                <td colspan="3"> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="Passport" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> جواز سفر </b></small></h6></td>
+                <td> <input id="txtPassportNo" type="text" class="form-control" style="width:100%" /></td>
+                <td><h6><small><b> الجنسية </b></small></h6></td>
+                <td align="center">
+                    <select id="Nationalitytype" class="dropdown dropdown-header form-control ">
+                        <option value="-1">-- اختر --</option>
+                        <option value="2">بطاقة هوية</option>
+                        <option value="3">جواز سفر</option>
+                        <option value="4">أخرى</option>
+                    </select>
+                </td>
+
+            </tr>
+        </table>
+        <table id="Other" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b>اسم المالك بالعربي</b></small></h6></td>
+                <td> <input id="txtOwnerNameAr" type="text" class="form-control" style="width:100%" /></td>
+                <td><h6><small><b>اسم المالك بالانجليزي</b></small></h6></td>
+                <td> <input id="txtOwnerNameEn" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+            <tr>
+                <td><h6><small><b>اسم العائلة بالعربي</b></small></h6></td>
+                <td> <input id="txtFamilyNameAr" type="text" class="form-control" style="width:100%" /></td>
+                <td><h6><small><b>اسم العائلة بالانجليزي</b></small></h6></td>
+                <td> <input id="txtFamilyNameEn" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+            <tr>
+                <td><h6><small><b>رقم الهاتف المتحرك</b></small></h6></td>
+                <td colspan="3"> <input id="txtMobileNo" type="text" class="form-control" style="width:100%" /></td>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsearch" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+
+
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم الهوية
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم الجواز
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الاسم
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم الهاتف المتحرك
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم المالك
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody text-center" id="tbody"></tbody>
+
+        </table>
+        <table class="DataTablemore table table-bordered  table-hover text-center table-active ">
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم المنطقة بالعربي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم البناية بالعربي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    مبلغ التعاقد
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم الأرض
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم المنطقة بالعربي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbodymore text-center" id="tbodymore"></tbody>
+
+        </table>
+
+        <table class="DataTableadd table table-bordered  table-hover text-center table-active ">
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الأرض والمنطقة بالعربي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم البناية بالعربي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم العقد
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ بداية العقد
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ انتهاء العقد
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    قيمة التعاقد
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbodyadd text-center" id="tbodyadd"></tbody>
+
+        </table>
+        <div id="response" class="bg-danger"></div>
+
+    </div>
+</div>
+
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+
+            $('.DataTable').hide();
+            $('.DataTablemore').hide();
+             $('.DataTableadd').hide();
+             $('#Passport').hide();
+             $('#NationalId').hide();
+            $('#Other').hide();
+             $('#SubmitTable').hide();
+
+        });
+
+        $("#documentype").change(function () {
+
+            $('#txtEmiratesId').val('');
+            $('#txtPassportNo').val('');
+            $('#txtDoB').val('');
+            $('#txtName').val('');
+            $('#Other').val("-1");
+
+
+            var val = $("#documentype option:selected").val();
+
+            if (val == '-1') {
+                 $('#Passport').hide();
+             $('#NationalId').hide();
+                $('#Other').hide();
+                $(".tbody").empty();
+                 $('#SubmitTable').hide();
+            }
+            else if (val == '2')
+                {
+                $('#Passport').hide();
+             $('#NationalId').show();
+                $('#Other').hide();
+                $('#SubmitTable').show();
+            }
+            else if (val == '3')
+            {
+                $('#Passport').show();
+             $('#NationalId').hide();
+                $('#Other').hide();
+                 $('#SubmitTable').show();
+            }
+             else if (val == '4')
+            {
+             $('#Passport').hide();
+             $('#NationalId').hide();
+                $('#Other').show();
+                 $('#SubmitTable').show();
+            }
+
+        });
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search","DLD")';
+            var id = $("#documentype option:selected").val();
+            $(".tbody").empty();
+            $('.DataTable').hide();
+            $('.DataTablemore').hide();
+
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if (id == 2 && $("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid EmiratesId');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else if (id == 3 && $("#txtPassportNo").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid passport number');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtPassportNo").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+            }
+            //else if (id == 4) {
+
+            //    document.getElementById('error').innerText = ('Invalid Nationality ');
+            //    document.getElementById('error').style.color = 'white';
+
+            //    $("#txtPassportNo").focus();
+            //
+
+            //    $("#divLoading").html("");
+
+            //    return false;
+            //}
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var input = { "OwnerEmirateId": $('#txtEmiratesId').val(), "OwnerPassportNo": $('#txtPassportNo').val(), "OwnerCountryID": $("#Nationalitytype option:selected").val(), "OwnerNameAr": $('#txtOwnerNameAr').val(), "OwnerNameEn": $('#txtOwnerNameEn').val(), "OwnerFamilyNameAr": $('#txtFamilyNameAr').val(), "OwnerFamilyNameEn": $('#txtFamilyNameEn').val(), "OwnerMobile": $('#txtMobileNo').val() };
+             var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { index: id, postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent)  }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+
+                if (obj.flag == "1") {
+
+
+                    if (JSON.parse(obj.searchOwner).Data != null && JSON.parse(obj.searchOwner).Data != 'undefined') {
+                        $.each(JSON.parse(obj.searchOwner).Data, function (key, item) {
+
+                            html += '<tr id="target">';
+                            html += '<td>' + item.EmiratesId + '</td>';
+                            html += '<td>' + item.PassportNo + '</td>';
+                            html += '<td>' + item.NameAr + item.FamilyNameAr + '</td>';
+                            html += '<td>' + item.MobileNumber + '</td>';
+                            html += '<td>' + item.OwnerNo + '</td>';
+                            html += '</tr>';
+                        });
+
+                        $(".tbody").append(html);
+                        $('.DataTable').show();
+
+                    }
+
+                    if (JSON.parse(obj.searchOwner).Fault != null && JSON.parse(obj.searchOwner).Fault != 'undefined') {
+
+                            document.getElementById('response').innerText += ( JSON.parse(obj.searchOwner).Fault.errorCode + "-" +  JSON.parse(obj.searchOwner).Fault.reason  + "-" +  JSON.parse(obj.searchOwner).Fault.message);
+                            document.getElementById('response').style.color = 'white';
+
+                         $(".tbody").empty();
+                        $('.DataTable').hide();
+
+                    }
+
+                }
+                else {
+
+                    document.getElementById('response').innerText = (obj.resp);
+                    document.getElementById('response').style.color = 'white';
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+        function getMoreData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("SearchMoreData","DLD")';
+            $(".tbodymore").empty();
+            $('.DataTablemore').hide();
+             $(".tbodyadd").empty();
+            $('.DataTableadd').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+            var htmlmore = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+
+            var input = { "OwnerNo": $(this).find('td:last').text() };
+            var UsrAgent = { "UserAgent": $.browser };
+            $.get(url, { postdata: JSON.stringify(input) , UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                var obj = JSON.parse(data);
+                if (obj.flag == "1") {
+
+                    if (JSON.parse(obj.searchOwnerProperties).Data != null && JSON.parse(obj.searchOwnerProperties).Data != 'undefined') {
+                        $.each(JSON.parse(obj.searchOwnerProperties).Data, function (key, item) {
+
+                            html += '<tr>';
+                            html += '<td>' + item.AreaNameAr + '</td>';
+                            html += '<td>' + item.BuildingNameAr + '</td>';
+                            html += '<td>' + item.ContractAmount + '</td>';
+                            html += '<td>' + item.Landno + '</td>';
+                            html += '<td>' + item.ZoneNameAr + '</td>';
+                            html += '</tr>';
+                        });
+
+                        $(".tbodymore").append(html);
+                        $('.DataTablemore').show();
+                    }
+                    if (JSON.parse(obj.searchOwnerProperties).Fault != null && JSON.parse(obj.searchOwnerProperties).Fault != 'undefined') {
+                          document.getElementById('response').innerText += ( JSON.parse(obj.searchOwnerProperties).Fault.errorCode + "-" +  JSON.parse(obj.searchOwnerProperties).Fault.reason  + "-" +  JSON.parse(obj.searchOwnerProperties).Fault.message);
+                            document.getElementById('response').style.color = 'white';
+                    }
+
+                    if (JSON.parse(obj.getOwnerContractDetails).Data != null && JSON.parse(obj.getOwnerContractDetails).Data != 'undefined') {
+                        $.each(JSON.parse(obj.getOwnerContractDetails).Data, function (key, item) {
+
+                            htmlmore += '<tr>';
+                            htmlmore += '<td>' + item.Land_Area_Name_Ar + '</td>';
+                            htmlmore += '<td>' + item.Building_Name_Ar + '</td>';
+                            htmlmore += '<td>' + item.Contract_Number + '</td>';
+                            htmlmore += '<td>' + item.Contract_Start_Date + '</td>';
+                            htmlmore += '<td>' + item.Contract_End_Date + '</td>';
+                            htmlmore += '<td>' + item.Contract_Amount + '</td>';
+                            htmlmore += '</tr>';
+
+                        });
+
+                        $(".tbodyadd").append(htmlmore);
+                        $('.DataTableadd').show();
+                    }
+                    if (JSON.parse(obj.getOwnerContractDetails).Fault != null && JSON.parse(obj.getOwnerContractDetails).Fault != 'undefined') {
+                        document.getElementById('response').innerText += ( JSON.parse(obj.getOwnerContractDetails).Fault.errorCode + "-" +  JSON.parse(obj.getOwnerContractDetails).Fault.reason  + "-" +  JSON.parse(obj.getOwnerContractDetails).Fault.message);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                else {
+
+                    document.getElementById('response').innerText = (obj.Message);
+                    document.getElementById('response').style.color = 'white';
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsearch").on("click", getData);
+       $(".tbody").on('click', 'tr', getMoreData);
+
+         $('#create_pdf').on('click', function () {
+            getPDF("DubaiLand.pdf");
+       });
+
+    </script>
+}

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://siebel.com/CustomUI" targetNamespace="http://siebel.com/CustomUI" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <documentation>This service is owned by CDA which exposes the socialSecurityBenefit details of citizens from Dubai emirate.
+</documentation>
+  <types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://siebel.com/CustomUI">
+      <xsd:element name="CDA_spcMOCD_spcWSDL_spcWF_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Family_Number" type="xsd:string" />
+            <xsd:element name="Unified_Number" type="xsd:string" />
+            <xsd:element name="Emirates_spcID" type="xsd:string" />
+            <xsd:element name="PassportNum" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CDA_spcMOCD_spcWSDL_spcWF_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Aid_Source" type="xsd:string" />
+            <xsd:element name="Approval_Date" type="xsd:string" />
+            <xsd:element name="Approved" type="xsd:string" />
+            <xsd:element name="Beneficiary_Name" type="xsd:string" />
+            <xsd:element name="Category" type="xsd:string" />
+            <xsd:element name="CreatedDate" type="xsd:string" />
+            <xsd:element name="DateofBirth" type="xsd:string" />
+            <xsd:element name="DateofDeath" type="xsd:string" />
+            <xsd:element name="Description" type="xsd:string" />
+            <xsd:element name="Disbusrsment_Status" type="xsd:string" />
+            <xsd:element name="Education_Level" type="xsd:string" />
+            <xsd:element name="Error_Message_EmiratesId" type="xsd:string" />
+            <xsd:element name="Error_Message_Family_No" type="xsd:string" />
+            <xsd:element name="Error_Message_PH_SR" type="xsd:string" />
+            <xsd:element name="Error_Message_POD_SR" type="xsd:string" />
+            <xsd:element name="Error_Message_Passport_No" type="xsd:string" />
+            <xsd:element name="Error_Message_RFA_SR" type="xsd:string" />
+            <xsd:element name="Error_Message_TH_spcSR" type="xsd:string" />
+            <xsd:element name="Error_Message_Unified_No" type="xsd:string" />
+            <xsd:element name="File_Number" type="xsd:string" />
+            <xsd:element name="First_Name" type="xsd:string" />
+            <xsd:element name="Full_Name_Arabic" type="xsd:string" />
+            <xsd:element name="Good_Manner_and_Behavior_Letter" type="xsd:string" />
+            <xsd:element name="Health_Situation" type="xsd:string" />
+            <xsd:element name="Job" type="xsd:string" />
+            <xsd:element name="Makani_Number" type="xsd:string" />
+            <xsd:element name="Marital_Status" type="xsd:string" />
+            <xsd:element name="Monthly_Income" type="xsd:string" />
+            <xsd:element name="Mother_Name_Arabic" type="xsd:string" />
+            <xsd:element name="Nationality" type="xsd:string" />
+            <xsd:element name="New" type="xsd:string" />
+            <xsd:element name="Notes" type="xsd:string" />
+            <xsd:element name="Number_of_Family_Members" type="xsd:string" />
+            <xsd:element name="PHApproved" type="xsd:string" />
+            <xsd:element name="PHCreatedDate" type="xsd:string" />
+            <xsd:element name="PHNew" type="xsd:string" />
+            <xsd:element name="PHNotes" type="xsd:string" />
+            <xsd:element name="PHSR_pnd" type="xsd:string" />
+            <xsd:element name="PHStage" type="xsd:string" />
+            <xsd:element name="PHStatus" type="xsd:string" />
+            <xsd:element name="PH_ReStudy" type="xsd:string" />
+            <xsd:element name="POD_Approved" type="xsd:string" />
+            <xsd:element name="POD_Created_Date" type="xsd:string" />
+            <xsd:element name="POD_New" type="xsd:string" />
+            <xsd:element name="POD_Notes" type="xsd:string" />
+            <xsd:element name="POD_ReStudy" type="xsd:string" />
+            <xsd:element name="POD_SR_pnd" type="xsd:string" />
+            <xsd:element name="POD_Stage" type="xsd:string" />
+            <xsd:element name="POD_Status" type="xsd:string" />
+            <xsd:element name="POD_Total_Benefit_Approved" type="xsd:string" />
+            <xsd:element name="Person_is_Dead" type="xsd:string" />
+            <xsd:element name="PreparingHouseBenefit" type="xsd:string" />
+            <xsd:element name="Primary_Phone_Number" type="xsd:string" />
+            <xsd:element name="Re_Study" type="xsd:string" />
+            <xsd:element name="Relation_Type" type="xsd:string" />
+            <xsd:element name="Request_Status" type="xsd:string" />
+            <xsd:element name="SR_pnd" type="xsd:string" />
+            <xsd:element name="Stage" type="xsd:string" />
+            <xsd:element name="Status" type="xsd:string" />
+            <xsd:element name="TH_Approved" type="xsd:string" />
+            <xsd:element name="TH_Created_Date" type="xsd:string" />
+            <xsd:element name="TH_New" type="xsd:string" />
+            <xsd:element name="TH_Notes" type="xsd:string" />
+            <xsd:element name="TH_ReStudy" type="xsd:string" />
+            <xsd:element name="TH_SR_pnd" type="xsd:string" />
+            <xsd:element name="TH_Stage" type="xsd:string" />
+            <xsd:element name="TH_Status" type="xsd:string" />
+            <xsd:element name="TH_Total_Benefit_Approved" type="xsd:string" />
+            <xsd:element name="Total_Benefit_Approved" type="xsd:string" />
+            <xsd:element name="Type" type="xsd:string" />
+            <xsd:element name="TypeOfBenefit" type="xsd:string" />
+            <xsd:element name="TypeOfBenefit_1" type="xsd:string" />
+            <xsd:element name="TypeOfBenefit_2" type="xsd:string" />
+            <xsd:element name="TypeOfBenefit_3" type="xsd:string" />
+            <xsd:element name="Type_of_Housing" type="xsd:string" />
+            <xsd:element name="Type_of_Income" type="xsd:string" />
+            <xsd:element name="Zone" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="CDA_spcMOCD_spcWSDL_spcWF_Output">
+    <part name="CDA_spcMOCD_spcWSDL_spcWF_Output" element="tns:CDA_spcMOCD_spcWSDL_spcWF_Output" />
+  </message>
+  <message name="CDA_spcMOCD_spcWSDL_spcWF_Input">
+    <part name="CDA_spcMOCD_spcWSDL_spcWF_Input" element="tns:CDA_spcMOCD_spcWSDL_spcWF_Input" />
+  </message>
+  <portType name="CDA_spcMOCD_spcWSDL_spcWF">
+    <operation name="CDA_spcMOCD_spcWSDL_spcWF">
+      <input message="tns:CDA_spcMOCD_spcWSDL_spcWF_Input" />
+      <output message="tns:CDA_spcMOCD_spcWSDL_spcWF_Output" />
+    </operation>
+  </portType>
+  <binding name="CDA_spcMOCD_spcWSDL_spcWF" type="tns:CDA_spcMOCD_spcWSDL_spcWF">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="CDA_spcMOCD_spcWSDL_spcWF">
+      <soap:operation soapAction="document/http://siebel.com/CustomUI:CDA_spcMOCD_spcWSDL_spcWF" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="socialSecurityBenefit_CDA">
+    <port name="socialSecurityBenefit_CDAsoaphttps" binding="tns:CDA_spcMOCD_spcWSDL_spcWF">
+      <soap:address location="https://integrate.gsb.government.ae/ws/socialSecurityBenefit_CDA.socialSecurityBenefit_CDAsoaphttps/1.0" />
+    </port>
+  </service>
+</definitions>

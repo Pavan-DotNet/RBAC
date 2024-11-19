@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This service will provide marital status of UAE nationals and non-UAE nationals.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetMarriage_Details_byEID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmiratesID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMarriage_Details_byEIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMarriage_Details_byEIDResult" type="tns:Data_OutPut" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Data_OutPut">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Data_output">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDescription_Ar" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMarriage_Details_byName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMarriage_Details_byNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMarriage_Details_byNameResult" type="tns:Data_OutPut" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMarriage_Details_byDOB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DOB" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMarriage_Details_byDOBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMarriage_Details_byDOBResult" type="tns:Data_OutPut" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDivorce_Details_byEID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmiratesID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDivorce_Details_byEIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDivorce_Details_byEIDResult" type="tns:Data_OutPut" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDivorce_Details_byName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDivorce_Details_byNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDivorce_Details_byNameResult" type="tns:Data_OutPut" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDivorce_Details_byDOB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DOB" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDivorce_Details_byDOBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDivorce_Details_byDOBResult" type="tns:Data_OutPut" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetMarriage_Details_byDOBSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMarriage_Details_byDOBResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDivorce_Details_byNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDivorce_Details_byNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMarriage_Details_byEIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMarriage_Details_byEID" />
+  </wsdl:message>
+  <wsdl:message name="GetMarriage_Details_byDOBSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMarriage_Details_byDOB" />
+  </wsdl:message>
+  <wsdl:message name="GetMarriage_Details_byNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMarriage_Details_byNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDivorce_Details_byDOBSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDivorce_Details_byDOB" />
+  </wsdl:message>
+  <wsdl:message name="GetDivorce_Details_byDOBSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDivorce_Details_byDOBResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMarriage_Details_byNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMarriage_Details_byName" />
+  </wsdl:message>
+  <wsdl:message name="GetDivorce_Details_byEIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDivorce_Details_byEIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDivorce_Details_byNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDivorce_Details_byName" />
+  </wsdl:message>
+  <wsdl:message name="GetDivorce_Details_byEIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDivorce_Details_byEID" />
+  </wsdl:message>
+  <wsdl:message name="GetMarriage_Details_byEIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMarriage_Details_byEIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Moj_GetDataSoap">
+    <wsdl:operation name="GetMarriage_Details_byEID">
+      <wsdl:input message="tns:GetMarriage_Details_byEIDSoapIn" />
+      <wsdl:output message="tns:GetMarriage_Details_byEIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMarriage_Details_byName">
+      <wsdl:input message="tns:GetMarriage_Details_byNameSoapIn" />
+      <wsdl:output message="tns:GetMarriage_Details_byNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMarriage_Details_byDOB">
+      <wsdl:input message="tns:GetMarriage_Details_byDOBSoapIn" />
+      <wsdl:output message="tns:GetMarriage_Details_byDOBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byEID">
+      <wsdl:input message="tns:GetDivorce_Details_byEIDSoapIn" />
+      <wsdl:output message="tns:GetDivorce_Details_byEIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byName">
+      <wsdl:input message="tns:GetDivorce_Details_byNameSoapIn" />
+      <wsdl:output message="tns:GetDivorce_Details_byNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byDOB">
+      <wsdl:input message="tns:GetDivorce_Details_byDOBSoapIn" />
+      <wsdl:output message="tns:GetDivorce_Details_byDOBSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Moj_GetDataHttpGET" type="tns:Moj_GetDataSoap">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetMarriage_Details_byEID">
+      <soap:operation soapAction="http://tempuri.org/GetMarriage_Details_byEID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarriage_Details_byName">
+      <soap:operation soapAction="http://tempuri.org/GetMarriage_Details_byName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarriage_Details_byDOB">
+      <soap:operation soapAction="http://tempuri.org/GetMarriage_Details_byDOB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byEID">
+      <soap:operation soapAction="http://tempuri.org/GetDivorce_Details_byEID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byName">
+      <soap:operation soapAction="http://tempuri.org/GetDivorce_Details_byName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byDOB">
+      <soap:operation soapAction="http://tempuri.org/GetDivorce_Details_byDOB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Moj_GetDataHttpPOST" type="tns:Moj_GetDataSoap">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetMarriage_Details_byEID">
+      <soap:operation soapAction="http://tempuri.org/GetMarriage_Details_byEID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarriage_Details_byName">
+      <soap:operation soapAction="http://tempuri.org/GetMarriage_Details_byName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarriage_Details_byDOB">
+      <soap:operation soapAction="http://tempuri.org/GetMarriage_Details_byDOB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byEID">
+      <soap:operation soapAction="http://tempuri.org/GetDivorce_Details_byEID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byName">
+      <soap:operation soapAction="http://tempuri.org/GetDivorce_Details_byName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byDOB">
+      <soap:operation soapAction="http://tempuri.org/GetDivorce_Details_byDOB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Moj_GetDataSoap" type="tns:Moj_GetDataSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMarriage_Details_byEID">
+      <soap:operation soapAction="http://tempuri.org/GetMarriage_Details_byEID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarriage_Details_byName">
+      <soap:operation soapAction="http://tempuri.org/GetMarriage_Details_byName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarriage_Details_byDOB">
+      <soap:operation soapAction="http://tempuri.org/GetMarriage_Details_byDOB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byEID">
+      <soap:operation soapAction="http://tempuri.org/GetDivorce_Details_byEID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byName">
+      <soap:operation soapAction="http://tempuri.org/GetDivorce_Details_byName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byDOB">
+      <soap:operation soapAction="http://tempuri.org/GetDivorce_Details_byDOB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Moj_GetDataSoap12" type="tns:Moj_GetDataSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMarriage_Details_byEID">
+      <soap12:operation soapAction="http://tempuri.org/GetMarriage_Details_byEID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarriage_Details_byName">
+      <soap12:operation soapAction="http://tempuri.org/GetMarriage_Details_byName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarriage_Details_byDOB">
+      <soap12:operation soapAction="http://tempuri.org/GetMarriage_Details_byDOB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byEID">
+      <soap12:operation soapAction="http://tempuri.org/GetDivorce_Details_byEID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byName">
+      <soap12:operation soapAction="http://tempuri.org/GetDivorce_Details_byName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDivorce_Details_byDOB">
+      <soap12:operation soapAction="http://tempuri.org/GetDivorce_Details_byDOB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getMaritalStatus">
+    <wsdl:port name="getMaritalStatussoaphttp" binding="tns:Moj_GetDataSoap">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/MOJ/Soap/MaritalStatus/V1" />
+    </wsdl:port>
+    <wsdl:port name="getMaritalStatushttp" binding="tns:Moj_GetDataHttpPOST">
+      <http:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/MOJ/Soap/MaritalStatus/V1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

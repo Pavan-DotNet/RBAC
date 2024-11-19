@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:q1="http://schemas.datacontract.org/2004/07/galaxyService" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="socialSecurityBenefit_ZF" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This service provides social security benefits to constituents in UAE based on certain criteria like EID etc. </wsdl:documentation>
+  <wsp:Policy wsu:Id="wsSecureService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss10>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=a721660e3356d35a3dfd2145c229bca8&amp;servdocoid=765ad773d0de39d764c43a46f5d916af" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=a721660e3356d35a3dfd2145c229bca8&amp;servdocoid=765ad773d0de39d764c43a46f5d916b1" namespace="http://schemas.datacontract.org/2004/07/galaxyService" />
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=a721660e3356d35a3dfd2145c229bca8&amp;servdocoid=765ad773d0de39d764c43a46f5d916b2" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IZakatFundSrv_GetData_FaultHandleFault_FaultMessage">
+    <wsdl:part name="detail" element="q1:FaultHandle" />
+  </wsdl:message>
+  <wsdl:message name="IZakatFundSrv_SetData_FaultHandleFault_FaultMessage">
+    <wsdl:part name="detail" element="q1:FaultHandle" />
+  </wsdl:message>
+  <wsdl:message name="StatusResult">
+    <wsdl:part name="parameters" element="tns:StatusResult" />
+  </wsdl:message>
+  <wsdl:message name="CDataCredentialinput">
+    <wsdl:part name="parameters" element="tns:CDataCredentialinput" />
+  </wsdl:message>
+  <wsdl:message name="Resultmsg">
+    <wsdl:part name="parameters" element="tns:Resultmsg" />
+  </wsdl:message>
+  <wsdl:message name="CredentialInput">
+    <wsdl:part name="parameters" element="tns:CredentialInput" />
+  </wsdl:message>
+  <wsdl:portType name="IZakatFundSrv">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZakatFundSrv/GetData" name="CredentialInput" message="tns:CredentialInput" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZakatFundSrv/GetDataResponse" name="StatusResult" message="tns:StatusResult" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IZakatFundSrv/GetDataFaultHandleFault" name="FaultHandleFault" message="tns:IZakatFundSrv_GetData_FaultHandleFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZakatFundSrv/SetData" name="CDataCredentialinput" message="tns:CDataCredentialinput" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZakatFundSrv/SetDataResponse" name="Resultmsg" message="tns:Resultmsg" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IZakatFundSrv/SetDataFaultHandleFault" name="FaultHandleFault" message="tns:IZakatFundSrv_SetData_FaultHandleFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsSecureServiceHttpGET" type="tns:IZakatFundSrv">
+    <wsdlhttp:binding verb="GET" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IZakatFundSrv/GetData" style="document" />
+      <wsdl:input name="CredentialInput">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="StatusResult">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultHandleFault">
+        <soap:fault use="literal" name="FaultHandleFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SetData">
+      <soap:operation soapAction="http://tempuri.org/IZakatFundSrv/SetData" style="document" />
+      <wsdl:input name="CDataCredentialinput">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Resultmsg">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultHandleFault">
+        <soap:fault use="literal" name="FaultHandleFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsSecureServiceHttpPOST" type="tns:IZakatFundSrv">
+    <wsdlhttp:binding verb="POST" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IZakatFundSrv/GetData" style="document" />
+      <wsdl:input name="CredentialInput">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="StatusResult">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultHandleFault">
+        <soap:fault use="literal" name="FaultHandleFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SetData">
+      <soap:operation soapAction="http://tempuri.org/IZakatFundSrv/SetData" style="document" />
+      <wsdl:input name="CDataCredentialinput">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Resultmsg">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultHandleFault">
+        <soap:fault use="literal" name="FaultHandleFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsSecureService" type="tns:IZakatFundSrv">
+    <wsp:PolicyReference URI="#wsSecureService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IZakatFundSrv/GetData" style="document" />
+      <wsdl:input name="CredentialInput">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="StatusResult">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultHandleFault">
+        <soap:fault use="literal" name="FaultHandleFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SetData">
+      <soap:operation soapAction="http://tempuri.org/IZakatFundSrv/SetData" style="document" />
+      <wsdl:input name="CDataCredentialinput">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Resultmsg">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultHandleFault">
+        <soap:fault use="literal" name="FaultHandleFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="socialSecurityBenefit_ZF">
+    <wsdl:port name="wsSecureServiceHttpGET" binding="tns:wsSecureServiceHttpGET">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/Soap/socialSecurityBenefit_ZF/V1" />
+    </wsdl:port>
+    <wsdl:port name="wsSecureServiceHttpPOST" binding="tns:wsSecureServiceHttpPOST">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/Soap/socialSecurityBenefit_ZF/V1" />
+    </wsdl:port>
+    <wsdl:port name="socialSecurityBenefit_ZFsoaphttps" binding="tns:wsSecureService">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/Soap/socialSecurityBenefit_ZF/V1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.moi.gov.ae/2017/MOIServices/PersonCIInquirySchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.moi.gov.ae/2017/MOIServices/PersonCIInquirySchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:documentation xml:lang="ar"> Ø¨ÙØ§ÙØ§Øª Ø§ÙØ´Ø®Øµ  </xsd:documentation>
+    <xsd:documentation xml:lang="en">Person CI Details Data</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="InquiryCriteriaType">
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element name="unifiedNumber" type="xsd:long">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ar"> Ø§ÙØ±ÙÙ Ø§ÙÙÙØ­Ø¯</xsd:documentation>
+            <xsd:documentation xml:lang="en">Unified Number</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="identityCardNumber" type="string15">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ar"> Ø±ÙÙ Ø§ÙÙÙÙØ©</xsd:documentation>
+            <xsd:documentation xml:lang="en">Identity Card Number</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="inquiryCriteria" type="InquiryCriteriaType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ar"> Ø¨ÙØ§ÙØ§Øª Ø£ÙÙØ© Ø§ÙØ¨Ø­Ø« </xsd:documentation>
+      <xsd:documentation xml:lang="en">Inquiry Search Criteria</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="personCIDetails" type="PersonCIDetailsType" />
+  <xsd:complexType name="PersonCIDetailsType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ar"> Ø¨ÙØ§ÙØ§Øª Ø§ÙØ´Ø®Øµ  </xsd:documentation>
+      <xsd:documentation xml:lang="en">Person CI Details Data</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="isPersonHasBeenImprisoned" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="personCertificateStatus" nillable="true" type="LookupType" />
+      <xsd:element minOccurs="0" name="isPersonHasTreatment" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="isPersonExitCountry" nillable="true" type="xsd:boolean" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LookupType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ar"> Ø¬Ø¯ÙÙ Ø§ÙØ¨ÙØ§ÙØ§Øª</xsd:documentation>
+      <xsd:documentation xml:lang="en">Lookup Type Data</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="id" nillable="true" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar"> Ø§ÙØ±ÙØ² </xsd:documentation>
+          <xsd:documentation xml:lang="en">Id</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="arDesc" nillable="true" type="string80">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar"> Ø§ÙÙØµÙ Ø¹Ø±Ø¨Ù </xsd:documentation>
+          <xsd:documentation xml:lang="en">Arabic Description </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="enDesc" nillable="true" type="string80">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar"> Ø§ÙÙØµÙ ÙØ§ØªÙÙÙ </xsd:documentation>
+          <xsd:documentation xml:lang="en">English Description</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">Ø±ÙØ² Ø§ÙØ®Ø·Ø£</xsd:documentation>
+          <xsd:documentation xml:lang="en"> Error code</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="type" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar"> ÙÙØ¹ Ø§ÙØ®Ø·Ø£</xsd:documentation>
+          <xsd:documentation xml:lang="en"> Error Type</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="arDesc" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">ÙØµÙ Ø§ÙØ®Ø·Ø£ Ø¹Ø±Ø¨Ù</xsd:documentation>
+          <xsd:documentation xml:lang="en"> Error Arabic Description</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="enDesc" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">ÙØµÙ Ø§ÙØ®Ø·Ø£ ÙØ§ØªÙÙÙ </xsd:documentation>
+          <xsd:documentation xml:lang="en"> Error English Description </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="refNumber" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar"> Ø§ÙØ±ÙÙ Ø§ÙÙØ±Ø¬Ø¹Ù ÙÙØ®Ø·Ø£</xsd:documentation>
+          <xsd:documentation xml:lang="en"> Error Refrance Number</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="error" type="ErrorType" />
+  <xsd:complexType name="TrnHeaderType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="transactionId" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar"> Ø±ÙÙ Ø§ÙÙØ¹Ø§ÙÙØ©</xsd:documentation>
+          <xsd:documentation xml:lang="en">Transaction Id</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="serviceProviderEntity" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">  Ø§Ø³Ù Ø§ÙØ¬ÙØ©</xsd:documentation>
+          <xsd:documentation xml:lang="en">Service Provider Entity</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="TrnHeader" type="TrnHeaderType" />
+  <xsd:simpleType name="string15">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="15" />
+      <xsd:minLength value="15" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string16">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="16" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string80">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="80" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

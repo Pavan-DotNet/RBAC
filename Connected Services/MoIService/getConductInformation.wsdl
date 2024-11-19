@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://xmlns.moi.gov.ae/2017/MOIServices/PersonCIInquiry" xmlns:WL5G3N0="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:WL5G3N1="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:inp1="http://www.moi.gov.ae/2017/MOIServices/PersonCIInquirySchema" name="getConductInformation" targetNamespace="http://xmlns.moi.gov.ae/2017/MOIServices/PersonCIInquiry" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This service is to retrieve person criminal certificate status,conduct information from Minister Of Interior as needed by other government entities.</wsdl:documentation>
+  <xsd:annotation>
+    <xsd:appinfo>
+      <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/" xmlns:moi="http://www.moi.gov.ae/egms/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+        <rdf:Description rdf:about="http://xmlns.moi.gov.ae/2017/MOIServices/PersonCIInquiry">
+          <dcterms:title xml:lang="ar">Ø§Ø³ØªØ¹ÙØ§Ù Ø§ÙØ§Ø´Ø®Ø§Øµ ÙÙ Ø§ÙÙØ¸Ø§Ù Ø§ÙØ¬ÙØ§Ø¦Ù</dcterms:title>
+          <dcterms:title xml:lang="en">Person Details Data</dcterms:title>
+          <dcterms:description xml:lang="ar">Ø§Ø³ØªØ¹ÙØ§Ù Ø§ÙØ§Ø´Ø®Ø§Øµ ÙÙ Ø§ÙÙØ¸Ø§Ù Ø§ÙØ¬ÙØ§Ø¦Ù</dcterms:description>
+          <dcterms:description xml:lang="en">Person Details Data</dcterms:description>
+          <mireg:version>1.1</mireg:version>
+          <mireg:status>release</mireg:status>
+          <mireg:project>MOI</mireg:project>
+          <mireg:category xml:lang="ar">Ø§ÙØªØ¨Ø§Ø¯Ù Ø§ÙÙØ´ØªØ±Ù</mireg:category>
+          <mireg:category xml:lang="en">G2G</mireg:category>
+          <dcterms:jurisdiction>AE-AZ</dcterms:jurisdiction>
+          <dcterms:creator rdf:datatype="https://www.moi.gov.ae/en/About.MOI/genericcontent/about.moi.aspx">
+            <moi:OrganisationName xml:lang="en">MOI</moi:OrganisationName>
+            <moi:URL xml:lang="en">https://www.moi.gov.ae</moi:URL>
+          </dcterms:creator>
+          <dcterms:creator rdf:datatype="https://www.moi.gov.ae/en/About.MOI/genericcontent/about.moi.aspx">
+            <moi:OrganisationName xml:lang="ar">ÙØ²Ø§Ø±Ø© Ø§ÙØ¯Ø§Ø®ÙÙØ©</moi:OrganisationName>
+            <moi:URL xml:lang="ar">https://www.moi.gov.ae</moi:URL>
+          </dcterms:creator>
+          <mireg:owner rdf:datatype="https://www.moi.gov.ae/en/About.MOI/genericcontent/about.moi.aspx">
+            <moi:OrganisationName xml:lang="en">MOI</moi:OrganisationName>
+          </mireg:owner>
+          <mireg:owner rdf:datatype="https://www.moi.gov.ae/en/About.MOI/genericcontent/about.moi.aspx">
+            <moi:OrganisationName xml:lang="ar">ÙØ²Ø§Ø±Ø© Ø§ÙØ¯Ø§Ø®ÙÙØ©</moi:OrganisationName>
+          </mireg:owner>
+          <dcterms:publisher rdf:datatype="https://www.moi.gov.ae/en/About.MOI/genericcontent/about.moi.aspx">
+            <moi:OrganisationName xml:lang="en">MOI</moi:OrganisationName>
+            <moi:URL xml:lang="en">https://www.moi.gov.ae</moi:URL>
+          </dcterms:publisher>
+          <dcterms:publisher rdf:datatype="https://www.moi.gov.ae/en/About.MOI/genericcontent/about.moi.aspx">
+            <moi:OrganisationName xml:lang="ar">ÙØ²Ø§Ø±Ø© Ø§ÙØ¯Ø§Ø®ÙÙØ©</moi:OrganisationName>
+            <moi:URL xml:lang="ar">https://www.moi.gov.ae</moi:URL>
+          </dcterms:publisher>
+          <dcterms:conformsTo>http://www.w3.org/2001/XMLSchema</dcterms:conformsTo>
+        </rdf:Description>
+      </rdf:RDF>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f1b8a&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8d8" namespace="http://www.moi.gov.ae/2017/MOIServices/PersonCIInquirySchema" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="requestMessage">
+    <wsdl:part name="request" element="inp1:inquiryCriteria" />
+    <wsdl:part name="TrnHeader" element="inp1:TrnHeader" />
+  </wsdl:message>
+  <wsdl:message name="replyMessage">
+    <wsdl:part name="response" element="inp1:personCIDetails" />
+    <wsdl:part name="TrnHeader" element="inp1:TrnHeader" />
+  </wsdl:message>
+  <wsdl:message name="faultMessage">
+    <wsdl:part name="fault" element="inp1:error" />
+  </wsdl:message>
+  <wsdl:portType name="personCIInquiry_ptt">
+    <wsdl:operation name="getPersonCIDetails">
+      <wsdl:input message="tns:requestMessage" />
+      <wsdl:output message="tns:replyMessage" />
+      <wsdl:fault name="getPersonCIDetailsfault" message="tns:faultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="personCIInquiry_bindHttpGET" type="tns:personCIInquiry_ptt">
+    <wsdlhttp:binding verb="GET" />
+    <wsdl:operation name="getPersonCIDetails">
+      <soap:operation soapAction="getPersonCIDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://xmlns.moi.gov.ae/2017/MOIServices/PersonCIInquiry" parts="request" />
+        <soap:header message="tns:requestMessage" part="TrnHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://xmlns.moi.gov.ae/2017/MOIServices/PersonCIInquiry" parts="response" />
+        <soap:header message="tns:replyMessage" part="TrnHeader" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="getPersonCIDetailsfault">
+        <soap:fault use="literal" name="getPersonCIDetailsfault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="personCIInquiry_bindHttpPOST" type="tns:personCIInquiry_ptt">
+    <wsdlhttp:binding verb="POST" />
+    <wsdl:operation name="getPersonCIDetails">
+      <soap:operation soapAction="getPersonCIDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://xmlns.moi.gov.ae/2017/MOIServices/PersonCIInquiry" parts="request" />
+        <soap:header message="tns:requestMessage" part="TrnHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://xmlns.moi.gov.ae/2017/MOIServices/PersonCIInquiry" parts="response" />
+        <soap:header message="tns:replyMessage" part="TrnHeader" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="getPersonCIDetailsfault">
+        <soap:fault use="literal" name="getPersonCIDetailsfault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="personCIInquiry_bind" type="tns:personCIInquiry_ptt">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getPersonCIDetails">
+      <soap:operation soapAction="getPersonCIDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://xmlns.moi.gov.ae/2017/MOIServices/PersonCIInquiry" parts="request" />
+        <soap:header message="tns:requestMessage" part="TrnHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://xmlns.moi.gov.ae/2017/MOIServices/PersonCIInquiry" parts="response" />
+        <soap:header message="tns:replyMessage" part="TrnHeader" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="getPersonCIDetailsfault">
+        <soap:fault use="literal" name="getPersonCIDetailsfault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getConductInformation">
+    <wsdl:port name="getConductInformationsoaphttp" binding="tns:personCIInquiry_bind">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/MOI/Soap/ConductInformation/V1" />
+    </wsdl:port>
+    <wsdl:port name="getConductInformationhttp" binding="tns:personCIInquiry_bindHttpPOST">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/MOI/Soap/ConductInformation/V1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

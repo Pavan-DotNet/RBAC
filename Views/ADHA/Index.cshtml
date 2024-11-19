@@ -1,0 +1,282 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "هيئة أبوظبي للاسكان - بيانات المنزل";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>هيئة أبوظبي للاسكان - بيانات المنزل</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "ADHA")';
+
+            $(".tbody").empty();
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { EmiratesId: EmiratesId, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+
+                if (obj.flag == "1") {
+                    if (obj.itemResponse != null) {
+                        html = BindHTML(obj.itemResponse, obj.approvedServiceResponse, obj.requestServiceResponse, obj.stageResponse);
+                        $("#divTables").append(html);
+                        $('.DataTable').show();
+                    }
+                    if (obj.applicantInfoResponse != null) {
+                        for (var i = 0; i < obj.applicantInfoResponse.length; i++) {
+                            html = BindHTML1(obj.applicantInfoResponse[i]);
+                            $("#divTables").append(html);
+                            $('.DataTable').show();
+                        }
+                    }
+                   
+                    //$.each(obj.lstResponse[0].Rows, function (key, item) {
+
+                    //    html = BindHTML(item);
+                    //    $("#divTables").append(html);
+                    //    $('.DataTable').show();
+                    //});
+                }
+                else {
+
+                     if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("ADHA.pdf");
+       });
+
+
+        function BindHTML(item,item1,item2,item3) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الرقم" + '</b></small></h6></td>';
+            html += '<td>' + item.CbaNumber + '</td>';
+            html += '<td><h6><small><b>' + "رمز المرجع" + '</b></small></h6></td>';
+            html += '<td>' + item.ReferenceId + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رمز النظام" + '</b></small></h6></td>';
+            html += '<td>' + item.SystemCode + '</td>';
+            html += '<td><h6><small><b>' + "تاريخ الانشاء" + '</b></small></h6></td>';
+            html += '<td>' + item.DateOfCreation + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الاسم الكامل لمقدم الطلب بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.PrimaryApplicantFullNameArabic + '</td>';
+            html += '<td><h6><small><b>' + "الاسم الكامل لمقدم الطلب بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.PrimaryApplicantFullNameEnglish + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رمز الاستجابة" + '</b></small></h6></td>';
+            html += '<td>' + item.ResponseCode + '</td>';
+            html += '<td><h6><small><b>' + "رسالة الاستجابة" + '</b></small></h6></td>';
+            html += '<td>' + item.ResponseMessage + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "التفاصيل" + '</b></small></h6></td>';
+            html += '<td>' + item.FGBDetails + '</td>';
+            html += '<td><h6><small><b>' + "رقم المادة" + '</b></small></h6></td>';
+            html += '<td>' + item.item_Id + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "البحث عن السبب برقم الهوية" + '</b></small></h6></td>';
+            html += '<td>' + item.SearchResponseByEmirate_Id + '</td>';
+            html += '<td><h6><small><b>' + "آخر تحديث" + '</b></small></h6></td>';
+            html += '<td>' + item.LastUpdateDate + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "مكان الخدمة" + '</b></small></h6></td>';
+            html += '<td>' + item.ServiceLocation + '</td>';
+            html += '<td><h6><small><b>' + "حالة مرحلة التطبيق" + '</b></small></h6></td>';
+            html += '<td>' + item.ApplicationStageStatus + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "نوع الطلب" + '</b></small></h6></td>';
+            html += '<td>' + item.ApplicantType + '</td>';
+            html += '<td><h6><small><b>' + "حالة مرحلة التطبيق بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.AppStageStatusTextEnglish + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "حالة مرحلة التطبيق بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.AppStageStatusTextArabic + '</td>';
+            html += '<td><h6><small><b>' + "لديه طلب نشط  على التطبيق" + '</b></small></h6></td>';
+            html += '<td>' + item.HasActiveInviteOnApp + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "هل لدى الزوجة طلب نشط على التطبيق" + '</b></small></h6></td>';
+            html += '<td>' + item.HasActiveWifeConsentOnApp + '</td>';
+
+            html += '</tr>';
+
+            if (item1 != null) {
+
+                html += '<tr>';
+                html += '<td><h6><small><b>' + "اسم الخمة المعتمدة  نص" + '</b></small></h6></td>';
+                html += '<td>' + item1.ApprovedService_Text + '</td>';
+                html += '<td><h6><small><b>' + "اسم الخمة المعتمدة" + '</b></small></h6></td>';
+                html += '<td>' + item1.Name + '</td>';
+                html += '</tr>';
+            }
+
+            if (item2 != null) {
+
+                html += '<tr>';
+                html += '<td><h6><small><b>' + "اسم طلب الخدمة" + '</b></small></h6></td>';
+                html += '<td>' + item2.Name + '</td>';
+                html += '<td><h6><small><b>' + "طلب الخدمة  نص" + '</b></small></h6></td>';
+                html += '<td>' + item2.RequestedService_Text + '</td>';
+                html += '</tr>';
+            }
+            if (item3 != null) {
+                html += '<tr>';
+                html += '<td><h6><small><b>' + "مرحلة التقديم نص" + '</b></small></h6></td>';
+                html += '<td>' + item3.ApplicationStage_Text + '</td>';
+                html += '<td><h6><small><b>' + "اسم مرحلة التطبيق" + '</b></small></h6></td>';
+                html += '<td>' + item3.Name + '</td>';
+                html += '</tr>';
+            }
+
+            html += '</tbody>  </table>';
+            return html
+        }
+
+        function BindHTML1(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "اسم مقدم الطلب بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.ApplicantNameAr + '</td>';
+            html += '<td><h6><small><b>' + "اسم مقدم الطلب بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.ApplicantNameEn + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "نوع مقدم الطلب" + '</b></small></h6></td>';
+            html += '<td>' + item.ApplicantType + '</td>';
+            html += '<td><h6><small><b>' + "رقم الهوية" + '</b></small></h6></td>';
+            html += '<td>' + item.EmiratesID + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الاجراءات المعلقة" + '</b></small></h6></td>';
+            html += '<td>' + item.PendingActions + '</td>';          
+            html += '</tr>';
+
+           
+            html += '</tbody>  </table>';
+            return html
+        }
+
+    </script>
+}

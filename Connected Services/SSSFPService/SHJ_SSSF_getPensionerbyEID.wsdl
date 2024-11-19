@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.informatica.com/dis/ws/" name="SHJ_SSSF_getPensionerbyEID" targetNamespace="http://www.informatica.com/dis/ws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.informatica.com/dis/ws/">
+      <xsd:element name="GetPensionerDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="EmiratesID" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPensionerDetailsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="PensionerDetails">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="PensionerEmiratesID" type="xsd:string" />
+                  <xsd:element name="PensionerNameAR" type="xsd:string" />
+                  <xsd:element name="PensionerNameEN" type="xsd:string" />
+                  <xsd:element name="PensionStartDate" type="xsd:string" />
+                  <xsd:element name="PensionAmount" type="xsd:string" />
+                  <xsd:element name="PensionerDeath" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" name="Error">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Input_Parameters" type="xsd:string" />
+                  <xsd:element name="ErrorCode" type="xsd:string" />
+                  <xsd:element name="ErrorDescription" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetPensionerDetails">
+    <wsdl:part name="GetPensionerDetails" element="tns:GetPensionerDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetPensionerDetailsResponse">
+    <wsdl:part name="GetPensionerDetailsResponse" element="tns:GetPensionerDetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SHJ_SSSF_getPensionerbyEIDPortType">
+    <wsdl:operation name="GetPensionerDetails">
+      <wsdl:input name="GetPensionerDetails_Input" message="tns:GetPensionerDetails" />
+      <wsdl:output name="GetPensionerDetails_Output" message="tns:GetPensionerDetailsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SHJ_SSSF_getPensionerbyEIDBinding" type="tns:SHJ_SSSF_getPensionerbyEIDPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPensionerDetails">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="GetPensionerDetails_Input">
+        <soap:body use="literal" parts="GetPensionerDetails" />
+      </wsdl:input>
+      <wsdl:output name="GetPensionerDetails_Output">
+        <soap:body use="literal" parts="GetPensionerDetailsResponse" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SHJ_SSSF_getPensionerbyEID">
+    <wsdl:port name="SHJ_SSSF_getPensionerbyEID" binding="tns:SHJ_SSSF_getPensionerbyEIDBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/FCSA/Soap/Sharjah_SSSF_Pension/V1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

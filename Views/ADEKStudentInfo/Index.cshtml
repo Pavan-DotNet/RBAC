@@ -1,0 +1,266 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "ADEK Service - دائرة التعليم والمعرفة";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>دائرة التعليم والمعرفة</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "ADEKStudentInfo")';
+
+            $(".tbody").empty();
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { EmiratesId: EmiratesId, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+
+
+                if (obj.flag == "1") {
+
+                    $.each(obj.StudentData, function (key, item) {
+
+                        html = BindHTML(item);
+                        $("#divTables").append(html);
+                        $('.DataTable').show();
+                    });
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("ADEK_StudentInfo.pdf");
+       });
+
+
+        function BindHTML(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الرمز" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.Id + '</td>';
+            html += '<td><h6><small><b>' + "رقم الهوية" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.EmiratesId + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تاريخ انتهاء الهوية" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.EmiratesIdExpiry + '</td>';
+            html += '<td><h6><small><b>' + "تاريخ الميلاد" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.BirthDate + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "مكان الميلاد الانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.BirthCountryEn + '</td>';
+            html += '<td><h6><small><b>' + "النوع انجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.GenderEn + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "النوع بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.GenderAr + '</td>';
+            html += '<td><h6><small><b>' + "الجنسية بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.NationalityEn + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الهاتف" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.MobileNumber + '</td>';
+            html += '<td><h6><small><b>' + "البريد الالكتروني" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.EmailAddress + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "من ذوي الاحتياجات" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.SpecialStudentFlag + '</td>';
+            html += '<td><h6><small><b>' + "الاسم الاول بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.PersonName.NameArabic.FirstNameAr + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الاسم الثاني بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.PersonName.NameArabic.SecondNameAr + '</td>';
+            html += '<td><h6><small><b>' + "الاسم الكامل بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.PersonName.FullNameEn + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الاسم الكامل بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.PersonName.FullNameAr + '</td>';
+            html += '<td><h6><small><b>' + "المرحلة التعليمية" + '</b></small></h6></td>';
+            html += '<td>' + item.AcademicDetails.StudentGrade + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+
+            html += '<td><h6><small><b>' + "رقم المدرسة" + '</b></small></h6></td>';
+            html += '<td>' + item.AcademicDetails.School.SchoolNumber + '</td>';
+            html += '<td><h6><small><b>' + "اسم المدرسة بالعربي" + '</b></small></h6></td>';
+            html += '<td>' + item.AcademicDetails.School.SchoolNameAr + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+          
+            html += '<td><h6><small><b>' + "اسم المدرسة بالانجليزي" + '</b></small></h6></td>';
+            html += '<td>' + item.AcademicDetails.School.SchoolNameEn + '</td>';
+            html += '<td><h6><small><b>' + "رمز المنزل" + '</b></small></h6></td>';
+            html += '<td>' + item.AcademicDetails.Homeform.HomformCode + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+     
+            html += '<td><h6><small><b>' + "تاريخ السحب" + '</b></small></h6></td>';
+            html += '<td>' + item.AcademicDetails.WithdrawDate + '</td>';
+            html += '<td><h6><small><b>' + "العنوان" + '</b></small></h6></td>';
+            html += '<td>' + item.AddressDetails.MailingAddress + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+
+            html += '<td><h6><small><b>' + "المنطقة" + '</b></small></h6></td>';
+            html += '<td>' + item.AddressDetails.RegionId + '</td>';
+
+            html += '<td><h6><small><b>' + "رمز القطاع" + '</b></small></h6></td>';
+            html += '<td>' + item.AddressDetails.SectorId + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+       
+            html += '<td><h6><small><b>' + "رقم الشارع" + '</b></small></h6></td>';
+            html += '<td>' + item.AddressDetails.RoadNo + '</td>';
+            html += '<td><h6><small><b>' + "القطعة" + '</b></small></h6></td>';
+            html += '<td>' + item.AddressDetails.PlotId + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+         
+            html += '<td><h6><small><b>' + "خط الطول" + '</b></small></h6></td>';
+            html += '<td>' + item.AddressDetails.Longitude + '</td>';
+            html += '<td><h6><small><b>' + "خط العرض" + '</b></small></h6></td>';
+            html += '<td>' + item.AddressDetails.Latitude + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الهاتف" + '</b></small></h6></td>';
+            html += '<td>' + item.ContactDetails.MobileNo + '</td>';
+            html += '<td><h6><small><b>' + "البريد الالكتروني" + '</b></small></h6></td>';
+            html += '<td>' + item.ContactDetails.EmailId + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "اللغة" + '</b></small></h6></td>';
+            html += '<td>' + item.BasicDetails.FirstLanguage + '</td>';
+       
+            html += '</tr>';
+            html += '</tbody>  </table>';
+            return html
+        }
+    </script>
+}

@@ -1,0 +1,338 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "الاتحاد للماء والكهرباء ";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>الاتحاد للماء والكهرباء </b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td style="width: 372px;"><h6><small><b> نوع المستند</b></small></h6></td>
+                <td>
+                    <select id="documentype" class="dropdown dropdown-header form-control" style="width:100%">
+                        <option value="-1">-- اختر --</option>
+                        <option value="01"> رقم بطاقة هوية</option>
+                        <option value="02">رقم الحساب</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td style="width: 372px;"><h6><small><b id="lblrakam"> رقم بطاقة الهوية </b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+         
+        <div id="divTables">
+        </div>
+
+       
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+        $("#documentype").change(function () {
+            $("#divTables").empty();
+            $("#txtEmiratesId").val('');
+            var id = $("#documentype option:selected").val();
+            if (id == '02') {
+                $('#lblrakam')[0].innerText ='رقم حساب'
+                
+            }
+            else {
+                $('#lblrakam')[0].innerText = 'رقم بطاقة الهوية'
+            }
+        });
+
+        function Base64ToBytes(base64) {
+            var s = window.atob(base64);
+            var bytes = new Uint8Array(s.length);
+            for (var i = 0; i < s.length; i++) {
+                bytes[i] = s.charCodeAt(i);
+            }
+            return bytes;
+        };
+
+        function fileDownlaod(item) {
+            var bytes = Base64ToBytes(item.LatestInvoice.Base64Data_PDF);
+            var blob = new Blob([bytes], { type: "application/octetstream" });
+
+            //Check the Browser type and download the File.
+            var isIE = false || !!document.documentMode;
+            if (item.EmiratesID=='') {
+                var docName =  item.ContractAccountNo;
+            }
+            else {
+                var docName =  item.EmiratesID;
+            }
+
+            if (docName) {
+                docName = '__'+new Date();
+            }
+            
+            if (isIE) {
+                window.navigator.msSaveBlob(blob, docName + ".pdf");
+            } else {
+                var url = window.URL || window.webkitURL;
+                link = url.createObjectURL(blob);
+                var a = $("<a />");
+                a.attr("download", docName + ".pdf");
+                a.attr("href", link);
+                $("body").append(a);
+                a[0].click();
+               // $("body").remove(a);
+            }
+        };
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "FEWA")';
+
+            /*$(".tbody").empty();*/
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            var id = $("#documentype option:selected").val();
+            if (id == '01' && $("#txtEmiratesId").val().length !=15) {
+                document.getElementById('error').innerText = ('رقم بطاقة الهوية الإماراتية غير صالح');
+                document.getElementById('error').style.color = 'white';
+
+                $("#documentype").focus();
+
+
+                $("#divLoading").html("");
+                return false;
+            }
+            else if (id == '02' && $("#txtEmiratesId").val().length != 12) {
+                document.getElementById('error').innerText = ('رقم حساب العقد غير صالح');
+                document.getElementById('error').style.color = 'white';
+
+                $("#documentype").focus();
+
+
+                $("#divLoading").html("");
+                return false;
+            }
+            else if (id == "-1") {
+                document.getElementById('error').innerText = ('نوع المستند مطلوب');
+                document.getElementById('error').style.color = 'white';
+
+                $("#documentype").focus();
+
+
+                $("#divLoading").html("");
+                return false;
+            }
+            else if ($("#txtEmiratesId").val().length == 0) {
+
+                if (id == '01') {
+
+                document.getElementById('error').innerText = ('رقم بطاقة الهوية مطلوب');
+                }
+                else {
+                    document.getElementById('error').innerText = ('رقم حساب مطلوب');
+
+                }
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+            var UsrAgent = { "UserAgent": $.browser };
+            var id = $("#documentype option:selected").val();
+            $.get(url, { Mode : id,  EmiratesId: EmiratesId, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                var obj = JSON.parse(data);
+                if (obj.flag == "2") {
+                    document.getElementById('response').innerText = ("لم يتم العثور على السجل");
+                    document.getElementById('response').style.color = 'white';
+                }
+                else if (obj.flag == "3") {
+                    document.getElementById('response').innerText = obj.ResponseDescription;
+                    document.getElementById('response').style.color = 'white';
+                }
+
+
+
+                if (obj.flag == "1") {
+                    $.each(obj.lstResponse, function (key, item) {
+                        if (item.length > 0) {
+                            for (var i = 0; i < item.length; i++) {
+                                if (item[i].LatestInvoice.Base64Data_PDF.length > 0) {
+                                    fileDownlaod(item[i]);
+                                }
+                                html = BindHTML(item[i]);
+                                $("#divTables").append(html);
+                                $('.DataTable').show();
+                            }
+                        }
+                    });
+
+
+                    
+                   
+                }
+
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("FEWA.pdf");
+       });
+
+        function BindHTML(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الهوية" + '</b></small></h6></td>';
+            html += '<td>' + item.EmiratesID + '</td>';
+            html += '<td><h6><small><b>' + "رقم المتعامل" + '</b></small></h6></td>';
+            html += '<td>' + item.BusinessPartnerNo + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الحساب" + '</b></small></h6></td>';
+            html += '<td>' + item.ContractAccountNo + '</td>';
+            html += '<td><h6><small><b>' + "الفئة" + '</b></small></h6></td>';
+            html += '<td>' + item.Category + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "نوع الحساب" + '</b></small></h6></td>';
+            html += '<td>' + item.AccountClass + '</td>';
+            html += '<td><h6><small><b>' + "الرمز الخاص" + '</b></small></h6></td>';
+            html += '<td>' + item.SpecialCode + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الاحتياج الخاص" + '</b></small></h6></td>';
+            html += '<td>' + item.SpecialNeed + '</td>';
+            html += '<td><h6><small><b>' + "الرقم الشخصي" + '</b></small></h6></td>';
+            html += '<td>' + item.PremiseNo + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تاريخ الدخول" + '</b></small></h6></td>';
+            html += '<td>' + item.MoveInDate + '</td>';
+            html += '<td><h6><small><b>' + "تاريخ الخروج" + '</b></small></h6></td>';
+            html += '<td>' + item.MoveOutDate + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تاريخ البداية" + '</b></small></h6></td>';
+            html += '<td>' + item.PE_StartingDate + '</td>';
+            html += '<td><h6><small><b>' + "البريد الالكتروني" + '</b></small></h6></td>';
+            html += '<td>' + item.Email + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الهاتف" + '</b></small></h6></td>';
+            html += '<td>' + item.MobileNo + '</td>';
+            html += '<td><h6><small><b>' + "خط العرض الشرق" + '</b></small></h6></td>';
+            html += '<td>' + item.Latitude_E + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "خط الطول الشرق" + '</b></small></h6></td>';
+            html += '<td>' + item.Longitude_E + '</td>';
+            html += '<td><h6><small><b>' + "خط العرض الغرب" + '</b></small></h6></td>';
+            html += '<td>' + item.Latitude_W + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "خط الطول الغرب" + '</b></small></h6></td>';
+            html += '<td>' + item.Longitude_W + '</td>';
+            html += '<td><h6><small><b>' + "الامارة" + '</b></small></h6></td>';
+            html += '<td>' + item.AddressDetails.Emirate + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الطابق" + '</b></small></h6></td>';
+            html += '<td>' + item.AddressDetails.FloorNo + '</td>';
+            html += '<td><h6><small><b>' + "رقم المنزل" + '</b></small></h6></td>';
+            html += '<td>' + item.AddressDetails.HouseNo + '</td>';
+            html += '</tr>';
+
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم البناية" + '</b></small></h6></td>';
+            html += '<td>' + item.AddressDetails.BuildingName + '</td>';
+            html += '<td><h6><small><b>' + "رقم الارض" + '</b></small></h6></td>';
+            html += '<td>' + item.AddressDetails.Landmark + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تاريخ آخر فاتورة" + '</b></small></h6></td>';
+            html += '<td>' + item.LatestInvoice.Date + '</td>';
+            html += '</tr>';
+
+            html += '</tbody>  </table>';
+            return html
+        }
+
+    </script>
+}

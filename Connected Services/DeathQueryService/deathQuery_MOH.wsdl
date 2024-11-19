@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://tempuri.org/" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="deathQuery_MOH" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This service provides the death related information registered in MOH.</wsdl:documentation>
+  <wsp:Policy wsu:Id="BasicHttpsBinding_IDeathQuery_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/NBB.DeathQuery.Models" />
+      <xs:element name="RequestMessage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/NBB.DeathQuery.Models" minOccurs="0" name="Body" nillable="true" type="q1:DeathQueryRequestModel" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/NBB.DeathQuery.Models" name="Header" nillable="true" type="q2:RequestHeader" />
+      <xs:element name="ResponseMessage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/NBB.DeathQuery.Models" minOccurs="0" name="Body" nillable="true" type="q3:DeathQueryResponseModel" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/NBB.DeathQuery.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/NBB.DeathQuery.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="DeathQueryRequestModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocumentDetails" nillable="true" type="tns:DocumentDetailsModel" />
+          <xs:element minOccurs="0" name="NationalityDetails" nillable="true" type="tns:NationalityDetailsModel" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeathQueryRequestModel" nillable="true" type="tns:DeathQueryRequestModel" />
+      <xs:complexType name="DocumentDetailsModel">
+        <xs:sequence>
+          <xs:element name="DocumentId" nillable="true" type="xs:string" />
+          <xs:element name="DocumentType" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DocumentDetailsModel" nillable="true" type="tns:DocumentDetailsModel" />
+      <xs:complexType name="NationalityDetailsModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DOB" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NationalityId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PersonName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NationalityDetailsModel" nillable="true" type="tns:NationalityDetailsModel" />
+      <xs:complexType name="RequestHeader">
+        <xs:sequence>
+          <xs:element name="ServiceProviderEntity" nillable="true" type="xs:string" />
+          <xs:element name="TransactionId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RequestHeader" nillable="true" type="tns:RequestHeader" />
+      <xs:complexType name="DeathQueryResponseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DeathDetailsList" nillable="true" type="tns:ArrayOfDeathDetail" />
+          <xs:element name="ResponseCode" nillable="true" type="xs:string" />
+          <xs:element name="ResponseDescription" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeathQueryResponseModel" nillable="true" type="tns:DeathQueryResponseModel" />
+      <xs:complexType name="ArrayOfDeathDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="DeathDetail" nillable="true" type="tns:DeathDetail" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfDeathDetail" nillable="true" type="tns:ArrayOfDeathDetail" />
+      <xs:complexType name="DeathDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="City" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="CityDescArabic" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CityDescEnglish" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DateOfDeath" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Emirate" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="EmirateDescArabic" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EmirateDescEnglish" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HospitalNameArabic" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HospitalNameEnglish" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Nationality" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NationalityDescArabic" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NationalityDescEnglish" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PassportNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PersonEmirateIDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PersonNameArabic" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PersonNameEnglish" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PlaceOfDeathArabic" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PlaceOfDeathEnglish" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="QAIDNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TransactionDate" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeathDetail" nillable="true" type="tns:DeathDetail" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ResponseContract">
+    <wsdl:part name="parameters" element="tns:ResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="RequestContract_Headers">
+    <wsdl:part name="Header" element="tns:Header" />
+  </wsdl:message>
+  <wsdl:message name="RequestContract">
+    <wsdl:part name="parameters" element="tns:RequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ResponseContract_Headers">
+    <wsdl:part name="Header" element="tns:Header" />
+  </wsdl:message>
+  <wsdl:portType name="IDeathQuery">
+    <wsdl:operation name="GetDeathDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDeathQuery/GetDeathDetails" name="RequestContract" message="tns:RequestContract" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDeathQuery/GetDeathDetailsResponse" name="ResponseContract" message="tns:ResponseContract" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpsBinding_IDeathQuery" type="tns:IDeathQuery">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_IDeathQuery_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDeathDetails">
+      <soap:operation soapAction="http://tempuri.org/IDeathQuery/GetDeathDetails" style="document" />
+      <wsdl:input name="RequestContract">
+        <soap:header message="tns:RequestContract_Headers" part="Header" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ResponseContract">
+        <soap:header message="tns:ResponseContract_Headers" part="Header" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IDeathQuery" type="tns:IDeathQuery">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDeathDetails">
+      <soap:operation soapAction="http://tempuri.org/IDeathQuery/GetDeathDetails" style="document" />
+      <wsdl:input name="RequestContract">
+        <soap:header message="tns:RequestContract_Headers" part="Header" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ResponseContract">
+        <soap:header message="tns:ResponseContract_Headers" part="Header" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IDeathQueryHttpGET" type="tns:IDeathQuery">
+    <wsdlhttp:binding verb="GET" />
+    <wsdl:operation name="GetDeathDetails">
+      <soap:operation soapAction="http://tempuri.org/IDeathQuery/GetDeathDetails" style="document" />
+      <wsdl:input name="RequestContract">
+        <soap:header message="tns:RequestContract_Headers" part="Header" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ResponseContract">
+        <soap:header message="tns:ResponseContract_Headers" part="Header" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IDeathQueryHttpPOST" type="tns:IDeathQuery">
+    <wsdlhttp:binding verb="POST" />
+    <wsdl:operation name="GetDeathDetails">
+      <soap:operation soapAction="http://tempuri.org/IDeathQuery/GetDeathDetails" style="document" />
+      <wsdl:input name="RequestContract">
+        <soap:header message="tns:RequestContract_Headers" part="Header" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ResponseContract">
+        <soap:header message="tns:ResponseContract_Headers" part="Header" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="deathQuery_MOH">
+    <wsdl:port name="BasicHttpBinding_IDeathQueryHttpPOST" binding="tns:BasicHttpBinding_IDeathQueryHttpPOST">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/MOH/Soap/DeathQuery/V1" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IDeathQueryHttpGET" binding="tns:BasicHttpBinding_IDeathQueryHttpGET">
+      <wsdlhttp:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/MOH/Soap/DeathQuery/V1" />
+    </wsdl:port>
+    <wsdl:port name="deathQuery_MOHsoaphttps" binding="tns:BasicHttpsBinding_IDeathQuery">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/MOH/Soap/DeathQuery/V1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.informatica.com/dis/ws/" name="FUJ_MUN_getRentalDetailsbyEID" targetNamespace="http://www.informatica.com/dis/ws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.informatica.com/dis/ws/">
+      <xsd:element name="GetRentalDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" name="EmiratesID" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRentalDetailsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="getRentalDetails">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="1" name="EmiratesId" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="RealEstateOwner" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="OwnershipPercentage" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="RealEstateLocation" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="RealEstateNumber" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="OwnershipDate" type="xsd:string" />
+                  <xsd:element minOccurs="1" name="RealEstateType" type="xsd:string" />
+                  <xsd:element name="RealEstateStatus" type="xsd:string" />
+                  <xsd:element name="RentAmount" type="xsd:string" />
+                  <xsd:element name="RentalStartDate" type="xsd:string" />
+                  <xsd:element name="RentalEndDate" type="xsd:string" />
+                  <xsd:element name="LastRefreshDate" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Error">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="InputParameter" type="xsd:string" />
+                  <xsd:element name="ErrorCode" type="xsd:string" />
+                  <xsd:element name="ErrorDescription" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetRentalDetailsResponse">
+    <wsdl:part name="GetRentalDetailsResponse" element="tns:GetRentalDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRentalDetails">
+    <wsdl:part name="GetRentalDetails" element="tns:GetRentalDetails" />
+  </wsdl:message>
+  <wsdl:portType name="FUJ_MUN_getRentalDetailsbyEIDPortType">
+    <wsdl:operation name="GetRentalDetails">
+      <wsdl:input name="GetRentalDetails_Input" message="tns:GetRentalDetails" />
+      <wsdl:output name="GetRentalDetails_Output" message="tns:GetRentalDetailsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FUJ_MUN_getRentalDetailsbyEIDBinding" type="tns:FUJ_MUN_getRentalDetailsbyEIDPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRentalDetails">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="GetRentalDetails_Input">
+        <soap:body use="literal" parts="GetRentalDetails" />
+      </wsdl:input>
+      <wsdl:output name="GetRentalDetails_Output">
+        <soap:body use="literal" parts="GetRentalDetailsResponse" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FUJ_MUN_getRentalDetailsbyEID">
+    <wsdl:port name="FUJ_MUN_getRentalDetailsbyEID" binding="tns:FUJ_MUN_getRentalDetailsbyEIDBinding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/FCSA/Soap/FUJ_MUN_getRentalDetailsbyEID" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

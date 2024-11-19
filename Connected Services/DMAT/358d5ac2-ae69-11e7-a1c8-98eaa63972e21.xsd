@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:TWTHQ="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1" xmlns="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqMessages:1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqMessages:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="cea6c482-ebc1-44c0-bd2e-3772b8881d38?xsd=G2G-TawtheeqTypes_ProxyV41" namespace="urn:ae:gov:abudhabi:DigitalDocuments:Tawtheeq:1" />
+  <xs:annotation>
+    <xs:appinfo>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+        <rdf:Description rdf:about="urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqMessages:1">
+          <dcterms:title xml:lang="ar">???????????? ?????????? ?????? ??????????</dcterms:title>
+          <dcterms:title xml:lang="en">G2GTawtheeqMessages</dcterms:title>
+          <dcterms:identifier>urn:ae:gov:abudhabi:DigitalDocuments:TawtheeqMessages:1/1</dcterms:identifier>
+          <dcterms:description xml:lang="ar">???????????? ?????????? ?????? ??????????</dcterms:description>
+          <dcterms:description xml:lang="en">Tawtheeq Messages Information</dcterms:description>
+          <mireg:version>1</mireg:version>
+          <mireg:status>release</mireg:status>
+          <mireg:project>Digital Service Baseline and G2G Initiatives</mireg:project>
+          <mireg:category xml:lang="ar">?????????????? ??????????????</mireg:category>
+          <mireg:category xml:lang="en">G2G</mireg:category>
+          <dcterms:jurisdiction>AE-AZ</dcterms:jurisdiction>
+          <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi Systems and Information Centre (ADSIC)</adsic:OrganisationName>
+            <adsic:URL xml:lang="en">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:creator>
+          <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">???????? ?????? ?????? ?????????????? ?????????????????????? ????????????????????</adsic:OrganisationName>
+            <adsic:URL xml:lang="ar">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:creator>
+          <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi e-Government</adsic:OrganisationName>
+          </mireg:owner>
+          <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">?????????? ???????????? ??????????????????????</adsic:OrganisationName>
+          </mireg:owner>
+          <dcterms:contributor rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:PersonalName xml:lang="en">Department Of Economic and Development</adsic:PersonalName>
+          </dcterms:contributor>
+          <dcterms:contributor rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:PersonalName xml:lang="ar">?????????? ?????????????? ????????????????????</adsic:PersonalName>
+          </dcterms:contributor>
+          <dcterms:publisher rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi Systems and Information Centre (ADSIC)</adsic:OrganisationName>
+            <adsic:URL xml:lang="en">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:publisher>
+          <dcterms:publisher rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">???????? ?????? ?????? ?????????????? ?????????????????????? ????????????????????</adsic:OrganisationName>
+            <adsic:URL xml:lang="ar">http://adsic.abudhabi.ae</adsic:URL>
+          </dcterms:publisher>
+          <dcterms:created />
+          <dcterms:medium>text/xml</dcterms:medium>
+          <dcterms:requires>../../G2G-MunicipalLands/Modules/G2G-TawtheeqTypes-v1-0.xsd</dcterms:requires>
+          <adsic:providesDefinitionOf>TawtheeqAllDetailsResponseType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>TawtheeqListResponseType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>TawtheeqRequestType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>
+            <adsic:name>TawtheeqListRequestType</adsic:name>
+            <adsic:MetaDataID />
+          </adsic:providesDefinitionOf>
+          <dcterms:conformsTo>http://www.w3.org/2001/XMLSchema</dcterms:conformsTo>
+        </rdf:Description>
+      </rdf:RDF>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TawtheeqAllDetailsResponse" type="TawtheeqAllDetailsResponseType" />
+  <xs:complexType name="TawtheeqAllDetailsResponseType">
+    <xs:sequence>
+      <xs:element name="ResponseStatus" type="TWTHQ:ResponseStatusType" />
+      <xs:element minOccurs="0" name="Contents" type="TWTHQ:TawtheeqAllDetailsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TawtheeqListRequest" type="TawtheeqListRequestType" />
+  <xs:complexType name="TawtheeqListRequestType">
+    <xs:sequence>
+      <xs:element name="EmiratesIDNumber" type="TWTHQ:EmiratesIDNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TawtheeqListResponse" type="TawtheeqListResponseType" />
+  <xs:complexType name="TawtheeqListResponseType">
+    <xs:sequence>
+      <xs:element name="ResponseStatus" type="TWTHQ:ResponseStatusType" />
+      <xs:element minOccurs="0" name="TawtheeqList" nillable="true" type="TawtheeqListResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestTrnHeader" type="TWTHQ:RequestTrnHeaderType" />
+  <xs:element name="ResponseTrnHeader" type="TWTHQ:ResponseTrnHeaderType" />
+  <xs:element name="TawtheeqRequest" type="TawtheeqRequestType" />
+  <xs:complexType name="TawtheeqRequestType">
+    <xs:sequence>
+      <xs:element name="ContractNo" type="TWTHQ:ContractNoType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TawtheeqListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Contents" type="TWTHQ:TawtheeqListType" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

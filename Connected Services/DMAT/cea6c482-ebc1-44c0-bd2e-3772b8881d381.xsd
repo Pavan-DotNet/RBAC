@@ -1,0 +1,1021 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:ae:gov:abudhabi:core:CommonDataTypes:1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:core:CommonDataTypes:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:appinfo>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+        <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1">
+          <dcterms:title xml:lang="ar">أنواع البيانات المشتركة</dcterms:title>
+          <dcterms:title xml:lang="en">Common Data Types</dcterms:title>
+          <dcterms:identifier>urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2</dcterms:identifier>
+          <dcterms:description xml:lang="ar">مجموعة من أنواع البيانات المشتركة التي يمكن استعمالها في أي مكان بدل من
+                                             قاعدة أنواع XSD</dcterms:description>
+          <dcterms:description xml:lang="en">A set of common data types that can be used elsewhere instead of the base
+                                             XSD types</dcterms:description>
+          <mireg:version>1.2</mireg:version>
+          <mireg:status>draft</mireg:status>
+          <mireg:project>Abu Dhabi eGIF</mireg:project>
+          <mireg:category xml:lang="ar">التبادل المشترك</mireg:category>
+          <mireg:category xml:lang="en">interoperability</mireg:category>
+          <dcterms:jurisdiction />
+          <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="en">Abu Dhabi Systems and Information Centre (ADSIC)</adsic:OrganisationName>
+            <adsic:URL xml:lang="en">http://adsic.abudhabi.ae</adsic:URL>
+          </mireg:owner>
+          <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:OrganisationName xml:lang="ar">مركز أب�� ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            <adsic:URL xml:lang="ar">http://adsic.abudhabi.ae</adsic:URL>
+          </mireg:owner>
+          <dcterms:contributor rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:PersonalName xml:lang="en">Abu Dhabi eGIF Team</adsic:PersonalName>
+          </dcterms:contributor>
+          <dcterms:contributor rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+            <adsic:PersonalName xml:lang="ar">فريق عمل الإطار التشغيلي لربط المعلومات الحكومية الإلكترونية لامارة أبو ظبي</adsic:PersonalName>
+          </dcterms:contributor>
+          <dcterms:created>2009-06-04</dcterms:created>
+          <dcterms:modified>2009-06-04</dcterms:modified>
+          <dcterms:medium>text/xml</dcterms:medium>
+          <adsic:providesDefinitionOf>AdditionalInformationType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>AdditionalInformationDataType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>AmountType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>AmountValueType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ArabicStringType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ArabicString100Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ArabicString20Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ArabicString250Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ArabicString50Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ArabicString500Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ArabicString80Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>Base64BinaryType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>BasicDateType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>BasicDateTimeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>BasicTimeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>BooleanType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>CalendarType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>ContentMetadataType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>CurrencyCodeType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>DateType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>DateGregorianType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>DateHigriType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EnglishStringType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EnglishString100Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EnglishString20Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EnglishString250Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EnglishString30Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EnglishString50Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EnglishString500Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>EnglishString80Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>GUIDType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>NonNegativeIntegerType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>NumericIdentifierType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>StringType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>String100Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>String20Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>String250Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>String255Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>String30Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>String50Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>String500Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>String80Type</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>WebAddressType</adsic:providesDefinitionOf>
+          <adsic:providesDefinitionOf>YearType</adsic:providesDefinitionOf>
+          <dcterms:conformsTo>http://www.w3.org/2001/XMLSchema</dcterms:conformsTo>
+        </rdf:Description>
+      </rdf:RDF>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:simpleType name="AmountValueType">
+    <xs:restriction base="xs:decimal">
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Base64BinaryType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#Base64BinaryType">
+            <dcterms:title xml:lang="ar">النوع الثنائي العام</dcterms:title>
+            <dcterms:title xml:lang="en">Generic Binary type</dcterms:title>
+            <dcterms:description xml:lang="ar">النوع الثنائي يعطى في حال كان هناك نقل لاشياء كبيرة،مثل الصورة أو
+                                               الوثيقة.والمعرفة بأن هناك وصلة الى الملف موصى به.وأنواع البيانات تمتلك
+                                               حقل فيه وصلة (WebAddresstype) في حال احتاج نقل الصورة كوصلة على ويب.</dcterms:description>
+            <dcterms:description xml:lang="en">Binary Type is provided in case there's a transfer of Large Objects, such
+                                               as Image or documents. Knowing that having a link to the file when
+                                               possible is recommended. Already common data types hold a URL field
+                                               (WebAddressType) in case the image need to be passed as a web link.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-09</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:simpleType name="BasicDateType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#BasicDateType">
+            <dcterms:title xml:lang="ar">أنواع بيانات التاريخ العامة</dcterms:title>
+            <dcterms:title xml:lang="en">Generic date data type</dcterms:title>
+            <dcterms:description xml:lang="ar">نوع تاريخ ISO 8601 اساسي،وهو نفس نوع قاعدة بيانات الXML. هناك أنواع اخرى
+                                               للاشارة الى التاريخ اذا كان هجري أو ميلادي</dcterms:description>
+            <dcterms:description xml:lang="en">A basic ISO 8601 date type, being the same as the XML Schema date type.
+                                               There are additional types to indicate whether a date is Higri or
+                                               Gregorian.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:date" />
+  </xs:simpleType>
+  <xs:simpleType name="BasicDateTimeType">
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:simpleType name="BasicTimeType">
+    <xs:restriction base="xs:time" />
+  </xs:simpleType>
+  <xs:simpleType name="BooleanType">
+    <xs:restriction base="xs:boolean" />
+  </xs:simpleType>
+  <xs:simpleType name="CalendarType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#CalendarType">
+            <dcterms:title xml:lang="ar">التقويم</dcterms:title>
+            <dcterms:title xml:lang="en">Calendar</dcterms:title>
+            <dcterms:description xml:lang="ar">يتم استخدامها للاشارة الى استعمال التاريخ للتقويم الهجري أو الميلادي</dcterms:description>
+            <dcterms:description xml:lang="en">Used to indicate whether a date uses the Gregorian or Higri calendar.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Gregorian" />
+      <xs:enumeration value="Higri" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CurrencyCodeType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="GUIDType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NonNegativeIntegerType">
+    <xs:restriction base="xs:nonNegativeInteger" />
+  </xs:simpleType>
+  <xs:simpleType name="NumericIdentifierType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#NumericIdentifierType">
+            <dcterms:title xml:lang="ar">المعرف الرقمي</dcterms:title>
+            <dcterms:title xml:lang="en">Numeric Identifier</dcterms:title>
+            <dcterms:description xml:lang="ar">سلسلة يمكن أن تحتوي فقط الارقام 0-9 .والمنوي استخدامها للمعرفين
+                                               العدديين،وبالامكان الحد من طولها</dcterms:description>
+            <dcterms:description xml:lang="en">A string that can only have the digits 0-9. It is intended for use for
+                                               numeric identifiers, and can have its length restricted.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-08</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StringType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="String100Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String100Type">
+            <dcterms:title xml:lang="ar">نوع البيان العام لسلسلة من 100 حرف</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 100 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">سلسلة بطول أدنى من حرف واحد وبطول أقصى من 100 حرف</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 100
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية و��لمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-12</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String20Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String20Type">
+            <dcterms:title xml:lang="ar">نوع البيان العام لسلسلة من 20حرف</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 20 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">سلسلة بطول أدنى من حرف واحد وبطول أقصى من 20حرف</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 20
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String250Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String250Type">
+            <dcterms:title xml:lang="ar">نوع البيان العام لسلسلة من 250 حرف</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 250 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">سلسلة بطول أدنى من حرف واحد وبطول أقصى من 250 حرف</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 250
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-12</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="250" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String255Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String255Type">
+            <dcterms:title xml:lang="ar">نوع البيان العام لسلسلة من 255 حرف</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 255 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">سلسلة بطول أدنى من حرف واحد وبطول أقصى من 255 حرف</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 255
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2015-03-06</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String30Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String30Type">
+            <dcterms:title xml:lang="ar">نوع البيان العام لسلسلة من 30حرف</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 30 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">سلسلة بطول أدنى من حرف واحد وبطول أقصى من 30 حرف</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 30
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String50Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String50Type">
+            <dcterms:title xml:lang="ar">نوع البيان العام لسلسلة من 50حرف</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 50 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">سلس��ة بطول أدنى من حرف واحد وبطول أقصى من 50 حرف</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 50
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String500Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String500Type">
+            <dcterms:title xml:lang="ar">نوع البيان العام لسلسلة من 500 حلرف</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 500 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">سلسلة بطول أدنى من حرف واحد وبطول أقصى من 500 حرف</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 500
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="500" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String80Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#String80Type">
+            <dcterms:title xml:lang="ar">نوع البيان العام لسلسلة من 80 حرف</dcterms:title>
+            <dcterms:title xml:lang="en">Generic 80 character string data type</dcterms:title>
+            <dcterms:description xml:lang="ar">سلسلة بطول أدنى من حرف واحد وبطول أقصى من 80 حرف</dcterms:description>
+            <dcterms:description xml:lang="en">A string with a minimum length of 1 character and a maximum length of 80
+                                               characters.</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-05</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="80" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="WebAddressType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="YearType">
+    <xs:restriction base="xs:gYear" />
+  </xs:simpleType>
+  <xs:complexType name="AdditionalInformationType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#AdditionalInformationType">
+            <dcterms:title xml:lang="ar">معلومات اضافية</dcterms:title>
+            <dcterms:title xml:lang="en">Additional Information</dcterms:title>
+            <dcterms:description xml:lang="ar">معلومات اضافية كثنائي الاسم/القيمة.فلكل ملكية عندنا الثنائي الاسم-القيمة
+                                               فالاسم هو صفة للعنصر والقيمة هي قيمة العنصر</dcterms:description>
+            <dcterms:description xml:lang="en">Additional Information</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-05-21</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Data" type="AdditionalInformationDataType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AdditionalInformationDataType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#AdditionalInformationDataType">
+            <dcterms:title xml:lang="ar">معلومات بيانات اضافية</dcterms:title>
+            <dcterms:title xml:lang="en">Additional Information Data</dcterms:title>
+            <dcterms:description xml:lang="en">Additional Information Data</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-05-21</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="StringType">
+        <xs:attribute name="name" type="StringType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AmountType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#AmountType">
+            <dcterms:title xml:lang="ar">المبلغ</dcterms:title>
+            <dcterms:title xml:lang="en">Amount</dcterms:title>
+            <dcterms:description xml:lang="en">Amount</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-05-17</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="AmountValueType">
+        <xs:attribute default="AED" name="currencyCode" type="CurrencyCodeType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicStringType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicStringType">
+            <dcterms:title xml:lang="ar">سلسلة عربية</dcterms:title>
+            <dcterms:title xml:lang="en">Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="StringType">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicString100Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicString100Type">
+            <dcterms:title xml:lang="ar">سلسلة من 100 حرف عربي</dcterms:title>
+            <dcterms:title xml:lang="en">100 Character Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">100 Character Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String100Type">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicString20Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicString20Type">
+            <dcterms:title xml:lang="ar">سلسلة من 20 حرف عربي</dcterms:title>
+            <dcterms:title xml:lang="en">20 Character Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">20 Character Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String20Type">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicString250Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicString250Type">
+            <dcterms:title xml:lang="ar">سلسلة من 250 حرف عربي</dcterms:title>
+            <dcterms:title xml:lang="en">250 Character Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">250 Character Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String250Type">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicString50Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicString50Type">
+            <dcterms:title xml:lang="ar">سلسلة من 50حرف عربي</dcterms:title>
+            <dcterms:title xml:lang="en">50 Character Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">50 Character Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String50Type">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicString500Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicString500Type">
+            <dcterms:title xml:lang="ar">سلسلة من 500 حرف عربي</dcterms:title>
+            <dcterms:title xml:lang="en">500 Character Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">500 Character Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String500Type">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArabicString80Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#ArabicString80Type">
+            <dcterms:title xml:lang="ar">سلسلة من 80 حرف عربي</dcterms:title>
+            <dcterms:title xml:lang="en">80 Character Arabic String</dcterms:title>
+            <dcterms:description xml:lang="en">80 Character Arabic String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String80Type">
+        <xs:attribute fixed="ar" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ContentMetadataType">
+    <xs:sequence>
+      <xs:element name="Title" type="StringType" />
+      <xs:element name="TitleArabic" type="StringType" />
+      <xs:element name="DateCreated" type="DateType" />
+      <xs:element name="DateIssued" type="DateType" />
+      <xs:element minOccurs="0" name="DateModified" type="DateType" />
+      <xs:element name="Version" type="StringType" />
+      <xs:element name="Status" type="StringType" />
+      <xs:element name="Description" type="StringType" />
+      <xs:element name="DescriptionArabic" type="StringType" />
+      <xs:element name="Source" type="String255Type" />
+      <xs:element name="Publisher" type="StringType" />
+      <xs:element name="UpdateFrequency" type="StringType" />
+      <xs:element name="Licence" type="String255Type" />
+      <xs:element minOccurs="0" name="SubjectCategory" type="String255Type" />
+      <xs:element minOccurs="0" name="SubjectKeywords" type="String255Type" />
+      <xs:element minOccurs="0" name="SubjectProject" type="String255Type" />
+      <xs:element name="Creator" type="StringType" />
+      <xs:element name="Language" type="String255Type" />
+      <xs:element minOccurs="0" name="OtherInformation" type="StringType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#DateType">
+            <dcterms:title xml:lang="ar">التاريخ</dcterms:title>
+            <dcterms:title xml:lang="en">Date</dcterms:title>
+            <dcterms:description xml:lang="en">Date</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="BasicDateType">
+        <xs:attribute default="Gregorian" name="calendar" type="CalendarType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateGregorianType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#DateGregorianType">
+            <dcterms:title xml:lang="ar">تاريخ ميلادي</dcterms:title>
+            <dcterms:title xml:lang="en">Gregorian Date</dcterms:title>
+            <dcterms:description xml:lang="en">Gregorian Date</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="BasicDateType">
+        <xs:attribute fixed="Gregorian" name="calendar" type="CalendarType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateHigriType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#DateHigriType">
+            <dcterms:title xml:lang="ar">تاريخ هجري</dcterms:title>
+            <dcterms:title xml:lang="en">Higri Date</dcterms:title>
+            <dcterms:description xml:lang="en">Higri Date</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="BasicDateType">
+        <xs:attribute fixed="Higri" name="calendar" type="CalendarType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishStringType">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishStringType">
+            <dcterms:title xml:lang="ar">سلسلة انجليزية</dcterms:title>
+            <dcterms:title xml:lang="en">English String</dcterms:title>
+            <dcterms:description xml:lang="en">English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="StringType">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString100Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString100Type">
+            <dcterms:title xml:lang="ar">سلسلة من 100 حرف انجليزي</dcterms:title>
+            <dcterms:title xml:lang="en">100 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">100 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String100Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString20Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString20Type">
+            <dcterms:title xml:lang="ar">سلسلة من 20 حرف انجليزي</dcterms:title>
+            <dcterms:title xml:lang="en">20 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">20 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String20Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString250Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString250Type">
+            <dcterms:title xml:lang="ar">سلسلة من 250 حرف انجليزي</dcterms:title>
+            <dcterms:title xml:lang="en">250 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">250 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String250Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString30Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString30Type">
+            <dcterms:title xml:lang="ar">سلسلة من 30 حرف انجليزي</dcterms:title>
+            <dcterms:title xml:lang="en">30 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">30 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String30Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString50Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString50Type">
+            <dcterms:title xml:lang="ar">سلسلة من 50حرف انجليزي</dcterms:title>
+            <dcterms:title xml:lang="en">50 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">50 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String50Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString500Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString500Type">
+            <dcterms:title xml:lang="ar">سلسلة من 500 حرف عربي</dcterms:title>
+            <dcterms:title xml:lang="en">500 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">500 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String500Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EnglishString80Type">
+    <xs:annotation>
+      <xs:appinfo>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:adsic="http://www.adsic.abudhabi.ae/egms/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:mireg="http://mireg.org/schema/1.0/">
+          <rdf:Description rdf:about="urn:ae:gov:abudhabi:core:CommonDataTypes:1/1.2#EnglishString80Type">
+            <dcterms:title xml:lang="ar">سلسلة من 80 حرف انجليزي</dcterms:title>
+            <dcterms:title xml:lang="en">80 Character English String</dcterms:title>
+            <dcterms:description xml:lang="en">80 Character English String</dcterms:description>
+            <mireg:owner rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC مركز أبو ظبي للانظمة الالكترونية والمعلومات</adsic:OrganisationName>
+            </mireg:owner>
+            <mireg:version>1.1</mireg:version>
+            <dcterms:created>2009-06-04</dcterms:created>
+            <dcterms:creator rdf:datatype="http://adsic.abudhabi.ae/egms/1.0/encodingschemes#contact">
+              <adsic:OrganisationName xml:lang="en">ADSIC</adsic:OrganisationName>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="String80Type">
+        <xs:attribute fixed="en" name="lang" type="StringType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="StatusCodeType">
+    <xs:restriction base="String30Type" />
+  </xs:simpleType>
+  <xs:simpleType name="StatusDescriptionEnglishType">
+    <xs:restriction base="String255Type" />
+  </xs:simpleType>
+  <xs:simpleType name="StatusDescriptionArabicType">
+    <xs:restriction base="String255Type" />
+  </xs:simpleType>
+</xs:schema>

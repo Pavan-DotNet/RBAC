@@ -1,0 +1,485 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "التنمية الاقتصادية عجمان - بيانات الرخص التجارية ، بيانات الشركاء";
+}
+<br />
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>التنمية الاقتصادية عجمان - بيانات الرخص التجارية ، بيانات الشركاء</b></small></h4></div>
+
+    <div dir="rtl" class="table-responsive table-condensed text-center">
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td colspan="3"><h6><small><b> بطاقة هوية </b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <table class="DataTable table table-bordered  table-hover text-center table-active ">
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم بطاقة الهوية
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الاسم بالانجليزي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الاسم بالعربي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم الهاتف المتحرك
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    سبب الحظر
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    حالة الحظر
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رمز المالك
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody text-center" id="tbody"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رمز الرخصة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم الرخصة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody1 text-center" id="tbody1"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الرخصة بالعربي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    نوع الرخصة بالعربي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الشكل القانوني
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    حالة الرخصة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ بداية الرخصة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ انتهاء الرخصة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رمز الرخصة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم الرخصة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody2 text-center" id="tbody2"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم بطاقة هوية المالك
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم المالك بالعربي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    جنسية المالك
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    نوع المالك
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    نوع الشريك
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    ملاحظات
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    مصدر الترخيص
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    النسبة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody3 text-center" id="tbody3"></tbody>
+
+            <thead class="">
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    الرقم التعريفي
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    وصف النشاط
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody4 text-center" id="tbody4"></tbody>
+
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search","AJMDED")';
+
+            $(".tbody").empty();
+            $(".tbody1").empty();
+            $(".tbody2").empty();
+            $(".tbody3").empty();
+            $(".tbody4").empty();
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+            var html1 = '';
+            var html2 = '';
+            var html3 = '';
+            var html4 = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+            var input = { "EmiratesId": $('#txtEmiratesId').val() };
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent)  }, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+                if (obj.flag == "1") {
+
+                    $.each(obj.lstResponse, function (key, item) {
+
+                        html += '<tr>';
+                        html += '<td>' + item.EmiratesID + '</td>';
+                        html += '<td>' + item.NameEN + '</td>';
+                        html += '<td>' + item.NameAR + '</td>';
+                        html += '<td>' + item.MobileNumber + '</td>';
+                        html += '<td>' + item.BanningReason + '</td>';
+                        html += '<td>' + item.BanningStatus + '</td>';
+                        html += '<td>' + item.StakeHolderId + '</td>';
+                        html += '</tr>';
+
+                        $.each(item.Licenses, function (key, item1) {
+                        html1 += '<tr>';
+                        html1 += '<td>' + item1.LicenseId + '</td>';
+                        html1 += '<td>' + item1.LicenseNumber + '</td>';
+                        html1 += '</tr>';
+                        });
+                         $.each(item.lstLicenseOwnershipDetails, function (key, item2) {
+                        html2 += '<tr>';
+                        html2 += '<td>' + item2.LicenseNameAR + '</td>';
+                        html2 += '<td>' + item2.LicenseTypeAR + '</td>';
+                        html2 += '<td>' + item2.LegalFormAR + '</td>';
+                        html2 += '<td>' + item2.LicenseStatusAR + '</td>';
+                        html2 += '<td>' + item2.LicenseStartDate + '</td>';
+                        html2 += '<td>' + item2.LicenseEndDate + '</td>';
+                        html2 += '<td>' + item2.LicenseId + '</td>';
+                        html2 += '<td>' + item2.LicenseNumber + '</td>';
+                        html2 += '</tr>';
+                         });
+                         $.each(item.lstLicenseOwnerDetails, function (key, item3) {
+                        html3 += '<tr>';
+                        html3 += '<td>' + item3.OwnerEmiratesID + '</td>';
+                        html3 += '<td>' + item3.OwnerNameAR + '</td>';
+                        html3 += '<td>' + item3.OwnerNationalityAR + '</td>';
+                        html3 += '<td>' + item3.OwnerTypeAR + '</td>';
+                        html3 += '<td>' + item3.LeasorTypeAR + '</td>';
+                        html3 += '<td>' + item3.Notes + '</td>';
+                        html3 += '<td>' + item3.LicenseSource + '</td>';
+                        html3 += '<td>' + item3.SharePercent + '</td>';
+                        html3 += '</tr>';
+                         });
+                         $.each(item.lstLicenseActivityDetails, function (key, item4) {
+                        html4 += '<tr>';
+                        html4 += '<td>' + item4.SerialNo + '</td>';
+                        html4 += '<td>' + item4.LicenseActivityDescAR + '</td>';
+                        html4 += '</tr>';
+                        });
+                    });
+
+                    $(".tbody").append(html);
+                    $(".tbody1").append(html1);
+                    $(".tbody2").append(html2);
+                    $(".tbody3").append(html3);
+                    $(".tbody4").append(html4);
+                    $('.DataTable').show();
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+         $('#create_pdf').on('click', function () {
+            getPDF("AJMANDED.pdf");
+       });
+
+    </script>
+}

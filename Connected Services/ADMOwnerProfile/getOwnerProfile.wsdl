@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WL5G3N0:definitions xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N3="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:WL5G3N2="urn:ae:gov:abudhabi:mocd:services" xmlns:WL5G3N1="urn:ae:gov:abudhabi:mocd:services:fault" name="getOwnerProfile" targetNamespace="urn:ae:gov:abudhabi:mocd:services" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/">
+  <WL5G3N0:documentation>This service provides the land/plot ownership details registered with Abu Dhabi Municipality.</WL5G3N0:documentation>
+  <WL5G3N0:types>
+    <xsd:schema xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="urn:ae:gov:abudhabi:mocd:data" xmlns:tns="urn:ae:gov:abudhabi:mocd:services:messages" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:mocd:services:messages" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:ae:gov:abudhabi:mocd:data" />
+      <xs:element name="GetOwnerIdByOwnerIDNRequest" nillable="true" type="tns:GetOwnerIdByOwnerIDNRequest" />
+      <xs:element name="GetOwnerIdByOwnerIDNResponse" nillable="true" type="tns:GetOwnerIdByOwnerIDNResponse" />
+      <xs:element name="GetPlotOwnershipRequest" nillable="true" type="tns:GetPlotOwnershipRequest" />
+      <xs:element name="GetPlotOwnershipResponse" nillable="true" type="tns:GetPlotOwnershipResponse" />
+      <xs:element name="RequestBase" nillable="true" type="tns:RequestBase" />
+      <xs:element name="ResponseBase" nillable="true" type="tns:ResponseBase" />
+      <xs:complexType name="GetPlotOwnershipRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:RequestBase">
+            <xs:sequence>
+              <xs:element name="OwnerId" type="xs:long" />
+              <xs:element minOccurs="0" name="RetrieveThumbnails" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RequestBase">
+        <xs:sequence>
+          <xs:element name="EmployeeId" nillable="true" type="xs:string" />
+          <xs:element name="UseEnglish" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetOwnerIdByOwnerIDNRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:RequestBase">
+            <xs:sequence>
+              <xs:element name="NationalIdNumber" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetPlotOwnershipByIdnRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:RequestBase">
+            <xs:sequence>
+              <xs:element name="OwnerIdn" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="RetrieveThumbnails" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetPlotOwnershipResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ResponseBase">
+            <xs:sequence>
+              <xs:element name="PlotList" nillable="true" type="ns1:ArrayOfPlotDetails" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ResponseBase">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="GetOwnerIdByOwnerIDNResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ResponseBase">
+            <xs:sequence>
+              <xs:element name="ownerId" type="xs:long" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="urn:ae:gov:abudhabi:mocd:services:fault" xmlns:tns="urn:ae:gov:abudhabi:mocd:services:fault" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:mocd:services:fault" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="ArrayOfBusinessMessageDetails" nillable="true" type="tns:ArrayOfBusinessMessageDetails" />
+      <xs:element name="BusinessFault" nillable="true" type="tns:BusinessFault" />
+      <xs:element name="BusinessMessageDetails" nillable="true" type="tns:BusinessMessageDetails" />
+      <xs:element name="SystemFault" nillable="true" type="tns:SystemFault" />
+      <xs:complexType name="SystemFault">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Messsage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BusinessFault">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Faults" nillable="true" type="tns:ArrayOfBusinessMessageDetails" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfBusinessMessageDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="BusinessMessageDetails" nillable="true" type="tns:BusinessMessageDetails" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BusinessMessageDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UniqueKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="urn:ae:gov:abudhabi:mocd:services:messages" xmlns:tns="urn:ae:gov:abudhabi:mocd:services" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:ae:gov:abudhabi:mocd:services" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:mocd:services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:ae:gov:abudhabi:mocd:services:messages" />
+      <xs:element name="SoapHeaderReq">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="serviceProviderEntity" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="transactionId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOwnerIdByOwnerIDN">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns1:GetOwnerIdByOwnerIDNRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOwnerIdByOwnerIDNResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetOwnerIdByOwnerIDNResult" nillable="true" type="ns1:GetOwnerIdByOwnerIDNResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPlotOwnership">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns1:GetPlotOwnershipRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPlotOwnershipResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetPlotOwnershipResult" nillable="true" type="ns1:GetPlotOwnershipResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xsd:schema>
+    <xsd:schema xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="urn:ae:gov:abudhabi:mocd:services:fault" xmlns:tns="urn:ae:gov:abudhabi:mocd:data" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:ae:gov:abudhabi:mocd:data" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="ArrayOfPlotDetails" nillable="true" type="tns:ArrayOfPlotDetails" />
+      <xs:element name="PlotDetails" nillable="true" type="tns:PlotDetails" />
+      <xs:complexType name="ArrayOfPlotDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="PlotDetails" nillable="true" type="tns:PlotDetails" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PlotDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AOIsMarkedRentable" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Community" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CommunityId" type="xs:long" />
+          <xs:element minOccurs="0" name="CommunityNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ConstructionDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ConstructionStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DimensionDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="District" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DistrictId" type="xs:long" />
+          <xs:element minOccurs="0" name="DistrictNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EstimatedArea" type="xs:decimal" />
+          <xs:element minOccurs="0" name="FlatNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HasBlock" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasMortgage" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LandUse" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LandUseId" type="xs:long" />
+          <xs:element minOccurs="0" name="LandUseMepsIdentifier" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LegalRemarks" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Municipality" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MunicipalityId" type="xs:long" />
+          <xs:element minOccurs="0" name="ParentLandUse" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ParentLandUseId" type="xs:long" />
+          <xs:element minOccurs="0" name="PlotAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PlotId" type="xs:long" />
+          <xs:element minOccurs="0" name="PlotNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Road" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoadId" type="xs:long" />
+          <xs:element minOccurs="0" name="RoadNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ServiceStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Thumbnail" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="TpdPlotId" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="UTMCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="urn:ae:gov:abudhabi:mocd:services:fault" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+      <xs:complexType name="ArrayOfstring">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="urn:ae:gov:abudhabi:mocd:services:fault" xmlns:tns="urn:ae:gov:abudhabi:mocd:services" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:string" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="char" nillable="true" type="xs:int" />
+      <xs:element name="dateTime" nillable="true" type="xs:string" />
+      <xs:element name="decimal" nillable="true" type="xs:string" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="duration" nillable="true" type="xs:duration" />
+      <xs:element name="float" nillable="true" type="xs:string" />
+      <xs:element name="guid" nillable="true" type="xs:string" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:short" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:long" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:integer" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:int" />
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="OwnerProfileServiceContractGetPlotOwnershipBusinessFaultFaultMessage">
+    <WL5G3N0:part name="OwnerProfileServiceContractGetPlotOwnershipBusinessFaultFaultMessage" element="WL5G3N1:BusinessFault" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNBusinessFaultFaultMessage">
+    <WL5G3N0:part name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNBusinessFaultFaultMessage" element="WL5G3N1:BusinessFault" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetPlotOwnership">
+    <WL5G3N0:part name="parameters" element="WL5G3N2:GetPlotOwnership" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetOwnerIdByOwnerIDN">
+    <WL5G3N0:part name="parameters" element="WL5G3N2:GetOwnerIdByOwnerIDN" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SoapHeader">
+    <WL5G3N0:part name="CustomHeaderReq" element="WL5G3N2:SoapHeaderReq" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetOwnerIdByOwnerIDNResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N2:GetOwnerIdByOwnerIDNResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetPlotOwnershipResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N2:GetPlotOwnershipResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="OwnerProfileServiceContractGetPlotOwnershipSystemFaultFaultMessage">
+    <WL5G3N0:part name="OwnerProfileServiceContractGetPlotOwnershipSystemFaultFaultMessage" element="WL5G3N1:SystemFault" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNSystemFaultFaultMessage">
+    <WL5G3N0:part name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNSystemFaultFaultMessage" element="WL5G3N1:SystemFault" />
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="OwnerProfileServiceContract">
+    <WL5G3N0:operation name="GetPlotOwnership">
+      <WL5G3N0:input WL5G3N3:Action="GetPlotOwnershipRequest" name="GetPlotOwnership" message="WL5G3N2:GetPlotOwnership" />
+      <WL5G3N0:output WL5G3N3:Action="GetPlotOwnershipResponse" name="GetPlotOwnershipResponse" message="WL5G3N2:GetPlotOwnershipResponse" />
+      <WL5G3N0:fault name="OwnerProfileServiceContractGetPlotOwnershipSystemFaultFaultMessage" message="WL5G3N2:OwnerProfileServiceContractGetPlotOwnershipSystemFaultFaultMessage" />
+      <WL5G3N0:fault name="OwnerProfileServiceContractGetPlotOwnershipBusinessFaultFaultMessage" message="WL5G3N2:OwnerProfileServiceContractGetPlotOwnershipBusinessFaultFaultMessage" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetOwnerIdByOwnerIDN">
+      <WL5G3N0:input WL5G3N3:Action="GetOwnerIdByOwnerIDNRequest" name="GetOwnerIdByOwnerIDN" message="WL5G3N2:GetOwnerIdByOwnerIDN" />
+      <WL5G3N0:output WL5G3N3:Action="GetOwnerIdByOwnerIDNResponse" name="GetOwnerIdByOwnerIDNResponse" message="WL5G3N2:GetOwnerIdByOwnerIDNResponse" />
+      <WL5G3N0:fault name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNSystemFaultFaultMessage" message="WL5G3N2:OwnerProfileServiceContractGetOwnerIdByOwnerIDNSystemFaultFaultMessage" />
+      <WL5G3N0:fault name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNBusinessFaultFaultMessage" message="WL5G3N2:OwnerProfileServiceContractGetOwnerIdByOwnerIDNBusinessFaultFaultMessage" />
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="OwnerProfileServiceContractServiceSoapBinding" type="WL5G3N2:OwnerProfileServiceContract">
+    <WL5G3N4:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <WL5G3N0:operation name="GetPlotOwnership">
+      <WL5G3N4:operation soapAction="GetPlotOwnershipRequest" style="document" />
+      <WL5G3N0:input name="GetPlotOwnership">
+        <WL5G3N4:header message="WL5G3N2:SoapHeader" part="CustomHeaderReq" use="literal" />
+        <WL5G3N4:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output name="GetPlotOwnershipResponse">
+        <WL5G3N4:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="OwnerProfileServiceContractGetPlotOwnershipSystemFaultFaultMessage">
+        <WL5G3N4:fault use="literal" name="OwnerProfileServiceContractGetPlotOwnershipSystemFaultFaultMessage" namespace="" />
+      </WL5G3N0:fault>
+      <WL5G3N0:fault name="OwnerProfileServiceContractGetPlotOwnershipBusinessFaultFaultMessage">
+        <WL5G3N4:fault use="literal" name="OwnerProfileServiceContractGetPlotOwnershipBusinessFaultFaultMessage" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetOwnerIdByOwnerIDN">
+      <WL5G3N4:operation soapAction="GetOwnerIdByOwnerIDNRequest" style="document" />
+      <WL5G3N0:input name="GetOwnerIdByOwnerIDN">
+        <WL5G3N4:header message="WL5G3N2:SoapHeader" part="CustomHeaderReq" use="literal" />
+        <WL5G3N4:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output name="GetOwnerIdByOwnerIDNResponse">
+        <WL5G3N4:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNSystemFaultFaultMessage">
+        <WL5G3N4:fault use="literal" name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNSystemFaultFaultMessage" namespace="" />
+      </WL5G3N0:fault>
+      <WL5G3N0:fault name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNBusinessFaultFaultMessage">
+        <WL5G3N4:fault use="literal" name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNBusinessFaultFaultMessage" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:binding name="OwnerProfileServiceContractServiceHttpGETBinding" type="WL5G3N2:OwnerProfileServiceContract">
+    <wsdlhttp:binding verb="GET" />
+    <WL5G3N0:operation name="GetPlotOwnership">
+      <WL5G3N4:operation soapAction="GetPlotOwnershipRequest" style="document" />
+      <WL5G3N0:input name="GetPlotOwnership">
+        <WL5G3N4:header message="WL5G3N2:SoapHeader" part="CustomHeaderReq" use="literal" />
+        <WL5G3N4:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output name="GetPlotOwnershipResponse">
+        <WL5G3N4:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="OwnerProfileServiceContractGetPlotOwnershipSystemFaultFaultMessage">
+        <WL5G3N4:fault use="literal" name="OwnerProfileServiceContractGetPlotOwnershipSystemFaultFaultMessage" namespace="" />
+      </WL5G3N0:fault>
+      <WL5G3N0:fault name="OwnerProfileServiceContractGetPlotOwnershipBusinessFaultFaultMessage">
+        <WL5G3N4:fault use="literal" name="OwnerProfileServiceContractGetPlotOwnershipBusinessFaultFaultMessage" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetOwnerIdByOwnerIDN">
+      <WL5G3N4:operation soapAction="GetOwnerIdByOwnerIDNRequest" style="document" />
+      <WL5G3N0:input name="GetOwnerIdByOwnerIDN">
+        <WL5G3N4:header message="WL5G3N2:SoapHeader" part="CustomHeaderReq" use="literal" />
+        <WL5G3N4:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output name="GetOwnerIdByOwnerIDNResponse">
+        <WL5G3N4:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNSystemFaultFaultMessage">
+        <WL5G3N4:fault use="literal" name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNSystemFaultFaultMessage" namespace="" />
+      </WL5G3N0:fault>
+      <WL5G3N0:fault name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNBusinessFaultFaultMessage">
+        <WL5G3N4:fault use="literal" name="OwnerProfileServiceContractGetOwnerIdByOwnerIDNBusinessFaultFaultMessage" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="getOwnerProfile_ADM">
+    <WL5G3N0:port name="getOwnerProfilesoaphttp" binding="WL5G3N2:OwnerProfileServiceContractServiceSoapBinding">
+      <WL5G3N4:address location="http://MOCDSRVWMGW03:5555/ws/getOwnerProfile_ADM.getOwnerProfilesoaphttp/1.0" />
+    </WL5G3N0:port>
+    <WL5G3N0:port name="getOwnerProfilesoaphttp2" binding="WL5G3N2:OwnerProfileServiceContractServiceSoapBinding">
+      <WL5G3N4:address location="http://MOCDSRVWMGW03:5555/ws/getOwnerProfile_ADM/1.0" />
+    </WL5G3N0:port>
+    <WL5G3N0:port name="getOwnerProfilesoaphttp4" binding="WL5G3N2:OwnerProfileServiceContractServiceHttpGETBinding">
+      <wsdlhttp:address location="http://MOCDSRVWMGW03:5555/ws/getOwnerProfile_ADM/1.0" />
+    </WL5G3N0:port>
+    <WL5G3N0:port name="getOwnerProfilesoaphttp3" binding="WL5G3N2:OwnerProfileServiceContractServiceHttpGETBinding">
+      <wsdlhttp:address location="http://MOCDSRVWMGW03:5555/ws/getOwnerProfile_ADM.getOwnerProfilesoaphttp/1.0" />
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

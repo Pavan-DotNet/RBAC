@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://integration.esi.dtps.gov.ae/" targetNamespace="http://integration.esi.dtps.gov.ae/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="createGrantedPlotLetterTr" type="tns:createGrantedPlotLetterTr" />
+  <xs:element name="createGrantedPlotLetterTrResponse" type="tns:createGrantedPlotLetterTrResponse" />
+  <xs:element name="getAttachmentTypeByID" type="tns:getAttachmentTypeByID" />
+  <xs:element name="getAttachmentTypeByIDResponse" type="tns:getAttachmentTypeByIDResponse" />
+  <xs:element name="getAttachmentTypesList" type="tns:getAttachmentTypesList" />
+  <xs:element name="getAttachmentTypesListResponse" type="tns:getAttachmentTypesListResponse" />
+  <xs:element name="getBranchesList" type="tns:getBranchesList" />
+  <xs:element name="getBranchesListResponse" type="tns:getBranchesListResponse" />
+  <xs:element name="getFPStatusData" type="tns:getFPStatusData" />
+  <xs:element name="getFPStatusDataResponse" type="tns:getFPStatusDataResponse" />
+  <xs:element name="getFinalProductStatus" type="tns:getFinalProductStatus" />
+  <xs:element name="getFinalProductStatusResponse" type="tns:getFinalProductStatusResponse" />
+  <xs:element name="getLandUsageById" type="tns:getLandUsageById" />
+  <xs:element name="getLandUsageByIdResponse" type="tns:getLandUsageByIdResponse" />
+  <xs:element name="getStatusByID" type="tns:getStatusByID" />
+  <xs:element name="getStatusByIDResponse" type="tns:getStatusByIDResponse" />
+  <xs:element name="getStatusList" type="tns:getStatusList" />
+  <xs:element name="getStatusListResponse" type="tns:getStatusListResponse" />
+  <xs:complexType name="getBranchesList">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getBranchesListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:branchVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="branchVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="active" type="xs:int" />
+      <xs:element minOccurs="0" name="branchId" type="xs:int" />
+      <xs:element minOccurs="0" name="branchNameAr" type="xs:string" />
+      <xs:element minOccurs="0" name="branchNameEn" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getStatusList">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getStatusListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:statusVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="statusVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="active" type="xs:int" />
+      <xs:element minOccurs="0" name="statusId" type="xs:int" />
+      <xs:element minOccurs="0" name="statusNameAr" type="xs:string" />
+      <xs:element minOccurs="0" name="statusNameEn" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getFPStatusData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="transactionNumber" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getFPStatusDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:finalProductVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="finalProductVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="content" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="finalProductURL" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="plotsList" nillable="true" type="tns:transactionPlotDetailsVO" />
+      <xs:element minOccurs="0" name="recieptURL" type="xs:string" />
+      <xs:element minOccurs="0" name="rejectedRemarks" type="xs:string" />
+      <xs:element minOccurs="0" name="statusId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transactionPlotDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="areaCode" type="xs:int" />
+      <xs:element minOccurs="0" name="areaNameAr" type="xs:string" />
+      <xs:element minOccurs="0" name="areaNameEn" type="xs:string" />
+      <xs:element minOccurs="0" name="cityCode" type="xs:int" />
+      <xs:element minOccurs="0" name="cityNameAr" type="xs:string" />
+      <xs:element minOccurs="0" name="cityNameEn" type="xs:string" />
+      <xs:element minOccurs="0" name="govNum" type="xs:string" />
+      <xs:element minOccurs="0" name="govNumEntered" type="xs:int" />
+      <xs:element minOccurs="0" name="landUsageAr" type="xs:string" />
+      <xs:element minOccurs="0" name="landUsageEn" type="xs:string" />
+      <xs:element minOccurs="0" name="landUsageId" type="xs:int" />
+      <xs:element minOccurs="0" name="newGovNum" type="xs:string" />
+      <xs:element minOccurs="0" name="newPlotArea" type="xs:double" />
+      <xs:element minOccurs="0" name="newPropertyNum" type="xs:string" />
+      <xs:element minOccurs="0" name="plotArea" type="xs:double" />
+      <xs:element minOccurs="0" name="plotCoordinateTrxNo" type="xs:string" />
+      <xs:element minOccurs="0" name="propertyNum" type="xs:string" />
+      <xs:element minOccurs="0" name="remarks" type="xs:string" />
+      <xs:element minOccurs="0" name="suburbCode" type="xs:int" />
+      <xs:element minOccurs="0" name="suburbNameAr" type="xs:string" />
+      <xs:element minOccurs="0" name="suburbNameEn" type="xs:string" />
+      <xs:element minOccurs="0" name="withAnglesDiameters" type="xs:int" />
+      <xs:element minOccurs="0" name="withCivilAviation" type="xs:int" />
+      <xs:element minOccurs="0" name="withDemarcationSoil" type="xs:int" />
+      <xs:element minOccurs="0" name="withInterlock" type="xs:int" />
+      <xs:element minOccurs="0" name="withPlanningCondition" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getStatusByID">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="statusId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getStatusByIDResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:statusVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getFinalProductStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="transactionNumber" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getFinalProductStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:finalProductVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLandUsageById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLandUsageByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:landUsageVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="landUsageVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="active" type="xs:int" />
+      <xs:element minOccurs="0" name="isFree" type="xs:int" />
+      <xs:element minOccurs="0" name="landUsageDescAr" type="xs:string" />
+      <xs:element minOccurs="0" name="landUsageDescEn" type="xs:string" />
+      <xs:element minOccurs="0" name="landUsageId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createGrantedPlotLetterTr">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="grantPlotLetterDetails" type="tns:grantPlotLetterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="grantPlotLetterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:double" />
+      <xs:element minOccurs="0" name="applicantVO" type="tns:applicantVO" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attachements" nillable="true" type="tns:attachmentVO" />
+      <xs:element minOccurs="0" name="beneficiaryId" type="xs:string" />
+      <xs:element minOccurs="0" name="beneficiaryName" type="xs:string" />
+      <xs:element minOccurs="0" name="branchCode" type="xs:string" />
+      <xs:element minOccurs="0" name="courtLegacyNo" type="xs:string" />
+      <xs:element minOccurs="0" name="courtLetterDate" type="xs:string" />
+      <xs:element minOccurs="0" name="courtLetterNo" type="xs:string" />
+      <xs:element minOccurs="0" name="dob" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element minOccurs="0" name="familyNo" type="xs:string" />
+      <xs:element minOccurs="0" name="feeDiff" type="xs:int" />
+      <xs:element minOccurs="0" name="finalProductVo" type="tns:finalProductVO" />
+      <xs:element minOccurs="0" name="gender" type="xs:string" />
+      <xs:element minOccurs="0" name="isGplDetails" type="xs:int" />
+      <xs:element minOccurs="0" name="kholasetAlqaidId" type="xs:string" />
+      <xs:element minOccurs="0" name="mobileNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="nationality" type="xs:string" />
+      <xs:element minOccurs="0" name="orderVoucherNo" type="xs:string" />
+      <xs:element minOccurs="0" name="passportNo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="plotList" nillable="true" type="tns:gplPlotsDetailsVO" />
+      <xs:element minOccurs="0" name="receiptDate" type="xs:string" />
+      <xs:element minOccurs="0" name="receiptNo" type="xs:string" />
+      <xs:element minOccurs="0" name="receiverId" type="xs:string" />
+      <xs:element minOccurs="0" name="rejectedTrxNo" type="xs:string" />
+      <xs:element minOccurs="0" name="submissionDate" type="xs:string" />
+      <xs:element minOccurs="0" name="townNo" type="xs:string" />
+      <xs:element minOccurs="0" name="userName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="applicantVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="applicantDesignation" type="xs:int" />
+      <xs:element minOccurs="0" name="applicantEmail" type="xs:string" />
+      <xs:element minOccurs="0" name="applicantFatherName" type="xs:string" />
+      <xs:element minOccurs="0" name="applicantFirstName" type="xs:string" />
+      <xs:element minOccurs="0" name="applicantGender" type="xs:string" />
+      <xs:element minOccurs="0" name="applicantIDNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="applicantLastName" type="xs:string" />
+      <xs:element minOccurs="0" name="applicantMobileNo" type="xs:string" />
+      <xs:element minOccurs="0" name="applicantName" type="xs:string" />
+      <xs:element minOccurs="0" name="applicantNationality" type="xs:int" />
+      <xs:element minOccurs="0" name="applicantTrxNo" type="xs:string" />
+      <xs:element minOccurs="0" name="applicantgrandfatherName" type="xs:string" />
+      <xs:element minOccurs="0" name="userName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attachmentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="active" type="xs:int" />
+      <xs:element minOccurs="0" name="attachmentTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="content" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="contentBase64" type="xs:string" />
+      <xs:element minOccurs="0" name="expiryDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fileName" type="xs:string" />
+      <xs:element minOccurs="0" name="fileURL" type="xs:string" />
+      <xs:element minOccurs="0" name="mimeType" type="xs:string" />
+      <xs:element minOccurs="0" name="serial" type="xs:decimal" />
+      <xs:element minOccurs="0" name="trxNo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="gplPlotsDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="areaCode" type="xs:int" />
+      <xs:element minOccurs="0" name="cityCode" type="xs:int" />
+      <xs:element minOccurs="0" name="govNum" type="xs:string" />
+      <xs:element minOccurs="0" name="grantDate" type="xs:string" />
+      <xs:element minOccurs="0" name="landUsageId" type="xs:int" />
+      <xs:element minOccurs="0" name="remarks" type="xs:string" />
+      <xs:element minOccurs="0" name="suburbCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createGrantedPlotLetterTrResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAttachmentTypeByID">
+    <xs:sequence>
+      <xs:element name="attachmentTypeId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAttachmentTypeByIDResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:attachmentTypeVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attachmentTypeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="active" type="xs:int" />
+      <xs:element minOccurs="0" name="attachmentTypeAr" type="xs:string" />
+      <xs:element minOccurs="0" name="attachmentTypeEn" type="xs:string" />
+      <xs:element minOccurs="0" name="attachmentTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="isMandatory" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAttachmentTypesList">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getAttachmentTypesListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:attachmentTypeVO" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

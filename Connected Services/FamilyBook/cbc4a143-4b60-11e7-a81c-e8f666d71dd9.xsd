@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.moi.gov.ae/2017/MOIServices/FamilyBookInquirySchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.moi.gov.ae/2017/MOIServices/FamilyBookInquirySchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="FamilyBookRequestType">
+    <xsd:choice>
+      <xsd:element name="unifiedNumber" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????????? ????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Unified Number</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="identityCardNumber" type="string15">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ???????????? ??????????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Emirates Id Card Number</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:sequence>
+        <xsd:element name="familySequence" type="xsd:integer">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ar">?????? ?????????? ????????????</xsd:documentation>
+            <xsd:documentation xml:lang="en">Sequence number for family</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="cityId" type="xsd:int">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ar">?????? ??????????????</xsd:documentation>
+            <xsd:documentation xml:lang="en">City Id</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:element name="familyBookRequest" type="FamilyBookRequestType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ar">???????????? ?????? ????????????</xsd:documentation>
+      <xsd:documentation xml:lang="en">Family Book Request Details</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DependentType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="PersonDetailsType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="relationshipToFamily" type="LookupType">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="ar">?????? ??????????????</xsd:documentation>
+              <xsd:documentation xml:lang="en">Relationship</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="motherIdentityCardNumber" type="string15">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="ar">?????? ???????? ????????</xsd:documentation>
+              <xsd:documentation xml:lang="en">Mother Emirates Id Card Number</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DependentsType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="dependent" type="DependentType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">???????????? ????????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Dependent Details</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WifeType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="PersonDetailsType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="marriageDate" type="xsd:dateTime">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="ar">?????????? ????????????</xsd:documentation>
+              <xsd:documentation xml:lang="en">Marriage Date</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="WivesType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="wife" type="WifeType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Wife</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PersonDetailsType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="identityCardNumber" type="string15">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Emirates Identity Card Number</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="unifiedNumber" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????????? ????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Unified Number</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="fullArabicName" type="string80">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????????? ?????????????? ??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Full Arabic Name</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="fullEnglishName" type="string80">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????????? ?????????????? ??????????????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Full English Name</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="clanNameArabic" type="string20">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????????? ?????????????? ??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Clan name in Arabic</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="clanNameEnglish" type="string20">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ?????????????? ??????????????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Clan name in English</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="gender" type="LookupType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">??????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Gender</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="motherNameArabic" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ???????? ??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Mother Name in Arabic</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="motherNameEnglish" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ???????? ??????????????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Mother Name in English</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="dateOfBirth" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????????? ??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Date of Birth</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="countryOfBirth" type="LookupType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Country of Birth</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="emirateOfBirth" type="LookupType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????????? ??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Emirate of Birth</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="cityOfBirth" type="LookupType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????????? ??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">City of Birth</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="placeOfBirthAr" type="string80">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">???????? ?????????????? ??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Place of Birth in Arabic</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="placeOfBirthEn" type="string80">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">???????? ?????????????? ??????????????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Place of Birth in English</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="maritalStatus" type="LookupType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">???????????? ????????????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Marital Status</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="religion" type="LookupType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Religion</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="nationality" type="LookupType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Nationality</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="activeFlag" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">???????????? ???????? ??????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Flag indicates status of this person like dead or alive</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FamilyBookDetailsResponseType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="familybookSequence" nillable="true" type="xsd:integer" />
+      <xsd:element minOccurs="0" name="familybookIssueDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element name="familySequence" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ?????????? ????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Sequence number for family</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="city" type="LookupType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">City</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="childrenCount" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Count of Children</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="wivesCount" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Count of Wives</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="familyHead" type="PersonDetailsType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">???? ????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Head of the Family</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="dependents" type="DependentsType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">????????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Dependents Records</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="wives" type="WivesType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Wives Records</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="familyBookDetailsResponse" type="FamilyBookDetailsResponseType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ar">???????????? ?????? ????????????</xsd:documentation>
+      <xsd:documentation xml:lang="en">Family Book Details</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="errorResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="code" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ar">?????? ??????????</xsd:documentation>
+            <xsd:documentation xml:lang="en">Error Code</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="0" name="type" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ar">??? ?????</xsd:documentation>
+            <xsd:documentation xml:lang="en">Error Type</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="0" name="arDesc" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ar">?????????? ??????????????</xsd:documentation>
+            <xsd:documentation xml:lang="en">Error Arabic Description</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="0" name="enDesc" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ar">?????????? ??????????????????????</xsd:documentation>
+            <xsd:documentation xml:lang="en">Error English Description</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="0" name="refNumber" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ar">?????????? ??????????????</xsd:documentation>
+            <xsd:documentation xml:lang="en">Reference Number</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="TrnHeaderType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="transactionId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ????????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Transaction Id</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="serviceProviderEntity" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">??????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Service Provider Entity</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="TrnHeader" type="TrnHeaderType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ar">???????????? ????????????????</xsd:documentation>
+      <xsd:documentation xml:lang="en">Transaction Header</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="LookupType">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ???????? ???? ???????? ??????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Lookup Value Id</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="arDesc" type="string80">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ???????????? ??????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Lookup Value Arabic Description</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="enDesc" type="string80">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ar">?????? ???????????? ??????????????????????</xsd:documentation>
+          <xsd:documentation xml:lang="en">Lookup Value English Description</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="string15">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="15" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string20">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string80">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="80" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

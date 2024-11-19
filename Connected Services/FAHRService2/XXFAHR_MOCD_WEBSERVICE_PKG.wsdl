@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:tns1="http://xmlns.oracle.com/apps/per/soaprovider/plsql/xxfahr_mocd_webservice_pkg/get_employee_details/" xmlns:tns="http://xmlns.oracle.com/apps/per/soaprovider/plsql/xxfahr_mocd_webservice_pkg/" xmlns:isgf="http://xmlns.oracle.com/isg/servicefault" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="XXFAHR_MOCD_WEBSERVICE_PKG" targetNamespace="http://xmlns.oracle.com/apps/per/soaprovider/plsql/xxfahr_mocd_webservice_pkg/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <documentation>
+    <abstractWSDL>https://mgov.mof.gov.ae:443/soa-infra/services/default/PRDEBS_PLSQL_XXFAHR_MOCD_WEBSERVICE_PKG!1.0/XXFAHR_MOCD_WEBSERVICE_PKG_soap.wsdl</abstractWSDL>
+  </documentation>
+  <plt:partnerLinkType name="XXFAHR_MOCD_WEBSERVICE_PKG_plt">
+    <plt:role name="XXFAHR_MOCD_WEBSERVICE_PKG_Provider">
+      <plt:portType name="tns:XXFAHR_MOCD_WEBSERVICE_PKG_PortType" />
+    </plt:role>
+  </plt:partnerLinkType>
+  <wsp:Policy xmlns="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="wss_username_token_service_policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <sp:SupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:WssUsernameToken10 />
+          </wsp:Policy>
+        </sp:UsernameToken>
+      </wsp:Policy>
+    </sp:SupportingTokens>
+  </wsp:Policy>
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/per/soaprovider/plsql/xxfahr_mocd_webservice_pkg/" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="SOAHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" name="Responsibility" type="string" />
+            <element minOccurs="0" name="RespApplication" type="string" />
+            <element minOccurs="0" name="SecurityGroup" type="string" />
+            <element minOccurs="0" name="NLSLanguage" type="string" />
+            <element minOccurs="0" name="Org_Id" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/per/soaprovider/plsql/xxfahr_mocd_webservice_pkg/get_employee_details/" xmlns="http://www.w3.org/2001/XMLSchema">
+      <include schemaLocation="https://mgov.mof.gov.ae:443/soa-infra/services/default/PRDEBS_PLSQL_XXFAHR_MOCD_WEBSERVICE_PKG/XXFAHR_MOCD_WEBSERVICE_PKG_Service?XSD=xsd/APPS_XXFAHR_MOCD_WEBSERVICE_PKG_GET_EMPLOYEE_DETAILS.xsd" />
+    </schema>
+    <schema elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="https://mgov.mof.gov.ae:443/soa-infra/services/default/PRDEBS_PLSQL_XXFAHR_MOCD_WEBSERVICE_PKG/XXFAHR_MOCD_WEBSERVICE_PKG_Service?XSD=xsd/ISGServiceFault.xsd" namespace="http://xmlns.oracle.com/isg/servicefault" />
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="GET_EMPLOYEE_DETAILS_Input_Msg">
+    <wsdl:part name="header" element="tns:SOAHeader" />
+    <wsdl:part name="body" element="tns1:InputParameters" />
+  </wsdl:message>
+  <wsdl:message name="GET_EMPLOYEE_DETAILS_Output_Msg">
+    <wsdl:part name="body" element="tns1:OutputParameters" />
+  </wsdl:message>
+  <wsdl:message name="ISGServiceFaultMessage">
+    <wsdl:part name="fault" element="isgf:ISGServiceFault" />
+  </wsdl:message>
+  <wsdl:portType name="XXFAHR_MOCD_WEBSERVICE_PKG_PortType">
+    <wsdl:operation name="GET_EMPLOYEE_DETAILS">
+      <wsdl:input message="tns:GET_EMPLOYEE_DETAILS_Input_Msg" />
+      <wsdl:output message="tns:GET_EMPLOYEE_DETAILS_Output_Msg" />
+      <wsdl:fault name="serviceFault" message="tns:ISGServiceFaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="XXFAHR_MOCD_WEBSERVICE_PKG_Binding" type="tns:XXFAHR_MOCD_WEBSERVICE_PKG_PortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#wss_username_token_service_policy" wsdl:required="false" />
+    <wsdl:operation name="GET_EMPLOYEE_DETAILS">
+      <soap:operation soapAction="GET_EMPLOYEE_DETAILS" />
+      <wsdl:input>
+        <soap:header message="tns:GET_EMPLOYEE_DETAILS_Input_Msg" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="XXFAHR_MOCD_WEBSERVICE_PKG_Service">
+    <wsdl:port name="XXFAHR_MOCD_WEBSERVICE_PKG_Port" binding="tns:XXFAHR_MOCD_WEBSERVICE_PKG_Binding">
+      <soap:address location="https://mgov.mof.gov.ae:443/soa-infra/services/default/PRDEBS_PLSQL_XXFAHR_MOCD_WEBSERVICE_PKG/XXFAHR_MOCD_WEBSERVICE_PKG_Service" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

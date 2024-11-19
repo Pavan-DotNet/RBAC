@@ -1,0 +1,508 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "محاكم دبي- محكمة الأحوال الشخصية";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>محاكم دبي- بيانات الزواج والطلاق</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+        <table class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b>الحالة الاجتماعية</b></small></h6></td>
+                <td colspan="3" align="center">
+                    <select id="MSType" class="dropdown dropdown-header form-control">
+                        <option value="-1">-- اختر --</option>
+                        <option value="1">الحصول على شهادة الحالة الاجتماعية</option>
+                        <option value="2">الحصول على ملف بيانات الحالة الاجتماعية</option>
+                        <option value="3">الحصول على معلومات الحالة الاجتماعية بالتاريخ</option>
+                        <option value="4">الحصول على معلومات الحالة الاجتماعية بالهوية الإماراتية</option>
+                        <option value="5">الحصول على معلومات الحالة الاجتماعية بالاسم الكامل</option>
+                        <option value="6">الحصول على معلومات الحالة الاجتماعية بجزء من الاسم</option>
+                    </select>
+                </td>
+                <td><h6><small><b>نوع الوثيقة</b></small></h6></td>
+                <td align="center">
+                    <select id="documenttype" class="dropdown dropdown-header form-control">
+                        <option value="-1">-- اختر --</option>
+                        <option value="1">كل</option>
+                        <option value="2">تصديق</option>
+                        <option value="3">طلاق</option>
+                        <option value="4">زواج</option>
+                    </select>
+                </td>
+
+            </tr>
+        </table>
+        <table id="DCFile" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b>جهة اصدار المستند</b></small></h6></td>
+                <td align="center">
+                    <select id="DocumetIssuerAuthority" class="dropdown dropdown-header form-control">
+                        <option value="-1">-- اختر --</option>
+                        <option value="1">المحاكم</option>
+                        <option value="2">مسؤولو الزواج - المحاكم </option>
+                        <option value="3">مسؤولو الزواج - الآخرون</option>
+                        <option value="3">مسؤولو الزواج - القديم</option>
+                    </select>
+                </td>
+                <td><h6><small><b>سنة الوثيقة</b></small></h6></td>
+                <td align="center">
+                    <select id="DocumentYear" class="dropdown dropdown-header form-control"></select>
+
+                </td>
+            </tr>
+            <tr>
+                <td><h6><small><b>رقم الوثيقة</b></small></h6></td>
+                <td align="center"> <input id="txtDocumentNumber" type="text" class="form-control" style="width:100%" /></td>
+            </tr>
+        </table>
+        <table id="DCId" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b>الهوية الإماراتية للزوج</b></small></h6></td>
+                <td align="center"> <input id="txtEmiratesIdHusband" type="text" class="form-control" style="width:100%" /></td>
+                <td><h6><small><b>الهوية الإماراتية للزوجة</b></small></h6></td>
+                <td align="center"> <input id="txtEmiratesIdWife" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="DCName" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b>الاسم الكامل للزوج/ جزء من الاسم</b></small></h6></td>
+                <td align="center"> <input id="txtHusbandName" type="text" class="form-control" style="width:100%" /></td>
+                <td><h6><small><b>الاسم الكامل للزوجة/ جزء من الاسم</b></small></h6></td>
+                <td align="center"> <input id="txtWifeName" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="DCDate" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b>من تاريخ</b></small></h6></td>
+                <td align="center"> <input id="txtFromDate" type="text" class="form-control" style="width:100%" /></td>
+                <td><h6><small><b>إلى تاريخ</b></small></h6></td>
+                <td align="center"> <input id="txtToDate" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    نوع الوثيقة
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    مرجع الشهادة
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ الزواج/الطلاق
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الزوج
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم بطاقة الهوية الإمارتية للزوج
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    جنسية الزوج
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ ميلاد الزوج
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    اسم الزوجة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    رقم بطاقة الهوية الإمارتية للزوجة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    جنسية الزوجة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+                    <th class="text-center">
+                        <h6>
+                            <small>
+                                <b>
+                                    تاريخ ميلاد الزوجة
+
+                                </b>
+                            </small>
+                        </h6>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody text-center" id="tbody"></tbody>
+
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <!-- Bootstrap -->
+    <!-- Bootstrap DatePicker -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!-- Bootstrap DatePicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+
+
+    <script>
+
+         $(function () {
+         $('[id*=txtFromDate]').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            format: "yyyy-mm-dd",
+            language: "tr"
+          });
+         });
+
+         $(function () {
+         $('[id*=txtToDate]').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            format: "yyyy-mm-dd",
+            language: "tr"
+          });
+         });
+
+        function GenerateYear() {
+            var i,yr,now = new Date();
+            for (i = 0; i < 100; i++) {
+                yr = now.getFullYear() - i; // or whatever
+                $('#DocumentYear').append($('<option/>').val(yr).text(yr));
+            }
+        }
+
+        $(document).ready(function () {
+
+            $('.DataTable').hide();
+            $('#DCFile').hide();
+            $('#DCId').hide();
+            $('#DCDate').hide();
+            $('#DCName').hide();
+            $('#SubmitTable').hide();
+        });
+
+         $("#MSType").change(function () {
+
+            $('#txtDocumentNumber').val('');
+            $('#txtPassportNo').val('');
+            $('#txtFromDate').val('');
+            $('#txtToDate').val('');
+            $('#txtHusbandName').val('');
+            $('#txtWifeName').val('');
+            $('#documenttype').val("-1");
+            $('#DocumetIssuerAuthority').val("-1");
+            $('#DocumentYear').val('');
+            $('.DataTable').hide();
+
+
+             var MSval = $("#MSType option:selected").val();
+
+             if (MSval == '-1') {
+                 $('#documenttype').val("-1");
+             }
+
+            $('#DCFile').hide();
+            $('#DCId').hide();
+            $('#DCDate').hide();
+            $('#DCName').hide();
+            $(".tbody").empty();
+            $('#SubmitTable').hide();
+
+         });
+         $("#DocumetIssuerAuthority").change(function () {
+
+            $('#txtDocumentNumber').val('');
+            $('#DocumentYear').val('');
+
+
+             var MSval = $("#DocumetIssuerAuthority option:selected").val();
+
+             if (MSval == '-1') {
+                 $('#DocumentYear').val('');
+             }
+             else {
+                 GenerateYear();
+             }
+
+         });
+         $("#documenttype").change(function () {
+
+            $('#txtDocumentNumber').val('');
+            $('#txtPassportNo').val('');
+            $('#txtFromDate').val('');
+            $('#txtToDate').val('');
+            $('#txtHusbandName').val('');
+            $('#txtWifeName').val('');
+            $('#DocumentYear').val('');
+            $('#DocumetIssuerAuthority').val("-1");
+
+
+             var val = $("#documenttype option:selected").val();
+             var MSval = $("#MSType option:selected").val();
+
+            if (val == '-1') {
+                $('#DCFile').hide();
+                $('#DCId').hide();
+                $('#DCDate').hide();
+                $('#DCName').hide();
+                $(".tbody").empty();
+                $('#SubmitTable').hide();
+             }
+
+             if (val != '-1') {
+                  $(".tbody").empty();
+                  $('#SubmitTable').hide();
+             }
+
+
+            if (MSval == '1' || MSval == '2') {
+                 $('#DCFile').show();
+                 $('#DCId').hide();
+                 $('#DCDate').hide();
+                 $('#DCName').hide();
+                 $(".tbody").empty();
+                GenerateYear();
+                 $('#SubmitTable').show();
+             }
+             else if (MSval == '3') {
+                 $('#DCFile').hide();
+                 $('#DCId').hide();
+                 $('#DCDate').show();
+                 $('#DCName').hide();
+                 $(".tbody").empty();
+                 $('#SubmitTable').show();
+             }
+             else if (MSval == '4') {
+                 $('#DCFile').hide();
+                 $('#DCId').show();
+                 $('#DCDate').hide();
+                 $('#DCName').hide();
+                 $(".tbody").empty();
+                 $('#SubmitTable').show();
+             }
+             else if (MSval == '5' || MSval == "6") {
+                $('#DCFile').hide();
+                $('#DCId').hide();
+                $('#DCDate').hide();
+                $('#DCName').show();
+                $(".tbody").empty();
+                $('#SubmitTable').show();
+            }
+
+        });
+
+        function base64ToArrayBuffer(base64) {
+            var binaryString = window.btoa(unescape(encodeURIComponent(base64)));
+            var binaryLen = binaryString.length;
+            var bytes = new Uint8Array(binaryLen);
+            for (var i = 0; i < binaryLen; i++) {
+               var ascii = binaryString.charCodeAt(i);
+               bytes[i] = ascii;
+            }
+            return bytes;
+        }
+
+        function saveByteArray(reportName, byte) {
+            var blob = new Blob([byte], {type: "application/pdf"});
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            var fileName = reportName;
+            link.download = fileName;
+            link.click();
+        }
+
+        function downloadPDF(pdf) {
+        const linkSource = `data:application/pdf;base64,${pdf}`;
+        const downloadLink = document.createElement("a");
+        const fileName = new Date().getTime() + ".pdf";
+        downloadLink.href = linkSource;
+        downloadLink.download = fileName;
+        downloadLink.click();
+        }
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search","DCMARITAL")';
+
+            $(".tbody").empty();
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+
+            var val = $("#documenttype option:selected").val();
+            var MSval = $("#MSType option:selected").val();
+
+            if ($("#documenttype option:selected").val() == "-1") {
+                 document.getElementById('error').innerText = ('select Document Type');
+                 document.getElementById('error').style.color = 'white';
+                 $("#divLoading").html("");
+                 return false
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            if ($("#MSType option:selected").val() == "-1") {
+                 document.getElementById('error').innerText = ('select marital status type');
+                 document.getElementById('error').style.color = 'white';
+                 $("#divLoading").html("");
+                 return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+           var input={"MSType":  $("#MSType option:selected").val(), "DocumentType" : $("#documenttype option:selected").val(), "DocumetIssuerAuthority" : $("#DocumetIssuerAuthority option:selected").val(),"DocumentNumber" :$('#txtDocumentNumber').val(),"DocumentYear" :$("#DocumentYear option:selected").val(),"EmiratesIdHusband" :$('#txtEmiratesIdHusband').val(),"EmiratesIdWife" :$('#txtEmiratesIdWife').val(),"FromDate" :$('#txtFromDate').val(),"ToDate" :$('#txtToDate').val(),"HusbandName" :$('#txtHusbandName').val(),"WifeName" :$('#txtWifeName').val()  };
+           var UsrAgent = { "UserAgent": $.browser };
+            $.get(url, { postdata: JSON.stringify(input), UserAgent: JSON.stringify(UsrAgent)}, function (data) {
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+                if (obj.flag == "1") {
+
+                    $.each(obj.lstDCMARITALResponse, function (key, item) {
+                            html += '<tr>';
+                            html += '<td>' + item.DocumentType + '</td>';
+                            html += '<td>' + item.CertifcateRef + '</td>';
+                            html += '<td>' + item.GregorianDate + '</td>';
+                            html += '<td>' + item.Party1Name + '</td>';
+                            html += '<td>' + item.Party1UID + '</td>';
+                            html += '<td>' + item.Party1Nationality + '</td>';
+                            html += '<td>' + item.Party1BirthDate + '</td>';
+                            html += '<td>' + item.Party2Name + '</td>';
+                            html += '<td>' + item.Party2UID + '</td>';
+                            html += '<td>' + item.Party2Nationality + '</td>';
+                            html += '<td>' + item.Party2BirthDate + '</td>';
+                            html += '</tr>';
+
+                        if (item.BinaryFile != '') {
+                            downloadPDF(item.BinaryFile);
+                            }
+                    });
+
+                    $(".tbody").append(html);
+                    $('.DataTable').show();
+                    }
+                    else {
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+         $('#create_pdf').on('click', function () {
+            getPDF("DubaiCourts.pdf");
+         });
+
+    </script>
+}

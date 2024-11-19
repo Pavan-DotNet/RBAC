@@ -1,0 +1,610 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "استفسار عن رصيد اللولو";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>استفسار عن رصيد اللولو</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "LulluBalanceInquiry")';
+
+            $(".tbody").empty();
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+            var html1 = '';
+            var html2 = '';
+
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { EmiratesId: EmiratesId, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+
+                if (obj.flag == "1") {
+
+                    html = BindHTML(obj.apiResult);
+                    html1 = BindHTML1(obj.apiResult.SVRecentTransactions);
+                    html2 = BindHTML2(obj.apiResult);
+
+                    $("#divTables").append(html);
+                    $("#divTables").append(html1);
+                    $("#divTables").append(html2);
+
+                    $('.DataTable').show();
+
+
+                }
+                else {
+
+                    if (obj.flag == "2") {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("LulluBalanceInquiry.pdf");
+       });
+
+
+        function BindHTML(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+
+            html += '<tr>';    
+            html += '<td><h6><small><b>' + "تاريخ التفعيل" + '</b></small></h6></td>';
+            html += '<td>' + item.ActivationDate + '</td>';
+            html += '<td><h6><small><b>' + " القيمة" + '</b></small></h6></td>';
+            html += '<td>' + item.Amount + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "إسم صاحب البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.CardHolderName + '</td>';
+            html += '<td><h6><small><b>' + "رقم البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.CardNumber + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "انتهاء البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.CardExpiry + '</td>';
+            html += '<td><h6><small><b>' + "نوع البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.CardCreationType + '</td>';
+            html += '</tr>';
+         
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تاريخ التفعيل" + '</b></small></h6></td>';
+            html += '<td>' + item.ActivationDate + '</td>';
+            html += '<td><h6><small><b>' + "رسالة الاستجابة" + '</b></small></h6></td>';
+            html += '<td>' + item.ResponseMessage + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "نوع المعاملة" + '</b></small></h6></td>';
+            html += '<td>' + item.TransactionType + '</td>';
+            html += '<td><h6><small><b>' + "رمز حالة البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.CardStatusId + '</td>';
+            html += '</tr>';
+
+
+
+
+          
+
+            html += '</tbody>  </table>';
+
+
+            return html
+        }
+        function BindHTML2(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+
+          
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تفعيل " + '</b></small></h6></td>';
+            html += '<td>' + item.ActivationURL + '</td>';
+            html += '<td><h6><small><b>' + "رقم بطاقة الملحق" + '</b></small></h6></td>';
+            html += '<td>' + item.AddonCardNumber + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "بيانات تتبع البطاقة الإضافية" + '</b></small></h6></td>';
+            html += '<td>' + item.AddonCardTrackData + '</td>';
+            html += '<td><h6><small><b>' + " مبلغ التعديل" + '</b></small></h6></td>';
+            html += '<td>' + item.AdjustmentAmount + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الباركود" + '</b></small></h6></td>';
+            html += '<td>' + item.Barcode + '</td>';
+            html += '<td><h6><small><b>' + "قيمة الفاتورة" + '</b></small></h6></td>';
+            html += '<td>' + item.BillAmount + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "النوع" + '</b></small></h6></td>';
+            html += '<td>' + item.BulkType + '</td>';
+
+            html += '<td><h6><small><b>' + "رمز الموافقة" + '</b></small></h6></td>';
+            html += '<td>' + item.ApprovalCode + '</td>';
+
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "نوع مجموعة برنامج البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.CardProgramGroupType + '</td>';
+            html += '<td><h6><small><b>' + "معرف البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.CardProgramID + '</td>';
+            html += '</tr>';
+
+
+
+
+            html += '<tr>';
+
+            html += '<td><h6><small><b>' + "نوع البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.CardType + '</td>';
+
+            html += '<td><h6><small><b>' + "رقم البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.CardPIN + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "اسم الشركة" + '</b></small></h6></td>';
+            html += '<td>' + item.CorporateName + '</td>';
+            html += '<td><h6><small><b>' + "ثقافة" + '</b></small></h6></td>';
+            html += '<td>' + item.Culture + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "المبلغ التراكمي المنفق" + '</b></small></h6></td>';
+            html += '<td>' + item.CumulativeAmountSpent + '</td>';
+            html += '<td><h6><small><b>' + "معدل تحويل العملة" + '</b></small></h6></td>';
+            html += '<td>' + item.CurrencyConversionRate + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "العملة المحولة " + '</b></small></h6></td>';
+            html += '<td>' + item.CurrencyConvertedAmount + '</td>';
+            html += '<td><h6><small><b>' + "العملة العشرية" + '</b></small></h6></td>';
+            html += '<td>' + item.CurrencyDecimalDigits + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "العملة" + '</b></small></h6></td>';
+            html += '<td>' + item.CurrencyPosition + '</td>';
+            html += '<td><h6><small><b>' + "رمز العملة" + '</b></small></h6></td>';
+            html += '<td>' + item.CurrencySymbol + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الدفعة الحالية" + '</b></small></h6></td>';
+            html += '<td>' + item.CurrentBatchNumber + '</td>';
+            html += '<td><h6><small><b>' + "الزبون" + '</b></small></h6></td>';
+            html += '<td>' + item.Customer + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "مقدار الخصم" + '</b></small></h6></td>';
+            html += '<td>' + item.DiscountAmount + '</td>';
+            html += '<td><h6><small><b>' + "نسبة الخصم " + '</b></small></h6></td>';
+            html += '<td>' + item.DiscountPercentage + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "وحدة العرض" + '</b></small></h6></td>';
+            html += '<td>' + item.DisplayUnitForPostrings + '</td>';
+            html += '<td><h6><small><b>' + "القيمة المكتسبة" + '</b></small></h6></td>';
+            html += '<td>' + item.EarnedValue + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "خطا بالكود" + '</b></small></h6></td>';
+            html += '<td>' + item.ErrorCode + '</td>';
+            html += '<td><h6><small><b>' + "وصف خاطئ" + '</b></small></h6></td>';
+            html += '<td>' + item.ErrorDescription + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "انتهاء " + '</b></small></h6></td>';
+            html += '<td>' + item.Expiry + '</td>';
+            html += '<td><h6><small><b>' + "رقم البطاقة الخارجي" + '</b></small></h6></td>';
+            html += '<td>' + item.ExternalCardNumber + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "معرف الشركة الخارجي" + '</b></small></h6></td>';
+            html += '<td>' + item.ExternalCorporateId + '</td>';
+            html += '<td><h6><small><b>' + "رقم الفاتورة" + '</b></small></h6></td>';
+            html += '<td>' + item.InvoiceNumber + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الفاتورة الزامي" + '</b></small></h6></td>';
+            html += '<td>' + item.InvoiceNumberMandatory + '</td>';
+            html += '<td><h6><small><b>' + "منتصف" + '</b></small></h6></td>';
+            html += '<td>' + item.MID + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.MaskCard + '</td>';
+            html += '<td><h6><small><b>' + "معرف التاجر" + '</b></small></h6></td>';
+            html += '<td>' + item.MerchantID + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "اسم التاجر" + '</b></small></h6></td>';
+            html += '<td>' + item.MerchantName + '</td>';
+            html += '<td><h6><small><b>' + "عنوان منفذ البيع 1" + '</b></small></h6></td>';
+            html += '<td>' + item.MerchantOutletAddress1 + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "عنوان منفذ البيع 2" + '</b></small></h6></td>';
+            html += '<td>' + item.MerchantOutletAddress2 + '</td>';
+            html += '<td><h6><small><b>' + "مدينة منفذ البيع" + '</b></small></h6></td>';
+            html += '<td>' + item.MerchantOutletCity + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "اسم  منفذ البيع" + '</b></small></h6></td>';
+            html += '<td>' + item.MerchantOutletName + '</td>';
+            html += '<td><h6><small><b>' + "هاتف منفذ البيع" + '</b></small></h6></td>';
+            html += '<td>' + item.MerchantOutletPhone + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رمز منفذ البيع" + '</b></small></h6></td>';
+            html += '<td>' + item.MerchantOutletPinCode + '</td>';
+            html += '<td><h6><small><b>' + "حالة منفذ البيع" + '</b></small></h6></td>';
+            html += '<td>' + item.MerchantOutletState + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الدفعة الجديدة" + '</b></small></h6></td>';
+            html += '<td>' + item.NewBatchNumber + '</td>';
+            html += '<td><h6><small><b>' + "ملاحظات" + '</b></small></h6></td>';
+            html += '<td>' + item.Notes + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم المستخدم" + '</b></small></h6></td>';
+            html += '<td>' + item.NumericUserPwd + '</td>';
+            html += '<td><h6><small><b>' + "مبلغ التفعيل الأصلي" + '</b></small></h6></td>';
+            html += '<td>' + item.OriginalActivationAmount + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "القيمة الاصلية" + '</b></small></h6></td>';
+            html += '<td>' + item.OriginalAmount + '</td>';
+            html += '<td><h6><small><b>' + "رمز الموافقة الاصلية" + '</b></small></h6></td>';
+            html += '<td>' + item.OriginalApprovalCode + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم المجموعة الاصلية" + '</b></small></h6></td>';
+            html += '<td>' + item.OriginalBatchNumber + '</td>';
+            html += '<td><h6><small><b>' + "رقم البطاقة الاصلية" + '</b></small></h6></td>';
+            html += '<td>' + item.OriginalCardNumber + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رمز البطاقة الاصلية" + '</b></small></h6></td>';
+            html += '<td>' + item.OriginalCardPin + '</td>';
+            html += '<td><h6><small><b>' + "رقم الفاتورة الأصلية" + '</b></small></h6></td>';
+            html += '<td>' + item.OriginalInvoiceNumber + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "المعاملة الاصلية" + '</b></small></h6></td>';
+            html += '<td>' + item.OriginalTransactionId + '</td>';
+            html += '<td><h6><small><b>' + "رقم البطاقة الاصلية" + '</b></small></h6></td>';
+            html += '<td>' + item.OriginalCardNumber + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم المجموعة الاصلية" + '</b></small></h6></td>';
+            html += '<td>' + item.OriginalBatchNumber + '</td>';
+            html += '<td><h6><small><b>' + "بيانات الدفع" + '</b></small></h6></td>';
+            html += '<td>' + item.PaymentDetails + '</td>';
+            html += '</tr>';
+
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الرصيد السابق" + '</b></small></h6></td>';
+            html += '<td>' + item.PreviousBalance + '</td>';
+            html += '<td><h6><small><b>' + "القيمة الترويجية" + '</b></small></h6></td>';
+            html += '<td>' + item.PromotionalValue + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "نسخة المنفذ" + '</b></small></h6></td>';
+            html += '<td>' + item.PrstringMerchantCopy + '</td>';
+            html += '<td><h6><small><b>' + "رقم طلب الشراء" + '</b></small></h6></td>';
+            html += '<td>' + item.PurchaseOrderNumber + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "قيمة أمر الشراء" + '</b></small></h6></td>';
+            html += '<td>' + item.PurchaseOrderValue + '</td>';
+            html += '<td><h6><small><b>' + "صف الايصال 1" + '</b></small></h6></td>';
+            html += '<td>' + item.ReceiptFooterLine1 + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "صف الايصال 4" + '</b></small></h6></td>';
+            html += '<td>' + item.ReceiptFooterLine4 + '</td>';
+            html += '<td><h6><small><b>' + "المبلغ " + '</b></small></h6></td>';
+            html += '<td>' + item.ReloadableAmount + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رمز الاستجابة" + '</b></small></h6></td>';
+            html += '<td>' + item.ResponseCode + '</td>';
+
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "تاريخ التسوية" + '</b></small></h6></td>';
+            html += '<td>' + item.SettlementDate + '</td>';
+            html += '<td><h6><small><b>' + "قيمة التحويل" + '</b></small></h6></td>';
+            html += '<td>' + item.StoredValueConvertedAmount + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "معرف وحدة القيمة المخزنة" + '</b></small></h6></td>';
+            html += '<td>' + item.StoredValueUnitID + '</td>';
+            html += '<td><h6><small><b>' + "معرف الموضوع" + '</b></small></h6></td>';
+            html += '<td>' + item.ThemeId + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "قيمة المعاملة" + '</b></small></h6></td>';
+            html += '<td>' + item.TransactionAmount + '</td>';
+            html += '<td><h6><small><b>' + "رقم المعاملة" + '</b></small></h6></td>';
+            html += '<td>' + item.TransactionId + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "انتهاء صلاحية بطاقة التحويل" + '</b></small></h6></td>';
+            html += '<td>' + item.TransferCardExpiry + '</td>';
+            html += '<td><h6><small><b>' + "رقم بطاقة التحويل" + '</b></small></h6></td>';
+            html += '<td>' + item.TransferCardNumber + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رمز نقل البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.TransferCardPin + '</td>';
+            html += '<td><h6><small><b>' + "نقل بيانات تتبع البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.TransferCardTrackData + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "مجموعة برنامج البطاقة التي تمت ترقيتها" + '</b></small></h6></td>';
+            html += '<td>' + item.UpgradedCardProgramGroupName + '</td>';
+            html += '<td><h6><small><b>' + "قيمة المبلغ المحول" + '</b></small></h6></td>';
+            html += '<td>' + item.XactionAmountConvertedValue + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "مبلغ السلة " + '</b></small></h6></td>';
+            html += '<td>' + item.stringegerAmount + '</td>';
+            html += '<td><h6><small><b>' + "حالة البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.CardStatus + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+
+            html += '<td><h6><small><b>' + "رمز عملة البطاقة" + '</b></small></h6></td>';
+            html += '<td>' + item.CardCurrencySymbol + '</td>';
+            html += '<td><h6><small><b>' + "تتبع البيانات" + '</b></small></h6></td>';
+            html += '<td>' + item.TrackData + '</td>';
+            html += '</tr>';
+            html += '<tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم المجموعة الاصلية" + '</b></small></h6></td>';
+            html += '<td>' + item.OriginalBatchNumber + '</td>';
+
+            html += '<td><h6><small><b>' + "رصيد بطاقة التحويل" + '</b></small></h6></td>';
+            html += '<td>' + item.TransferCardBalance + '</td>';
+            html += '</tr>';
+
+            html += '</tbody>  </table>';
+
+
+            return html
+        }
+
+
+
+        function BindHTML1(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "التحويلات الاخيرة" + '</b></small></h6></td>';
+            html += '</tr>';
+
+            html += '</tbody>  </table>';
+                for (var i = 0; i < item.length; i++) {
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+                    html += '<td><h6><small><b>' + "رصيد البطاقة" + '</b></small></h6></td>';
+                    html += '<td>' + item[i].CardBalance + '</td>';
+                    html += '<td><h6><small><b>' + "رقم البطاقة" + '</b></small></h6></td>';
+                    html += '<td>' + item[i].CardNumber + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+                    html += '<td><h6><small><b>' + "رقم الفاتورة" + '</b></small></h6></td>';
+                    html += '<td>' + item[i].InvoiceNumber + '</td>';
+                    html += '<td><h6><small><b>' + "الوفاء" + '</b></small></h6></td>';
+                    html += '<td>' + item[i].Loyalty + '</td>';
+            html += '</tr>';
+
+
+
+                    html += '<tr>';
+                    html += '<td><h6><small><b>' + "تاريخ المعاملة" + '</b></small></h6></td>';
+                    html += '<td>' + item[i].TransactionDate + '</td>';
+                    //html += '<td><h6><small><b>' + "ملاحظات" + '</b></small></h6></td>';
+                    //html += '<td>' + item[i].Notes + '</td>';
+                    html += '<td><h6><small><b>' + " رمز المنفذ" + '</b></small></h6></td>';
+                    html += '<td>' + item[i].OutletCode + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+                    html += '<td><h6><small><b>' + " اسم المنفذ" + '</b></small></h6></td>';
+                    html += '<td>' + item[i].OutletName + '</td>';
+                    html += '<td><h6><small><b>' + "قيمة المعاملة" + '</b></small></h6></td>';
+                    html += '<td>' + item[i].TransactionAmount + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+                    html += '<td><h6><small><b>' + "تاريخ المعاملة" + '</b></small></h6></td>';
+                    html += '<td>' + item[i].TransactionDate + '</td>';
+                    html += '<td><h6><small><b>' + "تاريخ الخدمة" + '</b></small></h6></td>';
+                    html += '<td>' + item[i].TransactionDateAtServer + '</td>';
+            html += '</tr>';
+
+
+            //html += '<tr>';
+            //html += '<td><h6><small><b>' + "تاريخ المعاملة" + '</b></small></h6></td>';
+            //html += '<td>' + item[i].TransactionDate + '</td>';
+            //html += '<td></h6></td>';
+            //html += '<td></td>';
+            //html += '</tr>';
+
+          
+
+
+            html += '</tbody>  </table>';
+
+            }
+
+            return html;
+        }
+    </script>
+}

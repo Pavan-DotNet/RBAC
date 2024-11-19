@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WL5G3N0:definitions xmlns:WL5G3N1="urn:ae:gov:abudhabi:DigitalDocuments:InheritorStatementMessages:1" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N2="urn:ae:gov:abudhabi:DigitalDocuments:InheritorStatement" targetNamespace="urn:ae:gov:abudhabi:DigitalDocuments:InheritorStatement" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/">
+  <WL5G3N0:documentation>This service is used to get the Inheritor statement from SCMAF</WL5G3N0:documentation>
+  <WL5G3N0:types>
+    <xsd:schema xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:types="urn:ae:gov:abudhabi:DigitalDocuments:InheritorStatementMessages:1" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:ae:gov:abudhabi:DigitalDocuments:InheritorStatement" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=ee5c09163b27428ef60c1a300aff7d92&amp;servdocoid=c224a13300998783141f63d95a56e898" namespace="urn:ae:gov:abudhabi:DigitalDocuments:InheritorStatementMessages:1" />
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="SoapResponseHeader">
+    <WL5G3N0:part name="CustomHeaderRes" element="WL5G3N1:ResponseTrnHeader" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="InheritorStatementListSoapFault">
+    <WL5G3N0:part name="part" element="WL5G3N1:FaultResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="InheritorStatementDocReqMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:InheritorStatementDocumentRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="InheritorStatementListResMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:InheritorStatementListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="InheritorStatementDetailsSoapFault">
+    <WL5G3N0:part name="part" element="WL5G3N1:FaultResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="InheritorStatementDetailsReqMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:InheritorStatementDetailsRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="InheritorStatementListReqMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:InheritorStatementListRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="InheritorStatementDetailsResMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:InheritorStatementDetailsResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="InheritorStatementDocResMesg">
+    <WL5G3N0:part name="part" element="WL5G3N1:InheritorStatementDocumentResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SoapRequestHeader">
+    <WL5G3N0:part name="CustomHeaderReq" element="WL5G3N1:RequestTrnHeader" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="InheritorStatementDocumentSoapFault">
+    <WL5G3N0:part name="part" element="WL5G3N1:FaultResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="InheritorStatementPort">
+    <WL5G3N0:operation name="getInheritorStatementDetails">
+      <WL5G3N0:input message="WL5G3N2:InheritorStatementDetailsReqMesg" />
+      <WL5G3N0:output message="WL5G3N2:InheritorStatementDetailsResMesg" />
+      <WL5G3N0:fault name="InheritorStatementDetailsSoapFault" message="WL5G3N2:InheritorStatementDetailsSoapFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getInheritorStatementDocument">
+      <WL5G3N0:input message="WL5G3N2:InheritorStatementDocReqMesg" />
+      <WL5G3N0:output message="WL5G3N2:InheritorStatementDocResMesg" />
+      <WL5G3N0:fault name="InheritorStatementDocumentSoapFault" message="WL5G3N2:InheritorStatementDocumentSoapFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getInheritorStatementList">
+      <WL5G3N0:input message="WL5G3N2:InheritorStatementListReqMesg" />
+      <WL5G3N0:output message="WL5G3N2:InheritorStatementListResMesg" />
+      <WL5G3N0:fault name="InheritorStatementListSoapFault" message="WL5G3N2:InheritorStatementListSoapFault" />
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="InheritorStatementPortSOAP11Binding" type="WL5G3N2:InheritorStatementPort">
+    <WL5G3N3:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <WL5G3N0:operation name="getInheritorStatementDetails">
+      <WL5G3N3:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:InheritorStatement:getInheritorStatementDetails" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="InheritorStatementDetailsSoapFault">
+        <WL5G3N3:fault use="literal" name="InheritorStatementDetailsSoapFault" namespace="" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getInheritorStatementDocument">
+      <WL5G3N3:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:InheritorStatement:getInheritorStatementDocument" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="InheritorStatementDocumentSoapFault">
+        <WL5G3N3:fault use="literal" name="InheritorStatementDocumentSoapFault" namespace="" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getInheritorStatementList">
+      <WL5G3N3:operation soapAction="urn:ae:gov:abudhabi:DigitalDocuments:InheritorStatement:getInheritorStatement" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapRequestHeader" part="CustomHeaderReq" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal" parts="part" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="InheritorStatementListSoapFault">
+        <WL5G3N3:fault use="literal" name="InheritorStatementListSoapFault" namespace="" />
+        <WL5G3N3:header message="WL5G3N2:SoapResponseHeader" part="CustomHeaderRes" use="literal" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="getInheritorStatement_SCMAF">
+    <WL5G3N0:port name="InheritorStatementPortSOAP11Binding_soaphttps_StageFB" binding="WL5G3N2:InheritorStatementPortSOAP11Binding">
+      <WL5G3N3:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/SCMAF/Soap/GetInheritorStatement/V1" />
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

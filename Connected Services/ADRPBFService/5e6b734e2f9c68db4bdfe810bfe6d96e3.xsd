@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" xmlns:ns0="http://schemas.datacontract.org/2004/07/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://iapi.mocd.gov.ae/service/5e6b734e2f9c68db4bdfe810bfe6d96e?serviceoid=7a51040c10a5d94182912950957f245d&amp;servdocoid=5e6b734e2f9c68db4bdfe810bf73a8c1" namespace="http://schemas.datacontract.org/2004/07/" />
+  <xs:element name="MemberInformationReq" type="ns0:MemberInformationRequest" />
+  <xs:element name="ConsumerEntity" nillable="true" type="xs:string" />
+  <xs:element name="ServiceKey" nillable="true" type="xs:string" />
+  <xs:element name="TransactionRefNo" nillable="true" type="xs:string" />
+  <xs:element name="UserName" nillable="true" type="xs:string" />
+  <xs:element name="memberInformation" nillable="true" type="ns0:ArrayOfMemberInformationResponse" />
+  <xs:element name="ResponseCode" nillable="true" type="xs:string" />
+  <xs:element name="ResponseDescription" nillable="true" type="xs:string" />
+</xs:schema>

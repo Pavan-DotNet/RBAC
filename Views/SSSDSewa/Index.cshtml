@@ -1,0 +1,245 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Government of Sharjah Social Services Department FEWA  - حكومة الشارقة دائرة الخدمات الاجتماعية";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>حكومة الشارقة دائرة الخدمات الاجتماعية</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+        <table id="IDType" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> رقم بطاقة الهوية</b></small></h6></td>
+                <td> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "SSSDSewa")';
+
+            $(".tbody").empty();
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+            var html1 = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid ID Type');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                 $("#divLoading").html("");
+
+                return false;
+            }
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+            var UsrAgent = { "UserAgent": $.browser };
+            $.get(url, { EmiratesId: EmiratesId, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+
+
+                if (obj.flag == "1") {
+
+                    html = BindHTML(obj?.result?.data);
+
+                    $("#divTables").append(html);
+
+                    if (obj?.result?.data?.accounts?.length > 0) {
+                        for (var i = 0; i < obj?.result?.data?.accounts?.length; i++) {
+                            html1 = BindHTML1(obj?.result?.data?.accounts[i]);
+                            $("#divTables").append(html1);
+                        }
+                    }
+
+                        $('.DataTable').show();
+
+                }
+                else {
+
+                    if (obj.flag == "2"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("SharjahUniversity.pdf");
+       });
+
+        var StringHasValue = function (strValue) {
+            if ($.trim(strValue) != "" && $.trim(strValue) != null && $.trim(strValue) != undefined)
+                return strValue;
+            else
+                return "-";
+        };
+        function BindHTML(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الرقم" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.id) + '</td>';
+            html += '<td><h6><small><b>' + "تاريخ الاصدار" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.issueDate) + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الهوية" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.emiratesId) + '</td>';
+            html += '<td><h6><small><b>' + "الاسم" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.personName) + '</td>';
+
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم المستهلك" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.consumerNo) + '</td>';
+            html += '<td><h6><small><b>' + "الرصيد الحالي" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.currentBalance) + '</td>';
+
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الهاتف" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.phone) + '</td>';
+            html += '<td><h6><small><b>' + "البريد الالكتروني" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.email) + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "المبنى" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.premise) + '</td>';
+            html += '<td><h6><small><b>' + "العنوان 1" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.address1) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "العنوان 2" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.address2) + '</td>';
+            html += '<td><h6><small><b>' + "العنوان 3" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.address3) + '</td>';
+            html += '</tr>';
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "العنوان 4" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.address4) + '</td>';
+            html += '<td><h6><small><b>' + "المنطقة" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.areaName) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "ملاحظات" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.notes) + '</td>';    
+            html += '</tr>';
+
+
+            html += '</tbody>  </table>';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+
+
+            html += '<tr>';
+            html += '<td style="background-color: gray"><h6><small><b>' + "الحسابات" + '</b></small></h6></td>';
+            html += '</tr>';
+
+            html += '</tbody>  </table>';
+
+            return html
+        }
+        function BindHTML1(item) {
+            var html = '';
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم الحساب" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.AccountID) + '</td>';
+            html += '<td><h6><small><b>' + "الحسابات" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.Acccount) + '</td>';
+            html += '</tr>';
+       
+            html += '</tbody>  </table>';
+
+
+            return html
+        }
+    </script>
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:tns="http://id.gov.ae/ws/personInquiry" xmlns:pis="http://id.gov.ae/schema/personInquiry" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://id.gov.ae/ws/personInquiry" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="52cd7cfe-8e0a-11ea-bd97-eb374c99a270?xsd=PersonInquiry" namespace="http://id.gov.ae/schema/personInquiry" />
+  <xsd:element name="personInquiry" type="pis:PersonInquiryRequestType" />
+  <xsd:element name="personInquiryResponse" type="pis:PersonInquiryResponseType" />
+</xsd:schema>

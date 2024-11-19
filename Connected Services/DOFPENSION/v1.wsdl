@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdlhttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://ws.wso2.org/dataservice" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://ws.wso2.org/dataservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This service is used to retrieve the pension details of a person by passing his Emirates ID.</wsdl:documentation>
+  <wsp:Policy wsu:Id="UTOverTransport">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient" />
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.wso2.org/dataservice">
+      <xs:element name="DataServiceFault">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="current_params" type="xs:string" />
+            <xs:element name="current_request_name" type="xs:string" />
+            <xs:element name="nested_exception" type="xs:string" />
+            <xs:element name="source_data_service">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="location" type="xs:string" />
+                  <xs:element name="default_namespace" type="xs:string" />
+                  <xs:element name="description" type="xs:string" />
+                  <xs:element name="data_service_name" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ds_code" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="REQUEST_STATUS" type="xs:string" />
+      <xs:element name="DATA_SERVICE_RESPONSE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pensionDetailsPerEmiratesID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="p_emirates_id" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Entries" type="ns0:Entries" />
+      <xs:complexType name="Entries">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Entry" type="ns0:Entry" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Entry">
+        <xs:sequence>
+          <xs:element name="PENSIONER_NAME_AR" nillable="true" type="xs:string" />
+          <xs:element name="PENSIONER_NAME_US" nillable="true" type="xs:string" />
+          <xs:element name="PENSION_START_DATE" nillable="true" type="xs:string" />
+          <xs:element name="PENSION_AMOUNT" nillable="true" type="xs:string" />
+          <xs:element name="PENSION_ID" nillable="true" type="xs:string" />
+          <xs:element name="PENSIONER_DEATH" nillable="true" type="xs:string" />
+          <xs:element name="EMIRATES_ID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="pensionDetailsPerEmiratesIDRequest">
+    <wsdl:part name="parameters" element="ns0:pensionDetailsPerEmiratesID" />
+  </wsdl:message>
+  <wsdl:message name="DataServiceFault">
+    <wsdl:part name="parameters" element="ns0:DataServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="pensionDetailsPerEmiratesIDResponse">
+    <wsdl:part name="parameters" element="ns0:Entries" />
+  </wsdl:message>
+  <wsdl:portType wsp:PolicyURIs="#UTOverTransport" name="PensionInquiryDetailsPortType">
+    <wsdl:operation name="pensionDetailsPerEmiratesID">
+      <wsdl:input wsaw:Action="urn:pensionDetailsPerEmiratesID" message="ns0:pensionDetailsPerEmiratesIDRequest" />
+      <wsdl:output wsaw:Action="urn:pensionDetailsPerEmiratesIDResponse" message="ns0:pensionDetailsPerEmiratesIDResponse" />
+      <wsdl:fault wsaw:Action="urn:pensionDetailsPerEmiratesIDDataServiceFault" name="DataServiceFault" message="ns0:DataServiceFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PensionInquiryDetailsSoap11Binding" type="ns0:PensionInquiryDetailsPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="pensionDetailsPerEmiratesID">
+      <soap:operation soapAction="urn:pensionDetailsPerEmiratesID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DataServiceFault">
+        <soap:fault use="literal" name="DataServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PensionInquiryDetailsHttpPOSTBinding" type="ns0:PensionInquiryDetailsPortType">
+    <http:binding verb="POST" />
+    <wsdl:operation name="pensionDetailsPerEmiratesID">
+      <soap:operation soapAction="urn:pensionDetailsPerEmiratesID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DataServiceFault">
+        <soap:fault use="literal" name="DataServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PensionInquiryDetailsHttpGETBinding" type="ns0:PensionInquiryDetailsPortType">
+    <http:binding verb="GET" />
+    <wsdl:operation name="pensionDetailsPerEmiratesID">
+      <soap:operation soapAction="urn:pensionDetailsPerEmiratesID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DataServiceFault">
+        <soap:fault use="literal" name="DataServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="retrievePensionDetails_DOF">
+    <wsdl:port name="PensionInquiryDetailsHttpGETBinding" binding="ns0:PensionInquiryDetailsHttpGETBinding">
+      <http:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/DOF/Soap/RetrievePensionDetails/v1" />
+    </wsdl:port>
+    <wsdl:port name="PensionInquiryDetailsHttpPOSTBinding" binding="ns0:PensionInquiryDetailsHttpPOSTBinding">
+      <http:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/DOF/Soap/RetrievePensionDetails/v1" />
+    </wsdl:port>
+    <wsdl:port name="retrievePensionDetails_DOFsoaphttps" binding="ns0:PensionInquiryDetailsSoap11Binding">
+      <soap:address location="https://iapi.mocd.gov.ae:443/Outbound/GSB/DOF/Soap/RetrievePensionDetails/v1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

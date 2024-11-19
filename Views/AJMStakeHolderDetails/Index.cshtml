@@ -1,0 +1,557 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "تفاصيل - مالك الرخصة";
+}
+<br />
+
+<div class="canvas_div_pdf">
+    <div style="text-align:center" class="table table-bordered table-active"> <h4><small><b>تفاصيل - مالك الرخصة</b></small></h4></div>
+    <div dir="rtl" class="table-responsive table-condensed text-center ">
+
+
+
+        <table id="NationalId" class="table table-bordered table-active">
+            <tr>
+                <td><h6><small><b> بطاقة هوية </b></small></h6></td>
+                <td colspan="3"> <input id="txtEmiratesId" type="text" class="form-control" style="width:100%" /></td>
+
+            </tr>
+        </table>
+
+        <table id="SubmitTable" class="table">
+            <tr>
+                <td colspan="4">
+                    <input class="btn btn-secondary active text-center" type="submit" id="btnsubmit" value="الحصول على البيانات" />
+                    <img id="create_pdf" src="~/Images/PDF.png" alt="pdf" style="height:50px;width:80px;float:left " />
+                </td>
+            </tr>
+        </table>
+        <div id="error" class="bg-danger"></div>
+        <br />
+        <div id="divLoading">
+        </div>
+        <div id="divTables">
+        </div>
+
+        <table class="DataTable table table-bordered  table-hover text-center table-active">
+            <tbody class="tbody text-center" id="tbody"></tbody>
+        </table>
+        <div id="response" class="bg-danger"></div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/Scripts/GeneratePDF.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+    <script>
+        var base64String = "";
+        $(document).ready(function () {
+            $('.DataTable').hide();
+        });
+
+        $("#documentype").change(function () {
+
+            $('#txtEmiratesId').val('');
+
+            $('#SubmitTable').show();
+            $('#NationalId').show();
+
+
+
+
+
+        });
+
+        function getData() {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("Search", "AJMStakeHolderDetails")';
+
+            $(".tbody").empty();
+            $("#divTables").empty();
+
+            $('.DataTable').hide();
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+            $('#response').fadeIn();
+            var id = $("#documentype option:selected").val();
+
+            if ($("#txtEmiratesId").val().length == 0) {
+
+                document.getElementById('error').innerText = ('Invalid EmiratesId');
+                document.getElementById('error').style.color = 'white';
+
+                $("#txtEmiratesId").focus();
+
+
+                $("#divLoading").html("");
+
+                return false;
+            }
+
+            else {
+                document.getElementById('error').innerText = ('');
+            }
+
+            var EmiratesId = $('#txtEmiratesId').val();
+
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { EmiratesId: EmiratesId,UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+
+                if (obj.flag == "1") {
+                    if (obj.objresp.GetStakeholderInfoResult.Stakeholders != null) {
+                        for (var i = 0; i < obj.objresp.GetStakeholderInfoResult.Stakeholders.Stakeholder.length; i++) {
+                            //var refNumber = "'" + obj.divourceDetails[i].ZTransactionId.toString() + "'";
+                            html = '';
+                            html += BindHTML(obj.objresp.GetStakeholderInfoResult.Stakeholders.Stakeholder[i]);
+                            //html += BindHTML(obj.objresp.GetStakeholderInfoResult.Stakeholders.Stakeholder[i].Licenses);
+
+                            $("#divTables").append(html);
+                            $('.DataTable').show();
+                        }
+                    }
+
+                }
+                else {
+
+                    if (obj.flag == "2") {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+
+                }
+                $("#divLoading").html("");
+            });
+        }
+
+       $("#btnsubmit").on("click", getData);
+
+       $('#create_pdf').on('click', function () {
+            getPDF("AJMStakeHolderDetails.pdf");
+       });
+
+
+        function BindHTML(item) {
+            //var refNumber = "'" + item.ZTransactionId.toString() + "'";
+
+            var html = '<div style="width: 100%;height: 2px;background: #b9b3b3;margin-bottom: 19px;"></div>';
+
+            html += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            html += '<tbody class="tbody text-center" id="tbody">';
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الرقم التعريفي" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.Id) + '</td>';
+            html += '<td><h6><small><b>' + "سبب الحظر" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.BanningReason) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "حالة الحظر" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.BanningStatus) + '</td>';
+            html += '<td><h6><small><b>' + "تاريخ الميلاد" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.DateOfBirth) + '</td>';
+            html += '</tr>';
+
+
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الجنس" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.Gender) + '</td>';
+            html += '<td><h6><small><b>' + "رقم الهوية" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.IdentityNumber) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الهاتف المتحرك" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.MobileNumber) + '</td>';
+            html += '<td><h6><small><b>' + "الاسم (عربي)" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.NameAR) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "الاسم (انجليزي)" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.NameEN) + '</td>';
+            html += '<td><h6><small><b>' + "الجنسية" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.Nationality) + '</td>';
+            html += '</tr>';
+
+            html += '<tr>';
+            html += '<td><h6><small><b>' + "رقم جواز السفر" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.PassportNumber) + '</td>';
+            html += '<td><h6><small><b>' + "الهاتف" + '</b></small></h6></td>';
+            html += '<td>' + StringHasValue(item.PhoneNumber) + '</td>';
+            html += '</tr>';
+
+
+
+            html += '</tbody>  </table>';
+
+
+            for (var i = 0; i < item.Licenses.License.length; i++) {
+
+                //var refNumber = "'" + obj.divourceDetails[i].ZTransactionId.toString() + "'";
+                html += BindMoreDetails(item.Licenses.License[i]);
+                //html += BindHTML(obj.objresp.GetStakeholderInfoResult.Stakeholders.Stakeholder[i].Licenses);
+
+
+            }
+            return html
+        }
+        function BindMoreDetails(item) {
+            var docDetials = '<h4>تفاصيل الرخصة</h4>';
+            docDetials += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            docDetials += '<tbody class="tbody text-center" id="tbody">';
+
+
+
+            docDetials += '<tr>';
+            docDetials += '<td><h6><small><b>' + "الرقم التعريفي للرخصة" + '</b></small></h6></td>';
+            docDetials += '<td>' + item.LicenseId + '</td>';
+            docDetials += '<td><h6><small><b>' + "رقم الرخصة" + '</b></small></h6></td>';
+            docDetials += '<td>' + item.LicenseNumber + '</td>';
+            docDetials += '</tr>';
+
+            docDetials += '<tr>';
+            docDetials += '<td><h6><small><b>' + "حالة الرخصة" + '</b></small></h6></td>';
+            docDetials += '<td>' + item.LicenseStatus + '</td>';
+            docDetials += '<td><h6><small><b>' + "نوع الرخصة" + '</b></small></h6></td>';
+            docDetials += '<td>' + item.LicensorType + '</td>';
+            docDetials += '</tr>';
+
+
+            docDetials += '<tr>';
+            docDetials += '<td><h6><small><b>' + "اسم الرخصة (عربي)" + '</b></small></h6></td>';
+            docDetials += '<td>' + item.TradeNameAR + '</td>';
+            docDetials += '<td><h6><small><b>' + "اسم الرخصة (انجليزي)" + '</b></small></h6></td>';
+            docDetials += '<td>' + item.TradeNameEN + '</td>';
+            docDetials += '</tr>';
+
+            docDetials += '<tr>';
+            docDetials += '<td><h6><small><b>' + "تاريخ انتهاء الرخصة" + '</b></small></h6></td>';
+            docDetials += '<td>' + item.LicenseStatus + '</td>';
+            docDetials += '</tr>';
+
+
+            docDetials += '</tbody>  </table>';
+            var refNumber = item.LicenseNumber;
+            var accord = '<div class="accordion open accordion-flush" id="accordionFlushExample" style="border: 1px solid #979494;>';
+            accord += '<div class="accordion-item">';
+            accord += '<h2 class="accordion-header" id = "flush-' + item.LicenseNumber + 'headingOne" >';
+            accord += '<button  id = "btn' + item.LicenseNumber + '" class="accordion-button collapsed" onclick="getMoreDetails(' + refNumber + ')" type = "button" data-bs-toggle="collapse" data-bs-target="#flush-' + item.LicenseNumber + 'collapseOne" aria-expanded="false" aria-controls="flush-' + item.LicenseNumber + 'collapseOne" style="direction: ltr;color: #a9a59a; background-color: #ffffff !important;" >';
+            accord += 'Click here to find more details about License Ref# : ' + item.LicenseNumber;
+            accord += '</button >';
+            accord += '</h2>';
+            accord += '<div id="flush-' + item.LicenseNumber + 'collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-' + item.LicenseNumber + 'headingOne" >';
+            accord += '<div class="accordion-body">';
+            accord += '<div class="DataTable" id="dd' + item.LicenseNumber + '"></div>';
+            accord += '</div></div></div>';
+            docDetials += accord;
+
+            return docDetials;
+        }
+
+
+        function BindMoreLiscenceDetails(item) {
+            var docDetials = '<h4>تفاصيل الرخصة - عجمان</h4>';
+            var activty = '';
+            var owner = '';
+
+            for (var i = 0; i < item.Activity_List_Info.length; i++) {
+
+                activty = '<h4>بيانات قائمة الأنشطة</h4>';
+                activty += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+                activty += '<tbody class="tbody text-center" id="tbody">';
+
+                activty += '<tr>';
+                activty += '<td><h6><small><b>' + "الاسم (عربي)" + '</b></small></h6></td>';
+                activty += '<td>' + item.Activity_List_Info[i].NameAR + '</td>';
+                activty += '<td><h6><small><b>' + "الاسم (انجليزي)" + '</b></small></h6></td>';
+                activty += '<td>' + item.Activity_List_Info[i].NameEN + '</td>';
+                activty += '</tr>';
+
+                activty += '<tr>';
+                activty += '<td><h6><small><b>' + "رمز الاوراكل" + '</b></small></h6></td>';
+                activty += '<td>' + item.Activity_List_Info[i].ORA_CODNO + '</td>';
+                activty += '<td><h6><small><b>' + "المعرف" + '</b></small></h6></td>';
+                activty += '<td>' + item.Activity_List_Info[i].Serial + '</td>';
+
+                activty += '</tr>';
+                activty += '</tbody>  </table>';
+                docDetials += activty;
+
+            }
+
+            for (var i = 0; i < item.Owners_List_Info.length; i++) {
+
+                owner = '<h4>بيانات قائمة الملاك</h4>';
+                owner += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+                owner += '<tbody class="tbody text-center" id="tbody">';
+
+                owner += '<tr>';
+                owner += '<td><h6><small><b>' + "الجنس (عربي)" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].Gender_Ar + '</td>';
+                owner += '<td><h6><small><b>' + "رقم - الجنس" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].Gender_Serial + '</td>';
+                owner += '</tr>';
+
+                owner += '<tr>';
+                owner += '<td><h6><small><b>' + "رقم الهوية" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].IdentityNumber + '</td>';
+                owner += '<td><h6><small><b>' + "نوع المستأجر عربي" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].LeasorType_Ar + '</td>';
+                owner += '</tr>';
+
+                owner += '<tr>';
+                owner += '<td><h6><small><b>' + "رقم - نوع المستأجر" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].LeasorType_Serial + '</td>';
+                owner += '<td><h6><small><b>' + "مصدر الرخصة" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].LicenseSource + '</td>';
+                owner += '</tr>';
+
+                owner += '<tr>';
+                owner += '<td><h6><small><b>' + "الهاتف المتحرك" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].MobileNumber + '</td>';
+                owner += '<td><h6><small><b>' + "الاسم عربي" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].NameAR + '</td>';
+                owner += '</tr>';
+
+                owner += '<tr>';
+                owner += '<td><h6><small><b>' + "الاسم انجليزي" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].NameEN + '</td>';
+                owner += '<td><h6><small><b>' + "الجنسية عربي" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].Nationality_Ar + '</td>';
+
+
+                owner += '<tr>';
+                owner += '<td><h6><small><b>' + "معرف - الجنسية" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].Nationality_Serial + '</td>';
+                owner += '<td><h6><small><b>' + "ملاحظات" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].Notes + '</td>';
+                owner += '</tr>';
+
+                owner += '<tr>';
+                owner += '<td><h6><small><b>' + "نوع المتعامل عربي" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].OwnerType_Ar + '</td>';
+                owner += '<td><h6><small><b>' + "رقم - نوع المتعامل" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].OwnerType_Serial + '</td>';
+                owner += '</tr>';
+
+
+                owner += '<tr>';
+                owner += '<td><h6><small><b>' + "رقم جواز السفر" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].PassportNumber + '</td>';
+                owner += '<td><h6><small><b>' + "الهاتف" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].PhoneNumber + '</td>';
+                owner += '</tr>';
+
+                owner += '<tr>';
+                owner += '<td><h6><small><b>' + "المعرف" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].Serial + '</td>';
+                owner += '<td><h6><small><b>' + "نسبة المشاركة" + '</b></small></h6></td>';
+                owner += '<td>' + item.Owners_List_Info[i].SharePercent + '</td>';
+                owner += '</tr>';
+
+                owner += '</tbody>  </table>';
+                docDetials += owner;
+
+            }
+
+            var tranStatus = '<h4>حالة التحويل</h4>';
+            tranStatus += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            tranStatus += '<tbody class="tbody text-center" id="tbody">';
+
+            tranStatus += '<tr>';
+            tranStatus += '<td><h6><small><b>' + "رقم الطلب" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.ApplicationNo + '</td>';
+            tranStatus += '<td><h6><small><b>' + "سبب الحظر" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.BanningReason + '</td>';
+            tranStatus += '</tr>';
+
+            tranStatus += '<tr>';
+            tranStatus += '<td><h6><small><b>' + "حالة الحظر" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.BanningStatus + '</td>';
+            tranStatus += '<td><h6><small><b>' + "رقم غرفة التجارة" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.ChamberNumber + '</td>';
+            tranStatus += '</tr>';
+
+            tranStatus += '<tr>';
+            tranStatus += '<td><h6><small><b>' + "البريد الالكتروني" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.EmailAddress + '</td>';
+            tranStatus += '<td><h6><small><b>' + "تاريخ انتهاء الرخصة" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.EndDate + '</td>';
+            tranStatus += '</tr>';
+
+
+            tranStatus += '<tr>';
+            tranStatus += '<td><h6><small><b>' + "الرقم التعريفي" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.Id + '</td>';
+            tranStatus += '<td><h6><small><b>' + "رقم - الشكل القانوني للرخصة" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.LegalForm_Serial + '</td>';
+
+            tranStatus += '</tr>';
+
+
+            tranStatus += '<tr>';
+            tranStatus += '<td><h6><small><b>' + "تصنيف الرخصة" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.LicenseClassification + '</td>';
+            tranStatus += '<td><h6><small><b>' + "رقم تصنيف الرخصة" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.LicenseClassificationSerial + '</td>';
+
+            tranStatus += '<tr>';
+            tranStatus += '<td><h6><small><b>' + "رقم الرخصة" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.LicenseNo + '</td>';
+            tranStatus += '<td><h6><small><b>' + "رقم - حالة الرخصة" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.LicenseStatus_Serial + '</td>';
+            tranStatus += '</tr>';
+
+            tranStatus += '<tr>';
+            tranStatus += '<td><h6><small><b>' + "رقم - نوع الرخصة" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.LicenseType_Serial + '</td>';
+            tranStatus += '<td><h6><small><b>' + "الهاتف المتحرك" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.MobileNumber + '</td>';
+            tranStatus += '</tr>';
+
+
+            tranStatus += '<tr>';
+            tranStatus += '<td><h6><small><b>' + "صندوق البريد" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.POBoxNo + '</td>';
+            tranStatus += '<td><h6><small><b>' + "رقم التسجيل" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.RegistrationNumber + '</td>';
+            tranStatus += '</tr>';
+
+            tranStatus += '<tr>';
+            tranStatus += '<td><h6><small><b>' + "بداية الترخيص" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.StartDate + '</td>';
+            tranStatus += '<td><h6><small><b>' + "رقم الهاتف" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.TelNo + '</td>';
+
+            tranStatus += '</tr>';
+
+            tranStatus += '<tr>';
+            tranStatus += '<td><h6><small><b>' + "اسم الرخصة عربي" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.TradeNameAR + '</td>';
+            tranStatus += '<td><h6><small><b>' + "اسم الرخصة انجليزي" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.TradeNameEN + '</td>';
+
+            tranStatus += '</tr>';
+
+            tranStatus += '<tr>';
+            tranStatus += '<td><h6><small><b>' + "تعزيز" + '</b></small></h6></td>';
+            tranStatus += '<td>' + item.TransactionStatus.isTaziz + '</td>';
+
+
+            tranStatus += '</tr>';
+
+            tranStatus += '</tbody>  </table>';
+            docDetials += tranStatus;
+
+
+
+            var traninfo = '<h4>بيانات التحويل</h4>';
+            traninfo += '<table class="DataTable table table-bordered  table-hover text-center table-active">';
+            traninfo += '<tbody class="tbody text-center" id="tbody">';
+
+
+
+            traninfo += '<tr>';
+            traninfo += '<td><h6><small><b>' + "المعاملات العربية" + '</b></small></h6></td>';
+            traninfo += '<td>' + item.Transaction_Info.TransactionAr + '</td>';
+            traninfo += '<td><h6><small><b>' + "مسلسل الصفقة" + '</b></small></h6></td>';
+            traninfo += '<td>' + item.Transaction_Info.Transaction_Serial + '</td>';
+            traninfo += '</tr>';
+
+
+            traninfo += '</tbody>  </table>';
+            docDetials += traninfo;
+
+
+            return docDetials;
+        }
+
+        var StringHasValue = function (strValue) {
+            if ($.trim(strValue) != "" && $.trim(strValue) != null && $.trim(strValue) != undefined)
+                return strValue;
+            else
+                return "-";
+        };
+
+
+        function getMoreDetails(item) {
+
+            $("#divLoading").html('<image src="../Content/images/ajax-loader.gif" alt="Loading, please wait" />');
+
+            var url = '@Url.Action("ViewMoreDetails", "AJMStakeHolderDetails")';
+
+            document.getElementById('response').innerText = ('');
+            var html = '';
+
+
+            $('#error').fadeIn();
+
+
+            var UsrAgent = { "UserAgent": $.browser };
+
+            $.get(url, { transactionId: item, UserAgent: JSON.stringify(UsrAgent) }, function (data) {
+
+                if (data == '') {
+                    $("#divLoading").html("");
+                    return;
+                }
+                data = data.replace(/\:null/gi, "\:\"\"");
+                var obj = JSON.parse(data);
+                if (obj.flag == "1") {
+                    $("#divLoading").html("");
+
+
+                    if (obj.objresp.GetTransactionInfoResponse.GetTransactionInfoResult.NewDataSet != null) {
+
+                            html = '';
+                            html = BindMoreLiscenceDetails(obj.objresp.GetTransactionInfoResponse.GetTransactionInfoResult.NewDataSet);
+                            if ($("#dd" + item).is(':empty')) {
+                                $("#dd" + item).append(html);
+                            }
+
+                    }
+                }
+                else {
+                    $("#divLoading").html("");
+
+                    if (obj.flag == "2") {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                    else if(obj.flag == "3"  ) {
+                        document.getElementById('response').innerText = (obj.ResponseDescription);
+                        document.getElementById('response').style.color = 'white';
+                    }
+                }
+            });
+        }
+
+    </script>
+}
