@@ -7,12 +7,10 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
 
 namespace MOCDIntegrations
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
@@ -21,8 +19,10 @@ namespace MOCDIntegrations
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            GlobalFilters.Filters.Add(new CustomJsonFilter());
 
+            // Disable Windows Authentication
+            HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
+            HttpContext.Current.SetAuthenticationType(string.Empty);
         }
     }
 }
