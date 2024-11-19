@@ -14,8 +14,15 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav navbar-right">
-
-                <li>    <p class="nav navbar-text navbar-right">مرحبا, @User.Identity.Name</p>       </li>
+                @if (Request.IsAuthenticated)
+                {
+                    <li><p class="nav navbar-text navbar-right">مرحبا, @User.Identity.Name</p></li>
+                    <li>@Html.ActionLink("تسجيل الخروج", "Logout", "Account", null, new { @class = "nav-link" })</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("تسجيل الدخول", "Login", "Account", null, new { @class = "nav-link" })</li>
+                }
             </ul>
         </div>
 
