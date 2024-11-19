@@ -1,10 +1,11 @@
 
 
+
+
 using System.Web.Mvc;
-using System.Web.Security;
-using MOCDIntegrations.Auth;
 using System.Security.Claims;
-using System.Web;
+using Microsoft.Owin.Security;
+using MOCDIntegrations.Auth;
 
 namespace MOCDIntegrations.Controllers
 {
@@ -30,10 +31,12 @@ namespace MOCDIntegrations.Controllers
             var (isValid, roles) = _authProvider.ValidateUser(username, password);
             if (isValid)
             {
-                var identity = new ClaimsIdentity(new[]
+                var claims = new[]
                 {
                     new Claim(ClaimTypes.Name, username),
-                }, "ApplicationCookie");
+                };
+
+                var identity = new ClaimsIdentity(claims, "ApplicationCookie");
 
                 foreach (var role in roles)
                 {
@@ -42,7 +45,8 @@ namespace MOCDIntegrations.Controllers
 
                 var ctx = Request.GetOwinContext();
                 var authManager = ctx.Authentication;
-                authManager.SignIn(identity);
+
+                authManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
 
                 if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                 {
@@ -60,13 +64,17 @@ namespace MOCDIntegrations.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult Logout()
         {
             var ctx = Request.GetOwinContext();
             var authManager = ctx.Authentication;
+
             authManager.SignOut("ApplicationCookie");
             return RedirectToAction("Login");
         }
     }
 }
+
+
 
