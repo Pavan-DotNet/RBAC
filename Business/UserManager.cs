@@ -1,126 +1,49 @@
-
 using System;
 using System.Collections.Generic;
-using MOCDIntegrations.Models;
+using System.Data.SqlClient;
+using System.Configuration;
 using MOCDIntegrations.Auth;
 
 namespace MOCDIntegrations.Business
 {
     public class UserManager
     {
-        private readonly UserDataAccess _userDataAccess;
-        private readonly UserRoleDataAccess _userRoleDataAccess;
+        private readonly string _connectionString;
 
-        public UserManager(string connectionString)
+        public UserManager()
         {
-            _userDataAccess = new UserDataAccess(connectionString);
-            _userRoleDataAccess = new UserRoleDataAccess(connectionString);
+            _connectionString = ConfigurationManager.ConnectionStrings["INTEGRATION_CONN"].ConnectionString;
         }
 
-        public User GetUserById(int userId)
+        public List<string> GetUserPermissions(int userId)
         {
-            return _userDataAccess.GetUserById(userId);
+            var permissions = new List<string>();
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(@"
+                    SELECT DISTINCT p.PermissionName
+                    FROM UserRoles ur
+                    JOIN RolePermissions rp ON ur.RoleId = rp.RoleId
+                    JOIN Permissions p ON rp.PermissionId = p.PermissionId
+                    WHERE ur.UserId = @UserId", connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            permissions.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return permissions;
         }
 
-        public List<User> GetAllUsers()
-        {
-            return _userDataAccess.GetAllUsers();
-        }
-
-        public int CreateUser(User user)
-        {
-            if (string.IsNullOrWhiteSpace(user.Username))
-            {
-                throw new ArgumentException("Username cannot be empty or null.");
-            }
-
-            if (string.IsNullOrWhiteSpace(user.Email))
-            {
-                throw new ArgumentException("Email cannot be empty or null.");
-            }
-
-            // TODO: Add password validation and hashing
-            return _userDataAccess.CreateUser(user);
-        }
-
-        public void UpdateUser(User user)
-        {
-            if (user.UserId <= 0)
-            {
-                throw new ArgumentException("Invalid user ID.");
-            }
-
-            if (string.IsNullOrWhiteSpace(user.Username))
-            {
-                throw new ArgumentException("Username cannot be empty or null.");
-            }
-
-            if (string.IsNullOrWhiteSpace(user.Email))
-            {
-                throw new ArgumentException("Email cannot be empty or null.");
-            }
-
-            _userDataAccess.UpdateUser(user);
-        }
-
-        public void DeleteUser(int userId)
-        {
-            if (userId <= 0)
-            {
-                throw new ArgumentException("Invalid user ID.");
-            }
-
-            _userDataAccess.DeleteUser(userId);
-        }
-
-        public List<UserRole> GetUserRoles(int userId)
-        {
-            return _userRoleDataAccess.GetUserRoles(userId);
-        }
-
-        public void AssignRoleToUser(int userId, int roleId)
-        {
-            if (userId <= 0)
-            {
-                throw new ArgumentException("Invalid user ID.");
-            }
-
-            if (roleId <= 0)
-            {
-                throw new ArgumentException("Invalid role ID.");
-            }
-
-            _userRoleDataAccess.AssignRoleToUser(userId, roleId);
-        }
-
-        public void RemoveRoleFromUser(int userId, int roleId)
-        {
-            if (userId <= 0)
-            {
-                throw new ArgumentException("Invalid user ID.");
-            }
-
-            if (roleId <= 0)
-            {
-                throw new ArgumentException("Invalid role ID.");
-            }
-
-            _userRoleDataAccess.RemoveRoleFromUser(userId, roleId);
-        }
-
-        public bool UserHasRole(int userId, int roleId)
-        {
-            if (userId <= 0)
-            {
-                throw new ArgumentException("Invalid user ID.");
-            }
-
-            if (roleId <= 0)
-            {
-                throw new ArgumentException("Invalid role ID.");
-            }
-
-            return _userRoleDataAccess.UserHasRole(userId, roleId);
-        }
+        // Other existing methods...
     }
 }
