@@ -1,0 +1,54 @@
+
+@model MOCDIntegrations.Models.UserRolesViewModel
+
+@{
+    ViewBag.Title = "Manage User Roles";
+}
+
+<h2>Manage Roles for @Model.Username</h2>
+
+<h3>Current Roles</h3>
+<table class="table">
+    <tr>
+        <th>Role Name</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var role in Model.UserRoles)
+    {
+        <tr>
+            <td>@role.RoleName</td>
+            <td>
+                @using (Html.BeginForm("RemoveRole", "User", new { userId = Model.UserId, roleId = role.RoleId }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Remove" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to remove this role?');" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<h3>Available Roles</h3>
+<table class="table">
+    <tr>
+        <th>Role Name</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var role in Model.AvailableRoles)
+    {
+        <tr>
+            <td>@role.RoleName</td>
+            <td>
+                @using (Html.BeginForm("AssignRole", "User", new { userId = Model.UserId, roleId = role.RoleId }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Assign" class="btn btn-primary btn-sm" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<div>
+    @Html.ActionLink("Back to User List", "Index")
+</div>
