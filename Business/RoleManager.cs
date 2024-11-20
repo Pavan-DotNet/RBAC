@@ -1,63 +1,52 @@
-
 using System;
 using System.Collections.Generic;
-using MOCDIntegrations.Models;
+using System.Data.SqlClient;
+using System.Configuration;
 using MOCDIntegrations.Auth;
 
 namespace MOCDIntegrations.Business
 {
     public class RoleManager
     {
-        private readonly RoleDataAccess _roleDataAccess;
+        private readonly string _connectionString;
 
-        public RoleManager(string connectionString)
+        public RoleManager()
         {
-            _roleDataAccess = new RoleDataAccess(connectionString);
+            _connectionString = ConfigurationManager.ConnectionStrings["INTEGRATION_CONN"].ConnectionString;
         }
 
-        public List<Role> GetAllRoles()
+        public Role GetRoleByName(string roleName)
         {
-            return _roleDataAccess.GetAllRoles();
-        }
-
-        public Role GetRoleById(int roleId)
-        {
-            return _roleDataAccess.GetRoleById(roleId);
-        }
-
-        public int CreateRole(Role role)
-        {
-            if (string.IsNullOrWhiteSpace(role.RoleName))
+            using (var connection = new SqlConnection(_connectionString))
             {
-                throw new ArgumentException("Role name cannot be empty or null.");
+                connection.Open();
+                using (var command = new SqlCommand("SELECT RoleId, RoleName, Description FROM Roles WHERE RoleName = @RoleName", connection))
+                {
+                    command.Parameters.AddWithValue("@RoleName", roleName);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Role
+                            {
+                                RoleId = reader.GetInt32(0),
+                                RoleName = reader.GetString(1),
+                                Description = reader.GetString(2)
+                            };
+                        }
+                    }
+                }
             }
-
-            return _roleDataAccess.CreateRole(role);
+            return null;
         }
 
-        public void UpdateRole(Role role)
-        {
-            if (role.RoleId <= 0)
-            {
-                throw new ArgumentException("Invalid role ID.");
-            }
+        // Other existing methods...
+    }
 
-            if (string.IsNullOrWhiteSpace(role.RoleName))
-            {
-                throw new ArgumentException("Role name cannot be empty or null.");
-            }
-
-            _roleDataAccess.UpdateRole(role);
-        }
-
-        public void DeleteRole(int roleId)
-        {
-            if (roleId <= 0)
-            {
-                throw new ArgumentException("Invalid role ID.");
-            }
-
-            _roleDataAccess.DeleteRole(roleId);
-        }
+    public class Role
+    {
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
+        public string Description { get; set; }
     }
 }

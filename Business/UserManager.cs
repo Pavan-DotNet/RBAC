@@ -17,31 +17,29 @@ namespace MOCDIntegrations.Business
 
         public List<string> GetUserPermissions(int userId)
         {
-            var permissions = new List<string>();
+            // Existing GetUserPermissions method...
+        }
+
+        public List<string> GetAvailableRoles()
+        {
+            var roles = new List<string>();
 
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                using (var command = new SqlCommand(@"
-                    SELECT DISTINCT p.PermissionName
-                    FROM UserRoles ur
-                    JOIN RolePermissions rp ON ur.RoleId = rp.RoleId
-                    JOIN Permissions p ON rp.PermissionId = p.PermissionId
-                    WHERE ur.UserId = @UserId", connection))
+                using (var command = new SqlCommand("SELECT RoleName FROM Roles", connection))
                 {
-                    command.Parameters.AddWithValue("@UserId", userId);
-
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            permissions.Add(reader.GetString(0));
+                            roles.Add(reader.GetString(0));
                         }
                     }
                 }
             }
 
-            return permissions;
+            return roles;
         }
 
         // Other existing methods...
